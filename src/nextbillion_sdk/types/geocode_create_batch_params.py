@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-__all__ = ["GeocodeBatchCreateParams", "Body"]
+__all__ = ["GeocodeCreateBatchParams", "Body"]
 
 
-class GeocodeBatchCreateParams(TypedDict, total=False):
+class GeocodeCreateBatchParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

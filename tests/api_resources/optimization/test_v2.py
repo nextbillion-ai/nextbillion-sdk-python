@@ -10,7 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
 from nextbillion_sdk.types import PostResponse
-from nextbillion_sdk.types.optimization import V2GetResultResponse
+from nextbillion_sdk.types.optimization import V2RetrieveResultResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,17 +20,17 @@ class TestV2:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_get_result(self, client: NextbillionSDK) -> None:
-        v2 = client.optimization.v2.get_result(
+    def test_method_retrieve_result(self, client: NextbillionSDK) -> None:
+        v2 = client.optimization.v2.retrieve_result(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(V2GetResultResponse, v2, path=["response"])
+        assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_get_result(self, client: NextbillionSDK) -> None:
-        response = client.optimization.v2.with_raw_response.get_result(
+    def test_raw_response_retrieve_result(self, client: NextbillionSDK) -> None:
+        response = client.optimization.v2.with_raw_response.retrieve_result(
             id="id",
             key="key=API_KEY",
         )
@@ -38,12 +38,12 @@ class TestV2:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         v2 = response.parse()
-        assert_matches_type(V2GetResultResponse, v2, path=["response"])
+        assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_get_result(self, client: NextbillionSDK) -> None:
-        with client.optimization.v2.with_streaming_response.get_result(
+    def test_streaming_response_retrieve_result(self, client: NextbillionSDK) -> None:
+        with client.optimization.v2.with_streaming_response.retrieve_result(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -51,7 +51,7 @@ class TestV2:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             v2 = response.parse()
-            assert_matches_type(V2GetResultResponse, v2, path=["response"])
+            assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -339,17 +339,17 @@ class TestAsyncV2:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_get_result(self, async_client: AsyncNextbillionSDK) -> None:
-        v2 = await async_client.optimization.v2.get_result(
+    async def test_method_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
+        v2 = await async_client.optimization.v2.retrieve_result(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(V2GetResultResponse, v2, path=["response"])
+        assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_get_result(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.optimization.v2.with_raw_response.get_result(
+    async def test_raw_response_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.optimization.v2.with_raw_response.retrieve_result(
             id="id",
             key="key=API_KEY",
         )
@@ -357,12 +357,12 @@ class TestAsyncV2:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         v2 = await response.parse()
-        assert_matches_type(V2GetResultResponse, v2, path=["response"])
+        assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_get_result(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.optimization.v2.with_streaming_response.get_result(
+    async def test_streaming_response_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.optimization.v2.with_streaming_response.retrieve_result(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -370,7 +370,7 @@ class TestAsyncV2:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             v2 = await response.parse()
-            assert_matches_type(V2GetResultResponse, v2, path=["response"])
+            assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -13,7 +13,7 @@ from .position import Position
 from .categories import Categories
 
 __all__ = [
-    "GeocodeStructuredRetrieveResponse",
+    "GeocodeRetrieveStructuredResponse",
     "Item",
     "ItemOpeningHours",
     "ItemOpeningHoursTimeRange",
@@ -119,7 +119,7 @@ class Item(BaseModel):
     """The localized display name of this result item."""
 
 
-class GeocodeStructuredRetrieveResponse(BaseModel):
+class GeocodeRetrieveStructuredResponse(BaseModel):
     items: Optional[List[Item]] = None
     """
     The results are presented as a JSON list of candidates in ranked order

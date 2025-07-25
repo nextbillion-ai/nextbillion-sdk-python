@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["DiscoverListParams"]
+__all__ = ["DiscoverRetrieveParams"]
 
 
-class DiscoverListParams(TypedDict, total=False):
+class DiscoverRetrieveParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

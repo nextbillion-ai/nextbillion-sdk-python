@@ -248,16 +248,16 @@ from nextbillion_sdk.types import (
     MapView,
     Position,
     GeocodeRetrieveResponse,
-    GeocodeBatchCreateResponse,
-    GeocodeStructuredRetrieveResponse,
+    GeocodeCreateBatchResponse,
+    GeocodeRetrieveStructuredResponse,
 )
 ```
 
 Methods:
 
 - <code title="get /geocode">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_response.py">GeocodeRetrieveResponse</a></code>
-- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">batch_create</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_batch_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_batch_create_response.py">GeocodeBatchCreateResponse</a></code>
-- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">structured_retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_structured_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_structured_retrieve_response.py">GeocodeStructuredRetrieveResponse</a></code>
+- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">create_batch</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_create_batch_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_create_batch_response.py">GeocodeCreateBatchResponse</a></code>
+- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve_structured</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_structured_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_structured_response.py">GeocodeRetrieveStructuredResponse</a></code>
 
 # Optimization
 
@@ -289,12 +289,12 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types.optimization import Job, Shipment, V2GetResultResponse
+from nextbillion_sdk.types.optimization import Job, Shipment, V2RetrieveResultResponse
 ```
 
 Methods:
 
-- <code title="get /optimization/v2/result">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">get_result</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_get_result_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/optimization/v2_get_result_response.py">V2GetResultResponse</a></code>
+- <code title="get /optimization/v2/result">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">retrieve_result</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_retrieve_result_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/optimization/v2_retrieve_result_response.py">V2RetrieveResultResponse</a></code>
 - <code title="post /optimization/v2">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">submit</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_submit_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/post_response.py">PostResponse</a></code>
 
 # Geofence
@@ -343,26 +343,26 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types.geofence import BatchCreateResponse, BatchListResponse
+from nextbillion_sdk.types.geofence import BatchCreateResponse, BatchQueryResponse
 ```
 
 Methods:
 
 - <code title="post /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_create_response.py">BatchCreateResponse</a></code>
-- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_list_response.py">BatchListResponse</a></code>
 - <code title="delete /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">delete</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
+- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">query</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_query_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_query_response.py">BatchQueryResponse</a></code>
 
 # Discover
 
 Types:
 
 ```python
-from nextbillion_sdk.types import DiscoverListResponse
+from nextbillion_sdk.types import DiscoverRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /discover">client.discover.<a href="./src/nextbillion_sdk/resources/discover.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/discover_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/discover_list_response.py">DiscoverListResponse</a></code>
+- <code title="get /discover">client.discover.<a href="./src/nextbillion_sdk/resources/discover.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/discover_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/discover_retrieve_response.py">DiscoverRetrieveResponse</a></code>
 
 # Browse
 
@@ -414,7 +414,7 @@ from nextbillion_sdk.types import (
     RichGroupDtoResponse,
     RestrictionListResponse,
     RestrictionDeleteResponse,
-    RestrictionListByBboxResponse,
+    RestrictionListPaginatedResponse,
 )
 ```
 
@@ -423,9 +423,9 @@ Methods:
 - <code title="post /restrictions/{restriction_type}">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">create</a>(restriction_type, \*\*<a href="src/nextbillion_sdk/types/restriction_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/rich_group_dto_response.py">RichGroupDtoResponse</a></code>
 - <code title="get /restrictions/{id}">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">retrieve</a>(id, \*\*<a href="src/nextbillion_sdk/types/restriction_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/rich_group_dto_response.py">RichGroupDtoResponse</a></code>
 - <code title="patch /restrictions/{id}">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">update</a>(id, \*\*<a href="src/nextbillion_sdk/types/restriction_update_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/rich_group_dto_response.py">RichGroupDtoResponse</a></code>
-- <code title="get /restrictions/list">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/restriction_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restriction_list_response.py">RestrictionListResponse</a></code>
+- <code title="get /restrictions">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/restriction_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restriction_list_response.py">RestrictionListResponse</a></code>
 - <code title="delete /restrictions/{id}">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">delete</a>(id, \*\*<a href="src/nextbillion_sdk/types/restriction_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restriction_delete_response.py">RestrictionDeleteResponse</a></code>
-- <code title="get /restrictions">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">list_by_bbox</a>(\*\*<a href="src/nextbillion_sdk/types/restriction_list_by_bbox_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restriction_list_by_bbox_response.py">RestrictionListByBboxResponse</a></code>
+- <code title="get /restrictions/list">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">list_paginated</a>(\*\*<a href="src/nextbillion_sdk/types/restriction_list_paginated_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restriction_list_paginated_response.py">RestrictionListPaginatedResponse</a></code>
 - <code title="put /restrictions/{id}/state">client.restrictions.<a href="./src/nextbillion_sdk/resources/restrictions.py">set_state</a>(id, \*\*<a href="src/nextbillion_sdk/types/restriction_set_state_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/rich_group_dto_response.py">RichGroupDtoResponse</a></code>
 
 # RestrictionsItems
@@ -620,9 +620,9 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types import LookupRetrieveResponse
+from nextbillion_sdk.types import LookupByIDResponse
 ```
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_retrieve_response.py">LookupRetrieveResponse</a></code>
+- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">by_id</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_by_id_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_by_id_response.py">LookupByIDResponse</a></code>
