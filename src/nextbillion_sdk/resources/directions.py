@@ -46,9 +46,8 @@ class DirectionsResource(SyncAPIResource):
     def compute_route(
         self,
         *,
-        query_key: str,
         destination: str,
-        body_key: str,
+        key: str,
         origin: str,
         altcount: int | NotGiven = NOT_GIVEN,
         alternatives: bool | NotGiven = NOT_GIVEN,
@@ -105,9 +104,7 @@ class DirectionsResource(SyncAPIResource):
         Directions API is a service that computes a route with given coordinates.
 
         Args:
-          query_key: API Key
-
-          body_key: A key is a unique identifier that is required to authenticate a request to the
+          key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
           altcount: Sets the number of alternative routes to return. It is effective only when
@@ -386,7 +383,7 @@ class DirectionsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "destination": destination,
-                    "body_key": body_key,
+                    "key": key,
                     "origin": origin,
                     "altcount": altcount,
                     "alternatives": alternatives,
@@ -416,13 +413,7 @@ class DirectionsResource(SyncAPIResource):
                 direction_compute_route_params.DirectionComputeRouteParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"query_key": query_key}, direction_compute_route_params.DirectionComputeRouteParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=DirectionComputeRouteResponse,
         )
@@ -451,9 +442,8 @@ class AsyncDirectionsResource(AsyncAPIResource):
     async def compute_route(
         self,
         *,
-        query_key: str,
         destination: str,
-        body_key: str,
+        key: str,
         origin: str,
         altcount: int | NotGiven = NOT_GIVEN,
         alternatives: bool | NotGiven = NOT_GIVEN,
@@ -510,9 +500,7 @@ class AsyncDirectionsResource(AsyncAPIResource):
         Directions API is a service that computes a route with given coordinates.
 
         Args:
-          query_key: API Key
-
-          body_key: A key is a unique identifier that is required to authenticate a request to the
+          key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
           altcount: Sets the number of alternative routes to return. It is effective only when
@@ -791,7 +779,7 @@ class AsyncDirectionsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "destination": destination,
-                    "body_key": body_key,
+                    "key": key,
                     "origin": origin,
                     "altcount": altcount,
                     "alternatives": alternatives,
@@ -821,13 +809,7 @@ class AsyncDirectionsResource(AsyncAPIResource):
                 direction_compute_route_params.DirectionComputeRouteParams,
             ),
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"query_key": query_key}, direction_compute_route_params.DirectionComputeRouteParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=DirectionComputeRouteResponse,
         )
