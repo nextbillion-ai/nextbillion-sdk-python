@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .routing_response import RoutingResponse as RoutingResponse
+from .response import Response as Response
 from .route_create_params import RouteCreateParams as RouteCreateParams
 from .route_create_response import RouteCreateResponse as RouteCreateResponse
 from .route_redispatch_params import RouteRedispatchParams as RouteRedispatchParams

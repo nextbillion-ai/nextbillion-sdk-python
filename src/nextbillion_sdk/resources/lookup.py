@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import lookup_retrieve_params
+from ..types import lookup_retrieve_by_id_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,7 +16,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.lookup_retrieve_response import LookupRetrieveResponse
+from ..types.lookup_retrieve_by_id_response import LookupRetrieveByIDResponse
 
 __all__ = ["LookupResource", "AsyncLookupResource"]
 
@@ -41,7 +41,7 @@ class LookupResource(SyncAPIResource):
         """
         return LookupResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def retrieve_by_id(
         self,
         *,
         id: str,
@@ -52,7 +52,7 @@ class LookupResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LookupRetrieveResponse:
+    ) -> LookupRetrieveByIDResponse:
         """
         Lookup By ID
 
@@ -83,10 +83,10 @@ class LookupResource(SyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    lookup_retrieve_params.LookupRetrieveParams,
+                    lookup_retrieve_by_id_params.LookupRetrieveByIDParams,
                 ),
             ),
-            cast_to=LookupRetrieveResponse,
+            cast_to=LookupRetrieveByIDResponse,
         )
 
 
@@ -110,7 +110,7 @@ class AsyncLookupResource(AsyncAPIResource):
         """
         return AsyncLookupResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def retrieve_by_id(
         self,
         *,
         id: str,
@@ -121,7 +121,7 @@ class AsyncLookupResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LookupRetrieveResponse:
+    ) -> LookupRetrieveByIDResponse:
         """
         Lookup By ID
 
@@ -152,10 +152,10 @@ class AsyncLookupResource(AsyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    lookup_retrieve_params.LookupRetrieveParams,
+                    lookup_retrieve_by_id_params.LookupRetrieveByIDParams,
                 ),
             ),
-            cast_to=LookupRetrieveResponse,
+            cast_to=LookupRetrieveByIDResponse,
         )
 
 
@@ -163,8 +163,8 @@ class LookupResourceWithRawResponse:
     def __init__(self, lookup: LookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = to_raw_response_wrapper(
-            lookup.retrieve,
+        self.retrieve_by_id = to_raw_response_wrapper(
+            lookup.retrieve_by_id,
         )
 
 
@@ -172,8 +172,8 @@ class AsyncLookupResourceWithRawResponse:
     def __init__(self, lookup: AsyncLookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = async_to_raw_response_wrapper(
-            lookup.retrieve,
+        self.retrieve_by_id = async_to_raw_response_wrapper(
+            lookup.retrieve_by_id,
         )
 
 
@@ -181,8 +181,8 @@ class LookupResourceWithStreamingResponse:
     def __init__(self, lookup: LookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = to_streamed_response_wrapper(
-            lookup.retrieve,
+        self.retrieve_by_id = to_streamed_response_wrapper(
+            lookup.retrieve_by_id,
         )
 
 
@@ -190,6 +190,6 @@ class AsyncLookupResourceWithStreamingResponse:
     def __init__(self, lookup: AsyncLookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            lookup.retrieve,
+        self.retrieve_by_id = async_to_streamed_response_wrapper(
+            lookup.retrieve_by_id,
         )
