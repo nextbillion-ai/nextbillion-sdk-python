@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["LookupRetrieveParams"]
+__all__ = ["LookupByIDParams"]
 
 
-class LookupRetrieveParams(TypedDict, total=False):
+class LookupByIDParams(TypedDict, total=False):
     id: Required[str]
     """
     Specify the unique identifier of a specific POI, Street, Geography, Point

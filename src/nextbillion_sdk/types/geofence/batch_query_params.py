@@ -4,15 +4,12 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["V2GetResultParams"]
+__all__ = ["BatchQueryParams"]
 
 
-class V2GetResultParams(TypedDict, total=False):
-    id: Required[str]
-    """
-    The unique ID that was returned on successful submission of the Optimization
-    POST request.
-    """
+class BatchQueryParams(TypedDict, total=False):
+    ids: Required[str]
+    """Comma(`,`) separated list of IDs of the geofences to be searched."""
 
     key: Required[str]
     """

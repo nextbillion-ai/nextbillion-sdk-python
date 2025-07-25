@@ -11,7 +11,7 @@ from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
 from nextbillion_sdk.types.skynet import SimpleResp
 from nextbillion_sdk.types.geofence import (
-    BatchListResponse,
+    BatchQueryResponse,
     BatchCreateResponse,
 )
 
@@ -95,43 +95,6 @@ class TestBatch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: NextbillionSDK) -> None:
-        batch = client.geofence.batch.list(
-            ids="ids",
-            key="key=API_KEY",
-        )
-        assert_matches_type(BatchListResponse, batch, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_list(self, client: NextbillionSDK) -> None:
-        response = client.geofence.batch.with_raw_response.list(
-            ids="ids",
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        batch = response.parse()
-        assert_matches_type(BatchListResponse, batch, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
-        with client.geofence.batch.with_streaming_response.list(
-            ids="ids",
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            batch = response.parse()
-            assert_matches_type(BatchListResponse, batch, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.delete(
             key="key=API_KEY",
@@ -170,6 +133,43 @@ class TestBatch:
 
             batch = response.parse()
             assert_matches_type(SimpleResp, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_query(self, client: NextbillionSDK) -> None:
+        batch = client.geofence.batch.query(
+            ids="ids",
+            key="key=API_KEY",
+        )
+        assert_matches_type(BatchQueryResponse, batch, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_query(self, client: NextbillionSDK) -> None:
+        response = client.geofence.batch.with_raw_response.query(
+            ids="ids",
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = response.parse()
+        assert_matches_type(BatchQueryResponse, batch, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_query(self, client: NextbillionSDK) -> None:
+        with client.geofence.batch.with_streaming_response.query(
+            ids="ids",
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = response.parse()
+            assert_matches_type(BatchQueryResponse, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -253,43 +253,6 @@ class TestAsyncBatch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
-        batch = await async_client.geofence.batch.list(
-            ids="ids",
-            key="key=API_KEY",
-        )
-        assert_matches_type(BatchListResponse, batch, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.geofence.batch.with_raw_response.list(
-            ids="ids",
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        batch = await response.parse()
-        assert_matches_type(BatchListResponse, batch, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.geofence.batch.with_streaming_response.list(
-            ids="ids",
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            batch = await response.parse()
-            assert_matches_type(BatchListResponse, batch, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.delete(
             key="key=API_KEY",
@@ -328,5 +291,42 @@ class TestAsyncBatch:
 
             batch = await response.parse()
             assert_matches_type(SimpleResp, batch, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_query(self, async_client: AsyncNextbillionSDK) -> None:
+        batch = await async_client.geofence.batch.query(
+            ids="ids",
+            key="key=API_KEY",
+        )
+        assert_matches_type(BatchQueryResponse, batch, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_query(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.geofence.batch.with_raw_response.query(
+            ids="ids",
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        batch = await response.parse()
+        assert_matches_type(BatchQueryResponse, batch, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_query(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.geofence.batch.with_streaming_response.query(
+            ids="ids",
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            batch = await response.parse()
+            assert_matches_type(BatchQueryResponse, batch, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -12,7 +12,7 @@ from .map_view import MapView
 from .position import Position
 from .categories import Categories
 
-__all__ = ["LookupRetrieveResponse", "Item"]
+__all__ = ["LookupByIDResponse", "Item"]
 
 
 class Item(BaseModel):
@@ -47,7 +47,7 @@ class Item(BaseModel):
     """The localized display name of this result item."""
 
 
-class LookupRetrieveResponse(BaseModel):
+class LookupByIDResponse(BaseModel):
     items: Optional[List[Item]] = None
     """
     The results are presented as a JSON list of candidates in ranked order

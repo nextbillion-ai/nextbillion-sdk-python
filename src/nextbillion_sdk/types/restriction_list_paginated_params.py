@@ -2,45 +2,57 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["RestrictionListByBboxParams"]
+__all__ = ["RestrictionListPaginatedParams"]
 
 
-class RestrictionListByBboxParams(TypedDict, total=False):
+class RestrictionListPaginatedParams(TypedDict, total=False):
+    area: Required[str]
+    """Specify the area name. It represents a region where restrictions can be applied.
+
+    _The area it belongs to. See Area API_
+    """
+
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the
     API.
     """
 
-    max_lat: Required[float]
-    """Specifies the maximum latitude value for the bounding box."""
+    limit: Required[int]
+    """The number of restrictions to be returned in the response.
 
-    max_lon: Required[float]
-    """Specifies the maximum longitude value for the bounding box."""
+    Please note that if the `limit` is set to a number more than the total number of
+    available restrictions, then all restrictions would be returned together.
+    """
 
-    min_lat: Required[float]
-    """Specifies the minimum latitude value for the bounding box."""
+    offset: Required[int]
+    """
+    An integer value indicating the number of items in the collection that need to
+    be skipped in the response. Please note that the offset starts from 0, so the
+    first item returned in the result would be the item at (offset + 1) position in
+    collection.
 
-    min_lon: Required[float]
-    """Specifies the minimum longitude value for the bounding box."""
+    Users can use `offset` along with `limit` to implement paginated result.
+    """
 
-    mode: List[Literal["0w", "2w", "3w", "4w", "6w"]]
+    mode: Literal["`0w`", "`2w`", "`3w`", "`4w`", "`6w`"]
     """Specify the modes of travel that the restriction pertains to."""
 
-    restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
+    name: str
+    """The name of the restriction.
+
+    This should be same as that provided while creating or updating the restriction.
+    """
+
+    restriction_type: Literal["`turn`", "`parking`", "`fixedspeed`", "`maxspeed`", "`closure`", "`truck`"]
     """Specify the type of restrictions to fetch."""
 
     source: Literal["rrt", "pbf"]
     """
-    This parameter represents where the restriction comes from and cannot be
-    modified by clients sending requests to the API endpoint.
-
-    For example, an API endpoint that returns a list of restrictions could include
-    the source parameter to indicate where each item comes from. This parameter can
-    be useful for filtering, sorting, or grouping the results based on their source.
+    It represents where it comes from, currently the possible values include "rrt",
+    "xsm"
     """
 
     state: Literal["`enabled`", "`disabled`", "`deleted`"]
@@ -64,4 +76,4 @@ class RestrictionListByBboxParams(TypedDict, total=False):
     """
 
     transform: bool
-    """This is internal parameter with a default value as `false`."""
+    """a internal parameter"""

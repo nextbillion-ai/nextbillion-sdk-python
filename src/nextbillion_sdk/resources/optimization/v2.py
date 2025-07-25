@@ -17,12 +17,12 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.optimization import v2_submit_params, v2_get_result_params
+from ...types.optimization import v2_submit_params, v2_retrieve_result_params
 from ...types.post_response import PostResponse
 from ...types.optimization.job_param import JobParam
 from ...types.optimization.vehicle_param import VehicleParam
 from ...types.optimization.shipment_param import ShipmentParam
-from ...types.optimization.v2_get_result_response import V2GetResultResponse
+from ...types.optimization.v2_retrieve_result_response import V2RetrieveResultResponse
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
 
@@ -47,7 +47,7 @@ class V2Resource(SyncAPIResource):
         """
         return V2ResourceWithStreamingResponse(self)
 
-    def get_result(
+    def retrieve_result(
         self,
         *,
         id: str,
@@ -58,7 +58,7 @@ class V2Resource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2GetResultResponse:
+    ) -> V2RetrieveResultResponse:
         """
         Flexible GET
 
@@ -89,10 +89,10 @@ class V2Resource(SyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    v2_get_result_params.V2GetResultParams,
+                    v2_retrieve_result_params.V2RetrieveResultParams,
                 ),
             ),
-            cast_to=V2GetResultResponse,
+            cast_to=V2RetrieveResultResponse,
         )
 
     def submit(
@@ -327,7 +327,7 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         return AsyncV2ResourceWithStreamingResponse(self)
 
-    async def get_result(
+    async def retrieve_result(
         self,
         *,
         id: str,
@@ -338,7 +338,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2GetResultResponse:
+    ) -> V2RetrieveResultResponse:
         """
         Flexible GET
 
@@ -369,10 +369,10 @@ class AsyncV2Resource(AsyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    v2_get_result_params.V2GetResultParams,
+                    v2_retrieve_result_params.V2RetrieveResultParams,
                 ),
             ),
-            cast_to=V2GetResultResponse,
+            cast_to=V2RetrieveResultResponse,
         )
 
     async def submit(
@@ -591,8 +591,8 @@ class V2ResourceWithRawResponse:
     def __init__(self, v2: V2Resource) -> None:
         self._v2 = v2
 
-        self.get_result = to_raw_response_wrapper(
-            v2.get_result,
+        self.retrieve_result = to_raw_response_wrapper(
+            v2.retrieve_result,
         )
         self.submit = to_raw_response_wrapper(
             v2.submit,
@@ -603,8 +603,8 @@ class AsyncV2ResourceWithRawResponse:
     def __init__(self, v2: AsyncV2Resource) -> None:
         self._v2 = v2
 
-        self.get_result = async_to_raw_response_wrapper(
-            v2.get_result,
+        self.retrieve_result = async_to_raw_response_wrapper(
+            v2.retrieve_result,
         )
         self.submit = async_to_raw_response_wrapper(
             v2.submit,
@@ -615,8 +615,8 @@ class V2ResourceWithStreamingResponse:
     def __init__(self, v2: V2Resource) -> None:
         self._v2 = v2
 
-        self.get_result = to_streamed_response_wrapper(
-            v2.get_result,
+        self.retrieve_result = to_streamed_response_wrapper(
+            v2.retrieve_result,
         )
         self.submit = to_streamed_response_wrapper(
             v2.submit,
@@ -627,8 +627,8 @@ class AsyncV2ResourceWithStreamingResponse:
     def __init__(self, v2: AsyncV2Resource) -> None:
         self._v2 = v2
 
-        self.get_result = async_to_streamed_response_wrapper(
-            v2.get_result,
+        self.retrieve_result = async_to_streamed_response_wrapper(
+            v2.retrieve_result,
         )
         self.submit = async_to_streamed_response_wrapper(
             v2.submit,

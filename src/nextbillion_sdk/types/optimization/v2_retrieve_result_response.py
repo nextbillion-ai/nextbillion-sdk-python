@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from ..._models import BaseModel
 
-__all__ = ["V2GetResultResponse", "Result", "ResultRoute", "ResultRouteStep", "ResultSummary", "ResultUnassigned"]
+__all__ = ["V2RetrieveResultResponse", "Result", "ResultRoute", "ResultRouteStep", "ResultSummary", "ResultUnassigned"]
 
 
 class ResultRouteStep(BaseModel):
@@ -448,7 +448,7 @@ class Result(BaseModel):
     """
 
 
-class V2GetResultResponse(BaseModel):
+class V2RetrieveResultResponse(BaseModel):
     description: Optional[str] = None
     """
     Returns the `description` of the optimization job as given in the input POST

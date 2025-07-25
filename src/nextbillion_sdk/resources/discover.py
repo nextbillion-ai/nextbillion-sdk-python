@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import discover_list_params
+from ..types import discover_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,7 +16,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.discover_list_response import DiscoverListResponse
+from ..types.discover_retrieve_response import DiscoverRetrieveResponse
 
 __all__ = ["DiscoverResource", "AsyncDiscoverResource"]
 
@@ -41,7 +41,7 @@ class DiscoverResource(SyncAPIResource):
         """
         return DiscoverResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve(
         self,
         *,
         key: str,
@@ -56,7 +56,7 @@ class DiscoverResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiscoverListResponse:
+    ) -> DiscoverRetrieveResponse:
         """
         Discover matching places
 
@@ -131,10 +131,10 @@ class DiscoverResource(SyncAPIResource):
                         "lang": lang,
                         "limit": limit,
                     },
-                    discover_list_params.DiscoverListParams,
+                    discover_retrieve_params.DiscoverRetrieveParams,
                 ),
             ),
-            cast_to=DiscoverListResponse,
+            cast_to=DiscoverRetrieveResponse,
         )
 
 
@@ -158,7 +158,7 @@ class AsyncDiscoverResource(AsyncAPIResource):
         """
         return AsyncDiscoverResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve(
         self,
         *,
         key: str,
@@ -173,7 +173,7 @@ class AsyncDiscoverResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DiscoverListResponse:
+    ) -> DiscoverRetrieveResponse:
         """
         Discover matching places
 
@@ -248,10 +248,10 @@ class AsyncDiscoverResource(AsyncAPIResource):
                         "lang": lang,
                         "limit": limit,
                     },
-                    discover_list_params.DiscoverListParams,
+                    discover_retrieve_params.DiscoverRetrieveParams,
                 ),
             ),
-            cast_to=DiscoverListResponse,
+            cast_to=DiscoverRetrieveResponse,
         )
 
 
@@ -259,8 +259,8 @@ class DiscoverResourceWithRawResponse:
     def __init__(self, discover: DiscoverResource) -> None:
         self._discover = discover
 
-        self.list = to_raw_response_wrapper(
-            discover.list,
+        self.retrieve = to_raw_response_wrapper(
+            discover.retrieve,
         )
 
 
@@ -268,8 +268,8 @@ class AsyncDiscoverResourceWithRawResponse:
     def __init__(self, discover: AsyncDiscoverResource) -> None:
         self._discover = discover
 
-        self.list = async_to_raw_response_wrapper(
-            discover.list,
+        self.retrieve = async_to_raw_response_wrapper(
+            discover.retrieve,
         )
 
 
@@ -277,8 +277,8 @@ class DiscoverResourceWithStreamingResponse:
     def __init__(self, discover: DiscoverResource) -> None:
         self._discover = discover
 
-        self.list = to_streamed_response_wrapper(
-            discover.list,
+        self.retrieve = to_streamed_response_wrapper(
+            discover.retrieve,
         )
 
 
@@ -286,6 +286,6 @@ class AsyncDiscoverResourceWithStreamingResponse:
     def __init__(self, discover: AsyncDiscoverResource) -> None:
         self._discover = discover
 
-        self.list = async_to_streamed_response_wrapper(
-            discover.list,
+        self.retrieve = async_to_streamed_response_wrapper(
+            discover.retrieve,
         )
