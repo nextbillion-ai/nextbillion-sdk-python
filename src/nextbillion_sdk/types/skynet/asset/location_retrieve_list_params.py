@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["LocationListParams"]
+__all__ = ["LocationRetrieveListParams"]
 
 
-class LocationListParams(TypedDict, total=False):
+class LocationRetrieveListParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

@@ -9,7 +9,7 @@ from ..pagination import Pagination
 from .track_location import TrackLocation
 
 __all__ = [
-    "LocationListResponse",
+    "LocationRetrieveListResponse",
     "Data",
     "DataGeojson",
     "DataGeojsonGeometry",
@@ -115,7 +115,7 @@ class Data(BaseModel):
     """
 
 
-class LocationListResponse(BaseModel):
+class LocationRetrieveListResponse(BaseModel):
     data: Optional[Data] = None
 
     message: Optional[str] = None

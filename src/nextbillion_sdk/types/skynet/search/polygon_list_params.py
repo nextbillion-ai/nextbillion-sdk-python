@@ -4,22 +4,27 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SearchBoundParams"]
+__all__ = ["PolygonListParams"]
 
 
-class SearchBoundParams(TypedDict, total=False):
-    bound: Required[str]
-    """
-    Specify two, pipe (|) delimited location coordinates which would act as corners
-    of the bounding box area to be searched. The first one should be the southwest
-    coordinate of the `bounds` and the second one should be the northeast coordinate
-    of the `bounds`.
-    """
-
+class PolygonListParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the
     API.
+    """
+
+    polygon: Required[str]
+    """Define a custom polygon enclosing the area to be searched.
+
+    It should be a pipe (`|`) delimited list of location coordinates.
+
+    Please ensure that the `polygon` provided is enclosed. This can be achieved by
+    making the last location coordinate in the list equal to the first location
+    coordinate of the list.
+
+    Please note that the maximum area of the search polygon allowed is 3000
+    km<sup>2</sup>.
     """
 
     filter: str

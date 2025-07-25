@@ -11,9 +11,9 @@ from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
 from nextbillion_sdk.types.skynet import (
     SimpleResp,
-    AssetListResponse,
     AssetCreateResponse,
     AssetRetrieveResponse,
+    AssetRetrieveListResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -190,55 +190,6 @@ class TestAsset:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: NextbillionSDK) -> None:
-        asset = client.skynet.asset.list(
-            key="key=API_KEY",
-        )
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
-        asset = client.skynet.asset.list(
-            key="key=API_KEY",
-            cluster="america",
-            include_all_of_attributes="include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John",
-            include_any_of_attributes="include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John",
-            pn=0,
-            ps=100,
-            sort="updated_at:desc",
-            tags="tags=tag_1,tag_2",
-        )
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_list(self, client: NextbillionSDK) -> None:
-        response = client.skynet.asset.with_raw_response.list(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        asset = response.parse()
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
-        with client.skynet.asset.with_streaming_response.list(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            asset = response.parse()
-            assert_matches_type(AssetListResponse, asset, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         asset = client.skynet.asset.delete(
             id="id",
@@ -292,6 +243,55 @@ class TestAsset:
                 id="",
                 key="key=API_KEY",
             )
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_retrieve_list(self, client: NextbillionSDK) -> None:
+        asset = client.skynet.asset.retrieve_list(
+            key="key=API_KEY",
+        )
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_retrieve_list_with_all_params(self, client: NextbillionSDK) -> None:
+        asset = client.skynet.asset.retrieve_list(
+            key="key=API_KEY",
+            cluster="america",
+            include_all_of_attributes="include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John",
+            include_any_of_attributes="include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John",
+            pn=0,
+            ps=100,
+            sort="updated_at:desc",
+            tags="tags=tag_1,tag_2",
+        )
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_retrieve_list(self, client: NextbillionSDK) -> None:
+        response = client.skynet.asset.with_raw_response.retrieve_list(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        asset = response.parse()
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_retrieve_list(self, client: NextbillionSDK) -> None:
+        with client.skynet.asset.with_streaming_response.retrieve_list(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            asset = response.parse()
+            assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
@@ -620,55 +620,6 @@ class TestAsyncAsset:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
-        asset = await async_client.skynet.asset.list(
-            key="key=API_KEY",
-        )
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        asset = await async_client.skynet.asset.list(
-            key="key=API_KEY",
-            cluster="america",
-            include_all_of_attributes="include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John",
-            include_any_of_attributes="include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John",
-            pn=0,
-            ps=100,
-            sort="updated_at:desc",
-            tags="tags=tag_1,tag_2",
-        )
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.asset.with_raw_response.list(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        asset = await response.parse()
-        assert_matches_type(AssetListResponse, asset, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.asset.with_streaming_response.list(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            asset = await response.parse()
-            assert_matches_type(AssetListResponse, asset, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         asset = await async_client.skynet.asset.delete(
             id="id",
@@ -722,6 +673,55 @@ class TestAsyncAsset:
                 id="",
                 key="key=API_KEY",
             )
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        asset = await async_client.skynet.asset.retrieve_list(
+            key="key=API_KEY",
+        )
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_retrieve_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        asset = await async_client.skynet.asset.retrieve_list(
+            key="key=API_KEY",
+            cluster="america",
+            include_all_of_attributes="include_all_of_attributes=vehicle_type:pickup_truck|driver_name:John",
+            include_any_of_attributes="include_any_of_attributes=vehicle_type:pickup_truck|driver_name:John",
+            pn=0,
+            ps=100,
+            sort="updated_at:desc",
+            tags="tags=tag_1,tag_2",
+        )
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.asset.with_raw_response.retrieve_list(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        asset = await response.parse()
+        assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.asset.with_streaming_response.retrieve_list(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            asset = await response.parse()
+            assert_matches_type(AssetRetrieveListResponse, asset, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize

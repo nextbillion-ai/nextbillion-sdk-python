@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["NamespacedApikeyDeleteParams"]
+__all__ = ["NamespacedApikeyDeleteNamespacedApikeysParams"]
 
 
-class NamespacedApikeyDeleteParams(TypedDict, total=False):
+class NamespacedApikeyDeleteNamespacedApikeysParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

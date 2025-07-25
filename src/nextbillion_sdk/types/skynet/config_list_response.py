@@ -2,30 +2,27 @@
 
 from typing import List, Optional
 
-from .monitor import Monitor
 from ..._models import BaseModel
-from .pagination import Pagination
 
-__all__ = ["MonitorListResponse", "Data"]
+__all__ = ["ConfigListResponse", "Data", "DataConfig"]
+
+
+class DataConfig(BaseModel):
+    webhook: Optional[List[str]] = None
+    """An array of strings representing the list of webhooks.
+
+    Webhooks are used to receive information, through POST requests, whenever any
+    event is triggered.
+    """
 
 
 class Data(BaseModel):
-    list: Optional[List[Monitor]] = None
-    """An array of objects listing all the monitors.
-
-    Each object represents one `monitor`.
-    """
-
-    page: Optional[Pagination] = None
-    """An object with pagination details of the search results.
-
-    Use this object to implement pagination in your application.
-    """
+    config: Optional[DataConfig] = None
 
 
-class MonitorListResponse(BaseModel):
+class ConfigListResponse(BaseModel):
     data: Optional[Data] = None
-    """A data object containing the result."""
+    """A data object containing the `config` response."""
 
     message: Optional[str] = None
     """Displays the error message in case of a failed request.
