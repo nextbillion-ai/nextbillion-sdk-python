@@ -13,7 +13,6 @@ from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
     Omit,
-    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -183,14 +182,6 @@ class NextbillionSDK(SyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        if api_key is None:
-            return {}
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -198,16 +189,14 @@ class NextbillionSDK(SyncAPIClient):
             **self._custom_headers,
         }
 
+    @property
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("Authorization"):
-            return
-        if isinstance(custom_headers.get("Authorization"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted"'
-        )
+    def default_query(self) -> dict[str, object]:
+        return {
+            **super().default_query,
+            "key": self.api_key if self.api_key is not None else Omit(),
+            **self._custom_query,
+        }
 
     def copy(
         self,
@@ -408,14 +397,6 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        if api_key is None:
-            return {}
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -423,16 +404,14 @@ class AsyncNextbillionSDK(AsyncAPIClient):
             **self._custom_headers,
         }
 
+    @property
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("Authorization"):
-            return
-        if isinstance(custom_headers.get("Authorization"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted"'
-        )
+    def default_query(self) -> dict[str, object]:
+        return {
+            **super().default_query,
+            "key": self.api_key if self.api_key is not None else Omit(),
+            **self._custom_query,
+        }
 
     def copy(
         self,
