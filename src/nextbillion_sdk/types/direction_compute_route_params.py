@@ -2,20 +2,15 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["DirectionComputeRouteParams"]
 
 
 class DirectionComputeRouteParams(TypedDict, total=False):
-    query_key: Required[Annotated[str, PropertyInfo(alias="key")]]
-    """API Key"""
-
     destination: Required[str]
 
-    body_key: Required[Annotated[str, PropertyInfo(alias="key")]]
+    key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the
     API.
