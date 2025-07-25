@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..types import geocode_retrieve_params, geocode_create_batch_params, geocode_retrieve_structured_params
+from ..types import geocode_retrieve_params, geocode_batch_create_params, geocode_structured_retrieve_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -19,8 +19,8 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.geocode_retrieve_response import GeocodeRetrieveResponse
-from ..types.geocode_create_batch_response import GeocodeCreateBatchResponse
-from ..types.geocode_retrieve_structured_response import GeocodeRetrieveStructuredResponse
+from ..types.geocode_batch_create_response import GeocodeBatchCreateResponse
+from ..types.geocode_structured_retrieve_response import GeocodeStructuredRetrieveResponse
 
 __all__ = ["GeocodeResource", "AsyncGeocodeResource"]
 
@@ -141,18 +141,18 @@ class GeocodeResource(SyncAPIResource):
             cast_to=GeocodeRetrieveResponse,
         )
 
-    def create_batch(
+    def batch_create(
         self,
         *,
         key: str,
-        body: Iterable[geocode_create_batch_params.Body],
+        body: Iterable[geocode_batch_create_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeocodeCreateBatchResponse:
+    ) -> GeocodeBatchCreateResponse:
         """
         Batch Geocode
 
@@ -170,18 +170,18 @@ class GeocodeResource(SyncAPIResource):
         """
         return self._post(
             "/geocode/batch",
-            body=maybe_transform(body, Iterable[geocode_create_batch_params.Body]),
+            body=maybe_transform(body, Iterable[geocode_batch_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"key": key}, geocode_create_batch_params.GeocodeCreateBatchParams),
+                query=maybe_transform({"key": key}, geocode_batch_create_params.GeocodeBatchCreateParams),
             ),
-            cast_to=GeocodeCreateBatchResponse,
+            cast_to=GeocodeBatchCreateResponse,
         )
 
-    def retrieve_structured(
+    def structured_retrieve(
         self,
         *,
         country_code: str,
@@ -201,7 +201,7 @@ class GeocodeResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeocodeRetrieveStructuredResponse:
+    ) -> GeocodeStructuredRetrieveResponse:
         """
         Structured Geocode
 
@@ -284,10 +284,10 @@ class GeocodeResource(SyncAPIResource):
                         "state": state,
                         "street": street,
                     },
-                    geocode_retrieve_structured_params.GeocodeRetrieveStructuredParams,
+                    geocode_structured_retrieve_params.GeocodeStructuredRetrieveParams,
                 ),
             ),
-            cast_to=GeocodeRetrieveStructuredResponse,
+            cast_to=GeocodeStructuredRetrieveResponse,
         )
 
 
@@ -407,18 +407,18 @@ class AsyncGeocodeResource(AsyncAPIResource):
             cast_to=GeocodeRetrieveResponse,
         )
 
-    async def create_batch(
+    async def batch_create(
         self,
         *,
         key: str,
-        body: Iterable[geocode_create_batch_params.Body],
+        body: Iterable[geocode_batch_create_params.Body],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeocodeCreateBatchResponse:
+    ) -> GeocodeBatchCreateResponse:
         """
         Batch Geocode
 
@@ -436,18 +436,18 @@ class AsyncGeocodeResource(AsyncAPIResource):
         """
         return await self._post(
             "/geocode/batch",
-            body=await async_maybe_transform(body, Iterable[geocode_create_batch_params.Body]),
+            body=await async_maybe_transform(body, Iterable[geocode_batch_create_params.Body]),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"key": key}, geocode_create_batch_params.GeocodeCreateBatchParams),
+                query=await async_maybe_transform({"key": key}, geocode_batch_create_params.GeocodeBatchCreateParams),
             ),
-            cast_to=GeocodeCreateBatchResponse,
+            cast_to=GeocodeBatchCreateResponse,
         )
 
-    async def retrieve_structured(
+    async def structured_retrieve(
         self,
         *,
         country_code: str,
@@ -467,7 +467,7 @@ class AsyncGeocodeResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GeocodeRetrieveStructuredResponse:
+    ) -> GeocodeStructuredRetrieveResponse:
         """
         Structured Geocode
 
@@ -550,10 +550,10 @@ class AsyncGeocodeResource(AsyncAPIResource):
                         "state": state,
                         "street": street,
                     },
-                    geocode_retrieve_structured_params.GeocodeRetrieveStructuredParams,
+                    geocode_structured_retrieve_params.GeocodeStructuredRetrieveParams,
                 ),
             ),
-            cast_to=GeocodeRetrieveStructuredResponse,
+            cast_to=GeocodeStructuredRetrieveResponse,
         )
 
 
@@ -564,11 +564,11 @@ class GeocodeResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             geocode.retrieve,
         )
-        self.create_batch = to_raw_response_wrapper(
-            geocode.create_batch,
+        self.batch_create = to_raw_response_wrapper(
+            geocode.batch_create,
         )
-        self.retrieve_structured = to_raw_response_wrapper(
-            geocode.retrieve_structured,
+        self.structured_retrieve = to_raw_response_wrapper(
+            geocode.structured_retrieve,
         )
 
 
@@ -579,11 +579,11 @@ class AsyncGeocodeResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             geocode.retrieve,
         )
-        self.create_batch = async_to_raw_response_wrapper(
-            geocode.create_batch,
+        self.batch_create = async_to_raw_response_wrapper(
+            geocode.batch_create,
         )
-        self.retrieve_structured = async_to_raw_response_wrapper(
-            geocode.retrieve_structured,
+        self.structured_retrieve = async_to_raw_response_wrapper(
+            geocode.structured_retrieve,
         )
 
 
@@ -594,11 +594,11 @@ class GeocodeResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             geocode.retrieve,
         )
-        self.create_batch = to_streamed_response_wrapper(
-            geocode.create_batch,
+        self.batch_create = to_streamed_response_wrapper(
+            geocode.batch_create,
         )
-        self.retrieve_structured = to_streamed_response_wrapper(
-            geocode.retrieve_structured,
+        self.structured_retrieve = to_streamed_response_wrapper(
+            geocode.structured_retrieve,
         )
 
 
@@ -609,9 +609,9 @@ class AsyncGeocodeResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             geocode.retrieve,
         )
-        self.create_batch = async_to_streamed_response_wrapper(
-            geocode.create_batch,
+        self.batch_create = async_to_streamed_response_wrapper(
+            geocode.batch_create,
         )
-        self.retrieve_structured = async_to_streamed_response_wrapper(
-            geocode.retrieve_structured,
+        self.structured_retrieve = async_to_streamed_response_wrapper(
+            geocode.structured_retrieve,
         )
