@@ -24,12 +24,12 @@ from ...types.skynet import (
     trip_delete_params,
     trip_update_params,
     trip_retrieve_params,
-    trip_get_summary_params,
+    trip_retrieve_summary_params,
 )
 from ...types.skynet.simple_resp import SimpleResp
 from ...types.skynet.trip_start_response import TripStartResponse
 from ...types.skynet.trip_retrieve_response import TripRetrieveResponse
-from ...types.skynet.trip_get_summary_response import TripGetSummaryResponse
+from ...types.skynet.trip_retrieve_summary_response import TripRetrieveSummaryResponse
 
 __all__ = ["TripResource", "AsyncTripResource"]
 
@@ -297,7 +297,7 @@ class TripResource(SyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    def get_summary(
+    def retrieve_summary(
         self,
         id: str,
         *,
@@ -309,7 +309,7 @@ class TripResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripGetSummaryResponse:
+    ) -> TripRetrieveSummaryResponse:
         """
         Get summary of an ended trip
 
@@ -341,10 +341,10 @@ class TripResource(SyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    trip_get_summary_params.TripGetSummaryParams,
+                    trip_retrieve_summary_params.TripRetrieveSummaryParams,
                 ),
             ),
-            cast_to=TripGetSummaryResponse,
+            cast_to=TripRetrieveSummaryResponse,
         )
 
     def start(
@@ -706,7 +706,7 @@ class AsyncTripResource(AsyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    async def get_summary(
+    async def retrieve_summary(
         self,
         id: str,
         *,
@@ -718,7 +718,7 @@ class AsyncTripResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripGetSummaryResponse:
+    ) -> TripRetrieveSummaryResponse:
         """
         Get summary of an ended trip
 
@@ -750,10 +750,10 @@ class AsyncTripResource(AsyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    trip_get_summary_params.TripGetSummaryParams,
+                    trip_retrieve_summary_params.TripRetrieveSummaryParams,
                 ),
             ),
-            cast_to=TripGetSummaryResponse,
+            cast_to=TripRetrieveSummaryResponse,
         )
 
     async def start(
@@ -868,8 +868,8 @@ class TripResourceWithRawResponse:
         self.end = to_raw_response_wrapper(
             trip.end,
         )
-        self.get_summary = to_raw_response_wrapper(
-            trip.get_summary,
+        self.retrieve_summary = to_raw_response_wrapper(
+            trip.retrieve_summary,
         )
         self.start = to_raw_response_wrapper(
             trip.start,
@@ -892,8 +892,8 @@ class AsyncTripResourceWithRawResponse:
         self.end = async_to_raw_response_wrapper(
             trip.end,
         )
-        self.get_summary = async_to_raw_response_wrapper(
-            trip.get_summary,
+        self.retrieve_summary = async_to_raw_response_wrapper(
+            trip.retrieve_summary,
         )
         self.start = async_to_raw_response_wrapper(
             trip.start,
@@ -916,8 +916,8 @@ class TripResourceWithStreamingResponse:
         self.end = to_streamed_response_wrapper(
             trip.end,
         )
-        self.get_summary = to_streamed_response_wrapper(
-            trip.get_summary,
+        self.retrieve_summary = to_streamed_response_wrapper(
+            trip.retrieve_summary,
         )
         self.start = to_streamed_response_wrapper(
             trip.start,
@@ -940,8 +940,8 @@ class AsyncTripResourceWithStreamingResponse:
         self.end = async_to_streamed_response_wrapper(
             trip.end,
         )
-        self.get_summary = async_to_streamed_response_wrapper(
-            trip.get_summary,
+        self.retrieve_summary = async_to_streamed_response_wrapper(
+            trip.retrieve_summary,
         )
         self.start = async_to_streamed_response_wrapper(
             trip.start,

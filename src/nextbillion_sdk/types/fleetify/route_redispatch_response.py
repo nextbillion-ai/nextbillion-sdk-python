@@ -3,7 +3,7 @@
 from typing import List, Optional
 from typing_extensions import Literal
 
-from .response import Response
+from .routing import Routing
 from ..._models import BaseModel
 
 __all__ = [
@@ -187,7 +187,7 @@ class Data(BaseModel):
     An empty string is returned if the corresponding input was not provided.
     """
 
-    routing: Optional[Response] = None
+    routing: Optional[Routing] = None
     """
     An object returning the routing characteristics that are used to generate the
     route and turn-by-turn navigation steps for the dispatched route. The route and

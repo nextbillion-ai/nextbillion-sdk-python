@@ -2,7 +2,7 @@
 
 from typing import List, Optional
 
-from .response import Response
+from .routing import Routing
 from ..._models import BaseModel
 from .routes.route_steps_response import RouteStepsResponse
 
@@ -62,7 +62,7 @@ class Data(BaseModel):
     An empty string is returned if the corresponding input was not provided.
     """
 
-    routing: Optional[Response] = None
+    routing: Optional[Routing] = None
     """
     An object returning the routing characteristics that are used to generate the
     route and turn-by-turn navigation steps for the dispatched route. The route and

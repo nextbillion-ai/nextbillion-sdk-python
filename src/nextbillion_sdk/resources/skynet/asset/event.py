@@ -17,8 +17,8 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.skynet.asset import event_list_params
-from ....types.skynet.asset.event_list_response import EventListResponse
+from ....types.skynet.asset import event_retrieve_list_params
+from ....types.skynet.asset.event_retrieve_list_response import EventRetrieveListResponse
 
 __all__ = ["EventResource", "AsyncEventResource"]
 
@@ -43,7 +43,7 @@ class EventResource(SyncAPIResource):
         """
         return EventResourceWithStreamingResponse(self)
 
-    def list(
+    def retrieve_list(
         self,
         id: str,
         *,
@@ -60,7 +60,7 @@ class EventResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventListResponse:
+    ) -> EventRetrieveListResponse:
         """
         Event History of an Asset
 
@@ -116,10 +116,10 @@ class EventResource(SyncAPIResource):
                         "ps": ps,
                         "start_time": start_time,
                     },
-                    event_list_params.EventListParams,
+                    event_retrieve_list_params.EventRetrieveListParams,
                 ),
             ),
-            cast_to=EventListResponse,
+            cast_to=EventRetrieveListResponse,
         )
 
 
@@ -143,7 +143,7 @@ class AsyncEventResource(AsyncAPIResource):
         """
         return AsyncEventResourceWithStreamingResponse(self)
 
-    async def list(
+    async def retrieve_list(
         self,
         id: str,
         *,
@@ -160,7 +160,7 @@ class AsyncEventResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventListResponse:
+    ) -> EventRetrieveListResponse:
         """
         Event History of an Asset
 
@@ -216,10 +216,10 @@ class AsyncEventResource(AsyncAPIResource):
                         "ps": ps,
                         "start_time": start_time,
                     },
-                    event_list_params.EventListParams,
+                    event_retrieve_list_params.EventRetrieveListParams,
                 ),
             ),
-            cast_to=EventListResponse,
+            cast_to=EventRetrieveListResponse,
         )
 
 
@@ -227,8 +227,8 @@ class EventResourceWithRawResponse:
     def __init__(self, event: EventResource) -> None:
         self._event = event
 
-        self.list = to_raw_response_wrapper(
-            event.list,
+        self.retrieve_list = to_raw_response_wrapper(
+            event.retrieve_list,
         )
 
 
@@ -236,8 +236,8 @@ class AsyncEventResourceWithRawResponse:
     def __init__(self, event: AsyncEventResource) -> None:
         self._event = event
 
-        self.list = async_to_raw_response_wrapper(
-            event.list,
+        self.retrieve_list = async_to_raw_response_wrapper(
+            event.retrieve_list,
         )
 
 
@@ -245,8 +245,8 @@ class EventResourceWithStreamingResponse:
     def __init__(self, event: EventResource) -> None:
         self._event = event
 
-        self.list = to_streamed_response_wrapper(
-            event.list,
+        self.retrieve_list = to_streamed_response_wrapper(
+            event.retrieve_list,
         )
 
 
@@ -254,6 +254,6 @@ class AsyncEventResourceWithStreamingResponse:
     def __init__(self, event: AsyncEventResource) -> None:
         self._event = event
 
-        self.list = async_to_streamed_response_wrapper(
-            event.list,
+        self.retrieve_list = async_to_streamed_response_wrapper(
+            event.retrieve_list,
         )
