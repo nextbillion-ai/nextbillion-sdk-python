@@ -6,10 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["GeocodeRetrieveStructuredParams"]
+__all__ = ["GeocodeStructuredRetrieveParams"]
 
 
-class GeocodeRetrieveStructuredParams(TypedDict, total=False):
+class GeocodeStructuredRetrieveParams(TypedDict, total=False):
     country_code: Required[Annotated[str, PropertyInfo(alias="countryCode")]]
     """
     Specify a valid

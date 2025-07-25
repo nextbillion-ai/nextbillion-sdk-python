@@ -248,16 +248,16 @@ from nextbillion_sdk.types import (
     MapView,
     Position,
     GeocodeRetrieveResponse,
-    GeocodeCreateBatchResponse,
-    GeocodeRetrieveStructuredResponse,
+    GeocodeBatchCreateResponse,
+    GeocodeStructuredRetrieveResponse,
 )
 ```
 
 Methods:
 
 - <code title="get /geocode">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_response.py">GeocodeRetrieveResponse</a></code>
-- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">create_batch</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_create_batch_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_create_batch_response.py">GeocodeCreateBatchResponse</a></code>
-- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve_structured</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_structured_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_structured_response.py">GeocodeRetrieveStructuredResponse</a></code>
+- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">batch_create</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_batch_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_batch_create_response.py">GeocodeBatchCreateResponse</a></code>
+- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">structured_retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_structured_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_structured_retrieve_response.py">GeocodeStructuredRetrieveResponse</a></code>
 
 # Optimization
 
@@ -343,14 +343,14 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types.geofence import BatchCreateResponse, BatchQueryResponse
+from nextbillion_sdk.types.geofence import BatchCreateResponse, BatchListResponse
 ```
 
 Methods:
 
 - <code title="post /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_create_response.py">BatchCreateResponse</a></code>
+- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_list_response.py">BatchListResponse</a></code>
 - <code title="delete /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">delete</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
-- <code title="get /geofence/batch">client.geofence.batch.<a href="./src/nextbillion_sdk/resources/geofence/batch.py">query</a>(\*\*<a href="src/nextbillion_sdk/types/geofence/batch_query_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geofence/batch_query_response.py">BatchQueryResponse</a></code>
 
 # Discover
 
@@ -620,9 +620,9 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types import LookupByIDResponse
+from nextbillion_sdk.types import LookupRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">by_id</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_by_id_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_by_id_response.py">LookupByIDResponse</a></code>
+- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_retrieve_response.py">LookupRetrieveResponse</a></code>

@@ -12,7 +12,7 @@ from .map_view import MapView
 from .position import Position
 from .categories import Categories
 
-__all__ = ["GeocodeCreateBatchResponse", "Item", "ItemScoring"]
+__all__ = ["GeocodeBatchCreateResponse", "Item", "ItemScoring"]
 
 
 class ItemScoring(BaseModel):
@@ -70,7 +70,7 @@ class Item(BaseModel):
     """The localized display name of this result item."""
 
 
-class GeocodeCreateBatchResponse(BaseModel):
+class GeocodeBatchCreateResponse(BaseModel):
     items: Optional[List[Item]] = None
     """
     The results are presented as a JSON list of candidates in ranked order

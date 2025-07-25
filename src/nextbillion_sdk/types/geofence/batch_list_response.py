@@ -5,7 +5,7 @@ from typing import List
 from .geofence import Geofence
 from ..._models import BaseModel
 
-__all__ = ["BatchQueryResponse", "Data"]
+__all__ = ["BatchListResponse", "Data"]
 
 
 class Data(BaseModel):
@@ -16,7 +16,7 @@ class Data(BaseModel):
     """
 
 
-class BatchQueryResponse(BaseModel):
+class BatchListResponse(BaseModel):
     data: Data
 
     status: str
