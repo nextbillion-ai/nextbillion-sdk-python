@@ -2,5 +2,5 @@
 
 from __future__ import annotations
 
-from .polygon_list_params import PolygonListParams as PolygonListParams
+from .polygon_get_params import PolygonGetParams as PolygonGetParams
 from .polygon_create_params import PolygonCreateParams as PolygonCreateParams

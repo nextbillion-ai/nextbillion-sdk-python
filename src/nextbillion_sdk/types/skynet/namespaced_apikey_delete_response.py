@@ -4,10 +4,10 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["NamespacedApikeyDeleteNamespacedApikeysResponse"]
+__all__ = ["NamespacedApikeyDeleteResponse"]
 
 
-class NamespacedApikeyDeleteNamespacedApikeysResponse(BaseModel):
+class NamespacedApikeyDeleteResponse(BaseModel):
     msg: Optional[str] = None
     """Its value is `OK` in case of a successful delete operation.
 

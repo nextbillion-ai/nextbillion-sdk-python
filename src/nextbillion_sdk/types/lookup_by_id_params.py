@@ -4,12 +4,15 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["BatchListParams"]
+__all__ = ["LookupByIDParams"]
 
 
-class BatchListParams(TypedDict, total=False):
-    ids: Required[str]
-    """Comma(`,`) separated list of IDs of the geofences to be searched."""
+class LookupByIDParams(TypedDict, total=False):
+    id: Required[str]
+    """
+    Specify the unique identifier of a specific POI, Street, Geography, Point
+    Address or other entities to retrieve its details.
+    """
 
     key: Required[str]
     """

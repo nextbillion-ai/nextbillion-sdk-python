@@ -13,7 +13,7 @@ from nextbillion_sdk.types.skynet import (
     SimpleResp,
     TripStartResponse,
     TripRetrieveResponse,
-    TripRetrieveSummaryResponse,
+    TripGetSummaryResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -255,27 +255,27 @@ class TestTrip:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_summary(self, client: NextbillionSDK) -> None:
-        trip = client.skynet.trip.retrieve_summary(
+    def test_method_get_summary(self, client: NextbillionSDK) -> None:
+        trip = client.skynet.trip.get_summary(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_summary_with_all_params(self, client: NextbillionSDK) -> None:
-        trip = client.skynet.trip.retrieve_summary(
+    def test_method_get_summary_with_all_params(self, client: NextbillionSDK) -> None:
+        trip = client.skynet.trip.get_summary(
             id="id",
             key="key=API_KEY",
             cluster="america",
         )
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_retrieve_summary(self, client: NextbillionSDK) -> None:
-        response = client.skynet.trip.with_raw_response.retrieve_summary(
+    def test_raw_response_get_summary(self, client: NextbillionSDK) -> None:
+        response = client.skynet.trip.with_raw_response.get_summary(
             id="id",
             key="key=API_KEY",
         )
@@ -283,12 +283,12 @@ class TestTrip:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         trip = response.parse()
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_retrieve_summary(self, client: NextbillionSDK) -> None:
-        with client.skynet.trip.with_streaming_response.retrieve_summary(
+    def test_streaming_response_get_summary(self, client: NextbillionSDK) -> None:
+        with client.skynet.trip.with_streaming_response.get_summary(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -296,15 +296,15 @@ class TestTrip:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             trip = response.parse()
-            assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+            assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    def test_path_params_retrieve_summary(self, client: NextbillionSDK) -> None:
+    def test_path_params_get_summary(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.skynet.trip.with_raw_response.retrieve_summary(
+            client.skynet.trip.with_raw_response.get_summary(
                 id="",
                 key="key=API_KEY",
             )
@@ -607,27 +607,27 @@ class TestAsyncTrip:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_summary(self, async_client: AsyncNextbillionSDK) -> None:
-        trip = await async_client.skynet.trip.retrieve_summary(
+    async def test_method_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
+        trip = await async_client.skynet.trip.get_summary(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_summary_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        trip = await async_client.skynet.trip.retrieve_summary(
+    async def test_method_get_summary_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        trip = await async_client.skynet.trip.get_summary(
             id="id",
             key="key=API_KEY",
             cluster="america",
         )
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_retrieve_summary(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.trip.with_raw_response.retrieve_summary(
+    async def test_raw_response_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.trip.with_raw_response.get_summary(
             id="id",
             key="key=API_KEY",
         )
@@ -635,12 +635,12 @@ class TestAsyncTrip:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         trip = await response.parse()
-        assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+        assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_retrieve_summary(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.trip.with_streaming_response.retrieve_summary(
+    async def test_streaming_response_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.trip.with_streaming_response.get_summary(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -648,15 +648,15 @@ class TestAsyncTrip:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             trip = await response.parse()
-            assert_matches_type(TripRetrieveSummaryResponse, trip, path=["response"])
+            assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip()
     @parametrize
-    async def test_path_params_retrieve_summary(self, async_client: AsyncNextbillionSDK) -> None:
+    async def test_path_params_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.skynet.trip.with_raw_response.retrieve_summary(
+            await async_client.skynet.trip.with_raw_response.get_summary(
                 id="",
                 key="key=API_KEY",
             )

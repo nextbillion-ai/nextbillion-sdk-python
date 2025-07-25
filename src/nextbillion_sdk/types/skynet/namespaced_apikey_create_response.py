@@ -4,7 +4,7 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["NamespacedApikeyNamespacedApikeysResponse", "Result"]
+__all__ = ["NamespacedApikeyCreateResponse", "Result"]
 
 
 class Result(BaseModel):
@@ -30,7 +30,7 @@ class Result(BaseModel):
     """An internal subscription ID."""
 
 
-class NamespacedApikeyNamespacedApikeysResponse(BaseModel):
+class NamespacedApikeyCreateResponse(BaseModel):
     error: Optional[str] = None
     """Returns the error type in case of any error.
 

@@ -4,10 +4,10 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["ConfigTestwebhookResponse"]
+__all__ = ["ConfigTestWebhookResponse"]
 
 
-class ConfigTestwebhookResponse(BaseModel):
+class ConfigTestWebhookResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 

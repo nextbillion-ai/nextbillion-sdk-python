@@ -10,7 +10,7 @@ from .vehicle_param import VehicleParam
 from .shipment_param import ShipmentParam
 
 __all__ = [
-    "V2SubmitParams",
+    "V2CreateRequestParams",
     "Locations",
     "Depot",
     "Options",
@@ -31,7 +31,7 @@ __all__ = [
 ]
 
 
-class V2SubmitParams(TypedDict, total=False):
+class V2CreateRequestParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

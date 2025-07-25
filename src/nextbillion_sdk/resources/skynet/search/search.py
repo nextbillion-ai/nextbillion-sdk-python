@@ -25,7 +25,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.skynet import search_retrieve_bound_params, search_retrieve_around_params
+from ....types.skynet import search_bound_params, search_around_params
 from ....types.skynet.search_response import SearchResponse
 
 __all__ = ["SearchResource", "AsyncSearchResource"]
@@ -55,7 +55,7 @@ class SearchResource(SyncAPIResource):
         """
         return SearchResourceWithStreamingResponse(self)
 
-    def retrieve_around(
+    def around(
         self,
         *,
         center: str,
@@ -175,13 +175,13 @@ class SearchResource(SyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    search_retrieve_around_params.SearchRetrieveAroundParams,
+                    search_around_params.SearchAroundParams,
                 ),
             ),
             cast_to=SearchResponse,
         )
 
-    def retrieve_bound(
+    def bound(
         self,
         *,
         bound: str,
@@ -299,7 +299,7 @@ class SearchResource(SyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    search_retrieve_bound_params.SearchRetrieveBoundParams,
+                    search_bound_params.SearchBoundParams,
                 ),
             ),
             cast_to=SearchResponse,
@@ -330,7 +330,7 @@ class AsyncSearchResource(AsyncAPIResource):
         """
         return AsyncSearchResourceWithStreamingResponse(self)
 
-    async def retrieve_around(
+    async def around(
         self,
         *,
         center: str,
@@ -450,13 +450,13 @@ class AsyncSearchResource(AsyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    search_retrieve_around_params.SearchRetrieveAroundParams,
+                    search_around_params.SearchAroundParams,
                 ),
             ),
             cast_to=SearchResponse,
         )
 
-    async def retrieve_bound(
+    async def bound(
         self,
         *,
         bound: str,
@@ -574,7 +574,7 @@ class AsyncSearchResource(AsyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    search_retrieve_bound_params.SearchRetrieveBoundParams,
+                    search_bound_params.SearchBoundParams,
                 ),
             ),
             cast_to=SearchResponse,
@@ -585,11 +585,11 @@ class SearchResourceWithRawResponse:
     def __init__(self, search: SearchResource) -> None:
         self._search = search
 
-        self.retrieve_around = to_raw_response_wrapper(
-            search.retrieve_around,
+        self.around = to_raw_response_wrapper(
+            search.around,
         )
-        self.retrieve_bound = to_raw_response_wrapper(
-            search.retrieve_bound,
+        self.bound = to_raw_response_wrapper(
+            search.bound,
         )
 
     @cached_property
@@ -601,11 +601,11 @@ class AsyncSearchResourceWithRawResponse:
     def __init__(self, search: AsyncSearchResource) -> None:
         self._search = search
 
-        self.retrieve_around = async_to_raw_response_wrapper(
-            search.retrieve_around,
+        self.around = async_to_raw_response_wrapper(
+            search.around,
         )
-        self.retrieve_bound = async_to_raw_response_wrapper(
-            search.retrieve_bound,
+        self.bound = async_to_raw_response_wrapper(
+            search.bound,
         )
 
     @cached_property
@@ -617,11 +617,11 @@ class SearchResourceWithStreamingResponse:
     def __init__(self, search: SearchResource) -> None:
         self._search = search
 
-        self.retrieve_around = to_streamed_response_wrapper(
-            search.retrieve_around,
+        self.around = to_streamed_response_wrapper(
+            search.around,
         )
-        self.retrieve_bound = to_streamed_response_wrapper(
-            search.retrieve_bound,
+        self.bound = to_streamed_response_wrapper(
+            search.bound,
         )
 
     @cached_property
@@ -633,11 +633,11 @@ class AsyncSearchResourceWithStreamingResponse:
     def __init__(self, search: AsyncSearchResource) -> None:
         self._search = search
 
-        self.retrieve_around = async_to_streamed_response_wrapper(
-            search.retrieve_around,
+        self.around = async_to_streamed_response_wrapper(
+            search.around,
         )
-        self.retrieve_bound = async_to_streamed_response_wrapper(
-            search.retrieve_bound,
+        self.bound = async_to_streamed_response_wrapper(
+            search.bound,
         )
 
     @cached_property

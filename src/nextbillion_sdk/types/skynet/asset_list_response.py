@@ -1,28 +1,28 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 
-from ...._models import BaseModel
-from .track_location import TrackLocation
+from .asset import Asset
+from ..._models import BaseModel
+from .pagination import Pagination
 
-__all__ = ["LocationRetrieveLastResponse", "Data"]
+__all__ = ["AssetListResponse", "Data"]
 
 
 class Data(BaseModel):
-    location: Optional[TrackLocation] = None
-    """An object with details of the tracked location.
+    list: Optional[List[Asset]] = None
+    """An array of objects, with each object representing one `asset`."""
 
-    Please note that if there are no tracking records for an asset, no location data
-    will be returned.
+    page: Optional[Pagination] = None
+    """An object with pagination details of the search results.
+
+    Use this object to implement pagination in your application.
     """
 
 
-class LocationRetrieveLastResponse(BaseModel):
+class AssetListResponse(BaseModel):
     data: Optional[Data] = None
-    """
-    An object containing the information about the last tracked location of the
-    requested `asset`.
-    """
+    """A data object containing the list of assets."""
 
     message: Optional[str] = None
     """Displays the error message in case of a failed request.
