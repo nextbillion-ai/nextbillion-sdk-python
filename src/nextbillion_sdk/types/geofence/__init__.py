@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from .geofence import Geofence as Geofence
 from .polygon_geojson import PolygonGeojson as PolygonGeojson
-from .batch_query_params import BatchQueryParams as BatchQueryParams
+from .batch_list_params import BatchListParams as BatchListParams
 from .batch_create_params import BatchCreateParams as BatchCreateParams
 from .batch_delete_params import BatchDeleteParams as BatchDeleteParams
-from .batch_query_response import BatchQueryResponse as BatchQueryResponse
+from .batch_list_response import BatchListResponse as BatchListResponse
 from .batch_create_response import BatchCreateResponse as BatchCreateResponse
 from .console_search_params import ConsoleSearchParams as ConsoleSearchParams
 from .console_preview_params import ConsolePreviewParams as ConsolePreviewParams
