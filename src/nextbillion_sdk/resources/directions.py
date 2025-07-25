@@ -47,6 +47,7 @@ class DirectionsResource(SyncAPIResource):
         self,
         *,
         destination: str,
+        key: str,
         origin: str,
         altcount: int | NotGiven = NOT_GIVEN,
         alternatives: bool | NotGiven = NOT_GIVEN,
@@ -103,6 +104,9 @@ class DirectionsResource(SyncAPIResource):
         Directions API is a service that computes a route with given coordinates.
 
         Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
           altcount: Sets the number of alternative routes to return. It is effective only when
               alternatives=true. Default to 3.
 
@@ -379,6 +383,7 @@ class DirectionsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "destination": destination,
+                    "key": key,
                     "origin": origin,
                     "altcount": altcount,
                     "alternatives": alternatives,
@@ -438,6 +443,7 @@ class AsyncDirectionsResource(AsyncAPIResource):
         self,
         *,
         destination: str,
+        key: str,
         origin: str,
         altcount: int | NotGiven = NOT_GIVEN,
         alternatives: bool | NotGiven = NOT_GIVEN,
@@ -494,6 +500,9 @@ class AsyncDirectionsResource(AsyncAPIResource):
         Directions API is a service that computes a route with given coordinates.
 
         Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
           altcount: Sets the number of alternative routes to return. It is effective only when
               alternatives=true. Default to 3.
 
@@ -770,6 +779,7 @@ class AsyncDirectionsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "destination": destination,
+                    "key": key,
                     "origin": origin,
                     "altcount": altcount,
                     "alternatives": alternatives,

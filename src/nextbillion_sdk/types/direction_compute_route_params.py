@@ -10,6 +10,12 @@ __all__ = ["DirectionComputeRouteParams"]
 class DirectionComputeRouteParams(TypedDict, total=False):
     destination: Required[str]
 
+    key: Required[str]
+    """
+    A key is a unique identifier that is required to authenticate a request to the
+    API.
+    """
+
     origin: Required[str]
 
     altcount: int
