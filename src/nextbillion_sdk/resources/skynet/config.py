@@ -18,10 +18,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.skynet import config_update_params, config_retrieve_params, config_test_webhook_params
+from ...types.skynet import config_list_params, config_create_params, config_testwebhook_params
 from ...types.skynet.simple_resp import SimpleResp
-from ...types.skynet.config_retrieve_response import ConfigRetrieveResponse
-from ...types.skynet.config_test_webhook_response import ConfigTestWebhookResponse
+from ...types.skynet.config_list_response import ConfigListResponse
+from ...types.skynet.config_testwebhook_response import ConfigTestwebhookResponse
 
 __all__ = ["ConfigResource", "AsyncConfigResource"]
 
@@ -46,54 +46,7 @@ class ConfigResource(SyncAPIResource):
         """
         return ConfigResourceWithStreamingResponse(self)
 
-    def retrieve(
-        self,
-        *,
-        key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConfigRetrieveResponse:
-        """
-        Get webhook configuration
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          cluster: the cluster of the region you want to use
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/skynet/config",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "key": key,
-                        "cluster": cluster,
-                    },
-                    config_retrieve_params.ConfigRetrieveParams,
-                ),
-            ),
-            cast_to=ConfigRetrieveResponse,
-        )
-
-    def update(
+    def create(
         self,
         *,
         key: str,
@@ -128,7 +81,7 @@ class ConfigResource(SyncAPIResource):
         """
         return self._put(
             "/skynet/config",
-            body=maybe_transform({"webhook": webhook}, config_update_params.ConfigUpdateParams),
+            body=maybe_transform({"webhook": webhook}, config_create_params.ConfigCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -139,13 +92,60 @@ class ConfigResource(SyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    config_update_params.ConfigUpdateParams,
+                    config_create_params.ConfigCreateParams,
                 ),
             ),
             cast_to=SimpleResp,
         )
 
-    def test_webhook(
+    def list(
+        self,
+        *,
+        key: str,
+        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ConfigListResponse:
+        """
+        Get webhook configuration
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          cluster: the cluster of the region you want to use
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/skynet/config",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "key": key,
+                        "cluster": cluster,
+                    },
+                    config_list_params.ConfigListParams,
+                ),
+            ),
+            cast_to=ConfigListResponse,
+        )
+
+    def testwebhook(
         self,
         *,
         key: str,
@@ -155,7 +155,7 @@ class ConfigResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConfigTestWebhookResponse:
+    ) -> ConfigTestwebhookResponse:
         """
         Test webhook configurations
 
@@ -178,9 +178,9 @@ class ConfigResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"key": key}, config_test_webhook_params.ConfigTestWebhookParams),
+                query=maybe_transform({"key": key}, config_testwebhook_params.ConfigTestwebhookParams),
             ),
-            cast_to=ConfigTestWebhookResponse,
+            cast_to=ConfigTestwebhookResponse,
         )
 
 
@@ -204,54 +204,7 @@ class AsyncConfigResource(AsyncAPIResource):
         """
         return AsyncConfigResourceWithStreamingResponse(self)
 
-    async def retrieve(
-        self,
-        *,
-        key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConfigRetrieveResponse:
-        """
-        Get webhook configuration
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          cluster: the cluster of the region you want to use
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/skynet/config",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "key": key,
-                        "cluster": cluster,
-                    },
-                    config_retrieve_params.ConfigRetrieveParams,
-                ),
-            ),
-            cast_to=ConfigRetrieveResponse,
-        )
-
-    async def update(
+    async def create(
         self,
         *,
         key: str,
@@ -286,7 +239,7 @@ class AsyncConfigResource(AsyncAPIResource):
         """
         return await self._put(
             "/skynet/config",
-            body=await async_maybe_transform({"webhook": webhook}, config_update_params.ConfigUpdateParams),
+            body=await async_maybe_transform({"webhook": webhook}, config_create_params.ConfigCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -297,13 +250,60 @@ class AsyncConfigResource(AsyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    config_update_params.ConfigUpdateParams,
+                    config_create_params.ConfigCreateParams,
                 ),
             ),
             cast_to=SimpleResp,
         )
 
-    async def test_webhook(
+    async def list(
+        self,
+        *,
+        key: str,
+        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ConfigListResponse:
+        """
+        Get webhook configuration
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          cluster: the cluster of the region you want to use
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/skynet/config",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "key": key,
+                        "cluster": cluster,
+                    },
+                    config_list_params.ConfigListParams,
+                ),
+            ),
+            cast_to=ConfigListResponse,
+        )
+
+    async def testwebhook(
         self,
         *,
         key: str,
@@ -313,7 +313,7 @@ class AsyncConfigResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ConfigTestWebhookResponse:
+    ) -> ConfigTestwebhookResponse:
         """
         Test webhook configurations
 
@@ -336,9 +336,9 @@ class AsyncConfigResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"key": key}, config_test_webhook_params.ConfigTestWebhookParams),
+                query=await async_maybe_transform({"key": key}, config_testwebhook_params.ConfigTestwebhookParams),
             ),
-            cast_to=ConfigTestWebhookResponse,
+            cast_to=ConfigTestwebhookResponse,
         )
 
 
@@ -346,14 +346,14 @@ class ConfigResourceWithRawResponse:
     def __init__(self, config: ConfigResource) -> None:
         self._config = config
 
-        self.retrieve = to_raw_response_wrapper(
-            config.retrieve,
+        self.create = to_raw_response_wrapper(
+            config.create,
         )
-        self.update = to_raw_response_wrapper(
-            config.update,
+        self.list = to_raw_response_wrapper(
+            config.list,
         )
-        self.test_webhook = to_raw_response_wrapper(
-            config.test_webhook,
+        self.testwebhook = to_raw_response_wrapper(
+            config.testwebhook,
         )
 
 
@@ -361,14 +361,14 @@ class AsyncConfigResourceWithRawResponse:
     def __init__(self, config: AsyncConfigResource) -> None:
         self._config = config
 
-        self.retrieve = async_to_raw_response_wrapper(
-            config.retrieve,
+        self.create = async_to_raw_response_wrapper(
+            config.create,
         )
-        self.update = async_to_raw_response_wrapper(
-            config.update,
+        self.list = async_to_raw_response_wrapper(
+            config.list,
         )
-        self.test_webhook = async_to_raw_response_wrapper(
-            config.test_webhook,
+        self.testwebhook = async_to_raw_response_wrapper(
+            config.testwebhook,
         )
 
 
@@ -376,14 +376,14 @@ class ConfigResourceWithStreamingResponse:
     def __init__(self, config: ConfigResource) -> None:
         self._config = config
 
-        self.retrieve = to_streamed_response_wrapper(
-            config.retrieve,
+        self.create = to_streamed_response_wrapper(
+            config.create,
         )
-        self.update = to_streamed_response_wrapper(
-            config.update,
+        self.list = to_streamed_response_wrapper(
+            config.list,
         )
-        self.test_webhook = to_streamed_response_wrapper(
-            config.test_webhook,
+        self.testwebhook = to_streamed_response_wrapper(
+            config.testwebhook,
         )
 
 
@@ -391,12 +391,12 @@ class AsyncConfigResourceWithStreamingResponse:
     def __init__(self, config: AsyncConfigResource) -> None:
         self._config = config
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            config.retrieve,
+        self.create = async_to_streamed_response_wrapper(
+            config.create,
         )
-        self.update = async_to_streamed_response_wrapper(
-            config.update,
+        self.list = async_to_streamed_response_wrapper(
+            config.list,
         )
-        self.test_webhook = async_to_streamed_response_wrapper(
-            config.test_webhook,
+        self.testwebhook = async_to_streamed_response_wrapper(
+            config.testwebhook,
         )

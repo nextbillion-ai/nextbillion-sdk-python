@@ -4,10 +4,10 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["Routing"]
+__all__ = ["RoutingResponse"]
 
 
-class Routing(BaseModel):
+class RoutingResponse(BaseModel):
     approaches: Optional[str] = None
     """
     Returns the configuration of approaches for each step, that is used when

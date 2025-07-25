@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import LookupByIDResponse
+from nextbillion_sdk.types import LookupRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,17 +19,17 @@ class TestLookup:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_by_id(self, client: NextbillionSDK) -> None:
-        lookup = client.lookup.by_id(
+    def test_method_retrieve(self, client: NextbillionSDK) -> None:
+        lookup = client.lookup.retrieve(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+        assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_by_id(self, client: NextbillionSDK) -> None:
-        response = client.lookup.with_raw_response.by_id(
+    def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
+        response = client.lookup.with_raw_response.retrieve(
             id="id",
             key="key=API_KEY",
         )
@@ -37,12 +37,12 @@ class TestLookup:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lookup = response.parse()
-        assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+        assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_by_id(self, client: NextbillionSDK) -> None:
-        with client.lookup.with_streaming_response.by_id(
+    def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
+        with client.lookup.with_streaming_response.retrieve(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -50,7 +50,7 @@ class TestLookup:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lookup = response.parse()
-            assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+            assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -62,17 +62,17 @@ class TestAsyncLookup:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_by_id(self, async_client: AsyncNextbillionSDK) -> None:
-        lookup = await async_client.lookup.by_id(
+    async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        lookup = await async_client.lookup.retrieve(
             id="id",
             key="key=API_KEY",
         )
-        assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+        assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_by_id(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.lookup.with_raw_response.by_id(
+    async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.lookup.with_raw_response.retrieve(
             id="id",
             key="key=API_KEY",
         )
@@ -80,12 +80,12 @@ class TestAsyncLookup:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         lookup = await response.parse()
-        assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+        assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_by_id(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.lookup.with_streaming_response.by_id(
+    async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.lookup.with_streaming_response.retrieve(
             id="id",
             key="key=API_KEY",
         ) as response:
@@ -93,6 +93,6 @@ class TestAsyncLookup:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             lookup = await response.parse()
-            assert_matches_type(LookupByIDResponse, lookup, path=["response"])
+            assert_matches_type(LookupRetrieveResponse, lookup, path=["response"])
 
         assert cast(Any, response.is_closed) is True

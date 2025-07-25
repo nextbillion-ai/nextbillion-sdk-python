@@ -7,7 +7,7 @@ from ..._models import BaseModel
 from .trip_stop import TripStop
 from .asset.track_location import TrackLocation
 
-__all__ = ["TripGetSummaryResponse", "Data", "DataTrip"]
+__all__ = ["TripRetrieveSummaryResponse", "Data", "DataTrip"]
 
 
 class DataTrip(BaseModel):
@@ -121,7 +121,7 @@ class Data(BaseModel):
     """An object containing the returned trip summary."""
 
 
-class TripGetSummaryResponse(BaseModel):
+class TripRetrieveSummaryResponse(BaseModel):
     data: Optional[Data] = None
     """An container for the trip returned by the service."""
 

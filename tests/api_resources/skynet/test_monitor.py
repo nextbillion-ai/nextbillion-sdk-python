@@ -11,9 +11,9 @@ from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
 from nextbillion_sdk.types.skynet import (
     SimpleResp,
-    MonitorListResponse,
     MonitorCreateResponse,
     MonitorRetrieveResponse,
+    MonitorRetrieveListResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -215,53 +215,6 @@ class TestMonitor:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: NextbillionSDK) -> None:
-        monitor = client.skynet.monitor.list(
-            key="key=API_KEY",
-        )
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
-        monitor = client.skynet.monitor.list(
-            key="key=API_KEY",
-            cluster="america",
-            pn=0,
-            ps=100,
-            sort="updated_at:desc",
-            tags="tags=tag_1,tag_2",
-        )
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_list(self, client: NextbillionSDK) -> None:
-        response = client.skynet.monitor.with_raw_response.list(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        monitor = response.parse()
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
-        with client.skynet.monitor.with_streaming_response.list(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            monitor = response.parse()
-            assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         monitor = client.skynet.monitor.delete(
             id="id",
@@ -305,6 +258,53 @@ class TestMonitor:
                 id="",
                 key="key=API_KEY",
             )
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_retrieve_list(self, client: NextbillionSDK) -> None:
+        monitor = client.skynet.monitor.retrieve_list(
+            key="key=API_KEY",
+        )
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_retrieve_list_with_all_params(self, client: NextbillionSDK) -> None:
+        monitor = client.skynet.monitor.retrieve_list(
+            key="key=API_KEY",
+            cluster="america",
+            pn=0,
+            ps=100,
+            sort="updated_at:desc",
+            tags="tags=tag_1,tag_2",
+        )
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_retrieve_list(self, client: NextbillionSDK) -> None:
+        response = client.skynet.monitor.with_raw_response.retrieve_list(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        monitor = response.parse()
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_retrieve_list(self, client: NextbillionSDK) -> None:
+        with client.skynet.monitor.with_streaming_response.retrieve_list(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            monitor = response.parse()
+            assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
 
 
 class TestAsyncMonitor:
@@ -505,53 +505,6 @@ class TestAsyncMonitor:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
-        monitor = await async_client.skynet.monitor.list(
-            key="key=API_KEY",
-        )
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        monitor = await async_client.skynet.monitor.list(
-            key="key=API_KEY",
-            cluster="america",
-            pn=0,
-            ps=100,
-            sort="updated_at:desc",
-            tags="tags=tag_1,tag_2",
-        )
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.monitor.with_raw_response.list(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        monitor = await response.parse()
-        assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.monitor.with_streaming_response.list(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            monitor = await response.parse()
-            assert_matches_type(MonitorListResponse, monitor, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         monitor = await async_client.skynet.monitor.delete(
             id="id",
@@ -595,3 +548,50 @@ class TestAsyncMonitor:
                 id="",
                 key="key=API_KEY",
             )
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        monitor = await async_client.skynet.monitor.retrieve_list(
+            key="key=API_KEY",
+        )
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_retrieve_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        monitor = await async_client.skynet.monitor.retrieve_list(
+            key="key=API_KEY",
+            cluster="america",
+            pn=0,
+            ps=100,
+            sort="updated_at:desc",
+            tags="tags=tag_1,tag_2",
+        )
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.monitor.with_raw_response.retrieve_list(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        monitor = await response.parse()
+        assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_retrieve_list(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.monitor.with_streaming_response.retrieve_list(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            monitor = await response.parse()
+            assert_matches_type(MonitorRetrieveListResponse, monitor, path=["response"])
+
+        assert cast(Any, response.is_closed) is True

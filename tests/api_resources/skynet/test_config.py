@@ -11,8 +11,8 @@ from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
 from nextbillion_sdk.types.skynet import (
     SimpleResp,
-    ConfigRetrieveResponse,
-    ConfigTestWebhookResponse,
+    ConfigListResponse,
+    ConfigTestwebhookResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -23,59 +23,16 @@ class TestConfig:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve(self, client: NextbillionSDK) -> None:
-        config = client.skynet.config.retrieve(
-            key="key=API_KEY",
-        )
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
-        config = client.skynet.config.retrieve(
-            key="key=API_KEY",
-            cluster="america",
-        )
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
-        response = client.skynet.config.with_raw_response.retrieve(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        config = response.parse()
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
-        with client.skynet.config.with_streaming_response.retrieve(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            config = response.parse()
-            assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    def test_method_update(self, client: NextbillionSDK) -> None:
-        config = client.skynet.config.update(
+    def test_method_create(self, client: NextbillionSDK) -> None:
+        config = client.skynet.config.create(
             key="key=API_KEY",
         )
         assert_matches_type(SimpleResp, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
-        config = client.skynet.config.update(
+    def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
+        config = client.skynet.config.create(
             key="key=API_KEY",
             cluster="america",
             webhook=["string"],
@@ -84,8 +41,8 @@ class TestConfig:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_update(self, client: NextbillionSDK) -> None:
-        response = client.skynet.config.with_raw_response.update(
+    def test_raw_response_create(self, client: NextbillionSDK) -> None:
+        response = client.skynet.config.with_raw_response.create(
             key="key=API_KEY",
         )
 
@@ -96,8 +53,8 @@ class TestConfig:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_update(self, client: NextbillionSDK) -> None:
-        with client.skynet.config.with_streaming_response.update(
+    def test_streaming_response_create(self, client: NextbillionSDK) -> None:
+        with client.skynet.config.with_streaming_response.create(
             key="key=API_KEY",
         ) as response:
             assert not response.is_closed
@@ -110,35 +67,78 @@ class TestConfig:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_test_webhook(self, client: NextbillionSDK) -> None:
-        config = client.skynet.config.test_webhook(
+    def test_method_list(self, client: NextbillionSDK) -> None:
+        config = client.skynet.config.list(
             key="key=API_KEY",
         )
-        assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+        assert_matches_type(ConfigListResponse, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_test_webhook(self, client: NextbillionSDK) -> None:
-        response = client.skynet.config.with_raw_response.test_webhook(
+    def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
+        config = client.skynet.config.list(
+            key="key=API_KEY",
+            cluster="america",
+        )
+        assert_matches_type(ConfigListResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_list(self, client: NextbillionSDK) -> None:
+        response = client.skynet.config.with_raw_response.list(
             key="key=API_KEY",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config = response.parse()
-        assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+        assert_matches_type(ConfigListResponse, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_test_webhook(self, client: NextbillionSDK) -> None:
-        with client.skynet.config.with_streaming_response.test_webhook(
+    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
+        with client.skynet.config.with_streaming_response.list(
             key="key=API_KEY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config = response.parse()
-            assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+            assert_matches_type(ConfigListResponse, config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_method_testwebhook(self, client: NextbillionSDK) -> None:
+        config = client.skynet.config.testwebhook(
+            key="key=API_KEY",
+        )
+        assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_raw_response_testwebhook(self, client: NextbillionSDK) -> None:
+        response = client.skynet.config.with_raw_response.testwebhook(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        config = response.parse()
+        assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    def test_streaming_response_testwebhook(self, client: NextbillionSDK) -> None:
+        with client.skynet.config.with_streaming_response.testwebhook(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            config = response.parse()
+            assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -150,59 +150,16 @@ class TestAsyncConfig:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
-        config = await async_client.skynet.config.retrieve(
-            key="key=API_KEY",
-        )
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        config = await async_client.skynet.config.retrieve(
-            key="key=API_KEY",
-            cluster="america",
-        )
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.config.with_raw_response.retrieve(
-            key="key=API_KEY",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        config = await response.parse()
-        assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.config.with_streaming_response.retrieve(
-            key="key=API_KEY",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            config = await response.parse()
-            assert_matches_type(ConfigRetrieveResponse, config, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip()
-    @parametrize
-    async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
-        config = await async_client.skynet.config.update(
+    async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
+        config = await async_client.skynet.config.create(
             key="key=API_KEY",
         )
         assert_matches_type(SimpleResp, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        config = await async_client.skynet.config.update(
+    async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        config = await async_client.skynet.config.create(
             key="key=API_KEY",
             cluster="america",
             webhook=["string"],
@@ -211,8 +168,8 @@ class TestAsyncConfig:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.config.with_raw_response.update(
+    async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.config.with_raw_response.create(
             key="key=API_KEY",
         )
 
@@ -223,8 +180,8 @@ class TestAsyncConfig:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.config.with_streaming_response.update(
+    async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.config.with_streaming_response.create(
             key="key=API_KEY",
         ) as response:
             assert not response.is_closed
@@ -237,34 +194,77 @@ class TestAsyncConfig:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_test_webhook(self, async_client: AsyncNextbillionSDK) -> None:
-        config = await async_client.skynet.config.test_webhook(
+    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
+        config = await async_client.skynet.config.list(
             key="key=API_KEY",
         )
-        assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+        assert_matches_type(ConfigListResponse, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_test_webhook(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.config.with_raw_response.test_webhook(
+    async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        config = await async_client.skynet.config.list(
+            key="key=API_KEY",
+            cluster="america",
+        )
+        assert_matches_type(ConfigListResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.config.with_raw_response.list(
             key="key=API_KEY",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         config = await response.parse()
-        assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+        assert_matches_type(ConfigListResponse, config, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_test_webhook(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.config.with_streaming_response.test_webhook(
+    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.config.with_streaming_response.list(
             key="key=API_KEY",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             config = await response.parse()
-            assert_matches_type(ConfigTestWebhookResponse, config, path=["response"])
+            assert_matches_type(ConfigListResponse, config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_method_testwebhook(self, async_client: AsyncNextbillionSDK) -> None:
+        config = await async_client.skynet.config.testwebhook(
+            key="key=API_KEY",
+        )
+        assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_raw_response_testwebhook(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.config.with_raw_response.testwebhook(
+            key="key=API_KEY",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        config = await response.parse()
+        assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
+
+    @pytest.mark.skip()
+    @parametrize
+    async def test_streaming_response_testwebhook(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.config.with_streaming_response.testwebhook(
+            key="key=API_KEY",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            config = await response.parse()
+            assert_matches_type(ConfigTestwebhookResponse, config, path=["response"])
 
         assert cast(Any, response.is_closed) is True

@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["EventListParams"]
+__all__ = ["EventRetrieveListParams"]
 
 
-class EventListParams(TypedDict, total=False):
+class EventRetrieveListParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the
