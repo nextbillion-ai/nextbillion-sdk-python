@@ -5,11 +5,7 @@
 Types:
 
 ```python
-from nextbillion_sdk.types.fleetify import (
-    RoutingResponse,
-    RouteCreateResponse,
-    RouteRedispatchResponse,
-)
+from nextbillion_sdk.types.fleetify import Response, RouteCreateResponse, RouteRedispatchResponse
 ```
 
 Methods:
@@ -87,7 +83,7 @@ from nextbillion_sdk.types.skynet import (
     SimpleResp,
     AssetCreateResponse,
     AssetRetrieveResponse,
-    AssetRetrieveListResponse,
+    AssetListResponse,
 )
 ```
 
@@ -96,8 +92,8 @@ Methods:
 - <code title="post /skynet/asset">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/asset_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset_create_response.py">AssetCreateResponse</a></code>
 - <code title="get /skynet/asset/{id}">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">retrieve</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset_retrieve_response.py">AssetRetrieveResponse</a></code>
 - <code title="put /skynet/asset/{id}">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">update</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset_update_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
+- <code title="get /skynet/asset/list">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/asset_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset_list_response.py">AssetListResponse</a></code>
 - <code title="delete /skynet/asset/{id}">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">delete</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
-- <code title="get /skynet/asset/list">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">retrieve_list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/asset_retrieve_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset_retrieve_list_response.py">AssetRetrieveListResponse</a></code>
 - <code title="post /skynet/asset/{id}/track">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">track</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset_track_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
 - <code title="put /skynet/asset/{id}/attributes">client.skynet.asset.<a href="./src/nextbillion_sdk/resources/skynet/asset/asset.py">update_attributes</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset_update_attributes_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
 
@@ -106,12 +102,12 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types.skynet.asset import EventRetrieveListResponse
+from nextbillion_sdk.types.skynet.asset import EventListResponse
 ```
 
 Methods:
 
-- <code title="get /skynet/asset/{id}/event/list">client.skynet.asset.event.<a href="./src/nextbillion_sdk/resources/skynet/asset/event.py">retrieve_list</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/event_retrieve_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/event_retrieve_list_response.py">EventRetrieveListResponse</a></code>
+- <code title="get /skynet/asset/{id}/event/list">client.skynet.asset.event.<a href="./src/nextbillion_sdk/resources/skynet/asset/event.py">list</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/event_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/event_list_response.py">EventListResponse</a></code>
 
 ### Location
 
@@ -120,15 +116,15 @@ Types:
 ```python
 from nextbillion_sdk.types.skynet.asset import (
     TrackLocation,
-    LocationRetrieveLastResponse,
-    LocationRetrieveListResponse,
+    LocationListResponse,
+    LocationGetLastResponse,
 )
 ```
 
 Methods:
 
-- <code title="get /skynet/asset/{id}/location/last">client.skynet.asset.location.<a href="./src/nextbillion_sdk/resources/skynet/asset/location.py">retrieve_last</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/location_retrieve_last_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/location_retrieve_last_response.py">LocationRetrieveLastResponse</a></code>
-- <code title="get /skynet/asset/{id}/location/list">client.skynet.asset.location.<a href="./src/nextbillion_sdk/resources/skynet/asset/location.py">retrieve_list</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/location_retrieve_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/location_retrieve_list_response.py">LocationRetrieveListResponse</a></code>
+- <code title="get /skynet/asset/{id}/location/list">client.skynet.asset.location.<a href="./src/nextbillion_sdk/resources/skynet/asset/location.py">list</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/location_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/location_list_response.py">LocationListResponse</a></code>
+- <code title="get /skynet/asset/{id}/location/last">client.skynet.asset.location.<a href="./src/nextbillion_sdk/resources/skynet/asset/location.py">get_last</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/asset/location_get_last_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/asset/location_get_last_response.py">LocationGetLastResponse</a></code>
 
 ## Monitor
 
@@ -141,7 +137,7 @@ from nextbillion_sdk.types.skynet import (
     Pagination,
     MonitorCreateResponse,
     MonitorRetrieveResponse,
-    MonitorRetrieveListResponse,
+    MonitorListResponse,
 )
 ```
 
@@ -150,8 +146,8 @@ Methods:
 - <code title="post /skynet/monitor">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/monitor_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/monitor_create_response.py">MonitorCreateResponse</a></code>
 - <code title="get /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">retrieve</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/monitor_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/monitor_retrieve_response.py">MonitorRetrieveResponse</a></code>
 - <code title="put /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">update</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/monitor_update_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
+- <code title="get /skynet/monitor/list">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/monitor_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/monitor_list_response.py">MonitorListResponse</a></code>
 - <code title="delete /skynet/monitor/{id}">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">delete</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/monitor_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
-- <code title="get /skynet/monitor/list">client.skynet.monitor.<a href="./src/nextbillion_sdk/resources/skynet/monitor.py">retrieve_list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/monitor_retrieve_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/monitor_retrieve_list_response.py">MonitorRetrieveListResponse</a></code>
 
 ## Trip
 
@@ -162,7 +158,7 @@ from nextbillion_sdk.types.skynet import (
     Asset,
     TripStop,
     TripRetrieveResponse,
-    TripRetrieveSummaryResponse,
+    TripGetSummaryResponse,
     TripStartResponse,
 )
 ```
@@ -173,7 +169,7 @@ Methods:
 - <code title="put /skynet/trip/{id}">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">update</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/trip_update_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
 - <code title="delete /skynet/trip/{id}">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">delete</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/trip_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
 - <code title="post /skynet/trip/end">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">end</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/trip_end_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
-- <code title="get /skynet/trip/{id}/summary">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">retrieve_summary</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/trip_retrieve_summary_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/trip_retrieve_summary_response.py">TripRetrieveSummaryResponse</a></code>
+- <code title="get /skynet/trip/{id}/summary">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">get_summary</a>(id, \*\*<a href="src/nextbillion_sdk/types/skynet/trip_get_summary_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/trip_get_summary_response.py">TripGetSummaryResponse</a></code>
 - <code title="post /skynet/trip/start">client.skynet.trip.<a href="./src/nextbillion_sdk/resources/skynet/trip.py">start</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/trip_start_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/trip_start_response.py">TripStartResponse</a></code>
 
 ## NamespacedApikeys
@@ -182,29 +178,29 @@ Types:
 
 ```python
 from nextbillion_sdk.types.skynet import (
-    NamespacedApikeyDeleteNamespacedApikeysResponse,
-    NamespacedApikeyNamespacedApikeysResponse,
+    NamespacedApikeyCreateResponse,
+    NamespacedApikeyDeleteResponse,
 )
 ```
 
 Methods:
 
-- <code title="delete /skynet/namespaced-apikeys">client.skynet.namespaced_apikeys.<a href="./src/nextbillion_sdk/resources/skynet/namespaced_apikeys.py">delete_namespaced_apikeys</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/namespaced_apikey_delete_namespaced_apikeys_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/namespaced_apikey_delete_namespaced_apikeys_response.py">NamespacedApikeyDeleteNamespacedApikeysResponse</a></code>
-- <code title="post /skynet/namespaced-apikeys">client.skynet.namespaced_apikeys.<a href="./src/nextbillion_sdk/resources/skynet/namespaced_apikeys.py">namespaced_apikeys</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/namespaced_apikey_namespaced_apikeys_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/namespaced_apikey_namespaced_apikeys_response.py">NamespacedApikeyNamespacedApikeysResponse</a></code>
+- <code title="post /skynet/namespaced-apikeys">client.skynet.namespaced_apikeys.<a href="./src/nextbillion_sdk/resources/skynet/namespaced_apikeys.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/namespaced_apikey_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/namespaced_apikey_create_response.py">NamespacedApikeyCreateResponse</a></code>
+- <code title="delete /skynet/namespaced-apikeys">client.skynet.namespaced_apikeys.<a href="./src/nextbillion_sdk/resources/skynet/namespaced_apikeys.py">delete</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/namespaced_apikey_delete_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/namespaced_apikey_delete_response.py">NamespacedApikeyDeleteResponse</a></code>
 
 ## Config
 
 Types:
 
 ```python
-from nextbillion_sdk.types.skynet import ConfigListResponse, ConfigTestwebhookResponse
+from nextbillion_sdk.types.skynet import ConfigRetrieveResponse, ConfigTestWebhookResponse
 ```
 
 Methods:
 
-- <code title="put /skynet/config">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
-- <code title="get /skynet/config">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/config_list_response.py">ConfigListResponse</a></code>
-- <code title="post /skynet/config/testwebhook">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">testwebhook</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_testwebhook_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/config_testwebhook_response.py">ConfigTestwebhookResponse</a></code>
+- <code title="get /skynet/config">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/config_retrieve_response.py">ConfigRetrieveResponse</a></code>
+- <code title="put /skynet/config">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">update</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_update_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/simple_resp.py">SimpleResp</a></code>
+- <code title="post /skynet/config/testwebhook">client.skynet.config.<a href="./src/nextbillion_sdk/resources/skynet/config.py">test_webhook</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/config_test_webhook_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/config_test_webhook_response.py">ConfigTestWebhookResponse</a></code>
 
 ## Search
 
@@ -216,15 +212,15 @@ from nextbillion_sdk.types.skynet import SearchResponse
 
 Methods:
 
-- <code title="get /skynet/search/around">client.skynet.search.<a href="./src/nextbillion_sdk/resources/skynet/search/search.py">retrieve_around</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search_retrieve_around_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
-- <code title="get /skynet/search/bound">client.skynet.search.<a href="./src/nextbillion_sdk/resources/skynet/search/search.py">retrieve_bound</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search_retrieve_bound_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
+- <code title="get /skynet/search/around">client.skynet.search.<a href="./src/nextbillion_sdk/resources/skynet/search/search.py">around</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search_around_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
+- <code title="get /skynet/search/bound">client.skynet.search.<a href="./src/nextbillion_sdk/resources/skynet/search/search.py">bound</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search_bound_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
 
 ### Polygon
 
 Methods:
 
 - <code title="post /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/nextbillion_sdk/resources/skynet/search/polygon.py">create</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search/polygon_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
-- <code title="get /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/nextbillion_sdk/resources/skynet/search/polygon.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search/polygon_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
+- <code title="get /skynet/search/polygon">client.skynet.search.polygon.<a href="./src/nextbillion_sdk/resources/skynet/search/polygon.py">get</a>(\*\*<a href="src/nextbillion_sdk/types/skynet/search/polygon_get_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/skynet/search_response.py">SearchResponse</a></code>
 
 ## Skynet
 
@@ -248,16 +244,16 @@ from nextbillion_sdk.types import (
     MapView,
     Position,
     GeocodeRetrieveResponse,
-    GeocodeBatchCreateResponse,
-    GeocodeStructuredRetrieveResponse,
+    GeocodeCreateBatchResponse,
+    GeocodeRetrieveStructuredResponse,
 )
 ```
 
 Methods:
 
 - <code title="get /geocode">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_response.py">GeocodeRetrieveResponse</a></code>
-- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">batch_create</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_batch_create_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_batch_create_response.py">GeocodeBatchCreateResponse</a></code>
-- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">structured_retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_structured_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_structured_retrieve_response.py">GeocodeStructuredRetrieveResponse</a></code>
+- <code title="post /geocode/batch">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">create_batch</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_create_batch_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_create_batch_response.py">GeocodeCreateBatchResponse</a></code>
+- <code title="get /geocode/structured">client.geocode.<a href="./src/nextbillion_sdk/resources/geocode.py">retrieve_structured</a>(\*\*<a href="src/nextbillion_sdk/types/geocode_retrieve_structured_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/geocode_retrieve_structured_response.py">GeocodeRetrieveStructuredResponse</a></code>
 
 # Optimization
 
@@ -294,8 +290,8 @@ from nextbillion_sdk.types.optimization import Job, Shipment, V2RetrieveResultRe
 
 Methods:
 
-- <code title="post /optimization/v2">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">create_request</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_create_request_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/post_response.py">PostResponse</a></code>
 - <code title="get /optimization/v2/result">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">retrieve_result</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_retrieve_result_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/optimization/v2_retrieve_result_response.py">V2RetrieveResultResponse</a></code>
+- <code title="post /optimization/v2">client.optimization.v2.<a href="./src/nextbillion_sdk/resources/optimization/v2.py">submit</a>(\*\*<a href="src/nextbillion_sdk/types/optimization/v2_submit_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/post_response.py">PostResponse</a></code>
 
 # Geofence
 
@@ -620,9 +616,9 @@ Methods:
 Types:
 
 ```python
-from nextbillion_sdk.types import LookupRetrieveResponse
+from nextbillion_sdk.types import LookupRetrieveByIDResponse
 ```
 
 Methods:
 
-- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_retrieve_response.py">LookupRetrieveResponse</a></code>
+- <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">retrieve_by_id</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_retrieve_by_id_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_retrieve_by_id_response.py">LookupRetrieveByIDResponse</a></code>
