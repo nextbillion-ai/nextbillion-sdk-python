@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["AssetRetrieveListParams"]
+__all__ = ["AssetListParams"]
 
 
-class AssetRetrieveListParams(TypedDict, total=False):
+class AssetListParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

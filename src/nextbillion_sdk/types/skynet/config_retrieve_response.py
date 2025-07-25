@@ -2,27 +2,27 @@
 
 from typing import List, Optional
 
-from .asset import Asset
 from ..._models import BaseModel
-from .pagination import Pagination
 
-__all__ = ["AssetRetrieveListResponse", "Data"]
+__all__ = ["ConfigRetrieveResponse", "Data", "DataConfig"]
 
 
-class Data(BaseModel):
-    list: Optional[List[Asset]] = None
-    """An array of objects, with each object representing one `asset`."""
+class DataConfig(BaseModel):
+    webhook: Optional[List[str]] = None
+    """An array of strings representing the list of webhooks.
 
-    page: Optional[Pagination] = None
-    """An object with pagination details of the search results.
-
-    Use this object to implement pagination in your application.
+    Webhooks are used to receive information, through POST requests, whenever any
+    event is triggered.
     """
 
 
-class AssetRetrieveListResponse(BaseModel):
+class Data(BaseModel):
+    config: Optional[DataConfig] = None
+
+
+class ConfigRetrieveResponse(BaseModel):
     data: Optional[Data] = None
-    """A data object containing the list of assets."""
+    """A data object containing the `config` response."""
 
     message: Optional[str] = None
     """Displays the error message in case of a failed request.

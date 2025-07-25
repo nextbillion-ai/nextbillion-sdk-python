@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["SearchRetrieveAroundParams"]
+__all__ = ["SearchAroundParams"]
 
 
-class SearchRetrieveAroundParams(TypedDict, total=False):
+class SearchAroundParams(TypedDict, total=False):
     center: Required[str]
     """
     Location coordinates of the point which would act as the center of the circular

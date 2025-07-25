@@ -2,8 +2,8 @@
 
 from typing import List, Optional
 
+from .routing import Routing
 from ..._models import BaseModel
-from .routing_response import RoutingResponse
 from .routes.route_steps_response import RouteStepsResponse
 
 __all__ = ["RouteCreateResponse", "Data", "DataDriver"]
@@ -62,7 +62,7 @@ class Data(BaseModel):
     An empty string is returned if the corresponding input was not provided.
     """
 
-    routing: Optional[RoutingResponse] = None
+    routing: Optional[Routing] = None
     """
     An object returning the routing characteristics that are used to generate the
     route and turn-by-turn navigation steps for the dispatched route. The route and

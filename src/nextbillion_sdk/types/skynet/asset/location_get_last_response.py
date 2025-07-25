@@ -1,31 +1,28 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Optional
 
-from .monitor import Monitor
-from ..._models import BaseModel
-from .pagination import Pagination
+from ...._models import BaseModel
+from .track_location import TrackLocation
 
-__all__ = ["MonitorRetrieveListResponse", "Data"]
+__all__ = ["LocationGetLastResponse", "Data"]
 
 
 class Data(BaseModel):
-    list: Optional[List[Monitor]] = None
-    """An array of objects listing all the monitors.
+    location: Optional[TrackLocation] = None
+    """An object with details of the tracked location.
 
-    Each object represents one `monitor`.
-    """
-
-    page: Optional[Pagination] = None
-    """An object with pagination details of the search results.
-
-    Use this object to implement pagination in your application.
+    Please note that if there are no tracking records for an asset, no location data
+    will be returned.
     """
 
 
-class MonitorRetrieveListResponse(BaseModel):
+class LocationGetLastResponse(BaseModel):
     data: Optional[Data] = None
-    """A data object containing the result."""
+    """
+    An object containing the information about the last tracked location of the
+    requested `asset`.
+    """
 
     message: Optional[str] = None
     """Displays the error message in case of a failed request.

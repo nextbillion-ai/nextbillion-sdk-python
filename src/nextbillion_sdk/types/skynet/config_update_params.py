@@ -5,10 +5,10 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
-__all__ = ["ConfigCreateParams"]
+__all__ = ["ConfigUpdateParams"]
 
 
-class ConfigCreateParams(TypedDict, total=False):
+class ConfigUpdateParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the

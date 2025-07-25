@@ -7,7 +7,7 @@ from ...._models import BaseModel
 from ..pagination import Pagination
 
 __all__ = [
-    "EventRetrieveListResponse",
+    "EventListResponse",
     "Data",
     "DataList",
     "DataListPrevLocation",
@@ -163,7 +163,7 @@ class Data(BaseModel):
     """
 
 
-class EventRetrieveListResponse(BaseModel):
+class EventListResponse(BaseModel):
     data: Optional[Data] = None
     """
     An object containing the information about the event history for the requested

@@ -17,7 +17,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.optimization import v2_submit_params, v2_retrieve_result_params
+from ...types.optimization import v2_create_request_params, v2_retrieve_result_params
 from ...types.post_response import PostResponse
 from ...types.optimization.job_param import JobParam
 from ...types.optimization.vehicle_param import VehicleParam
@@ -47,73 +47,25 @@ class V2Resource(SyncAPIResource):
         """
         return V2ResourceWithStreamingResponse(self)
 
-    def retrieve_result(
-        self,
-        *,
-        id: str,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> V2RetrieveResultResponse:
-        """
-        Flexible GET
-
-        Args:
-          id: The unique ID that was returned on successful submission of the Optimization
-              POST request.
-
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/optimization/v2/result",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id": id,
-                        "key": key,
-                    },
-                    v2_retrieve_result_params.V2RetrieveResultParams,
-                ),
-            ),
-            cast_to=V2RetrieveResultResponse,
-        )
-
-    def submit(
+    def create_request(
         self,
         *,
         key: str,
-        locations: v2_submit_params.Locations,
+        locations: v2_create_request_params.Locations,
         vehicles: Iterable[VehicleParam],
         cost_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        depots: Iterable[v2_submit_params.Depot] | NotGiven = NOT_GIVEN,
+        depots: Iterable[v2_create_request_params.Depot] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         distance_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
         duration_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
         existing_solution_id: str | NotGiven = NOT_GIVEN,
         jobs: Iterable[JobParam] | NotGiven = NOT_GIVEN,
-        options: v2_submit_params.Options | NotGiven = NOT_GIVEN,
-        relations: Iterable[v2_submit_params.Relation] | NotGiven = NOT_GIVEN,
+        options: v2_create_request_params.Options | NotGiven = NOT_GIVEN,
+        relations: Iterable[v2_create_request_params.Relation] | NotGiven = NOT_GIVEN,
         shipments: Iterable[ShipmentParam] | NotGiven = NOT_GIVEN,
-        solution: Iterable[v2_submit_params.Solution] | NotGiven = NOT_GIVEN,
-        unassigned: v2_submit_params.Unassigned | NotGiven = NOT_GIVEN,
-        zones: Iterable[v2_submit_params.Zone] | NotGiven = NOT_GIVEN,
+        solution: Iterable[v2_create_request_params.Solution] | NotGiven = NOT_GIVEN,
+        unassigned: v2_create_request_params.Unassigned | NotGiven = NOT_GIVEN,
+        zones: Iterable[v2_create_request_params.Zone] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -294,40 +246,19 @@ class V2Resource(SyncAPIResource):
                     "unassigned": unassigned,
                     "zones": zones,
                 },
-                v2_submit_params.V2SubmitParams,
+                v2_create_request_params.V2CreateRequestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"key": key}, v2_submit_params.V2SubmitParams),
+                query=maybe_transform({"key": key}, v2_create_request_params.V2CreateRequestParams),
             ),
             cast_to=PostResponse,
         )
 
-
-class AsyncV2Resource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncV2ResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncV2ResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncV2ResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
-        """
-        return AsyncV2ResourceWithStreamingResponse(self)
-
-    async def retrieve_result(
+    def retrieve_result(
         self,
         *,
         id: str,
@@ -357,14 +288,14 @@ class AsyncV2Resource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get(
             "/optimization/v2/result",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "id": id,
                         "key": key,
@@ -375,25 +306,46 @@ class AsyncV2Resource(AsyncAPIResource):
             cast_to=V2RetrieveResultResponse,
         )
 
-    async def submit(
+
+class AsyncV2Resource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncV2ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncV2ResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncV2ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
+        """
+        return AsyncV2ResourceWithStreamingResponse(self)
+
+    async def create_request(
         self,
         *,
         key: str,
-        locations: v2_submit_params.Locations,
+        locations: v2_create_request_params.Locations,
         vehicles: Iterable[VehicleParam],
         cost_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        depots: Iterable[v2_submit_params.Depot] | NotGiven = NOT_GIVEN,
+        depots: Iterable[v2_create_request_params.Depot] | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         distance_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
         duration_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
         existing_solution_id: str | NotGiven = NOT_GIVEN,
         jobs: Iterable[JobParam] | NotGiven = NOT_GIVEN,
-        options: v2_submit_params.Options | NotGiven = NOT_GIVEN,
-        relations: Iterable[v2_submit_params.Relation] | NotGiven = NOT_GIVEN,
+        options: v2_create_request_params.Options | NotGiven = NOT_GIVEN,
+        relations: Iterable[v2_create_request_params.Relation] | NotGiven = NOT_GIVEN,
         shipments: Iterable[ShipmentParam] | NotGiven = NOT_GIVEN,
-        solution: Iterable[v2_submit_params.Solution] | NotGiven = NOT_GIVEN,
-        unassigned: v2_submit_params.Unassigned | NotGiven = NOT_GIVEN,
-        zones: Iterable[v2_submit_params.Zone] | NotGiven = NOT_GIVEN,
+        solution: Iterable[v2_create_request_params.Solution] | NotGiven = NOT_GIVEN,
+        unassigned: v2_create_request_params.Unassigned | NotGiven = NOT_GIVEN,
+        zones: Iterable[v2_create_request_params.Zone] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -574,16 +526,64 @@ class AsyncV2Resource(AsyncAPIResource):
                     "unassigned": unassigned,
                     "zones": zones,
                 },
-                v2_submit_params.V2SubmitParams,
+                v2_create_request_params.V2CreateRequestParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"key": key}, v2_submit_params.V2SubmitParams),
+                query=await async_maybe_transform({"key": key}, v2_create_request_params.V2CreateRequestParams),
             ),
             cast_to=PostResponse,
+        )
+
+    async def retrieve_result(
+        self,
+        *,
+        id: str,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> V2RetrieveResultResponse:
+        """
+        Flexible GET
+
+        Args:
+          id: The unique ID that was returned on successful submission of the Optimization
+              POST request.
+
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/optimization/v2/result",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "id": id,
+                        "key": key,
+                    },
+                    v2_retrieve_result_params.V2RetrieveResultParams,
+                ),
+            ),
+            cast_to=V2RetrieveResultResponse,
         )
 
 
@@ -591,11 +591,11 @@ class V2ResourceWithRawResponse:
     def __init__(self, v2: V2Resource) -> None:
         self._v2 = v2
 
+        self.create_request = to_raw_response_wrapper(
+            v2.create_request,
+        )
         self.retrieve_result = to_raw_response_wrapper(
             v2.retrieve_result,
-        )
-        self.submit = to_raw_response_wrapper(
-            v2.submit,
         )
 
 
@@ -603,11 +603,11 @@ class AsyncV2ResourceWithRawResponse:
     def __init__(self, v2: AsyncV2Resource) -> None:
         self._v2 = v2
 
+        self.create_request = async_to_raw_response_wrapper(
+            v2.create_request,
+        )
         self.retrieve_result = async_to_raw_response_wrapper(
             v2.retrieve_result,
-        )
-        self.submit = async_to_raw_response_wrapper(
-            v2.submit,
         )
 
 
@@ -615,11 +615,11 @@ class V2ResourceWithStreamingResponse:
     def __init__(self, v2: V2Resource) -> None:
         self._v2 = v2
 
+        self.create_request = to_streamed_response_wrapper(
+            v2.create_request,
+        )
         self.retrieve_result = to_streamed_response_wrapper(
             v2.retrieve_result,
-        )
-        self.submit = to_streamed_response_wrapper(
-            v2.submit,
         )
 
 
@@ -627,9 +627,9 @@ class AsyncV2ResourceWithStreamingResponse:
     def __init__(self, v2: AsyncV2Resource) -> None:
         self._v2 = v2
 
+        self.create_request = async_to_streamed_response_wrapper(
+            v2.create_request,
+        )
         self.retrieve_result = async_to_streamed_response_wrapper(
             v2.retrieve_result,
-        )
-        self.submit = async_to_streamed_response_wrapper(
-            v2.submit,
         )

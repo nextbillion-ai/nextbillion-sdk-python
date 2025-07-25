@@ -2,17 +2,14 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, TypedDict
+from typing_extensions import Required, TypedDict
 
-__all__ = ["TripRetrieveSummaryParams"]
+__all__ = ["ConfigTestWebhookParams"]
 
 
-class TripRetrieveSummaryParams(TypedDict, total=False):
+class ConfigTestWebhookParams(TypedDict, total=False):
     key: Required[str]
     """
     A key is a unique identifier that is required to authenticate a request to the
     API.
     """
-
-    cluster: Literal["america"]
-    """the cluster of the region you want to use"""
