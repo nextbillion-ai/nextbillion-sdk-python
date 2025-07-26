@@ -718,7 +718,7 @@ class TestNextbillionSDK:
 
         with pytest.raises(APITimeoutError):
             client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+                destination="41.349302,2.136480", origin="41.349302,2.136480"
             ).__enter__()
 
         assert _get_open_connections(self.client) == 0
@@ -730,7 +730,7 @@ class TestNextbillionSDK:
 
         with pytest.raises(APIStatusError):
             client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+                destination="41.349302,2.136480", origin="41.349302,2.136480"
             ).__enter__()
         assert _get_open_connections(self.client) == 0
 
@@ -761,7 +761,7 @@ class TestNextbillionSDK:
         respx_mock.post("/directions/json").mock(side_effect=retry_handler)
 
         response = client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+            destination="41.349302,2.136480", origin="41.349302,2.136480"
         )
 
         assert response.retries_taken == failures_before_success
@@ -788,7 +788,6 @@ class TestNextbillionSDK:
 
         response = client.directions.with_raw_response.compute_route(
             destination="41.349302,2.136480",
-            key="key",
             origin="41.349302,2.136480",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -816,7 +815,6 @@ class TestNextbillionSDK:
 
         response = client.directions.with_raw_response.compute_route(
             destination="41.349302,2.136480",
-            key="key",
             origin="41.349302,2.136480",
             extra_headers={"x-stainless-retry-count": "42"},
         )
@@ -1541,7 +1539,7 @@ class TestAsyncNextbillionSDK:
 
         with pytest.raises(APITimeoutError):
             await async_client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+                destination="41.349302,2.136480", origin="41.349302,2.136480"
             ).__aenter__()
 
         assert _get_open_connections(self.client) == 0
@@ -1555,7 +1553,7 @@ class TestAsyncNextbillionSDK:
 
         with pytest.raises(APIStatusError):
             await async_client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+                destination="41.349302,2.136480", origin="41.349302,2.136480"
             ).__aenter__()
         assert _get_open_connections(self.client) == 0
 
@@ -1587,7 +1585,7 @@ class TestAsyncNextbillionSDK:
         respx_mock.post("/directions/json").mock(side_effect=retry_handler)
 
         response = await client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480", key="key", origin="41.349302,2.136480"
+            destination="41.349302,2.136480", origin="41.349302,2.136480"
         )
 
         assert response.retries_taken == failures_before_success
@@ -1615,7 +1613,6 @@ class TestAsyncNextbillionSDK:
 
         response = await client.directions.with_raw_response.compute_route(
             destination="41.349302,2.136480",
-            key="key",
             origin="41.349302,2.136480",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
@@ -1644,7 +1641,6 @@ class TestAsyncNextbillionSDK:
 
         response = await client.directions.with_raw_response.compute_route(
             destination="41.349302,2.136480",
-            key="key",
             origin="41.349302,2.136480",
             extra_headers={"x-stainless-retry-count": "42"},
         )
