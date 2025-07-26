@@ -179,10 +179,9 @@ client = NextbillionSDK()
 
 try:
     client.directions.compute_route(
-        destination="41.349302,2.136480",
-        key="REPLACE_ME",
-        origin="41.349302,2.136480",
-        steps=True,
+        destination="REPLACE_ME",
+        key="key",
+        origin="REPLACE_ME",
     )
 except nextbillion_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -227,10 +226,9 @@ client = NextbillionSDK(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).directions.compute_route(
-    destination="41.349302,2.136480",
-    key="REPLACE_ME",
-    origin="41.349302,2.136480",
-    steps=True,
+    destination="REPLACE_ME",
+    key="key",
+    origin="REPLACE_ME",
 )
 ```
 
@@ -255,10 +253,9 @@ client = NextbillionSDK(
 
 # Override per-request:
 client.with_options(timeout=5.0).directions.compute_route(
-    destination="41.349302,2.136480",
-    key="REPLACE_ME",
-    origin="41.349302,2.136480",
-    steps=True,
+    destination="REPLACE_ME",
+    key="key",
+    origin="REPLACE_ME",
 )
 ```
 
@@ -301,10 +298,9 @@ from nextbillion_sdk import NextbillionSDK
 
 client = NextbillionSDK()
 response = client.directions.with_raw_response.compute_route(
-    destination="41.349302,2.136480",
-    key="REPLACE_ME",
-    origin="41.349302,2.136480",
-    steps=True,
+    destination="REPLACE_ME",
+    key="key",
+    origin="REPLACE_ME",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -324,10 +320,9 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.directions.with_streaming_response.compute_route(
-    destination="41.349302,2.136480",
-    key="REPLACE_ME",
-    origin="41.349302,2.136480",
-    steps=True,
+    destination="REPLACE_ME",
+    key="key",
+    origin="REPLACE_ME",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
