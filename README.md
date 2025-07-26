@@ -35,18 +35,12 @@ client = NextbillionSDK(
     api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
 )
 
-route = client.fleetify.routes.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[
-        {
-            "arrival": 0,
-            "location": [0],
-            "type": "`start`",
-        }
-    ],
+response = client.directions.compute_route(
+    destination="REPLACE_ME",
+    key="key",
+    origin="REPLACE_ME",
 )
-print(route.data)
+print(response.msg)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -69,18 +63,12 @@ client = AsyncNextbillionSDK(
 
 
 async def main() -> None:
-    route = await client.fleetify.routes.create(
-        key="REPLACE_ME",
-        driver_email="REPLACE_ME",
-        steps=[
-            {
-                "arrival": 0,
-                "location": [0],
-                "type": "`start`",
-            }
-        ],
+    response = await client.directions.compute_route(
+        destination="REPLACE_ME",
+        key="key",
+        origin="REPLACE_ME",
     )
-    print(route.data)
+    print(response.msg)
 
 
 asyncio.run(main())
@@ -112,18 +100,12 @@ async def main() -> None:
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        route = await client.fleetify.routes.create(
-            key="REPLACE_ME",
-            driver_email="REPLACE_ME",
-            steps=[
-                {
-                    "arrival": 0,
-                    "location": [0],
-                    "type": "`start`",
-                }
-            ],
+        response = await client.directions.compute_route(
+            destination="REPLACE_ME",
+            key="key",
+            origin="REPLACE_ME",
         )
-        print(route.data)
+        print(response.msg)
 
 
 asyncio.run(main())
