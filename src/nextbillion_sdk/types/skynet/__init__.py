@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .asset import Asset as Asset
 from .monitor import Monitor as Monitor
 from .trip_stop import TripStop as TripStop
 from .pagination import Pagination as Pagination
