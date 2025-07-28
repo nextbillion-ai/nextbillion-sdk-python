@@ -41,7 +41,7 @@ class MonitorResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return MonitorResourceWithRawResponse(self)
 
@@ -50,7 +50,7 @@ class MonitorResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
         """
         return MonitorResourceWithStreamingResponse(self)
 
@@ -501,7 +501,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncMonitorResourceWithRawResponse(self)
 
@@ -510,7 +510,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncMonitorResourceWithStreamingResponse(self)
 
