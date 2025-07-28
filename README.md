@@ -32,18 +32,11 @@ client = NextbillionSDK(
     api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
 )
 
-route = client.fleetify.routes.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[
-        {
-            "arrival": 0,
-            "location": [0],
-            "type": "`start`",
-        }
-    ],
+response = client.directions.compute_route(
+    destination="41.349302,2.136480",
+    origin="41.349302,2.136480",
 )
-print(route.data)
+print(response.msg)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -66,18 +59,11 @@ client = AsyncNextbillionSDK(
 
 
 async def main() -> None:
-    route = await client.fleetify.routes.create(
-        key="REPLACE_ME",
-        driver_email="REPLACE_ME",
-        steps=[
-            {
-                "arrival": 0,
-                "location": [0],
-                "type": "`start`",
-            }
-        ],
+    response = await client.directions.compute_route(
+        destination="41.349302,2.136480",
+        origin="41.349302,2.136480",
     )
-    print(route.data)
+    print(response.msg)
 
 
 asyncio.run(main())
@@ -109,18 +95,11 @@ async def main() -> None:
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        route = await client.fleetify.routes.create(
-            key="REPLACE_ME",
-            driver_email="REPLACE_ME",
-            steps=[
-                {
-                    "arrival": 0,
-                    "location": [0],
-                    "type": "`start`",
-                }
-            ],
+        response = await client.directions.compute_route(
+            destination="41.349302,2.136480",
+            origin="41.349302,2.136480",
         )
-        print(route.data)
+        print(response.msg)
 
 
 asyncio.run(main())
@@ -175,16 +154,9 @@ from nextbillion_sdk import NextbillionSDK
 client = NextbillionSDK()
 
 try:
-    client.fleetify.routes.create(
-        key="REPLACE_ME",
-        driver_email="REPLACE_ME",
-        steps=[
-            {
-                "arrival": 0,
-                "location": [0],
-                "type": "`start`",
-            }
-        ],
+    client.directions.compute_route(
+        destination="41.349302,2.136480",
+        origin="41.349302,2.136480",
     )
 except nextbillion_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -228,16 +200,9 @@ client = NextbillionSDK(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).fleetify.routes.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[
-        {
-            "arrival": 0,
-            "location": [0],
-            "type": "`start`",
-        }
-    ],
+client.with_options(max_retries=5).directions.compute_route(
+    destination="41.349302,2.136480",
+    origin="41.349302,2.136480",
 )
 ```
 
@@ -261,16 +226,9 @@ client = NextbillionSDK(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).fleetify.routes.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[
-        {
-            "arrival": 0,
-            "location": [0],
-            "type": "`start`",
-        }
-    ],
+client.with_options(timeout=5.0).directions.compute_route(
+    destination="41.349302,2.136480",
+    origin="41.349302,2.136480",
 )
 ```
 
@@ -312,19 +270,14 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from nextbillion_sdk import NextbillionSDK
 
 client = NextbillionSDK()
-response = client.fleetify.routes.with_raw_response.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[{
-        "arrival": 0,
-        "location": [0],
-        "type": "`start`",
-    }],
+response = client.directions.with_raw_response.compute_route(
+    destination="41.349302,2.136480",
+    origin="41.349302,2.136480",
 )
 print(response.headers.get('X-My-Header'))
 
-route = response.parse()  # get the object that `fleetify.routes.create()` would have returned
-print(route.data)
+direction = response.parse()  # get the object that `directions.compute_route()` would have returned
+print(direction.msg)
 ```
 
 These methods return an [`APIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
@@ -338,16 +291,9 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.fleetify.routes.with_streaming_response.create(
-    key="REPLACE_ME",
-    driver_email="REPLACE_ME",
-    steps=[
-        {
-            "arrival": 0,
-            "location": [0],
-            "type": "`start`",
-        }
-    ],
+with client.directions.with_streaming_response.compute_route(
+    destination="41.349302,2.136480",
+    origin="41.349302,2.136480",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
