@@ -16,12 +16,9 @@ The full API of this library can be found in [api.md](api.md).
 ## Installation
 
 ```sh
-# install from this staging repo
-pip install git+ssh://git@github.com/stainless-sdks/nextbillion-sdk-python.git
+# install from PyPI
+pip install --pre nextbillion_sdk
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install --pre nextbillion_sdk`
 
 ## Usage
 
@@ -36,8 +33,8 @@ client = NextbillionSDK(
 )
 
 response = client.directions.compute_route(
-    destination="REPLACE_ME",
-    origin="REPLACE_ME",
+    destination="1.304046,103.823580",
+    origin="1.310611,103.804930",
 )
 print(response.msg)
 ```
@@ -63,8 +60,8 @@ client = AsyncNextbillionSDK(
 
 async def main() -> None:
     response = await client.directions.compute_route(
-        destination="REPLACE_ME",
-        origin="REPLACE_ME",
+        destination="1.304046,103.823580",
+        origin="1.310611,103.804930",
     )
     print(response.msg)
 
@@ -81,8 +78,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from this staging repo
-pip install 'nextbillion_sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/nextbillion-sdk-python.git'
+# install from PyPI
+pip install --pre nextbillion_sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
@@ -99,8 +96,8 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.directions.compute_route(
-            destination="REPLACE_ME",
-            origin="REPLACE_ME",
+            destination="1.304046,103.823580",
+            origin="1.310611,103.804930",
         )
         print(response.msg)
 
@@ -158,8 +155,8 @@ client = NextbillionSDK()
 
 try:
     client.directions.compute_route(
-        destination="REPLACE_ME",
-        origin="REPLACE_ME",
+        destination="1.304046,103.823580",
+        origin="1.310611,103.804930",
     )
 except nextbillion_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -204,8 +201,8 @@ client = NextbillionSDK(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).directions.compute_route(
-    destination="REPLACE_ME",
-    origin="REPLACE_ME",
+    destination="1.304046,103.823580",
+    origin="1.310611,103.804930",
 )
 ```
 
@@ -230,8 +227,8 @@ client = NextbillionSDK(
 
 # Override per-request:
 client.with_options(timeout=5.0).directions.compute_route(
-    destination="REPLACE_ME",
-    origin="REPLACE_ME",
+    destination="1.304046,103.823580",
+    origin="1.310611,103.804930",
 )
 ```
 
@@ -274,8 +271,8 @@ from nextbillion_sdk import NextbillionSDK
 
 client = NextbillionSDK()
 response = client.directions.with_raw_response.compute_route(
-    destination="REPLACE_ME",
-    origin="REPLACE_ME",
+    destination="1.304046,103.823580",
+    origin="1.310611,103.804930",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -283,9 +280,9 @@ direction = response.parse()  # get the object that `directions.compute_route()`
 print(direction.msg)
 ```
 
-These methods return an [`APIResponse`](https://github.com/stainless-sdks/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -295,8 +292,8 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.directions.with_streaming_response.compute_route(
-    destination="REPLACE_ME",
-    origin="REPLACE_ME",
+    destination="1.304046,103.823580",
+    origin="1.310611,103.804930",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -392,7 +389,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nextbillion-sdk-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/nextbillion-ai/nextbillion-sdk-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 
