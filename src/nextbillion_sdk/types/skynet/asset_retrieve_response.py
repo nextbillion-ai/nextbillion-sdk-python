@@ -2,14 +2,14 @@
 
 from typing import Optional
 
-from .asset import Asset
 from ..._models import BaseModel
+from .asset_details import AssetDetails
 
 __all__ = ["AssetRetrieveResponse", "Data"]
 
 
 class Data(BaseModel):
-    asset: Optional[Asset] = None
+    asset: Optional[AssetDetails] = None
     """An object with details of the `asset` properties."""
 
 

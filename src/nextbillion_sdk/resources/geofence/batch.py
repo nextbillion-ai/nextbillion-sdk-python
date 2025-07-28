@@ -17,10 +17,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.geofence import batch_query_params, batch_create_params, batch_delete_params
+from ...types.geofence import batch_list_params, batch_create_params, batch_delete_params
 from ...types.skynet.simple_resp import SimpleResp
+from ...types.geofence.batch_list_response import BatchListResponse
 from ...types.geofence_entity_create_param import GeofenceEntityCreateParam
-from ...types.geofence.batch_query_response import BatchQueryResponse
 from ...types.geofence.batch_create_response import BatchCreateResponse
 
 __all__ = ["BatchResource", "AsyncBatchResource"]
@@ -33,7 +33,7 @@ class BatchResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return BatchResourceWithRawResponse(self)
 
@@ -42,7 +42,7 @@ class BatchResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return BatchResourceWithStreamingResponse(self)
 
@@ -89,6 +89,53 @@ class BatchResource(SyncAPIResource):
             cast_to=BatchCreateResponse,
         )
 
+    def list(
+        self,
+        *,
+        ids: str,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BatchListResponse:
+        """
+        Batch Query of Geofence
+
+        Args:
+          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
+
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/geofence/batch",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "ids": ids,
+                        "key": key,
+                    },
+                    batch_list_params.BatchListParams,
+                ),
+            ),
+            cast_to=BatchListResponse,
+        )
+
     def delete(
         self,
         *,
@@ -132,53 +179,6 @@ class BatchResource(SyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    def query(
-        self,
-        *,
-        ids: str,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BatchQueryResponse:
-        """
-        Batch Query of Geofence
-
-        Args:
-          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
-
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/geofence/batch",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "ids": ids,
-                        "key": key,
-                    },
-                    batch_query_params.BatchQueryParams,
-                ),
-            ),
-            cast_to=BatchQueryResponse,
-        )
-
 
 class AsyncBatchResource(AsyncAPIResource):
     @cached_property
@@ -187,7 +187,7 @@ class AsyncBatchResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncBatchResourceWithRawResponse(self)
 
@@ -196,7 +196,7 @@ class AsyncBatchResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncBatchResourceWithStreamingResponse(self)
 
@@ -243,6 +243,53 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=BatchCreateResponse,
         )
 
+    async def list(
+        self,
+        *,
+        ids: str,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> BatchListResponse:
+        """
+        Batch Query of Geofence
+
+        Args:
+          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
+
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/geofence/batch",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "ids": ids,
+                        "key": key,
+                    },
+                    batch_list_params.BatchListParams,
+                ),
+            ),
+            cast_to=BatchListResponse,
+        )
+
     async def delete(
         self,
         *,
@@ -286,53 +333,6 @@ class AsyncBatchResource(AsyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    async def query(
-        self,
-        *,
-        ids: str,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> BatchQueryResponse:
-        """
-        Batch Query of Geofence
-
-        Args:
-          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
-
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/geofence/batch",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "ids": ids,
-                        "key": key,
-                    },
-                    batch_query_params.BatchQueryParams,
-                ),
-            ),
-            cast_to=BatchQueryResponse,
-        )
-
 
 class BatchResourceWithRawResponse:
     def __init__(self, batch: BatchResource) -> None:
@@ -341,11 +341,11 @@ class BatchResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             batch.create,
         )
+        self.list = to_raw_response_wrapper(
+            batch.list,
+        )
         self.delete = to_raw_response_wrapper(
             batch.delete,
-        )
-        self.query = to_raw_response_wrapper(
-            batch.query,
         )
 
 
@@ -356,11 +356,11 @@ class AsyncBatchResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             batch.create,
         )
+        self.list = async_to_raw_response_wrapper(
+            batch.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             batch.delete,
-        )
-        self.query = async_to_raw_response_wrapper(
-            batch.query,
         )
 
 
@@ -371,11 +371,11 @@ class BatchResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             batch.create,
         )
+        self.list = to_streamed_response_wrapper(
+            batch.list,
+        )
         self.delete = to_streamed_response_wrapper(
             batch.delete,
-        )
-        self.query = to_streamed_response_wrapper(
-            batch.query,
         )
 
 
@@ -386,9 +386,9 @@ class AsyncBatchResourceWithStreamingResponse:
         self.create = async_to_streamed_response_wrapper(
             batch.create,
         )
+        self.list = async_to_streamed_response_wrapper(
+            batch.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             batch.delete,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            batch.query,
         )

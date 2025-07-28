@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import lookup_retrieve_params
+from ..types import lookup_by_id_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,7 +16,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.lookup_retrieve_response import LookupRetrieveResponse
+from ..types.lookup_by_id_response import LookupByIDResponse
 
 __all__ = ["LookupResource", "AsyncLookupResource"]
 
@@ -28,7 +28,7 @@ class LookupResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return LookupResourceWithRawResponse(self)
 
@@ -37,11 +37,11 @@ class LookupResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return LookupResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def by_id(
         self,
         *,
         id: str,
@@ -52,7 +52,7 @@ class LookupResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LookupRetrieveResponse:
+    ) -> LookupByIDResponse:
         """
         Lookup By ID
 
@@ -83,10 +83,10 @@ class LookupResource(SyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    lookup_retrieve_params.LookupRetrieveParams,
+                    lookup_by_id_params.LookupByIDParams,
                 ),
             ),
-            cast_to=LookupRetrieveResponse,
+            cast_to=LookupByIDResponse,
         )
 
 
@@ -97,7 +97,7 @@ class AsyncLookupResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncLookupResourceWithRawResponse(self)
 
@@ -106,11 +106,11 @@ class AsyncLookupResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncLookupResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    async def by_id(
         self,
         *,
         id: str,
@@ -121,7 +121,7 @@ class AsyncLookupResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LookupRetrieveResponse:
+    ) -> LookupByIDResponse:
         """
         Lookup By ID
 
@@ -152,10 +152,10 @@ class AsyncLookupResource(AsyncAPIResource):
                         "id": id,
                         "key": key,
                     },
-                    lookup_retrieve_params.LookupRetrieveParams,
+                    lookup_by_id_params.LookupByIDParams,
                 ),
             ),
-            cast_to=LookupRetrieveResponse,
+            cast_to=LookupByIDResponse,
         )
 
 
@@ -163,8 +163,8 @@ class LookupResourceWithRawResponse:
     def __init__(self, lookup: LookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = to_raw_response_wrapper(
-            lookup.retrieve,
+        self.by_id = to_raw_response_wrapper(
+            lookup.by_id,
         )
 
 
@@ -172,8 +172,8 @@ class AsyncLookupResourceWithRawResponse:
     def __init__(self, lookup: AsyncLookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = async_to_raw_response_wrapper(
-            lookup.retrieve,
+        self.by_id = async_to_raw_response_wrapper(
+            lookup.by_id,
         )
 
 
@@ -181,8 +181,8 @@ class LookupResourceWithStreamingResponse:
     def __init__(self, lookup: LookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = to_streamed_response_wrapper(
-            lookup.retrieve,
+        self.by_id = to_streamed_response_wrapper(
+            lookup.by_id,
         )
 
 
@@ -190,6 +190,6 @@ class AsyncLookupResourceWithStreamingResponse:
     def __init__(self, lookup: AsyncLookupResource) -> None:
         self._lookup = lookup
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            lookup.retrieve,
+        self.by_id = async_to_streamed_response_wrapper(
+            lookup.by_id,
         )

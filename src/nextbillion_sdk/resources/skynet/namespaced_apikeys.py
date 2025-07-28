@@ -15,14 +15,9 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.skynet import (
-    namespaced_apikey_namespaced_apikeys_params,
-    namespaced_apikey_delete_namespaced_apikeys_params,
-)
-from ...types.skynet.namespaced_apikey_namespaced_apikeys_response import NamespacedApikeyNamespacedApikeysResponse
-from ...types.skynet.namespaced_apikey_delete_namespaced_apikeys_response import (
-    NamespacedApikeyDeleteNamespacedApikeysResponse,
-)
+from ...types.skynet import namespaced_apikey_create_params, namespaced_apikey_delete_params
+from ...types.skynet.namespaced_apikey_create_response import NamespacedApikeyCreateResponse
+from ...types.skynet.namespaced_apikey_delete_response import NamespacedApikeyDeleteResponse
 
 __all__ = ["NamespacedApikeysResource", "AsyncNamespacedApikeysResource"]
 
@@ -34,7 +29,7 @@ class NamespacedApikeysResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return NamespacedApikeysResourceWithRawResponse(self)
 
@@ -43,11 +38,62 @@ class NamespacedApikeysResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return NamespacedApikeysResourceWithStreamingResponse(self)
 
-    def delete_namespaced_apikeys(
+    def create(
+        self,
+        *,
+        key: str,
+        namespace: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> NamespacedApikeyCreateResponse:
+        """
+        Create namespace under a parent key
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          namespace: Specify a name for the `namespace`. If the namespace specified is unique then a
+              new namespace along with a new key is created. Whereas if the specified
+              `namespace` is not unique, a new key will be created in the existing
+              `namespace`. Please note that a `namespace` cannot be created using another
+              namespace key.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/skynet/namespaced-apikeys",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "key": key,
+                        "namespace": namespace,
+                    },
+                    namespaced_apikey_create_params.NamespacedApikeyCreateParams,
+                ),
+            ),
+            cast_to=NamespacedApikeyCreateResponse,
+        )
+
+    def delete(
         self,
         *,
         key: str,
@@ -59,7 +105,7 @@ class NamespacedApikeysResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NamespacedApikeyDeleteNamespacedApikeysResponse:
+    ) -> NamespacedApikeyDeleteResponse:
         """
         Delete namespace under a parent key
 
@@ -98,13 +144,34 @@ class NamespacedApikeysResource(SyncAPIResource):
                         "key_to_delete": key_to_delete,
                         "namespace": namespace,
                     },
-                    namespaced_apikey_delete_namespaced_apikeys_params.NamespacedApikeyDeleteNamespacedApikeysParams,
+                    namespaced_apikey_delete_params.NamespacedApikeyDeleteParams,
                 ),
             ),
-            cast_to=NamespacedApikeyDeleteNamespacedApikeysResponse,
+            cast_to=NamespacedApikeyDeleteResponse,
         )
 
-    def namespaced_apikeys(
+
+class AsyncNamespacedApikeysResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncNamespacedApikeysResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncNamespacedApikeysResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncNamespacedApikeysResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
+        """
+        return AsyncNamespacedApikeysResourceWithStreamingResponse(self)
+
+    async def create(
         self,
         *,
         key: str,
@@ -115,7 +182,7 @@ class NamespacedApikeysResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NamespacedApikeyNamespacedApikeysResponse:
+    ) -> NamespacedApikeyCreateResponse:
         """
         Create namespace under a parent key
 
@@ -137,46 +204,25 @@ class NamespacedApikeysResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._post(
+        return await self._post(
             "/skynet/namespaced-apikeys",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "key": key,
                         "namespace": namespace,
                     },
-                    namespaced_apikey_namespaced_apikeys_params.NamespacedApikeyNamespacedApikeysParams,
+                    namespaced_apikey_create_params.NamespacedApikeyCreateParams,
                 ),
             ),
-            cast_to=NamespacedApikeyNamespacedApikeysResponse,
+            cast_to=NamespacedApikeyCreateResponse,
         )
 
-
-class AsyncNamespacedApikeysResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncNamespacedApikeysResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
-        """
-        return AsyncNamespacedApikeysResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncNamespacedApikeysResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
-        """
-        return AsyncNamespacedApikeysResourceWithStreamingResponse(self)
-
-    async def delete_namespaced_apikeys(
+    async def delete(
         self,
         *,
         key: str,
@@ -188,7 +234,7 @@ class AsyncNamespacedApikeysResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NamespacedApikeyDeleteNamespacedApikeysResponse:
+    ) -> NamespacedApikeyDeleteResponse:
         """
         Delete namespace under a parent key
 
@@ -227,61 +273,10 @@ class AsyncNamespacedApikeysResource(AsyncAPIResource):
                         "key_to_delete": key_to_delete,
                         "namespace": namespace,
                     },
-                    namespaced_apikey_delete_namespaced_apikeys_params.NamespacedApikeyDeleteNamespacedApikeysParams,
+                    namespaced_apikey_delete_params.NamespacedApikeyDeleteParams,
                 ),
             ),
-            cast_to=NamespacedApikeyDeleteNamespacedApikeysResponse,
-        )
-
-    async def namespaced_apikeys(
-        self,
-        *,
-        key: str,
-        namespace: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> NamespacedApikeyNamespacedApikeysResponse:
-        """
-        Create namespace under a parent key
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          namespace: Specify a name for the `namespace`. If the namespace specified is unique then a
-              new namespace along with a new key is created. Whereas if the specified
-              `namespace` is not unique, a new key will be created in the existing
-              `namespace`. Please note that a `namespace` cannot be created using another
-              namespace key.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/skynet/namespaced-apikeys",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "key": key,
-                        "namespace": namespace,
-                    },
-                    namespaced_apikey_namespaced_apikeys_params.NamespacedApikeyNamespacedApikeysParams,
-                ),
-            ),
-            cast_to=NamespacedApikeyNamespacedApikeysResponse,
+            cast_to=NamespacedApikeyDeleteResponse,
         )
 
 
@@ -289,11 +284,11 @@ class NamespacedApikeysResourceWithRawResponse:
     def __init__(self, namespaced_apikeys: NamespacedApikeysResource) -> None:
         self._namespaced_apikeys = namespaced_apikeys
 
-        self.delete_namespaced_apikeys = to_raw_response_wrapper(
-            namespaced_apikeys.delete_namespaced_apikeys,
+        self.create = to_raw_response_wrapper(
+            namespaced_apikeys.create,
         )
-        self.namespaced_apikeys = to_raw_response_wrapper(
-            namespaced_apikeys.namespaced_apikeys,
+        self.delete = to_raw_response_wrapper(
+            namespaced_apikeys.delete,
         )
 
 
@@ -301,11 +296,11 @@ class AsyncNamespacedApikeysResourceWithRawResponse:
     def __init__(self, namespaced_apikeys: AsyncNamespacedApikeysResource) -> None:
         self._namespaced_apikeys = namespaced_apikeys
 
-        self.delete_namespaced_apikeys = async_to_raw_response_wrapper(
-            namespaced_apikeys.delete_namespaced_apikeys,
+        self.create = async_to_raw_response_wrapper(
+            namespaced_apikeys.create,
         )
-        self.namespaced_apikeys = async_to_raw_response_wrapper(
-            namespaced_apikeys.namespaced_apikeys,
+        self.delete = async_to_raw_response_wrapper(
+            namespaced_apikeys.delete,
         )
 
 
@@ -313,11 +308,11 @@ class NamespacedApikeysResourceWithStreamingResponse:
     def __init__(self, namespaced_apikeys: NamespacedApikeysResource) -> None:
         self._namespaced_apikeys = namespaced_apikeys
 
-        self.delete_namespaced_apikeys = to_streamed_response_wrapper(
-            namespaced_apikeys.delete_namespaced_apikeys,
+        self.create = to_streamed_response_wrapper(
+            namespaced_apikeys.create,
         )
-        self.namespaced_apikeys = to_streamed_response_wrapper(
-            namespaced_apikeys.namespaced_apikeys,
+        self.delete = to_streamed_response_wrapper(
+            namespaced_apikeys.delete,
         )
 
 
@@ -325,9 +320,9 @@ class AsyncNamespacedApikeysResourceWithStreamingResponse:
     def __init__(self, namespaced_apikeys: AsyncNamespacedApikeysResource) -> None:
         self._namespaced_apikeys = namespaced_apikeys
 
-        self.delete_namespaced_apikeys = async_to_streamed_response_wrapper(
-            namespaced_apikeys.delete_namespaced_apikeys,
+        self.create = async_to_streamed_response_wrapper(
+            namespaced_apikeys.create,
         )
-        self.namespaced_apikeys = async_to_streamed_response_wrapper(
-            namespaced_apikeys.namespaced_apikeys,
+        self.delete = async_to_streamed_response_wrapper(
+            namespaced_apikeys.delete,
         )

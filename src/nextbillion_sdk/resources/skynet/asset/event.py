@@ -17,8 +17,8 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.skynet.asset import event_retrieve_list_params
-from ....types.skynet.asset.event_retrieve_list_response import EventRetrieveListResponse
+from ....types.skynet.asset import event_list_params
+from ....types.skynet.asset.event_list_response import EventListResponse
 
 __all__ = ["EventResource", "AsyncEventResource"]
 
@@ -30,7 +30,7 @@ class EventResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return EventResourceWithRawResponse(self)
 
@@ -39,11 +39,11 @@ class EventResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return EventResourceWithStreamingResponse(self)
 
-    def retrieve_list(
+    def list(
         self,
         id: str,
         *,
@@ -60,7 +60,7 @@ class EventResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventRetrieveListResponse:
+    ) -> EventListResponse:
         """
         Event History of an Asset
 
@@ -116,10 +116,10 @@ class EventResource(SyncAPIResource):
                         "ps": ps,
                         "start_time": start_time,
                     },
-                    event_retrieve_list_params.EventRetrieveListParams,
+                    event_list_params.EventListParams,
                 ),
             ),
-            cast_to=EventRetrieveListResponse,
+            cast_to=EventListResponse,
         )
 
 
@@ -130,7 +130,7 @@ class AsyncEventResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncEventResourceWithRawResponse(self)
 
@@ -139,11 +139,11 @@ class AsyncEventResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncEventResourceWithStreamingResponse(self)
 
-    async def retrieve_list(
+    async def list(
         self,
         id: str,
         *,
@@ -160,7 +160,7 @@ class AsyncEventResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EventRetrieveListResponse:
+    ) -> EventListResponse:
         """
         Event History of an Asset
 
@@ -216,10 +216,10 @@ class AsyncEventResource(AsyncAPIResource):
                         "ps": ps,
                         "start_time": start_time,
                     },
-                    event_retrieve_list_params.EventRetrieveListParams,
+                    event_list_params.EventListParams,
                 ),
             ),
-            cast_to=EventRetrieveListResponse,
+            cast_to=EventListResponse,
         )
 
 
@@ -227,8 +227,8 @@ class EventResourceWithRawResponse:
     def __init__(self, event: EventResource) -> None:
         self._event = event
 
-        self.retrieve_list = to_raw_response_wrapper(
-            event.retrieve_list,
+        self.list = to_raw_response_wrapper(
+            event.list,
         )
 
 
@@ -236,8 +236,8 @@ class AsyncEventResourceWithRawResponse:
     def __init__(self, event: AsyncEventResource) -> None:
         self._event = event
 
-        self.retrieve_list = async_to_raw_response_wrapper(
-            event.retrieve_list,
+        self.list = async_to_raw_response_wrapper(
+            event.list,
         )
 
 
@@ -245,8 +245,8 @@ class EventResourceWithStreamingResponse:
     def __init__(self, event: EventResource) -> None:
         self._event = event
 
-        self.retrieve_list = to_streamed_response_wrapper(
-            event.retrieve_list,
+        self.list = to_streamed_response_wrapper(
+            event.list,
         )
 
 
@@ -254,6 +254,6 @@ class AsyncEventResourceWithStreamingResponse:
     def __init__(self, event: AsyncEventResource) -> None:
         self._event = event
 
-        self.retrieve_list = async_to_streamed_response_wrapper(
-            event.retrieve_list,
+        self.list = async_to_streamed_response_wrapper(
+            event.list,
         )
