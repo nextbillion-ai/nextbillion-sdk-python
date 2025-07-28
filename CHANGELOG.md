@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-07-28)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** update via SDK Studio ([91e5e03](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/91e5e03cb19ee39d96607e598e70b0799fb60c87))
+
 ## 0.1.0-alpha.2 (2025-07-28)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
