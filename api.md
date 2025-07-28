@@ -596,18 +596,6 @@ Methods:
 
 - <code title="post /postalcode">client.postalcode.<a href="./src/nextbillion_sdk/resources/postalcode.py">retrieve_coordinates</a>(\*\*<a href="src/nextbillion_sdk/types/postalcode_retrieve_coordinates_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/postalcode_retrieve_coordinates_response.py">PostalcodeRetrieveCoordinatesResponse</a></code>
 
-# Areas
-
-Types:
-
-```python
-from nextbillion_sdk.types import AreaListResponse
-```
-
-Methods:
-
-- <code title="get /areas">client.areas.<a href="./src/nextbillion_sdk/resources/areas.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/area_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/area_list_response.py">AreaListResponse</a></code>
-
 # Lookup
 
 Types:
@@ -619,3 +607,15 @@ from nextbillion_sdk.types import LookupByIDResponse
 Methods:
 
 - <code title="get /lookup">client.lookup.<a href="./src/nextbillion_sdk/resources/lookup.py">by_id</a>(\*\*<a href="src/nextbillion_sdk/types/lookup_by_id_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/lookup_by_id_response.py">LookupByIDResponse</a></code>
+
+# Areas
+
+Types:
+
+```python
+from nextbillion_sdk.types import AreaListResponse
+```
+
+Methods:
+
+- <code title="get /areas">client.areas.<a href="./src/nextbillion_sdk/resources/areas.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/area_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/area_list_response.py">AreaListResponse</a></code>
