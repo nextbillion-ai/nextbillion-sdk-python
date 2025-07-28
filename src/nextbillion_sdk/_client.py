@@ -54,7 +54,7 @@ from .resources.fleetify import fleetify
 from .resources.geofence import geofence
 from .resources.multigeocode import multigeocode
 from .resources.optimization import optimization
-from .resources.distancematrix import distancematrix
+from .resources.distance_matrix import distance_matrix
 
 __all__ = [
     "Timeout",
@@ -80,7 +80,7 @@ class NextbillionSDK(SyncAPIClient):
     isochrone: isochrone.IsochroneResource
     restrictions: restrictions.RestrictionsResource
     restrictions_items: restrictions_items.RestrictionsItemsResource
-    distancematrix: distancematrix.DistancematrixResource
+    distance_matrix: distance_matrix.DistanceMatrixResource
     autocomplete: autocomplete.AutocompleteResource
     navigation: navigation.NavigationResource
     map: map.MapResource
@@ -162,7 +162,7 @@ class NextbillionSDK(SyncAPIClient):
         self.isochrone = isochrone.IsochroneResource(self)
         self.restrictions = restrictions.RestrictionsResource(self)
         self.restrictions_items = restrictions_items.RestrictionsItemsResource(self)
-        self.distancematrix = distancematrix.DistancematrixResource(self)
+        self.distance_matrix = distance_matrix.DistanceMatrixResource(self)
         self.autocomplete = autocomplete.AutocompleteResource(self)
         self.navigation = navigation.NavigationResource(self)
         self.map = map.MapResource(self)
@@ -299,7 +299,7 @@ class AsyncNextbillionSDK(AsyncAPIClient):
     isochrone: isochrone.AsyncIsochroneResource
     restrictions: restrictions.AsyncRestrictionsResource
     restrictions_items: restrictions_items.AsyncRestrictionsItemsResource
-    distancematrix: distancematrix.AsyncDistancematrixResource
+    distance_matrix: distance_matrix.AsyncDistanceMatrixResource
     autocomplete: autocomplete.AsyncAutocompleteResource
     navigation: navigation.AsyncNavigationResource
     map: map.AsyncMapResource
@@ -381,7 +381,7 @@ class AsyncNextbillionSDK(AsyncAPIClient):
         self.isochrone = isochrone.AsyncIsochroneResource(self)
         self.restrictions = restrictions.AsyncRestrictionsResource(self)
         self.restrictions_items = restrictions_items.AsyncRestrictionsItemsResource(self)
-        self.distancematrix = distancematrix.AsyncDistancematrixResource(self)
+        self.distance_matrix = distance_matrix.AsyncDistanceMatrixResource(self)
         self.autocomplete = autocomplete.AsyncAutocompleteResource(self)
         self.navigation = navigation.AsyncNavigationResource(self)
         self.map = map.AsyncMapResource(self)
@@ -519,7 +519,7 @@ class NextbillionSDKWithRawResponse:
         self.isochrone = isochrone.IsochroneResourceWithRawResponse(client.isochrone)
         self.restrictions = restrictions.RestrictionsResourceWithRawResponse(client.restrictions)
         self.restrictions_items = restrictions_items.RestrictionsItemsResourceWithRawResponse(client.restrictions_items)
-        self.distancematrix = distancematrix.DistancematrixResourceWithRawResponse(client.distancematrix)
+        self.distance_matrix = distance_matrix.DistanceMatrixResourceWithRawResponse(client.distance_matrix)
         self.autocomplete = autocomplete.AutocompleteResourceWithRawResponse(client.autocomplete)
         self.navigation = navigation.NavigationResourceWithRawResponse(client.navigation)
         self.map = map.MapResourceWithRawResponse(client.map)
@@ -550,7 +550,7 @@ class AsyncNextbillionSDKWithRawResponse:
         self.restrictions_items = restrictions_items.AsyncRestrictionsItemsResourceWithRawResponse(
             client.restrictions_items
         )
-        self.distancematrix = distancematrix.AsyncDistancematrixResourceWithRawResponse(client.distancematrix)
+        self.distance_matrix = distance_matrix.AsyncDistanceMatrixResourceWithRawResponse(client.distance_matrix)
         self.autocomplete = autocomplete.AsyncAutocompleteResourceWithRawResponse(client.autocomplete)
         self.navigation = navigation.AsyncNavigationResourceWithRawResponse(client.navigation)
         self.map = map.AsyncMapResourceWithRawResponse(client.map)
@@ -581,7 +581,7 @@ class NextbillionSDKWithStreamedResponse:
         self.restrictions_items = restrictions_items.RestrictionsItemsResourceWithStreamingResponse(
             client.restrictions_items
         )
-        self.distancematrix = distancematrix.DistancematrixResourceWithStreamingResponse(client.distancematrix)
+        self.distance_matrix = distance_matrix.DistanceMatrixResourceWithStreamingResponse(client.distance_matrix)
         self.autocomplete = autocomplete.AutocompleteResourceWithStreamingResponse(client.autocomplete)
         self.navigation = navigation.NavigationResourceWithStreamingResponse(client.navigation)
         self.map = map.MapResourceWithStreamingResponse(client.map)
@@ -612,7 +612,7 @@ class AsyncNextbillionSDKWithStreamedResponse:
         self.restrictions_items = restrictions_items.AsyncRestrictionsItemsResourceWithStreamingResponse(
             client.restrictions_items
         )
-        self.distancematrix = distancematrix.AsyncDistancematrixResourceWithStreamingResponse(client.distancematrix)
+        self.distance_matrix = distance_matrix.AsyncDistanceMatrixResourceWithStreamingResponse(client.distance_matrix)
         self.autocomplete = autocomplete.AsyncAutocompleteResourceWithStreamingResponse(client.autocomplete)
         self.navigation = navigation.AsyncNavigationResourceWithStreamingResponse(client.navigation)
         self.map = map.AsyncMapResourceWithStreamingResponse(client.map)

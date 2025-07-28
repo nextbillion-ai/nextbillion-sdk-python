@@ -433,20 +433,20 @@ Methods:
 
 - <code title="get /restrictions_items">client.restrictions_items.<a href="./src/nextbillion_sdk/resources/restrictions_items.py">list</a>(\*\*<a href="src/nextbillion_sdk/types/restrictions_item_list_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/restrictions_item_list_response.py">RestrictionsItemListResponse</a></code>
 
-# Distancematrix
+# DistanceMatrix
 
 ## Json
 
 Types:
 
 ```python
-from nextbillion_sdk.types.distancematrix import JsonRetrieveResponse
+from nextbillion_sdk.types.distance_matrix import JsonRetrieveResponse
 ```
 
 Methods:
 
-- <code title="post /distancematrix/json">client.distancematrix.json.<a href="./src/nextbillion_sdk/resources/distancematrix/json.py">create</a>() -> None</code>
-- <code title="get /distancematrix/json">client.distancematrix.json.<a href="./src/nextbillion_sdk/resources/distancematrix/json.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/distancematrix/json_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/distancematrix/json_retrieve_response.py">JsonRetrieveResponse</a></code>
+- <code title="post /distancematrix/json">client.distance_matrix.json.<a href="./src/nextbillion_sdk/resources/distance_matrix/json.py">create</a>() -> None</code>
+- <code title="get /distancematrix/json">client.distance_matrix.json.<a href="./src/nextbillion_sdk/resources/distance_matrix/json.py">retrieve</a>(\*\*<a href="src/nextbillion_sdk/types/distance_matrix/json_retrieve_params.py">params</a>) -> <a href="./src/nextbillion_sdk/types/distance_matrix/json_retrieve_response.py">JsonRetrieveResponse</a></code>
 
 # Autocomplete
 
