@@ -17,7 +17,7 @@ The REST API documentation can be found on [docs.nextbillion.ai](https://docs.ne
 
 ```sh
 # install from PyPI
-pip install --pre nextbillion_sdk
+pip install nextbillion_sdk
 ```
 
 ## Usage
@@ -93,7 +93,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install --pre nextbillion_sdk[aiohttp]
+pip install nextbillion_sdk[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
