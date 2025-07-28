@@ -13,7 +13,6 @@ from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
     Omit,
-    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -44,7 +43,7 @@ from .resources import (
     restrictions_items,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError
+from ._exceptions import APIStatusError, NextbillionSDKError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -99,7 +98,7 @@ class NextbillionSDK(SyncAPIClient):
     with_streaming_response: NextbillionSDKWithStreamedResponse
 
     # client options
-    api_key: str | None
+    api_key: str
 
     def __init__(
         self,
@@ -130,6 +129,10 @@ class NextbillionSDK(SyncAPIClient):
         """
         if api_key is None:
             api_key = os.environ.get("NEXTBILLION_SDK_API_KEY")
+        if api_key is None:
+            raise NextbillionSDKError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the NEXTBILLION_SDK_API_KEY environment variable"
+            )
         self.api_key = api_key
 
         if base_url is None:
@@ -183,14 +186,6 @@ class NextbillionSDK(SyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        if api_key is None:
-            return {}
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -198,16 +193,14 @@ class NextbillionSDK(SyncAPIClient):
             **self._custom_headers,
         }
 
+    @property
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("Authorization"):
-            return
-        if isinstance(custom_headers.get("Authorization"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted"'
-        )
+    def default_query(self) -> dict[str, object]:
+        return {
+            **super().default_query,
+            "key": self.api_key,
+            **self._custom_query,
+        }
 
     def copy(
         self,
@@ -324,7 +317,7 @@ class AsyncNextbillionSDK(AsyncAPIClient):
     with_streaming_response: AsyncNextbillionSDKWithStreamedResponse
 
     # client options
-    api_key: str | None
+    api_key: str
 
     def __init__(
         self,
@@ -355,6 +348,10 @@ class AsyncNextbillionSDK(AsyncAPIClient):
         """
         if api_key is None:
             api_key = os.environ.get("NEXTBILLION_SDK_API_KEY")
+        if api_key is None:
+            raise NextbillionSDKError(
+                "The api_key client option must be set either by passing api_key to the client or by setting the NEXTBILLION_SDK_API_KEY environment variable"
+            )
         self.api_key = api_key
 
         if base_url is None:
@@ -408,14 +405,6 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @property
     @override
-    def auth_headers(self) -> dict[str, str]:
-        api_key = self.api_key
-        if api_key is None:
-            return {}
-        return {"Authorization": f"Bearer {api_key}"}
-
-    @property
-    @override
     def default_headers(self) -> dict[str, str | Omit]:
         return {
             **super().default_headers,
@@ -423,16 +412,14 @@ class AsyncNextbillionSDK(AsyncAPIClient):
             **self._custom_headers,
         }
 
+    @property
     @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("Authorization"):
-            return
-        if isinstance(custom_headers.get("Authorization"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted"'
-        )
+    def default_query(self) -> dict[str, object]:
+        return {
+            **super().default_query,
+            "key": self.api_key,
+            **self._custom_query,
+        }
 
     def copy(
         self,
