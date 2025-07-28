@@ -17,8 +17,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.distancematrix import json_retrieve_params
-from ...types.distancematrix.json_retrieve_response import JsonRetrieveResponse
+from ...types.distance_matrix import json_retrieve_params
+from ...types.distance_matrix.json_retrieve_response import JsonRetrieveResponse
 
 __all__ = ["JsonResource", "AsyncJsonResource"]
 
