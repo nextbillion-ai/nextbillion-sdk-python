@@ -93,8 +93,8 @@ class TestPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: NextbillionSDK) -> None:
-        polygon = client.skynet.search.polygon.list(
+    def test_method_get(self, client: NextbillionSDK) -> None:
+        polygon = client.skynet.search.polygon.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         )
@@ -102,8 +102,8 @@ class TestPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
-        polygon = client.skynet.search.polygon.list(
+    def test_method_get_with_all_params(self, client: NextbillionSDK) -> None:
+        polygon = client.skynet.search.polygon.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
             filter="filter=tag:delivery,truck",
@@ -120,8 +120,8 @@ class TestPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: NextbillionSDK) -> None:
-        response = client.skynet.search.polygon.with_raw_response.list(
+    def test_raw_response_get(self, client: NextbillionSDK) -> None:
+        response = client.skynet.search.polygon.with_raw_response.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         )
@@ -133,8 +133,8 @@ class TestPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
-        with client.skynet.search.polygon.with_streaming_response.list(
+    def test_streaming_response_get(self, client: NextbillionSDK) -> None:
+        with client.skynet.search.polygon.with_streaming_response.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         ) as response:
@@ -228,8 +228,8 @@ class TestAsyncPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
-        polygon = await async_client.skynet.search.polygon.list(
+    async def test_method_get(self, async_client: AsyncNextbillionSDK) -> None:
+        polygon = await async_client.skynet.search.polygon.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         )
@@ -237,8 +237,8 @@ class TestAsyncPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        polygon = await async_client.skynet.search.polygon.list(
+    async def test_method_get_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        polygon = await async_client.skynet.search.polygon.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
             filter="filter=tag:delivery,truck",
@@ -255,8 +255,8 @@ class TestAsyncPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.search.polygon.with_raw_response.list(
+    async def test_raw_response_get(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.search.polygon.with_raw_response.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         )
@@ -268,8 +268,8 @@ class TestAsyncPolygon:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.search.polygon.with_streaming_response.list(
+    async def test_streaming_response_get(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.search.polygon.with_streaming_response.get(
             key="key=API_KEY",
             polygon="polygon=17.4239,78.4590|17.4575,78.4624|17.4547,78.5483|17.4076,78.5527|17.4239,78.4590",
         ) as response:

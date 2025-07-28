@@ -19,8 +19,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_around(self, client: NextbillionSDK) -> None:
-        search = client.skynet.search.retrieve_around(
+    def test_method_around(self, client: NextbillionSDK) -> None:
+        search = client.skynet.search.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -29,8 +29,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_around_with_all_params(self, client: NextbillionSDK) -> None:
-        search = client.skynet.search.retrieve_around(
+    def test_method_around_with_all_params(self, client: NextbillionSDK) -> None:
+        search = client.skynet.search.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -48,8 +48,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_retrieve_around(self, client: NextbillionSDK) -> None:
-        response = client.skynet.search.with_raw_response.retrieve_around(
+    def test_raw_response_around(self, client: NextbillionSDK) -> None:
+        response = client.skynet.search.with_raw_response.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -62,8 +62,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_retrieve_around(self, client: NextbillionSDK) -> None:
-        with client.skynet.search.with_streaming_response.retrieve_around(
+    def test_streaming_response_around(self, client: NextbillionSDK) -> None:
+        with client.skynet.search.with_streaming_response.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -78,8 +78,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_bound(self, client: NextbillionSDK) -> None:
-        search = client.skynet.search.retrieve_bound(
+    def test_method_bound(self, client: NextbillionSDK) -> None:
+        search = client.skynet.search.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         )
@@ -87,8 +87,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_retrieve_bound_with_all_params(self, client: NextbillionSDK) -> None:
-        search = client.skynet.search.retrieve_bound(
+    def test_method_bound_with_all_params(self, client: NextbillionSDK) -> None:
+        search = client.skynet.search.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
             filter="filter=tag:delivery,truck",
@@ -105,8 +105,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_retrieve_bound(self, client: NextbillionSDK) -> None:
-        response = client.skynet.search.with_raw_response.retrieve_bound(
+    def test_raw_response_bound(self, client: NextbillionSDK) -> None:
+        response = client.skynet.search.with_raw_response.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         )
@@ -118,8 +118,8 @@ class TestSearch:
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_retrieve_bound(self, client: NextbillionSDK) -> None:
-        with client.skynet.search.with_streaming_response.retrieve_bound(
+    def test_streaming_response_bound(self, client: NextbillionSDK) -> None:
+        with client.skynet.search.with_streaming_response.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         ) as response:
@@ -139,8 +139,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_around(self, async_client: AsyncNextbillionSDK) -> None:
-        search = await async_client.skynet.search.retrieve_around(
+    async def test_method_around(self, async_client: AsyncNextbillionSDK) -> None:
+        search = await async_client.skynet.search.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -149,8 +149,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_around_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        search = await async_client.skynet.search.retrieve_around(
+    async def test_method_around_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        search = await async_client.skynet.search.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -168,8 +168,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_retrieve_around(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.search.with_raw_response.retrieve_around(
+    async def test_raw_response_around(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.search.with_raw_response.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -182,8 +182,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_retrieve_around(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.search.with_streaming_response.retrieve_around(
+    async def test_streaming_response_around(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.search.with_streaming_response.around(
             center="56.597801,43.967836",
             key="key=API_KEY",
             radius=0,
@@ -198,8 +198,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_bound(self, async_client: AsyncNextbillionSDK) -> None:
-        search = await async_client.skynet.search.retrieve_bound(
+    async def test_method_bound(self, async_client: AsyncNextbillionSDK) -> None:
+        search = await async_client.skynet.search.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         )
@@ -207,8 +207,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_retrieve_bound_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        search = await async_client.skynet.search.retrieve_bound(
+    async def test_method_bound_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        search = await async_client.skynet.search.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
             filter="filter=tag:delivery,truck",
@@ -225,8 +225,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_retrieve_bound(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.skynet.search.with_raw_response.retrieve_bound(
+    async def test_raw_response_bound(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.skynet.search.with_raw_response.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         )
@@ -238,8 +238,8 @@ class TestAsyncSearch:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_retrieve_bound(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.skynet.search.with_streaming_response.retrieve_bound(
+    async def test_streaming_response_bound(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.skynet.search.with_streaming_response.bound(
             bound="bounds=44.7664,-0.6941|44.9206,-0.4639",
             key="key=API_KEY",
         ) as response:

@@ -17,7 +17,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.skynet.search import polygon_list_params, polygon_create_params
+from ....types.skynet.search import polygon_get_params, polygon_create_params
 from ....types.skynet.search_response import SearchResponse
 
 __all__ = ["PolygonResource", "AsyncPolygonResource"]
@@ -139,7 +139,7 @@ class PolygonResource(SyncAPIResource):
             cast_to=SearchResponse,
         )
 
-    def list(
+    def get(
         self,
         *,
         key: str,
@@ -262,7 +262,7 @@ class PolygonResource(SyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    polygon_list_params.PolygonListParams,
+                    polygon_get_params.PolygonGetParams,
                 ),
             ),
             cast_to=SearchResponse,
@@ -385,7 +385,7 @@ class AsyncPolygonResource(AsyncAPIResource):
             cast_to=SearchResponse,
         )
 
-    async def list(
+    async def get(
         self,
         *,
         key: str,
@@ -508,7 +508,7 @@ class AsyncPolygonResource(AsyncAPIResource):
                         "sort_destination": sort_destination,
                         "sort_driving_mode": sort_driving_mode,
                     },
-                    polygon_list_params.PolygonListParams,
+                    polygon_get_params.PolygonGetParams,
                 ),
             ),
             cast_to=SearchResponse,
@@ -522,8 +522,8 @@ class PolygonResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             polygon.create,
         )
-        self.list = to_raw_response_wrapper(
-            polygon.list,
+        self.get = to_raw_response_wrapper(
+            polygon.get,
         )
 
 
@@ -534,8 +534,8 @@ class AsyncPolygonResourceWithRawResponse:
         self.create = async_to_raw_response_wrapper(
             polygon.create,
         )
-        self.list = async_to_raw_response_wrapper(
-            polygon.list,
+        self.get = async_to_raw_response_wrapper(
+            polygon.get,
         )
 
 
@@ -546,8 +546,8 @@ class PolygonResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             polygon.create,
         )
-        self.list = to_streamed_response_wrapper(
-            polygon.list,
+        self.get = to_streamed_response_wrapper(
+            polygon.get,
         )
 
 
@@ -558,6 +558,6 @@ class AsyncPolygonResourceWithStreamingResponse:
         self.create = async_to_streamed_response_wrapper(
             polygon.create,
         )
-        self.list = async_to_streamed_response_wrapper(
-            polygon.list,
+        self.get = async_to_streamed_response_wrapper(
+            polygon.get,
         )

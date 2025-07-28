@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import DiscoverListResponse
+from nextbillion_sdk.types import DiscoverRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -19,17 +19,17 @@ class TestDiscover:
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list(self, client: NextbillionSDK) -> None:
-        discover = client.discover.list(
+    def test_method_retrieve(self, client: NextbillionSDK) -> None:
+        discover = client.discover.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         )
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
-        discover = client.discover.list(
+    def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
+        discover = client.discover.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
             at="at=52.5308,13.3856",
@@ -37,12 +37,12 @@ class TestDiscover:
             lang="lang=en",
             limit=0,
         )
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_raw_response_list(self, client: NextbillionSDK) -> None:
-        response = client.discover.with_raw_response.list(
+    def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
+        response = client.discover.with_raw_response.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         )
@@ -50,12 +50,12 @@ class TestDiscover:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         discover = response.parse()
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    def test_streaming_response_list(self, client: NextbillionSDK) -> None:
-        with client.discover.with_streaming_response.list(
+    def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
+        with client.discover.with_streaming_response.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         ) as response:
@@ -63,7 +63,7 @@ class TestDiscover:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             discover = response.parse()
-            assert_matches_type(DiscoverListResponse, discover, path=["response"])
+            assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -75,17 +75,17 @@ class TestAsyncDiscover:
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
-        discover = await async_client.discover.list(
+    async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        discover = await async_client.discover.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         )
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
-        discover = await async_client.discover.list(
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
+        discover = await async_client.discover.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
             at="at=52.5308,13.3856",
@@ -93,12 +93,12 @@ class TestAsyncDiscover:
             lang="lang=en",
             limit=0,
         )
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        response = await async_client.discover.with_raw_response.list(
+    async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        response = await async_client.discover.with_raw_response.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         )
@@ -106,12 +106,12 @@ class TestAsyncDiscover:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         discover = await response.parse()
-        assert_matches_type(DiscoverListResponse, discover, path=["response"])
+        assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
     @pytest.mark.skip()
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
-        async with async_client.discover.with_streaming_response.list(
+    async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
+        async with async_client.discover.with_streaming_response.retrieve(
             key="key=API_KEY",
             q="q=125, Berliner, berlin",
         ) as response:
@@ -119,6 +119,6 @@ class TestAsyncDiscover:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             discover = await response.parse()
-            assert_matches_type(DiscoverListResponse, discover, path=["response"])
+            assert_matches_type(DiscoverRetrieveResponse, discover, path=["response"])
 
         assert cast(Any, response.is_closed) is True

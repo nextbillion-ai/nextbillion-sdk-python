@@ -31,7 +31,6 @@ from .monitor import (
     MonitorResourceWithStreamingResponse,
     AsyncMonitorResourceWithStreamingResponse,
 )
-from .skynet_ import skynet_ as skynet
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -96,10 +95,6 @@ class SkynetResource(SyncAPIResource):
     @cached_property
     def search(self) -> SearchResource:
         return SearchResource(self._client)
-
-    @cached_property
-    def skynet(self) -> skynet.SkynetResource:
-        return skynet.SkynetResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> SkynetResourceWithRawResponse:
@@ -201,10 +196,6 @@ class AsyncSkynetResource(AsyncAPIResource):
     @cached_property
     def search(self) -> AsyncSearchResource:
         return AsyncSearchResource(self._client)
-
-    @cached_property
-    def skynet(self) -> skynet.AsyncSkynetResource:
-        return skynet.AsyncSkynetResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSkynetResourceWithRawResponse:
@@ -314,10 +305,6 @@ class SkynetResourceWithRawResponse:
     def search(self) -> SearchResourceWithRawResponse:
         return SearchResourceWithRawResponse(self._skynet.search)
 
-    @cached_property
-    def skynet(self) -> skynet.SkynetResourceWithRawResponse:
-        return skynet.SkynetResourceWithRawResponse(self._skynet.skynet)
-
 
 class AsyncSkynetResourceWithRawResponse:
     def __init__(self, skynet: AsyncSkynetResource) -> None:
@@ -350,10 +337,6 @@ class AsyncSkynetResourceWithRawResponse:
     @cached_property
     def search(self) -> AsyncSearchResourceWithRawResponse:
         return AsyncSearchResourceWithRawResponse(self._skynet.search)
-
-    @cached_property
-    def skynet(self) -> skynet.AsyncSkynetResourceWithRawResponse:
-        return skynet.AsyncSkynetResourceWithRawResponse(self._skynet.skynet)
 
 
 class SkynetResourceWithStreamingResponse:
@@ -388,10 +371,6 @@ class SkynetResourceWithStreamingResponse:
     def search(self) -> SearchResourceWithStreamingResponse:
         return SearchResourceWithStreamingResponse(self._skynet.search)
 
-    @cached_property
-    def skynet(self) -> skynet.SkynetResourceWithStreamingResponse:
-        return skynet.SkynetResourceWithStreamingResponse(self._skynet.skynet)
-
 
 class AsyncSkynetResourceWithStreamingResponse:
     def __init__(self, skynet: AsyncSkynetResource) -> None:
@@ -424,7 +403,3 @@ class AsyncSkynetResourceWithStreamingResponse:
     @cached_property
     def search(self) -> AsyncSearchResourceWithStreamingResponse:
         return AsyncSearchResourceWithStreamingResponse(self._skynet.search)
-
-    @cached_property
-    def skynet(self) -> skynet.AsyncSkynetResourceWithStreamingResponse:
-        return skynet.AsyncSkynetResourceWithStreamingResponse(self._skynet.skynet)
