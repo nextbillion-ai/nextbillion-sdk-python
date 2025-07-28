@@ -155,7 +155,6 @@ Types:
 
 ```python
 from nextbillion_sdk.types.skynet import (
-    Asset,
     TripStop,
     TripRetrieveResponse,
     TripRetrieveSummaryResponse,
