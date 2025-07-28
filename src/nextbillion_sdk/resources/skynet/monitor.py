@@ -19,17 +19,17 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.skynet import (
+    monitor_list_params,
     monitor_create_params,
     monitor_delete_params,
     monitor_update_params,
     monitor_retrieve_params,
-    monitor_retrieve_list_params,
 )
 from ...types.skynet.simple_resp import SimpleResp
 from ...types.skynet.metadata_param import MetadataParam
+from ...types.skynet.monitor_list_response import MonitorListResponse
 from ...types.skynet.monitor_create_response import MonitorCreateResponse
 from ...types.skynet.monitor_retrieve_response import MonitorRetrieveResponse
-from ...types.skynet.monitor_retrieve_list_response import MonitorRetrieveListResponse
 
 __all__ = ["MonitorResource", "AsyncMonitorResource"]
 
@@ -41,7 +41,7 @@ class MonitorResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return MonitorResourceWithRawResponse(self)
 
@@ -50,7 +50,7 @@ class MonitorResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return MonitorResourceWithStreamingResponse(self)
 
@@ -378,48 +378,7 @@ class MonitorResource(SyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    def delete(
-        self,
-        id: str,
-        *,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SimpleResp:
-        """
-        Delete a Monitor
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._delete(
-            f"/skynet/monitor/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"key": key}, monitor_delete_params.MonitorDeleteParams),
-            ),
-            cast_to=SimpleResp,
-        )
-
-    def retrieve_list(
+    def list(
         self,
         *,
         key: str,
@@ -434,7 +393,7 @@ class MonitorResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MonitorRetrieveListResponse:
+    ) -> MonitorListResponse:
         """
         Get Monitor List
 
@@ -487,10 +446,51 @@ class MonitorResource(SyncAPIResource):
                         "sort": sort,
                         "tags": tags,
                     },
-                    monitor_retrieve_list_params.MonitorRetrieveListParams,
+                    monitor_list_params.MonitorListParams,
                 ),
             ),
-            cast_to=MonitorRetrieveListResponse,
+            cast_to=MonitorListResponse,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Delete a Monitor
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/skynet/monitor/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"key": key}, monitor_delete_params.MonitorDeleteParams),
+            ),
+            cast_to=SimpleResp,
         )
 
 
@@ -501,7 +501,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncMonitorResourceWithRawResponse(self)
 
@@ -510,7 +510,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncMonitorResourceWithStreamingResponse(self)
 
@@ -838,48 +838,7 @@ class AsyncMonitorResource(AsyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    async def delete(
-        self,
-        id: str,
-        *,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SimpleResp:
-        """
-        Delete a Monitor
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._delete(
-            f"/skynet/monitor/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"key": key}, monitor_delete_params.MonitorDeleteParams),
-            ),
-            cast_to=SimpleResp,
-        )
-
-    async def retrieve_list(
+    async def list(
         self,
         *,
         key: str,
@@ -894,7 +853,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> MonitorRetrieveListResponse:
+    ) -> MonitorListResponse:
         """
         Get Monitor List
 
@@ -947,10 +906,51 @@ class AsyncMonitorResource(AsyncAPIResource):
                         "sort": sort,
                         "tags": tags,
                     },
-                    monitor_retrieve_list_params.MonitorRetrieveListParams,
+                    monitor_list_params.MonitorListParams,
                 ),
             ),
-            cast_to=MonitorRetrieveListResponse,
+            cast_to=MonitorListResponse,
+        )
+
+    async def delete(
+        self,
+        id: str,
+        *,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Delete a Monitor
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/skynet/monitor/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"key": key}, monitor_delete_params.MonitorDeleteParams),
+            ),
+            cast_to=SimpleResp,
         )
 
 
@@ -967,11 +967,11 @@ class MonitorResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             monitor.update,
         )
+        self.list = to_raw_response_wrapper(
+            monitor.list,
+        )
         self.delete = to_raw_response_wrapper(
             monitor.delete,
-        )
-        self.retrieve_list = to_raw_response_wrapper(
-            monitor.retrieve_list,
         )
 
 
@@ -988,11 +988,11 @@ class AsyncMonitorResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             monitor.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            monitor.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             monitor.delete,
-        )
-        self.retrieve_list = async_to_raw_response_wrapper(
-            monitor.retrieve_list,
         )
 
 
@@ -1009,11 +1009,11 @@ class MonitorResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             monitor.update,
         )
+        self.list = to_streamed_response_wrapper(
+            monitor.list,
+        )
         self.delete = to_streamed_response_wrapper(
             monitor.delete,
-        )
-        self.retrieve_list = to_streamed_response_wrapper(
-            monitor.retrieve_list,
         )
 
 
@@ -1030,9 +1030,9 @@ class AsyncMonitorResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             monitor.update,
         )
+        self.list = async_to_streamed_response_wrapper(
+            monitor.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             monitor.delete,
-        )
-        self.retrieve_list = async_to_streamed_response_wrapper(
-            monitor.retrieve_list,
         )

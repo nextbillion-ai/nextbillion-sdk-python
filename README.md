@@ -16,9 +16,12 @@ The full API of this library can be found in [api.md](api.md).
 ## Installation
 
 ```sh
-# install from PyPI
-pip install --pre nextbillion_sdk
+# install from this staging repo
+pip install git+ssh://git@github.com/stainless-sdks/nextbillion-sdk-python.git
 ```
+
+> [!NOTE]
+> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install --pre nextbillion_sdk`
 
 ## Usage
 
@@ -32,11 +35,18 @@ client = NextbillionSDK(
     api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
 )
 
-response = client.directions.compute_route(
-    destination="1.304046,103.823580",
-    origin="1.310611,103.804930",
+route = client.fleetify.routes.create(
+    key="REPLACE_ME",
+    driver_email="REPLACE_ME",
+    steps=[
+        {
+            "arrival": 0,
+            "location": [0],
+            "type": "`start`",
+        }
+    ],
 )
-print(response.msg)
+print(route.data)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -59,11 +69,18 @@ client = AsyncNextbillionSDK(
 
 
 async def main() -> None:
-    response = await client.directions.compute_route(
-        destination="1.304046,103.823580",
-        origin="1.310611,103.804930",
+    route = await client.fleetify.routes.create(
+        key="REPLACE_ME",
+        driver_email="REPLACE_ME",
+        steps=[
+            {
+                "arrival": 0,
+                "location": [0],
+                "type": "`start`",
+            }
+        ],
     )
-    print(response.msg)
+    print(route.data)
 
 
 asyncio.run(main())
@@ -78,8 +95,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from PyPI
-pip install --pre nextbillion_sdk[aiohttp]
+# install from this staging repo
+pip install 'nextbillion_sdk[aiohttp] @ git+ssh://git@github.com/stainless-sdks/nextbillion-sdk-python.git'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
@@ -95,11 +112,18 @@ async def main() -> None:
         api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
-        response = await client.directions.compute_route(
-            destination="1.304046,103.823580",
-            origin="1.310611,103.804930",
+        route = await client.fleetify.routes.create(
+            key="REPLACE_ME",
+            driver_email="REPLACE_ME",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
         )
-        print(response.msg)
+        print(route.data)
 
 
 asyncio.run(main())
@@ -154,9 +178,16 @@ from nextbillion_sdk import NextbillionSDK
 client = NextbillionSDK()
 
 try:
-    client.directions.compute_route(
-        destination="1.304046,103.823580",
-        origin="1.310611,103.804930",
+    client.fleetify.routes.create(
+        key="REPLACE_ME",
+        driver_email="REPLACE_ME",
+        steps=[
+            {
+                "arrival": 0,
+                "location": [0],
+                "type": "`start`",
+            }
+        ],
     )
 except nextbillion_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -200,9 +231,16 @@ client = NextbillionSDK(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).directions.compute_route(
-    destination="1.304046,103.823580",
-    origin="1.310611,103.804930",
+client.with_options(max_retries=5).fleetify.routes.create(
+    key="REPLACE_ME",
+    driver_email="REPLACE_ME",
+    steps=[
+        {
+            "arrival": 0,
+            "location": [0],
+            "type": "`start`",
+        }
+    ],
 )
 ```
 
@@ -226,9 +264,16 @@ client = NextbillionSDK(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).directions.compute_route(
-    destination="1.304046,103.823580",
-    origin="1.310611,103.804930",
+client.with_options(timeout=5.0).fleetify.routes.create(
+    key="REPLACE_ME",
+    driver_email="REPLACE_ME",
+    steps=[
+        {
+            "arrival": 0,
+            "location": [0],
+            "type": "`start`",
+        }
+    ],
 )
 ```
 
@@ -270,19 +315,24 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from nextbillion_sdk import NextbillionSDK
 
 client = NextbillionSDK()
-response = client.directions.with_raw_response.compute_route(
-    destination="1.304046,103.823580",
-    origin="1.310611,103.804930",
+response = client.fleetify.routes.with_raw_response.create(
+    key="REPLACE_ME",
+    driver_email="REPLACE_ME",
+    steps=[{
+        "arrival": 0,
+        "location": [0],
+        "type": "`start`",
+    }],
 )
 print(response.headers.get('X-My-Header'))
 
-direction = response.parse()  # get the object that `directions.compute_route()` would have returned
-print(direction.msg)
+route = response.parse()  # get the object that `fleetify.routes.create()` would have returned
+print(route.data)
 ```
 
-These methods return an [`APIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/stainless-sdks/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/stainless-sdks/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -291,9 +341,16 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.directions.with_streaming_response.compute_route(
-    destination="1.304046,103.823580",
-    origin="1.310611,103.804930",
+with client.fleetify.routes.with_streaming_response.create(
+    key="REPLACE_ME",
+    driver_email="REPLACE_ME",
+    steps=[
+        {
+            "arrival": 0,
+            "location": [0],
+            "type": "`start`",
+        }
+    ],
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -389,7 +446,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/nextbillion-ai/nextbillion-sdk-python/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nextbillion-sdk-python/issues) with questions, bugs, or suggestions.
 
 ### Determining the installed version
 

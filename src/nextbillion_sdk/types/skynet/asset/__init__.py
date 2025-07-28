@@ -3,9 +3,9 @@
 from __future__ import annotations
 
 from .track_location import TrackLocation as TrackLocation
-from .event_retrieve_list_params import EventRetrieveListParams as EventRetrieveListParams
-from .event_retrieve_list_response import EventRetrieveListResponse as EventRetrieveListResponse
-from .location_retrieve_last_params import LocationRetrieveLastParams as LocationRetrieveLastParams
-from .location_retrieve_list_params import LocationRetrieveListParams as LocationRetrieveListParams
-from .location_retrieve_last_response import LocationRetrieveLastResponse as LocationRetrieveLastResponse
-from .location_retrieve_list_response import LocationRetrieveListResponse as LocationRetrieveListResponse
+from .event_list_params import EventListParams as EventListParams
+from .event_list_response import EventListResponse as EventListResponse
+from .location_list_params import LocationListParams as LocationListParams
+from .location_list_response import LocationListResponse as LocationListResponse
+from .location_get_last_params import LocationGetLastParams as LocationGetLastParams
+from .location_get_last_response import LocationGetLastResponse as LocationGetLastResponse

@@ -14,7 +14,7 @@ from ..types import (
     restriction_update_params,
     restriction_retrieve_params,
     restriction_set_state_params,
-    restriction_list_paginated_params,
+    restriction_list_by_bbox_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -27,10 +27,10 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.rich_group_dto_response import RichGroupDtoResponse
+from ..types.rich_group_response import RichGroupResponse
 from ..types.restriction_list_response import RestrictionListResponse
 from ..types.restriction_delete_response import RestrictionDeleteResponse
-from ..types.restriction_list_paginated_response import RestrictionListPaginatedResponse
+from ..types.restriction_list_by_bbox_response import RestrictionListByBboxResponse
 
 __all__ = ["RestrictionsResource", "AsyncRestrictionsResource"]
 
@@ -42,7 +42,7 @@ class RestrictionsResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return RestrictionsResourceWithRawResponse(self)
 
@@ -51,7 +51,7 @@ class RestrictionsResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return RestrictionsResourceWithStreamingResponse(self)
 
@@ -85,7 +85,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Create a new restriction
 
@@ -237,7 +237,7 @@ class RestrictionsResource(SyncAPIResource):
                     restriction_create_params.RestrictionCreateParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     def retrieve(
@@ -252,7 +252,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Get a restriction by id
 
@@ -285,7 +285,7 @@ class RestrictionsResource(SyncAPIResource):
                     restriction_retrieve_params.RestrictionRetrieveParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     def update(
@@ -318,7 +318,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Update a restriction
 
@@ -468,146 +468,10 @@ class RestrictionsResource(SyncAPIResource):
                     restriction_update_params.RestrictionUpdateParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     def list(
-        self,
-        *,
-        key: str,
-        max_lat: float,
-        max_lon: float,
-        min_lat: float,
-        min_lon: float,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionListResponse:
-        """
-        Get restrictions by bbox
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          max_lat: Specifies the maximum latitude value for the bounding box.
-
-          max_lon: Specifies the maximum longitude value for the bounding box.
-
-          min_lat: Specifies the minimum latitude value for the bounding box.
-
-          min_lon: Specifies the minimum longitude value for the bounding box.
-
-          mode: Specify the modes of travel that the restriction pertains to.
-
-          restriction_type: Specify the type of restrictions to fetch.
-
-          source: This parameter represents where the restriction comes from and cannot be
-              modified by clients sending requests to the API endpoint.
-
-              For example, an API endpoint that returns a list of restrictions could include
-              the source parameter to indicate where each item comes from. This parameter can
-              be useful for filtering, sorting, or grouping the results based on their source.
-
-          state: This parameter is used to filter restrictions based on their state i.e. whether
-              the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
-
-          status: Restrictions can be active or inactive at a given time by virtue of their
-              nature. For example, maximum speed limits can be active on the roads leading to
-              schools during school hours and be inactive afterwards or certain road closure
-              restrictions be active during holidays/concerts and be inactive otherwise.
-
-              Use this parameter to filter the restrictions based on their status at the time
-              of making the request i.e. whether they are in force or not.
-
-          transform: This is internal parameter with a default value as `false`.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/restrictions",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "key": key,
-                        "max_lat": max_lat,
-                        "max_lon": max_lon,
-                        "min_lat": min_lat,
-                        "min_lon": min_lon,
-                        "mode": mode,
-                        "restriction_type": restriction_type,
-                        "source": source,
-                        "state": state,
-                        "status": status,
-                        "transform": transform,
-                    },
-                    restriction_list_params.RestrictionListParams,
-                ),
-            ),
-            cast_to=RestrictionListResponse,
-        )
-
-    def delete(
-        self,
-        id: int,
-        *,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionDeleteResponse:
-        """
-        Delete a restriction by ID
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._delete(
-            f"/restrictions/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"key": key}, restriction_delete_params.RestrictionDeleteParams),
-            ),
-            cast_to=RestrictionDeleteResponse,
-        )
-
-    def list_paginated(
         self,
         *,
         area: str,
@@ -628,7 +492,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionListPaginatedResponse:
+    ) -> RestrictionListResponse:
         """Get the paginated list of restrictions
 
         Args:
@@ -705,10 +569,146 @@ class RestrictionsResource(SyncAPIResource):
                         "status": status,
                         "transform": transform,
                     },
-                    restriction_list_paginated_params.RestrictionListPaginatedParams,
+                    restriction_list_params.RestrictionListParams,
                 ),
             ),
-            cast_to=RestrictionListPaginatedResponse,
+            cast_to=RestrictionListResponse,
+        )
+
+    def delete(
+        self,
+        id: int,
+        *,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RestrictionDeleteResponse:
+        """
+        Delete a restriction by ID
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._delete(
+            f"/restrictions/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"key": key}, restriction_delete_params.RestrictionDeleteParams),
+            ),
+            cast_to=RestrictionDeleteResponse,
+        )
+
+    def list_by_bbox(
+        self,
+        *,
+        key: str,
+        max_lat: float,
+        max_lon: float,
+        min_lat: float,
+        min_lon: float,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
+        | NotGiven = NOT_GIVEN,
+        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
+        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
+        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        transform: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RestrictionListByBboxResponse:
+        """
+        Get restrictions by bbox
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          max_lat: Specifies the maximum latitude value for the bounding box.
+
+          max_lon: Specifies the maximum longitude value for the bounding box.
+
+          min_lat: Specifies the minimum latitude value for the bounding box.
+
+          min_lon: Specifies the minimum longitude value for the bounding box.
+
+          mode: Specify the modes of travel that the restriction pertains to.
+
+          restriction_type: Specify the type of restrictions to fetch.
+
+          source: This parameter represents where the restriction comes from and cannot be
+              modified by clients sending requests to the API endpoint.
+
+              For example, an API endpoint that returns a list of restrictions could include
+              the source parameter to indicate where each item comes from. This parameter can
+              be useful for filtering, sorting, or grouping the results based on their source.
+
+          state: This parameter is used to filter restrictions based on their state i.e. whether
+              the restriction is currently enabled, disabled, or deleted. For example, users
+              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+
+          status: Restrictions can be active or inactive at a given time by virtue of their
+              nature. For example, maximum speed limits can be active on the roads leading to
+              schools during school hours and be inactive afterwards or certain road closure
+              restrictions be active during holidays/concerts and be inactive otherwise.
+
+              Use this parameter to filter the restrictions based on their status at the time
+              of making the request i.e. whether they are in force or not.
+
+          transform: This is internal parameter with a default value as `false`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/restrictions",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "key": key,
+                        "max_lat": max_lat,
+                        "max_lon": max_lon,
+                        "min_lat": min_lat,
+                        "min_lon": min_lon,
+                        "mode": mode,
+                        "restriction_type": restriction_type,
+                        "source": source,
+                        "state": state,
+                        "status": status,
+                        "transform": transform,
+                    },
+                    restriction_list_by_bbox_params.RestrictionListByBboxParams,
+                ),
+            ),
+            cast_to=RestrictionListByBboxResponse,
         )
 
     def set_state(
@@ -723,7 +723,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Set the state of a restriction by ID
 
@@ -753,7 +753,7 @@ class RestrictionsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform({"key": key}, restriction_set_state_params.RestrictionSetStateParams),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
 
@@ -764,7 +764,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncRestrictionsResourceWithRawResponse(self)
 
@@ -773,7 +773,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncRestrictionsResourceWithStreamingResponse(self)
 
@@ -807,7 +807,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Create a new restriction
 
@@ -959,7 +959,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
                     restriction_create_params.RestrictionCreateParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     async def retrieve(
@@ -974,7 +974,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Get a restriction by id
 
@@ -1007,7 +1007,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
                     restriction_retrieve_params.RestrictionRetrieveParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     async def update(
@@ -1040,7 +1040,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Update a restriction
 
@@ -1190,146 +1190,10 @@ class AsyncRestrictionsResource(AsyncAPIResource):
                     restriction_update_params.RestrictionUpdateParams,
                 ),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
     async def list(
-        self,
-        *,
-        key: str,
-        max_lat: float,
-        max_lon: float,
-        min_lat: float,
-        min_lon: float,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionListResponse:
-        """
-        Get restrictions by bbox
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          max_lat: Specifies the maximum latitude value for the bounding box.
-
-          max_lon: Specifies the maximum longitude value for the bounding box.
-
-          min_lat: Specifies the minimum latitude value for the bounding box.
-
-          min_lon: Specifies the minimum longitude value for the bounding box.
-
-          mode: Specify the modes of travel that the restriction pertains to.
-
-          restriction_type: Specify the type of restrictions to fetch.
-
-          source: This parameter represents where the restriction comes from and cannot be
-              modified by clients sending requests to the API endpoint.
-
-              For example, an API endpoint that returns a list of restrictions could include
-              the source parameter to indicate where each item comes from. This parameter can
-              be useful for filtering, sorting, or grouping the results based on their source.
-
-          state: This parameter is used to filter restrictions based on their state i.e. whether
-              the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
-
-          status: Restrictions can be active or inactive at a given time by virtue of their
-              nature. For example, maximum speed limits can be active on the roads leading to
-              schools during school hours and be inactive afterwards or certain road closure
-              restrictions be active during holidays/concerts and be inactive otherwise.
-
-              Use this parameter to filter the restrictions based on their status at the time
-              of making the request i.e. whether they are in force or not.
-
-          transform: This is internal parameter with a default value as `false`.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/restrictions",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "key": key,
-                        "max_lat": max_lat,
-                        "max_lon": max_lon,
-                        "min_lat": min_lat,
-                        "min_lon": min_lon,
-                        "mode": mode,
-                        "restriction_type": restriction_type,
-                        "source": source,
-                        "state": state,
-                        "status": status,
-                        "transform": transform,
-                    },
-                    restriction_list_params.RestrictionListParams,
-                ),
-            ),
-            cast_to=RestrictionListResponse,
-        )
-
-    async def delete(
-        self,
-        id: int,
-        *,
-        key: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionDeleteResponse:
-        """
-        Delete a restriction by ID
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._delete(
-            f"/restrictions/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"key": key}, restriction_delete_params.RestrictionDeleteParams),
-            ),
-            cast_to=RestrictionDeleteResponse,
-        )
-
-    async def list_paginated(
         self,
         *,
         area: str,
@@ -1350,7 +1214,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RestrictionListPaginatedResponse:
+    ) -> RestrictionListResponse:
         """Get the paginated list of restrictions
 
         Args:
@@ -1427,10 +1291,146 @@ class AsyncRestrictionsResource(AsyncAPIResource):
                         "status": status,
                         "transform": transform,
                     },
-                    restriction_list_paginated_params.RestrictionListPaginatedParams,
+                    restriction_list_params.RestrictionListParams,
                 ),
             ),
-            cast_to=RestrictionListPaginatedResponse,
+            cast_to=RestrictionListResponse,
+        )
+
+    async def delete(
+        self,
+        id: int,
+        *,
+        key: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RestrictionDeleteResponse:
+        """
+        Delete a restriction by ID
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._delete(
+            f"/restrictions/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"key": key}, restriction_delete_params.RestrictionDeleteParams),
+            ),
+            cast_to=RestrictionDeleteResponse,
+        )
+
+    async def list_by_bbox(
+        self,
+        *,
+        key: str,
+        max_lat: float,
+        max_lon: float,
+        min_lat: float,
+        min_lon: float,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
+        | NotGiven = NOT_GIVEN,
+        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
+        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
+        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        transform: bool | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> RestrictionListByBboxResponse:
+        """
+        Get restrictions by bbox
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          max_lat: Specifies the maximum latitude value for the bounding box.
+
+          max_lon: Specifies the maximum longitude value for the bounding box.
+
+          min_lat: Specifies the minimum latitude value for the bounding box.
+
+          min_lon: Specifies the minimum longitude value for the bounding box.
+
+          mode: Specify the modes of travel that the restriction pertains to.
+
+          restriction_type: Specify the type of restrictions to fetch.
+
+          source: This parameter represents where the restriction comes from and cannot be
+              modified by clients sending requests to the API endpoint.
+
+              For example, an API endpoint that returns a list of restrictions could include
+              the source parameter to indicate where each item comes from. This parameter can
+              be useful for filtering, sorting, or grouping the results based on their source.
+
+          state: This parameter is used to filter restrictions based on their state i.e. whether
+              the restriction is currently enabled, disabled, or deleted. For example, users
+              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+
+          status: Restrictions can be active or inactive at a given time by virtue of their
+              nature. For example, maximum speed limits can be active on the roads leading to
+              schools during school hours and be inactive afterwards or certain road closure
+              restrictions be active during holidays/concerts and be inactive otherwise.
+
+              Use this parameter to filter the restrictions based on their status at the time
+              of making the request i.e. whether they are in force or not.
+
+          transform: This is internal parameter with a default value as `false`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/restrictions",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "key": key,
+                        "max_lat": max_lat,
+                        "max_lon": max_lon,
+                        "min_lat": min_lat,
+                        "min_lon": min_lon,
+                        "mode": mode,
+                        "restriction_type": restriction_type,
+                        "source": source,
+                        "state": state,
+                        "status": status,
+                        "transform": transform,
+                    },
+                    restriction_list_by_bbox_params.RestrictionListByBboxParams,
+                ),
+            ),
+            cast_to=RestrictionListByBboxResponse,
         )
 
     async def set_state(
@@ -1445,7 +1445,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RichGroupDtoResponse:
+    ) -> RichGroupResponse:
         """
         Set the state of a restriction by ID
 
@@ -1475,7 +1475,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform({"key": key}, restriction_set_state_params.RestrictionSetStateParams),
             ),
-            cast_to=RichGroupDtoResponse,
+            cast_to=RichGroupResponse,
         )
 
 
@@ -1498,8 +1498,8 @@ class RestrictionsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             restrictions.delete,
         )
-        self.list_paginated = to_raw_response_wrapper(
-            restrictions.list_paginated,
+        self.list_by_bbox = to_raw_response_wrapper(
+            restrictions.list_by_bbox,
         )
         self.set_state = to_raw_response_wrapper(
             restrictions.set_state,
@@ -1525,8 +1525,8 @@ class AsyncRestrictionsResourceWithRawResponse:
         self.delete = async_to_raw_response_wrapper(
             restrictions.delete,
         )
-        self.list_paginated = async_to_raw_response_wrapper(
-            restrictions.list_paginated,
+        self.list_by_bbox = async_to_raw_response_wrapper(
+            restrictions.list_by_bbox,
         )
         self.set_state = async_to_raw_response_wrapper(
             restrictions.set_state,
@@ -1552,8 +1552,8 @@ class RestrictionsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             restrictions.delete,
         )
-        self.list_paginated = to_streamed_response_wrapper(
-            restrictions.list_paginated,
+        self.list_by_bbox = to_streamed_response_wrapper(
+            restrictions.list_by_bbox,
         )
         self.set_state = to_streamed_response_wrapper(
             restrictions.set_state,
@@ -1579,8 +1579,8 @@ class AsyncRestrictionsResourceWithStreamingResponse:
         self.delete = async_to_streamed_response_wrapper(
             restrictions.delete,
         )
-        self.list_paginated = async_to_streamed_response_wrapper(
-            restrictions.list_paginated,
+        self.list_by_bbox = async_to_streamed_response_wrapper(
+            restrictions.list_by_bbox,
         )
         self.set_state = async_to_streamed_response_wrapper(
             restrictions.set_state,

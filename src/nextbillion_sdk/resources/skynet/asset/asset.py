@@ -35,19 +35,20 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.skynet import (
+    asset_bind_params,
+    asset_list_params,
     asset_track_params,
     asset_create_params,
     asset_delete_params,
     asset_update_params,
     asset_retrieve_params,
-    asset_retrieve_list_params,
     asset_update_attributes_params,
 )
 from ....types.skynet.simple_resp import SimpleResp
 from ....types.skynet.meta_data_param import MetaDataParam
+from ....types.skynet.asset_list_response import AssetListResponse
 from ....types.skynet.asset_create_response import AssetCreateResponse
 from ....types.skynet.asset_retrieve_response import AssetRetrieveResponse
-from ....types.skynet.asset_retrieve_list_response import AssetRetrieveListResponse
 
 __all__ = ["AssetResource", "AsyncAssetResource"]
 
@@ -67,7 +68,7 @@ class AssetResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AssetResourceWithRawResponse(self)
 
@@ -76,7 +77,7 @@ class AssetResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AssetResourceWithStreamingResponse(self)
 
@@ -321,57 +322,7 @@ class AssetResource(SyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    def delete(
-        self,
-        id: str,
-        *,
-        key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SimpleResp:
-        """
-        Delete an Asset
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          cluster: the cluster of the region you want to use
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._delete(
-            f"/skynet/asset/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "key": key,
-                        "cluster": cluster,
-                    },
-                    asset_delete_params.AssetDeleteParams,
-                ),
-            ),
-            cast_to=SimpleResp,
-        )
-
-    def retrieve_list(
+    def list(
         self,
         *,
         key: str,
@@ -388,7 +339,7 @@ class AssetResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AssetRetrieveListResponse:
+    ) -> AssetListResponse:
         """
         Get Asset List
 
@@ -461,10 +412,109 @@ class AssetResource(SyncAPIResource):
                         "sort": sort,
                         "tags": tags,
                     },
-                    asset_retrieve_list_params.AssetRetrieveListParams,
+                    asset_list_params.AssetListParams,
                 ),
             ),
-            cast_to=AssetRetrieveListResponse,
+            cast_to=AssetListResponse,
+        )
+
+    def delete(
+        self,
+        id: str,
+        *,
+        key: str,
+        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Delete an Asset
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          cluster: the cluster of the region you want to use
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/skynet/asset/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "key": key,
+                        "cluster": cluster,
+                    },
+                    asset_delete_params.AssetDeleteParams,
+                ),
+            ),
+            cast_to=SimpleResp,
+        )
+
+    def bind(
+        self,
+        id: str,
+        *,
+        key: str,
+        device_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Bind asset to device
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          device_id: Device ID to be linked to the `asset` identified by `id`.
+
+              Please note that the device needs to be linked to an `asset` before using it in
+              the _Upload locations of an Asset_ method for sending GPS information about the
+              `asset`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._post(
+            f"/skynet/asset/{id}/bind",
+            body=maybe_transform({"device_id": device_id}, asset_bind_params.AssetBindParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"key": key}, asset_bind_params.AssetBindParams),
+            ),
+            cast_to=SimpleResp,
         )
 
     def track(
@@ -612,7 +662,7 @@ class AsyncAssetResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncAssetResourceWithRawResponse(self)
 
@@ -621,7 +671,7 @@ class AsyncAssetResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncAssetResourceWithStreamingResponse(self)
 
@@ -866,57 +916,7 @@ class AsyncAssetResource(AsyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    async def delete(
-        self,
-        id: str,
-        *,
-        key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SimpleResp:
-        """
-        Delete an Asset
-
-        Args:
-          key: A key is a unique identifier that is required to authenticate a request to the
-              API.
-
-          cluster: the cluster of the region you want to use
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._delete(
-            f"/skynet/asset/{id}",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "key": key,
-                        "cluster": cluster,
-                    },
-                    asset_delete_params.AssetDeleteParams,
-                ),
-            ),
-            cast_to=SimpleResp,
-        )
-
-    async def retrieve_list(
+    async def list(
         self,
         *,
         key: str,
@@ -933,7 +933,7 @@ class AsyncAssetResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AssetRetrieveListResponse:
+    ) -> AssetListResponse:
         """
         Get Asset List
 
@@ -1006,10 +1006,109 @@ class AsyncAssetResource(AsyncAPIResource):
                         "sort": sort,
                         "tags": tags,
                     },
-                    asset_retrieve_list_params.AssetRetrieveListParams,
+                    asset_list_params.AssetListParams,
                 ),
             ),
-            cast_to=AssetRetrieveListResponse,
+            cast_to=AssetListResponse,
+        )
+
+    async def delete(
+        self,
+        id: str,
+        *,
+        key: str,
+        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Delete an Asset
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          cluster: the cluster of the region you want to use
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/skynet/asset/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "key": key,
+                        "cluster": cluster,
+                    },
+                    asset_delete_params.AssetDeleteParams,
+                ),
+            ),
+            cast_to=SimpleResp,
+        )
+
+    async def bind(
+        self,
+        id: str,
+        *,
+        key: str,
+        device_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SimpleResp:
+        """
+        Bind asset to device
+
+        Args:
+          key: A key is a unique identifier that is required to authenticate a request to the
+              API.
+
+          device_id: Device ID to be linked to the `asset` identified by `id`.
+
+              Please note that the device needs to be linked to an `asset` before using it in
+              the _Upload locations of an Asset_ method for sending GPS information about the
+              `asset`.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._post(
+            f"/skynet/asset/{id}/bind",
+            body=await async_maybe_transform({"device_id": device_id}, asset_bind_params.AssetBindParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"key": key}, asset_bind_params.AssetBindParams),
+            ),
+            cast_to=SimpleResp,
         )
 
     async def track(
@@ -1157,11 +1256,14 @@ class AssetResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             asset.update,
         )
+        self.list = to_raw_response_wrapper(
+            asset.list,
+        )
         self.delete = to_raw_response_wrapper(
             asset.delete,
         )
-        self.retrieve_list = to_raw_response_wrapper(
-            asset.retrieve_list,
+        self.bind = to_raw_response_wrapper(
+            asset.bind,
         )
         self.track = to_raw_response_wrapper(
             asset.track,
@@ -1192,11 +1294,14 @@ class AsyncAssetResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             asset.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            asset.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             asset.delete,
         )
-        self.retrieve_list = async_to_raw_response_wrapper(
-            asset.retrieve_list,
+        self.bind = async_to_raw_response_wrapper(
+            asset.bind,
         )
         self.track = async_to_raw_response_wrapper(
             asset.track,
@@ -1227,11 +1332,14 @@ class AssetResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             asset.update,
         )
+        self.list = to_streamed_response_wrapper(
+            asset.list,
+        )
         self.delete = to_streamed_response_wrapper(
             asset.delete,
         )
-        self.retrieve_list = to_streamed_response_wrapper(
-            asset.retrieve_list,
+        self.bind = to_streamed_response_wrapper(
+            asset.bind,
         )
         self.track = to_streamed_response_wrapper(
             asset.track,
@@ -1262,11 +1370,14 @@ class AsyncAssetResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             asset.update,
         )
+        self.list = async_to_streamed_response_wrapper(
+            asset.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             asset.delete,
         )
-        self.retrieve_list = async_to_streamed_response_wrapper(
-            asset.retrieve_list,
+        self.bind = async_to_streamed_response_wrapper(
+            asset.bind,
         )
         self.track = async_to_streamed_response_wrapper(
             asset.track,

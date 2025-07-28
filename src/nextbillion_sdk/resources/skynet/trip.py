@@ -24,12 +24,12 @@ from ...types.skynet import (
     trip_delete_params,
     trip_update_params,
     trip_retrieve_params,
-    trip_retrieve_summary_params,
+    trip_get_summary_params,
 )
 from ...types.skynet.simple_resp import SimpleResp
 from ...types.skynet.trip_start_response import TripStartResponse
 from ...types.skynet.trip_retrieve_response import TripRetrieveResponse
-from ...types.skynet.trip_retrieve_summary_response import TripRetrieveSummaryResponse
+from ...types.skynet.trip_get_summary_response import TripGetSummaryResponse
 
 __all__ = ["TripResource", "AsyncTripResource"]
 
@@ -41,7 +41,7 @@ class TripResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return TripResourceWithRawResponse(self)
 
@@ -50,7 +50,7 @@ class TripResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return TripResourceWithStreamingResponse(self)
 
@@ -297,7 +297,7 @@ class TripResource(SyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    def retrieve_summary(
+    def get_summary(
         self,
         id: str,
         *,
@@ -309,7 +309,7 @@ class TripResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripRetrieveSummaryResponse:
+    ) -> TripGetSummaryResponse:
         """
         Get summary of an ended trip
 
@@ -341,10 +341,10 @@ class TripResource(SyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    trip_retrieve_summary_params.TripRetrieveSummaryParams,
+                    trip_get_summary_params.TripGetSummaryParams,
                 ),
             ),
-            cast_to=TripRetrieveSummaryResponse,
+            cast_to=TripGetSummaryResponse,
         )
 
     def start(
@@ -450,7 +450,7 @@ class AsyncTripResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#accessing-raw-response-data-eg-headers
         """
         return AsyncTripResourceWithRawResponse(self)
 
@@ -459,7 +459,7 @@ class AsyncTripResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/nextbillion-ai/nextbillion-sdk-python#with_streaming_response
+        For more information, see https://www.github.com/stainless-sdks/nextbillion-sdk-python#with_streaming_response
         """
         return AsyncTripResourceWithStreamingResponse(self)
 
@@ -706,7 +706,7 @@ class AsyncTripResource(AsyncAPIResource):
             cast_to=SimpleResp,
         )
 
-    async def retrieve_summary(
+    async def get_summary(
         self,
         id: str,
         *,
@@ -718,7 +718,7 @@ class AsyncTripResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TripRetrieveSummaryResponse:
+    ) -> TripGetSummaryResponse:
         """
         Get summary of an ended trip
 
@@ -750,10 +750,10 @@ class AsyncTripResource(AsyncAPIResource):
                         "key": key,
                         "cluster": cluster,
                     },
-                    trip_retrieve_summary_params.TripRetrieveSummaryParams,
+                    trip_get_summary_params.TripGetSummaryParams,
                 ),
             ),
-            cast_to=TripRetrieveSummaryResponse,
+            cast_to=TripGetSummaryResponse,
         )
 
     async def start(
@@ -868,8 +868,8 @@ class TripResourceWithRawResponse:
         self.end = to_raw_response_wrapper(
             trip.end,
         )
-        self.retrieve_summary = to_raw_response_wrapper(
-            trip.retrieve_summary,
+        self.get_summary = to_raw_response_wrapper(
+            trip.get_summary,
         )
         self.start = to_raw_response_wrapper(
             trip.start,
@@ -892,8 +892,8 @@ class AsyncTripResourceWithRawResponse:
         self.end = async_to_raw_response_wrapper(
             trip.end,
         )
-        self.retrieve_summary = async_to_raw_response_wrapper(
-            trip.retrieve_summary,
+        self.get_summary = async_to_raw_response_wrapper(
+            trip.get_summary,
         )
         self.start = async_to_raw_response_wrapper(
             trip.start,
@@ -916,8 +916,8 @@ class TripResourceWithStreamingResponse:
         self.end = to_streamed_response_wrapper(
             trip.end,
         )
-        self.retrieve_summary = to_streamed_response_wrapper(
-            trip.retrieve_summary,
+        self.get_summary = to_streamed_response_wrapper(
+            trip.get_summary,
         )
         self.start = to_streamed_response_wrapper(
             trip.start,
@@ -940,8 +940,8 @@ class AsyncTripResourceWithStreamingResponse:
         self.end = async_to_streamed_response_wrapper(
             trip.end,
         )
-        self.retrieve_summary = async_to_streamed_response_wrapper(
-            trip.retrieve_summary,
+        self.get_summary = async_to_streamed_response_wrapper(
+            trip.get_summary,
         )
         self.start = async_to_streamed_response_wrapper(
             trip.start,

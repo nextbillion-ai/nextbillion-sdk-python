@@ -336,6 +336,25 @@ class TestNextbillionSDK:
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
+    def test_validate_headers(self) -> None:
+        client = NextbillionSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with update_env(**{"NEXTBILLION_SDK_API_KEY": Omit()}):
+            client2 = NextbillionSDK(base_url=base_url, api_key=None, _strict_response_validation=True)
+
+        with pytest.raises(
+            TypeError,
+            match="Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted",
+        ):
+            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
+
+        request2 = client2._build_request(
+            FinalRequestOptions(method="get", url="/foo", headers={"Authorization": Omit()})
+        )
+        assert request2.headers.get("Authorization") is None
+
     def test_default_query_option(self) -> None:
         client = NextbillionSDK(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
@@ -714,11 +733,19 @@ class TestNextbillionSDK:
     @mock.patch("nextbillion_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: NextbillionSDK) -> None:
-        respx_mock.post("/directions/json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/fleetify/routes").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", origin="41.349302,2.136480"
+            client.fleetify.routes.with_streaming_response.create(
+                key="key",
+                driver_email="johndoe@abc.com",
+                steps=[
+                    {
+                        "arrival": 0,
+                        "location": [0],
+                        "type": "`start`",
+                    }
+                ],
             ).__enter__()
 
         assert _get_open_connections(self.client) == 0
@@ -726,11 +753,19 @@ class TestNextbillionSDK:
     @mock.patch("nextbillion_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: NextbillionSDK) -> None:
-        respx_mock.post("/directions/json").mock(return_value=httpx.Response(500))
+        respx_mock.post("/fleetify/routes").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", origin="41.349302,2.136480"
+            client.fleetify.routes.with_streaming_response.create(
+                key="key",
+                driver_email="johndoe@abc.com",
+                steps=[
+                    {
+                        "arrival": 0,
+                        "location": [0],
+                        "type": "`start`",
+                    }
+                ],
             ).__enter__()
         assert _get_open_connections(self.client) == 0
 
@@ -758,10 +793,18 @@ class TestNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480", origin="41.349302,2.136480"
+        response = client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
         )
 
         assert response.retries_taken == failures_before_success
@@ -784,11 +827,18 @@ class TestNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+        response = client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -811,11 +861,18 @@ class TestNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+        response = client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
             extra_headers={"x-stainless-retry-count": "42"},
         )
 
@@ -1150,6 +1207,25 @@ class TestAsyncNextbillionSDK:
         request = client2._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "stainless"
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
+
+    def test_validate_headers(self) -> None:
+        client = AsyncNextbillionSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
+        assert request.headers.get("Authorization") == f"Bearer {api_key}"
+
+        with update_env(**{"NEXTBILLION_SDK_API_KEY": Omit()}):
+            client2 = AsyncNextbillionSDK(base_url=base_url, api_key=None, _strict_response_validation=True)
+
+        with pytest.raises(
+            TypeError,
+            match="Could not resolve authentication method. Expected the api_key to be set. Or for the `Authorization` headers to be explicitly omitted",
+        ):
+            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
+
+        request2 = client2._build_request(
+            FinalRequestOptions(method="get", url="/foo", headers={"Authorization": Omit()})
+        )
+        assert request2.headers.get("Authorization") is None
 
     def test_default_query_option(self) -> None:
         client = AsyncNextbillionSDK(
@@ -1535,11 +1611,19 @@ class TestAsyncNextbillionSDK:
     async def test_retrying_timeout_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncNextbillionSDK
     ) -> None:
-        respx_mock.post("/directions/json").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.post("/fleetify/routes").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
-            await async_client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", origin="41.349302,2.136480"
+            await async_client.fleetify.routes.with_streaming_response.create(
+                key="key",
+                driver_email="johndoe@abc.com",
+                steps=[
+                    {
+                        "arrival": 0,
+                        "location": [0],
+                        "type": "`start`",
+                    }
+                ],
             ).__aenter__()
 
         assert _get_open_connections(self.client) == 0
@@ -1549,11 +1633,19 @@ class TestAsyncNextbillionSDK:
     async def test_retrying_status_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncNextbillionSDK
     ) -> None:
-        respx_mock.post("/directions/json").mock(return_value=httpx.Response(500))
+        respx_mock.post("/fleetify/routes").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await async_client.directions.with_streaming_response.compute_route(
-                destination="41.349302,2.136480", origin="41.349302,2.136480"
+            await async_client.fleetify.routes.with_streaming_response.create(
+                key="key",
+                driver_email="johndoe@abc.com",
+                steps=[
+                    {
+                        "arrival": 0,
+                        "location": [0],
+                        "type": "`start`",
+                    }
+                ],
             ).__aenter__()
         assert _get_open_connections(self.client) == 0
 
@@ -1582,10 +1674,18 @@ class TestAsyncNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = await client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480", origin="41.349302,2.136480"
+        response = await client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
         )
 
         assert response.retries_taken == failures_before_success
@@ -1609,11 +1709,18 @@ class TestAsyncNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = await client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+        response = await client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -1637,11 +1744,18 @@ class TestAsyncNextbillionSDK:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/directions/json").mock(side_effect=retry_handler)
+        respx_mock.post("/fleetify/routes").mock(side_effect=retry_handler)
 
-        response = await client.directions.with_raw_response.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+        response = await client.fleetify.routes.with_raw_response.create(
+            key="key",
+            driver_email="johndoe@abc.com",
+            steps=[
+                {
+                    "arrival": 0,
+                    "location": [0],
+                    "type": "`start`",
+                }
+            ],
             extra_headers={"x-stainless-retry-count": "42"},
         )
 
