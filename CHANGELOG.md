@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 (2025-07-30)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** manual updates ([62df858](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/62df8580dcaf879b9924e8008b6b83580963a68b))
+* Fix for ruby ([79fee5c](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/79fee5ce0570902d53464efc1e5505ebf36f140c))
+* publish to ruby gem and align namings ([a3dc8a9](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/a3dc8a900b00cf5d96cefa1fcd3fd12002dccafc))
+* re-order endpoints ([ed7e19b](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/ed7e19b115a1108fdb7e4d5f2d1d6383b8e8ca6c))
+
 ## 0.3.0 (2025-07-28)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.2.0...v0.3.0)
