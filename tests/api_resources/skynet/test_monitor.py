@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.skynet import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.skynet import (
     SimpleResp,
     MonitorListResponse,
     MonitorCreateResponse,
@@ -28,7 +28,7 @@ class TestMonitor:
         monitor = client.skynet.monitor.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
         assert_matches_type(MonitorCreateResponse, monitor, path=["response"])
 
@@ -38,7 +38,7 @@ class TestMonitor:
         monitor = client.skynet.monitor.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
             cluster="america",
             custom_id="custom_id",
             description="description",
@@ -68,7 +68,7 @@ class TestMonitor:
         response = client.skynet.monitor.with_raw_response.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
 
         assert response.is_closed is True
@@ -82,7 +82,7 @@ class TestMonitor:
         with client.skynet.monitor.with_streaming_response.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -172,7 +172,7 @@ class TestMonitor:
                 "use_admin_speed_limit": True,
             },
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
         assert_matches_type(SimpleResp, monitor, path=["response"])
 
@@ -318,7 +318,7 @@ class TestAsyncMonitor:
         monitor = await async_client.skynet.monitor.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
         assert_matches_type(MonitorCreateResponse, monitor, path=["response"])
 
@@ -328,7 +328,7 @@ class TestAsyncMonitor:
         monitor = await async_client.skynet.monitor.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
             cluster="america",
             custom_id="custom_id",
             description="description",
@@ -358,7 +358,7 @@ class TestAsyncMonitor:
         response = await async_client.skynet.monitor.with_raw_response.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
 
         assert response.is_closed is True
@@ -372,7 +372,7 @@ class TestAsyncMonitor:
         async with async_client.skynet.monitor.with_streaming_response.create(
             key="key=API_KEY",
             tags=["string"],
-            type="`enter`",
+            type="enter",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -462,7 +462,7 @@ class TestAsyncMonitor:
                 "use_admin_speed_limit": True,
             },
             tags=["string"],
-            type="`enter`",
+            type="enter",
         )
         assert_matches_type(SimpleResp, monitor, path=["response"])
 
