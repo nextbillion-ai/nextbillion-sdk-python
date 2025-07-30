@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import IsochroneComputeResponse
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types import IsochroneComputeResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -40,7 +40,7 @@ class TestIsochrone:
             denoise=0,
             departure_time=0,
             generalize=0,
-            mode="car",
+            mode="`car`",
             polygons=True,
         )
         assert_matches_type(IsochroneComputeResponse, isochrone, path=["response"])
@@ -106,7 +106,7 @@ class TestAsyncIsochrone:
             denoise=0,
             departure_time=0,
             generalize=0,
-            mode="car",
+            mode="`car`",
             polygons=True,
         )
         assert_matches_type(IsochroneComputeResponse, isochrone, path=["response"])

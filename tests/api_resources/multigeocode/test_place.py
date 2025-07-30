@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.multigeocode import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.multigeocode import (
     PlaceCreateResponse,
     PlaceDeleteResponse,
     PlaceUpdateResponse,
