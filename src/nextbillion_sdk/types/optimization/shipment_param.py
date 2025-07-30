@@ -187,7 +187,7 @@ class Pickup(TypedDict, total=False):
 
 
 class Volume(TypedDict, total=False):
-    alignment: Literal["strict", "parallel", "fixed_bottom", '" "']
+    alignment: Literal["strict", "parallel", "fixed_bottom"]
     """Refers to the orientation of the cargo in the loading compartment.
 
     It supports the following values:
