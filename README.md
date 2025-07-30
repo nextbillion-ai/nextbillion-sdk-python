@@ -33,8 +33,8 @@ client = NextbillionSDK(
 )
 
 response = client.directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841062",
 )
 print(response.msg)
 ```
@@ -60,8 +60,8 @@ client = AsyncNextbillionSDK(
 
 async def main() -> None:
     response = await client.directions.compute_route(
-        destination="41.349302,2.136480",
-        origin="41.349302,2.136480",
+        destination="1.335368,103.785517",
+        origin="1.312164,103.841062",
     )
     print(response.msg)
 
@@ -96,8 +96,8 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.directions.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+            destination="1.335368,103.785517",
+            origin="1.312164,103.841062",
         )
         print(response.msg)
 
@@ -155,8 +155,8 @@ client = NextbillionSDK()
 
 try:
     client.directions.compute_route(
-        destination="41.349302,2.136480",
-        origin="41.349302,2.136480",
+        destination="1.335368,103.785517",
+        origin="1.312164,103.841062",
     )
 except nextbillion_sdk.APIConnectionError as e:
     print("The server could not be reached")
@@ -201,8 +201,8 @@ client = NextbillionSDK(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841062",
 )
 ```
 
@@ -227,8 +227,8 @@ client = NextbillionSDK(
 
 # Override per-request:
 client.with_options(timeout=5.0).directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841062",
 )
 ```
 
@@ -271,8 +271,8 @@ from nextbillion_sdk import NextbillionSDK
 
 client = NextbillionSDK()
 response = client.directions.with_raw_response.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841062",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -292,8 +292,8 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.directions.with_streaming_response.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841062",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
