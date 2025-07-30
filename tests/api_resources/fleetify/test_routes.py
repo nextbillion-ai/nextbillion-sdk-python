@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.fleetify import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.fleetify import (
     RouteCreateResponse,
     RouteRedispatchResponse,
 )
@@ -30,7 +30,7 @@ class TestRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         )
@@ -46,9 +46,9 @@ class TestRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                     "address": '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-                    "completion_mode": "manual",
+                    "completion_mode": "`manual`",
                     "document_template_id": "document_template_id",
                     "duration": 0,
                     "geofence_config": {
@@ -66,10 +66,10 @@ class TestRoutes:
             document_template_id='"document_template_id": "bfbc4799-bc2f-4515-9054-d888560909bf"',
             ro_request_id="ro_request_id",
             routing={
-                "approaches": "unrestricted",
-                "avoid": "toll",
-                "hazmat_type": "general",
-                "mode": "car",
+                "approaches": "`unrestricted`",
+                "avoid": "`toll`",
+                "hazmat_type": "`general`",
+                "mode": "`car`",
                 "truck_axle_load": 0,
                 "truck_size": '"truck_size": "200, 210, 600"',
                 "truck_weight": 0,
@@ -87,7 +87,7 @@ class TestRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         )
@@ -107,7 +107,7 @@ class TestRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         ) as response:
@@ -128,7 +128,7 @@ class TestRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         )
@@ -143,14 +143,14 @@ class TestRoutes:
             operations=[
                 {
                     "data": {
-                        "completion_mode": "manual",
+                        "completion_mode": "`manual`",
                         "document_template_id": "document_template_id",
                         "step": {
                             "arrival": 0,
                             "location": [0],
-                            "type": "start",
+                            "type": "`start`",
                             "address": '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-                            "completion_mode": "manual",
+                            "completion_mode": "`manual`",
                             "document_template_id": "document_template_id",
                             "duration": 0,
                             "geofence_config": {
@@ -165,7 +165,7 @@ class TestRoutes:
                         },
                         "step_id": "step_id",
                     },
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
             distance=0,
@@ -181,7 +181,7 @@ class TestRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         )
@@ -200,7 +200,7 @@ class TestRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         ) as response:
@@ -222,7 +222,7 @@ class TestRoutes:
                 operations=[
                     {
                         "data": {},
-                        "operation": "create",
+                        "operation": "`create`",
                     }
                 ],
             )
@@ -243,7 +243,7 @@ class TestAsyncRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         )
@@ -259,9 +259,9 @@ class TestAsyncRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                     "address": '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-                    "completion_mode": "manual",
+                    "completion_mode": "`manual`",
                     "document_template_id": "document_template_id",
                     "duration": 0,
                     "geofence_config": {
@@ -279,10 +279,10 @@ class TestAsyncRoutes:
             document_template_id='"document_template_id": "bfbc4799-bc2f-4515-9054-d888560909bf"',
             ro_request_id="ro_request_id",
             routing={
-                "approaches": "unrestricted",
-                "avoid": "toll",
-                "hazmat_type": "general",
-                "mode": "car",
+                "approaches": "`unrestricted`",
+                "avoid": "`toll`",
+                "hazmat_type": "`general`",
+                "mode": "`car`",
                 "truck_axle_load": 0,
                 "truck_size": '"truck_size": "200, 210, 600"',
                 "truck_weight": 0,
@@ -300,7 +300,7 @@ class TestAsyncRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         )
@@ -320,7 +320,7 @@ class TestAsyncRoutes:
                 {
                     "arrival": 0,
                     "location": [0],
-                    "type": "start",
+                    "type": "`start`",
                 }
             ],
         ) as response:
@@ -341,7 +341,7 @@ class TestAsyncRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         )
@@ -356,14 +356,14 @@ class TestAsyncRoutes:
             operations=[
                 {
                     "data": {
-                        "completion_mode": "manual",
+                        "completion_mode": "`manual`",
                         "document_template_id": "document_template_id",
                         "step": {
                             "arrival": 0,
                             "location": [0],
-                            "type": "start",
+                            "type": "`start`",
                             "address": '"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-                            "completion_mode": "manual",
+                            "completion_mode": "`manual`",
                             "document_template_id": "document_template_id",
                             "duration": 0,
                             "geofence_config": {
@@ -378,7 +378,7 @@ class TestAsyncRoutes:
                         },
                         "step_id": "step_id",
                     },
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
             distance=0,
@@ -394,7 +394,7 @@ class TestAsyncRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         )
@@ -413,7 +413,7 @@ class TestAsyncRoutes:
             operations=[
                 {
                     "data": {},
-                    "operation": "create",
+                    "operation": "`create`",
                 }
             ],
         ) as response:
@@ -435,7 +435,7 @@ class TestAsyncRoutes:
                 operations=[
                     {
                         "data": {},
-                        "operation": "create",
+                        "operation": "`create`",
                     }
                 ],
             )

@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.skynet.asset import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.skynet.asset import (
     LocationListResponse,
     LocationGetLastResponse,
 )
@@ -36,9 +36,9 @@ class TestLocation:
             id="id",
             key="key=API_KEY",
             cluster="america",
-            correction="correction=mapmatch=1,interpolate=0,mode=car",
+            correction="correction=mapmatch=1,interpolate=0,mode=`car`",
             end_time=0,
-            geometry_type="polyline",
+            geometry_type="`polyline`",
             pn=0,
             ps=500,
             start_time=0,
@@ -160,9 +160,9 @@ class TestAsyncLocation:
             id="id",
             key="key=API_KEY",
             cluster="america",
-            correction="correction=mapmatch=1,interpolate=0,mode=car",
+            correction="correction=mapmatch=1,interpolate=0,mode=`car`",
             end_time=0,
-            geometry_type="polyline",
+            geometry_type="`polyline`",
             pn=0,
             ps=500,
             start_time=0,

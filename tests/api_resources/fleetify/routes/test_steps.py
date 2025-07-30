@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.fleetify.routes import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.fleetify.routes import (
     StepCreateResponse,
     StepDeleteResponse,
     StepUpdateResponse,
@@ -30,7 +30,7 @@ class TestSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
@@ -43,9 +43,9 @@ class TestSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
             address='"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-            completion_mode="manual",
+            completion_mode="`manual`",
             document_template_id="document_template_id",
             duration=0,
             geofence_config={
@@ -69,7 +69,7 @@ class TestSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         )
 
         assert response.is_closed is True
@@ -86,7 +86,7 @@ class TestSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,7 +106,7 @@ class TestSteps:
                 arrival=0,
                 location=[0],
                 position=0,
-                type="start",
+                type="`start`",
             )
 
     @pytest.mark.skip()
@@ -131,7 +131,7 @@ class TestSteps:
             arrival=0,
             position=0,
             address='"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-            completion_mode="manual",
+            completion_mode="`manual`",
             document_template_id="document_template_id",
             duration=0,
             geofence_config={
@@ -144,7 +144,7 @@ class TestSteps:
                 "customer_phone_number": '"customer_phone_number": "+1 707 234 1234"',
                 "instructions": '"instructions": "Customer asked not to ring the doorbell."',
             },
-            type="start",
+            type="`start`",
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
@@ -345,7 +345,7 @@ class TestAsyncSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
@@ -358,9 +358,9 @@ class TestAsyncSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
             address='"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-            completion_mode="manual",
+            completion_mode="`manual`",
             document_template_id="document_template_id",
             duration=0,
             geofence_config={
@@ -384,7 +384,7 @@ class TestAsyncSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         )
 
         assert response.is_closed is True
@@ -401,7 +401,7 @@ class TestAsyncSteps:
             arrival=0,
             location=[0],
             position=0,
-            type="start",
+            type="`start`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -421,7 +421,7 @@ class TestAsyncSteps:
                 arrival=0,
                 location=[0],
                 position=0,
-                type="start",
+                type="`start`",
             )
 
     @pytest.mark.skip()
@@ -446,7 +446,7 @@ class TestAsyncSteps:
             arrival=0,
             position=0,
             address='"address": "503, Dublin Drive, Los Angeles, California - 500674",',
-            completion_mode="manual",
+            completion_mode="`manual`",
             document_template_id="document_template_id",
             duration=0,
             geofence_config={
@@ -459,7 +459,7 @@ class TestAsyncSteps:
                 "customer_phone_number": '"customer_phone_number": "+1 707 234 1234"',
                 "instructions": '"instructions": "Customer asked not to ring the doorbell."',
             },
-            type="start",
+            type="`start`",
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
