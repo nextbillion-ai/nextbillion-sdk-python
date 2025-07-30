@@ -26,22 +26,22 @@ class TripStartParams(TypedDict, total=False):
 
     attributes: object
     """
-    `attributes` can be used to store custom information about a trip in
-    `key`:`value` format. Use `attributes` to add any useful information or context
-    to your trips like the driver name, destination etc.
+    attributes can be used to store custom information about a trip in key:value
+    format. Use attributes to add any useful information or context to your trips
+    like the driver name, destination etc.
 
-    Please note that the maximum number of `key`:`value` pairs that can be added to
-    an `attributes` object is 100. Also, the overall size of `attributes` object
-    should not exceed 65kb.
+    Please note that the maximum number of key:value pairs that can be added to an
+    attributes object is 100. Also, the overall size of attributes object should not
+    exceed 65kb.
     """
 
     custom_id: str
-    """Set a unique ID for the new `trip`.
+    """Set a unique ID for the new trip.
 
     If not provided, an ID will be automatically generated in UUID format. A valid
-    `custom_id` can contain letters, numbers, “-”, & “\\__” only.
+    custom_id can contain letters, numbers, “-”, & “\\__” only.
 
-    Please note that the ID of a `trip` can not be changed once it is created.
+    Please note that the ID of a trip can not be changed once it is created.
     """
 
     description: str

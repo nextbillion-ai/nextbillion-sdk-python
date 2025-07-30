@@ -22,28 +22,27 @@ class AssetCreateParams(TypedDict, total=False):
 
     attributes: object
     """
-    `attributes` can be used to store custom information about an asset in
-    `key`:`value` format. Use `attributes` to add any useful information or context
-    to your assets like the vehicle type, shift timing etc. Moreover, these
-    attributes can be used to filter `assets` in **Search**, **Monitor**, and _Get
-    Asset List_ queries.
+    attributes can be used to store custom information about an asset in key:value
+    format. Use attributes to add any useful information or context to your assets
+    like the vehicle type, shift timing etc. Moreover, these attributes can be used
+    to filter assets in **Search**, **Monitor**, and _Get Asset List_ queries.
 
-    Please note that the maximum number of `key`:`value` pairs that can be added to
-    an `attributes` object is 100. Also, the overall size of `attributes` object
-    should not exceed 65kb.
+    Please note that the maximum number of key:value pairs that can be added to an
+    attributes object is 100. Also, the overall size of attributes object should not
+    exceed 65kb.
     """
 
     custom_id: str
-    """Set a unique ID for the new `asset`.
+    """Set a unique ID for the new asset.
 
     If not provided, an ID will be automatically generated in UUID format. A valid
-    `custom_id` can contain letters, numbers, "-", & "\\__" only.
+    custom*id can contain letters, numbers, "-", & "*" only.
 
-    Please note that the ID of an `asset` can not be changed once it is created.
+    Please note that the ID of an asset can not be changed once it is created.
     """
 
     description: str
-    """Description for the `asset`."""
+    """Description for the asset."""
 
     meta_data: MetaDataParam
     """Any valid json object data.
@@ -52,21 +51,20 @@ class AssetCreateParams(TypedDict, total=False):
     """
 
     name: str
-    """Name of the `asset`.
+    """Name of the asset.
 
-    Use this field to assign a meaningful, custom name to the `asset` being created.
+    Use this field to assign a meaningful, custom name to the asset being created.
     """
 
     tags: List[str]
     """
-    **This parameter will be deprecated soon! Please use the `attributes` parameter
-    to add labels or markers for the asset.**
+    **This parameter will be deprecated soon! Please use the attributes parameter to
+    add labels or markers for the asset.**
 
-    Tags of the `asset`. `tags` can be used for filtering assets in operations like
-    _Get Asset List_ and asset **Search** methods. They can also be used for
-    monitoring of assets using the **Monitor** methods after linking `tags` and
-    `asset`.
+    Tags of the asset. tags can be used for filtering assets in operations like _Get
+    Asset List_ and asset **Search** methods. They can also be used for monitoring
+    of assets using the **Monitor** methods after linking tags and asset.
 
-    Valid `tags` are strings consisting of alphanumeric characters (A-Z, a-z, 0-9)
+    Valid tags are strings consisting of alphanumeric characters (A-Z, a-z, 0-9)
     along with the underscore ('\\__') and hyphen ('-') symbols.
     """

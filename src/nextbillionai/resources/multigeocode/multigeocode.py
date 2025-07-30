@@ -106,7 +106,7 @@ class MultigeocodeResource(SyncAPIResource):
               location.
 
               Note: Supports 'meter' (m) and 'kilometer' (km) units. If no radius is given,
-              the search method returns as many results as specified in `limit`.
+              the search method returns as many results as specified in limit.
 
           state: Specifies the state of the search place.
 
@@ -227,7 +227,7 @@ class AsyncMultigeocodeResource(AsyncAPIResource):
               location.
 
               Note: Supports 'meter' (m) and 'kilometer' (km) units. If no radius is given,
-              the search method returns as many results as specified in `limit`.
+              the search method returns as many results as specified in limit.
 
           state: Specifies the state of the search place.
 

@@ -20,7 +20,7 @@ class MonitorListParams(TypedDict, total=False):
     pn: int
     """Denotes page number.
 
-    Use this along with the `ps` parameter to implement pagination for your searched
+    Use this along with the ps parameter to implement pagination for your searched
     results. This parameter does not have a maximum limit but would return an empty
     response in case a higher value is provided when the result-set itself is
     smaller.
@@ -29,25 +29,24 @@ class MonitorListParams(TypedDict, total=False):
     ps: int
     """Denotes number of search results per page.
 
-    Use this along with the `pn` parameter to implement pagination for your searched
+    Use this along with the pn parameter to implement pagination for your searched
     results.
     """
 
     sort: str
     """Provide a single field to sort the results by.
 
-    Only `updated_at` or `created_at` fields can be selected for ordering the
-    results.
+    Only updated_at or created_at fields can be selected for ordering the results.
 
-    By default, the result is sorted by `created_at` field in the descending order.
-    Allowed values for specifying the order are `asc` for ascending order and `desc`
-    for descending order.
+    By default, the result is sorted by created_at field in the descending order.
+    Allowed values for specifying the order are asc for ascending order and desc for
+    descending order.
     """
 
     tags: str
-    """`tags` can be used to filter the monitors.
+    """tags can be used to filter the monitors.
 
-    Only those monitors which have all the `tags` provided here, will be included in
-    the search result. In case multiple `tags` need to be specified, use `,` to
-    separate them.
+    Only those monitors which have all the tags provided here, will be included in
+    the search result. In case multiple tags need to be specified, use , to separate
+    them.
     """

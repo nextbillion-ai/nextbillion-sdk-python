@@ -28,7 +28,7 @@ class JsonRetrieveParams(TypedDict, total=False):
     separated by a pipe symbol "|".
     """
 
-    approaches: Literal["`unrestricted`", "`curb`"]
+    approaches: Literal["unrestricted", "curb"]
     """
     A semicolon-separated list indicating the side of the road from which the route
     will approach "destinations". When set to "unrestricted" a route can arrive at a
@@ -63,7 +63,7 @@ class JsonRetrieveParams(TypedDict, total=False):
     bearing for that point can be specified as "0,180".
     """
 
-    mode: Literal["`car`", "`truck`"]
+    mode: Literal["car", "truck"]
     """
     Set which driving mode the service should use to determine the "distance" and
     "duration" values. For example, if you use "car", the API will return the

@@ -82,14 +82,14 @@ class RichGroupResponse(BaseModel):
     """Returns the fixed speed of segments.
 
     This field is not present in the response if the restriction type is not
-    `fixedspeed`
+    fixedspeed
     """
 
     speed_limit: Optional[float] = None
     """Returns the maximum speed of segments.
 
     This field is not present in the response if the restriction type is not
-    `maxspeed`
+    maxspeed
     """
 
     start_time: Optional[float] = None
@@ -105,11 +105,10 @@ class RichGroupResponse(BaseModel):
     """Returns the status of the restriction at the time of making the request i.e.
 
     whether the restriction is in force or not. It will have one of the following
-    values: `active` or `inactive`.
+    values: active or inactive.
 
     Please note that this field can not be directly influenced by the users. It will
-    always be calculated using the `start_time`, `end_time` and `repeat_on`
-    parameters.
+    always be calculated using the start_time, end_time and repeat_on parameters.
     """
 
     update_at: Optional[datetime] = None

@@ -14,7 +14,7 @@ class Completion(BaseModel):
     completed_at: Optional[int] = None
     """Represents the timestamp of the completion in seconds since the Unix epoch.
 
-    Example: `1738743999`.
+    Example: 1738743999.
     """
 
     completed_by_mode: Optional[RouteStepCompletionMode] = None
@@ -22,10 +22,10 @@ class Completion(BaseModel):
 
     Currently, following values are allowed:
 
-    - `manual`: Steps must be marked as completed manually through the Driver App.
-    - `geofence`: Steps are marked as completed automatically based on the entry
+    - manual: Steps must be marked as completed manually through the Driver App.
+    - geofence: Steps are marked as completed automatically based on the entry
       conditions and geofence specified.
-    - `geofence_manual_fallback`: Steps will be marked as completed automatically
+    - geofence_manual_fallback: Steps will be marked as completed automatically
       based on geofence and entry condition configurations but there will also be a
       provision for manually updating the status in case, geofence detection fails.
     """
@@ -35,10 +35,10 @@ class Completion(BaseModel):
 
     Currently, following values are allowed:
 
-    - `manual`: Steps must be marked as completed manually through the Driver App.
-    - `geofence`: Steps are marked as completed automatically based on the entry
+    - manual: Steps must be marked as completed manually through the Driver App.
+    - geofence: Steps are marked as completed automatically based on the entry
       conditions and geofence specified.
-    - `geofence_manual_fallback`: Steps will be marked as completed automatically
+    - geofence_manual_fallback: Steps will be marked as completed automatically
       based on geofence and entry condition configurations but there will also be a
       provision for manually updating the status in case, geofence detection fails.
     """
@@ -53,14 +53,14 @@ class Completion(BaseModel):
     document_modified_at: Optional[int] = None
     """
     Represents the timestamp of the last doc modification in seconds since the Unix
-    epoch. Example: `1738743999`.
+    epoch. Example: 1738743999.
     """
 
     geofence_config: Optional[RouteStepGeofenceConfig] = None
     """
     Specify the configurations of the geofence which will be used to detect presence
     of the driver and complete the tasks automatically. Please note that this
-    attribute is required when `completion_mode` is either "geofence" or
+    attribute is required when completion_mode is either "geofence" or
     "geofence_manual_fallback".
     """
 
@@ -72,15 +72,13 @@ class Meta(BaseModel):
     customer_name: Optional[str] = None
     """Returns the customer name associated with the step.
 
-    It can configured in the input request using the `metadata` attribute of the
-    step.
+    It can configured in the input request using the metadata attribute of the step.
     """
 
     customer_phone_number: Optional[str] = None
     """Returns the customer's phone number associated with the step.
 
-    It can configured in the input request using the `metadata` attribute of the
-    step.
+    It can configured in the input request using the metadata attribute of the step.
     """
 
     instructions: Optional[str] = None
@@ -117,19 +115,19 @@ class RouteStepsResponse(BaseModel):
     created_at: Optional[int] = None
     """Represents the timestamp of the creation in seconds since the Unix epoch.
 
-    Example: `1738743999`.
+    Example: 1738743999.
     """
 
     document_snapshot: Optional[List[object]] = None
     """
     Returns the details of the document that was used for collecting the proof of
     completion for the step. In case no document template ID was provided for the
-    given step, then a `null` value is returned. Each object represents a new field
-    in the document.
+    given step, then a null value is returned. Each object represents a new field in
+    the document.
     """
 
     duration: Optional[int] = None
-    """Returns the duration for `layover` or `break` type steps."""
+    """Returns the duration for layover or break type steps."""
 
     location: Optional[List[float]] = None
     """Returns the location coordinates where the step is executed."""
@@ -150,13 +148,13 @@ class RouteStepsResponse(BaseModel):
     type: Optional[str] = None
     """Returns the step type.
 
-    It can belong to one of the following: `start`, `job` , `pickup`, `delivery`,
-    `break`, `layover` , and `end`. For any given step, it would be the same as that
-    specified in the input request while configuring the step details.
+    It can belong to one of the following: start, job , pickup, delivery, break,
+    layover , and end. For any given step, it would be the same as that specified in
+    the input request while configuring the step details.
     """
 
     updated_at: Optional[int] = None
     """Represents the timestamp of the last update in seconds since the Unix epoch.
 
-    Example: `1738743999`.
+    Example: 1738743999.
     """

@@ -30,7 +30,7 @@ class NavigationRetrieveRouteParams(TypedDict, total=False):
     "altcount" property.
     """
 
-    approaches: Literal["`unrestricted`", "`curb`"]
+    approaches: Literal["unrestricted", "curb"]
     """
     A semicolon-separated list indicating the side of the road from which to
     approach "waypoints" in a requested route. When set to "unrestricted" a route
@@ -71,7 +71,7 @@ class NavigationRetrieveRouteParams(TypedDict, total=False):
     parameter is mandatory if the "original_shape" parameter is not given.
     """
 
-    geometry: Literal["`polyline`", "`polyline6`", "`geojson`"]
+    geometry: Literal["polyline", "polyline6", "geojson"]
     """Sets the output format of the route geometry in the response.
 
     On providing “polyline“ and “polyline6“ as input, respective encoded geometry is
@@ -87,7 +87,7 @@ class NavigationRetrieveRouteParams(TypedDict, total=False):
     codes.
     """
 
-    mode: Literal["`car`", "`truck`"]
+    mode: Literal["car", "truck"]
     """Set which driving mode the service should use to determine a route.
 
     For example, if you use "car", the API will return a route that a car can take.
@@ -141,7 +141,7 @@ class NavigationRetrieveRouteParams(TypedDict, total=False):
     parameter.
     """
 
-    overview: Literal["`full`", "`simplified`", "`false`"]
+    overview: Literal["full", "simplified", "false"]
     """Specify the verbosity of route geometry.
 
     When set to "full", the most detailed geometry available is returned. When set

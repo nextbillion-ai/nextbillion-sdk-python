@@ -68,15 +68,15 @@ class DriverAssignmentResource(SyncAPIResource):
               API.
 
           filter: Specify the filtering criterion for the vehicles with respect to each order's
-              location. `filter` is a mandatory input for all requests.
+              location. filter is a mandatory input for all requests.
 
           orders: Collects the details of open orders to be fulfilled. Each object represents one
-              order. All requests must include `orders` as a mandatory input. A maximum of 200
+              order. All requests must include orders as a mandatory input. A maximum of 200
               orders is allowed per request.
 
           vehicles: Collects the details of vehicles available to fulfill the orders. Each object
-              represents one vehicle. All requests must include `vehicles` as a mandatory
-              input. A maximum of 100 vehicles is allowed per request.
+              represents one vehicle. All requests must include vehicles as a mandatory input.
+              A maximum of 100 vehicles is allowed per request.
 
           options: Configure the assignment constraints and response settings.
 
@@ -154,15 +154,15 @@ class AsyncDriverAssignmentResource(AsyncAPIResource):
               API.
 
           filter: Specify the filtering criterion for the vehicles with respect to each order's
-              location. `filter` is a mandatory input for all requests.
+              location. filter is a mandatory input for all requests.
 
           orders: Collects the details of open orders to be fulfilled. Each object represents one
-              order. All requests must include `orders` as a mandatory input. A maximum of 200
+              order. All requests must include orders as a mandatory input. A maximum of 200
               orders is allowed per request.
 
           vehicles: Collects the details of vehicles available to fulfill the orders. Each object
-              represents one vehicle. All requests must include `vehicles` as a mandatory
-              input. A maximum of 100 vehicles is allowed per request.
+              represents one vehicle. All requests must include vehicles as a mandatory input.
+              A maximum of 100 vehicles is allowed per request.
 
           options: Configure the assignment constraints and response settings.
 

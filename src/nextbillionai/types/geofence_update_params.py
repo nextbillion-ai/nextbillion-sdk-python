@@ -18,31 +18,31 @@ class GeofenceUpdateParams(TypedDict, total=False):
     circle: Circle
     """Use this object to update details of a circular geofence.
 
-    Please note that this object is mandatory only when `type` is `circle`. When the
-    `type` is not `circle`, the properties of this object will be ignored while
-    creating the geofence.
+    Please note that this object is mandatory only when type is circle. When the
+    type is not circle, the properties of this object will be ignored while creating
+    the geofence.
     """
 
     isochrone: Isochrone
     """Use this object to update details of an isochrone based geofence.
 
-    Please note that this object is mandatory only when `type` is `isochrone`. When
-    the `type` is not `isochrone`, the properties of this object will be ignored
-    while creating the geofence.
+    Please note that this object is mandatory only when type is isochrone. When the
+    type is not isochrone, the properties of this object will be ignored while
+    creating the geofence.
     """
 
     meta_data: object
-    """Updated the `meta_data` associated with a geofence.
+    """Updated the meta_data associated with a geofence.
 
     Use this field to define custom attributes that provide more context and
     information about the geofence being updated like country, group ID etc.
 
-    The data being added should be in valid JSON object format (i.e. `key` and
-    `value` pairs). Max size allowed for the object is 65kb.
+    The data being added should be in valid JSON object format (i.e. key and value
+    pairs). Max size allowed for the object is 65kb.
     """
 
     name: str
-    """Use this parameter to update the `name` of a geofence.
+    """Use this parameter to update the name of a geofence.
 
     Users can assign meaningful custom names to their geofences.
     """
@@ -50,8 +50,8 @@ class GeofenceUpdateParams(TypedDict, total=False):
     polygon: Polygon
     """Use this object to update details of a custom polygon geofence.
 
-    Please note that this object is mandatory only when `type` is `polygon`. When
-    the `type` is not `polygon`, the properties of this object will be ignored while
+    Please note that this object is mandatory only when type is polygon. When the
+    type is not polygon, the properties of this object will be ignored while
     creating the geofence.
 
     Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -61,29 +61,28 @@ class GeofenceUpdateParams(TypedDict, total=False):
     """
 
     tags: List[str]
-    """Use this parameter to add/modify one or multiple `tags` of a geofence.
+    """Use this parameter to add/modify one or multiple tags of a geofence.
 
-    `tags` can be used to search or filter geofences (using `Get Geofence List`
-    method).
+    tags can be used to search or filter geofences (using Get Geofence List method).
 
-    Valid values for updating `tags` consist of alphanumeric characters (A-Z, a-z,
+    Valid values for updating tags consist of alphanumeric characters (A-Z, a-z,
     0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
     """
 
-    type: Literal["`circle`", "`polygon`", "`isochrone`"]
-    """Use this parameter to update the `type` of a geofence.
+    type: Literal["circle", "polygon", "isochrone"]
+    """Use this parameter to update the type of a geofence.
 
     Please note that you will need to provide required details for creating a
-    geofence of the new `type`. Check other parameters of this method to know more.
+    geofence of the new type. Check other parameters of this method to know more.
     """
 
 
 class CircleCenter(TypedDict, total=False):
     lat: float
-    """Latitude of the `center` location."""
+    """Latitude of the center location."""
 
     lon: float
-    """Longitude of the `center` location."""
+    """Longitude of the center location."""
 
 
 class Circle(TypedDict, total=False):
@@ -106,12 +105,12 @@ class Isochrone(TypedDict, total=False):
     Use this parameter to update the distance, in meters, for which an isochrone
     polygon needs to be determined. When provided, the API would create a geofence
     representing the area that can be reached after driving the given number of
-    meters starting from the point specified in `coordinates`.
+    meters starting from the point specified in coordinates.
 
     The maximum distance that can be specified is 60000 meters (60km).
 
-    At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-    is `isochrone`.
+    At least one of contours_meter or contours_minute is mandatory when type is
+    isochrone.
     """
 
     contours_minute: int
@@ -119,12 +118,12 @@ class Isochrone(TypedDict, total=False):
     Use this parameter to update the duration, in minutes, for which an isochrone
     polygon needs to be determined. When provided, the API would create a geofence
     representing the area that can be reached after driving for the given number of
-    minutes starting from the point specified in `coordinates`.
+    minutes starting from the point specified in coordinates.
 
     The maximum duration that can be specified is 40 minutes.
 
-    At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-    is `isochrone`.
+    At least one of contours_meter or contours_minute is mandatory when type is
+    isochrone.
     """
 
     coordinates: str
@@ -146,22 +145,22 @@ class Isochrone(TypedDict, total=False):
 
     departure_time: int
     """
-    Use this parameter to update the `departure_time`, expressed as UNIX epoch
+    Use this parameter to update the departure_time, expressed as UNIX epoch
     timestamp in seconds. The isochrone boundary will be determined based on the
     typical traffic conditions at the given time.
 
     If no input is provided for this parameter then, the traffic conditions at the
     time of making the request are considered by default. Please note that because
-    of this behavior the geofence boundaries may change even if the `departure_time`
+    of this behavior the geofence boundaries may change even if the departure_time
     was not specifically provided at the time of updating the geofence.
     """
 
     mode: str
     """
     Use this parameter to update the driving mode that the service should use to
-    determine the isochrone line. For example, if you use `car`, the API will return
+    determine the isochrone line. For example, if you use car, the API will return
     an isochrone polygon that a car can cover within the specified time or after
-    driving the specified distance. Using `truck` will return an isochrone that a
+    driving the specified distance. Using truck will return an isochrone that a
     truck can reach after taking into account appropriate truck routing
     restrictions.
     """
@@ -175,12 +174,12 @@ class PolygonGeojson(TypedDict, total=False):
     """
 
     type: str
-    """Type of the geoJSON geometry. Should always be `Polygon`."""
+    """Type of the geoJSON geometry. Should always be Polygon."""
 
 
 class Polygon(TypedDict, total=False):
     geojson: PolygonGeojson
-    """An object to collect geoJSON details of the `polygon` geofence.
+    """An object to collect geoJSON details of the polygon geofence.
 
     The contents of this object follow the
     [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).

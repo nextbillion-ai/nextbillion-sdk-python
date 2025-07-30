@@ -42,8 +42,8 @@ class Data(BaseModel):
     distance: Optional[int] = None
     """
     Returns the total route distance, in meters, for informative display in the
-    driver app. It is the same as the value provided for `distance` field in the
-    input request.
+    driver app. It is the same as the value provided for distance field in the input
+    request.
     """
 
     document_snapshot: Optional[List[object]] = None
@@ -99,7 +99,7 @@ class Data(BaseModel):
 
     The vehicle ID returned here is the same as the one used in the route
     optimization request for the given vehicle. An empty string is returned if the
-    `ro_request_id` was not provided in the input.
+    ro_request_id was not provided in the input.
     """
 
 

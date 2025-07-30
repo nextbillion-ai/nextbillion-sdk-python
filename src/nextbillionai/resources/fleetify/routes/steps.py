@@ -63,7 +63,7 @@ class StepsResource(SyncAPIResource):
         arrival: int,
         location: Iterable[float],
         position: int,
-        type: Literal["`start`", "`job`", "`pickup`", "`delivery`", "`break`", "`layover`", "`end`"],
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"],
         address: str | NotGiven = NOT_GIVEN,
         completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
@@ -94,24 +94,24 @@ class StepsResource(SyncAPIResource):
                 it does not impact or get affected by the route generated.
 
           location: Specify the location coordinates where the steps should be performed in
-              `[latitude, longitude]`.
+              [latitude, longitude].
 
           position: Indicates the index at which to insert the step, starting from 0 up to the total
               number of steps in the route.
 
-          type: Specify the step type. It can belong to one of the following: `start`, `job` ,
-              `pickup`, `delivery`, `end`. A `duration` is mandatory when the step type is
-              either `layover` or a `break`.
+          type: Specify the step type. It can belong to one of the following: start, job ,
+              pickup, delivery, end. A duration is mandatory when the step type is either
+              layover or a break.
 
           address: Specify the postal address for the step.
 
           completion_mode: Specify the mode of completion to be used for the step. Currently, following
               values are allowed:
 
-              - `manual`: Steps must be marked as completed manually through the Driver App.
-              - `geofence`: Steps are marked as completed automatically based on the entry
+              - manual: Steps must be marked as completed manually through the Driver App.
+              - geofence: Steps are marked as completed automatically based on the entry
                 conditions and geofence specified.
-              - `geofence_manual_fallback`: Steps will be marked as completed automatically
+              - geofence_manual_fallback: Steps will be marked as completed automatically
                 based on geofence and entry condition configurations but there will also be a
                 provision for manually updating the status in case, geofence detection fails.
 
@@ -122,14 +122,14 @@ class StepsResource(SyncAPIResource):
               create, read and manage the document templates.
 
               Please note that the document template ID can not be assigned to following step
-              types - `start`, `end`, `break`, `layover`.
+              types - start, end, break, layover.
 
-          duration: Specify the duration of the `layover` or `break` type steps, in seconds. Please
-              note it is mandatory when step type is either "layover" or "break".
+          duration: Specify the duration of the layover or break type steps, in seconds. Please note
+              it is mandatory when step type is either "layover" or "break".
 
           geofence_config: Specify the configurations of the geofence which will be used to detect presence
               of the driver and complete the tasks automatically. Please note that this
-              attribute is required when `completion_mode` is either "geofence" or
+              attribute is required when completion_mode is either "geofence" or
               "geofence_manual_fallback".
 
           meta: An object to specify any additional details about the task to be associated with
@@ -189,8 +189,7 @@ class StepsResource(SyncAPIResource):
         geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
         location: Iterable[float] | NotGiven = NOT_GIVEN,
         meta: step_update_params.Meta | NotGiven = NOT_GIVEN,
-        type: Literal["`start`", "`job`", "`pickup`", "`delivery`", "`break`", "`layover`", "`end`"]
-        | NotGiven = NOT_GIVEN,
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,10 +221,10 @@ class StepsResource(SyncAPIResource):
           completion_mode: Specify the mode of completion to be used for the step. Currently, following
               values are allowed:
 
-              - `manual`: Steps must be marked as completed manually through the Driver App.
-              - `geofence`: Steps are marked as completed automatically based on the entry
+              - manual: Steps must be marked as completed manually through the Driver App.
+              - geofence: Steps are marked as completed automatically based on the entry
                 conditions and geofence specified.
-              - `geofence_manual_fallback`: Steps will be marked as completed automatically
+              - geofence_manual_fallback: Steps will be marked as completed automatically
                 based on geofence and entry condition configurations but there will also be a
                 provision for manually updating the status in case, geofence detection fails.
 
@@ -233,25 +232,25 @@ class StepsResource(SyncAPIResource):
               completion for the step. If an empty string "" is provided, the current document
               template associated to the step will be removed.
 
-          duration: Specify the duration of the `layover` or `break` type steps, in seconds. Please
-              note it is mandatory when step type is either "layover" or "break".
+          duration: Specify the duration of the layover or break type steps, in seconds. Please note
+              it is mandatory when step type is either "layover" or "break".
 
           geofence_config: Specify the configurations of the geofence which will be used to detect presence
               of the driver and complete the tasks automatically. Please note that this
-              attribute is required when `completion_mode` is either "geofence" or
+              attribute is required when completion_mode is either "geofence" or
               "geofence_manual_fallback".
 
           location: Specify the location coordinates where the steps should be performed in
-              `[latitude, longitude]`.
+              [latitude, longitude].
 
           meta: An object to specify any additional details about the task to be associated with
               the step in the response. The information provided here will be available on the
               Driver's app under step details. This attribute can be used to provide context
               about or instructions to the driver for performing the task
 
-          type: Specify the step type. It can belong to one of the following: `start`, `job` ,
-              `pickup`, `delivery`, `end`. A `duration` is mandatory when the step type is
-              either `layover` or a `break`.
+          type: Specify the step type. It can belong to one of the following: start, job ,
+              pickup, delivery, end. A duration is mandatory when the step type is either
+              layover or a break.
 
           extra_headers: Send extra headers
 
@@ -357,9 +356,9 @@ class StepsResource(SyncAPIResource):
         completed route step.
 
         When all steps are completed, the encapsulating route’s status will change to
-        `completed` automatically.
+        completed automatically.
 
-        Either `Session Token` must be provided to authenticate the request.
+        Either Session Token must be provided to authenticate the request.
 
         Args:
           key: A key is a unique identifier that is required to authenticate a request to the
@@ -369,15 +368,15 @@ class StepsResource(SyncAPIResource):
               labels and values can be of any type depend on the type of according document
               item.
 
-          mode: Sets the status of the route step. Currently only `completed` is supported.
+          mode: Sets the status of the route step. Currently only completed is supported.
 
-              Note: once marked `completed`, a step cannot transition to other statuses. You
-              can only update the document afterwards.
+              Note: once marked completed, a step cannot transition to other statuses. You can
+              only update the document afterwards.
 
-          status: Sets the status of the route step. Currently only `completed` is supported.
+          status: Sets the status of the route step. Currently only completed is supported.
 
-              Note: once marked `completed`, a step cannot transition to other statuses. You
-              can only update the document afterwards.
+              Note: once marked completed, a step cannot transition to other statuses. You can
+              only update the document afterwards.
 
           extra_headers: Send extra headers
 
@@ -441,7 +440,7 @@ class AsyncStepsResource(AsyncAPIResource):
         arrival: int,
         location: Iterable[float],
         position: int,
-        type: Literal["`start`", "`job`", "`pickup`", "`delivery`", "`break`", "`layover`", "`end`"],
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"],
         address: str | NotGiven = NOT_GIVEN,
         completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
         document_template_id: str | NotGiven = NOT_GIVEN,
@@ -472,24 +471,24 @@ class AsyncStepsResource(AsyncAPIResource):
                 it does not impact or get affected by the route generated.
 
           location: Specify the location coordinates where the steps should be performed in
-              `[latitude, longitude]`.
+              [latitude, longitude].
 
           position: Indicates the index at which to insert the step, starting from 0 up to the total
               number of steps in the route.
 
-          type: Specify the step type. It can belong to one of the following: `start`, `job` ,
-              `pickup`, `delivery`, `end`. A `duration` is mandatory when the step type is
-              either `layover` or a `break`.
+          type: Specify the step type. It can belong to one of the following: start, job ,
+              pickup, delivery, end. A duration is mandatory when the step type is either
+              layover or a break.
 
           address: Specify the postal address for the step.
 
           completion_mode: Specify the mode of completion to be used for the step. Currently, following
               values are allowed:
 
-              - `manual`: Steps must be marked as completed manually through the Driver App.
-              - `geofence`: Steps are marked as completed automatically based on the entry
+              - manual: Steps must be marked as completed manually through the Driver App.
+              - geofence: Steps are marked as completed automatically based on the entry
                 conditions and geofence specified.
-              - `geofence_manual_fallback`: Steps will be marked as completed automatically
+              - geofence_manual_fallback: Steps will be marked as completed automatically
                 based on geofence and entry condition configurations but there will also be a
                 provision for manually updating the status in case, geofence detection fails.
 
@@ -500,14 +499,14 @@ class AsyncStepsResource(AsyncAPIResource):
               create, read and manage the document templates.
 
               Please note that the document template ID can not be assigned to following step
-              types - `start`, `end`, `break`, `layover`.
+              types - start, end, break, layover.
 
-          duration: Specify the duration of the `layover` or `break` type steps, in seconds. Please
-              note it is mandatory when step type is either "layover" or "break".
+          duration: Specify the duration of the layover or break type steps, in seconds. Please note
+              it is mandatory when step type is either "layover" or "break".
 
           geofence_config: Specify the configurations of the geofence which will be used to detect presence
               of the driver and complete the tasks automatically. Please note that this
-              attribute is required when `completion_mode` is either "geofence" or
+              attribute is required when completion_mode is either "geofence" or
               "geofence_manual_fallback".
 
           meta: An object to specify any additional details about the task to be associated with
@@ -567,8 +566,7 @@ class AsyncStepsResource(AsyncAPIResource):
         geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
         location: Iterable[float] | NotGiven = NOT_GIVEN,
         meta: step_update_params.Meta | NotGiven = NOT_GIVEN,
-        type: Literal["`start`", "`job`", "`pickup`", "`delivery`", "`break`", "`layover`", "`end`"]
-        | NotGiven = NOT_GIVEN,
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -600,10 +598,10 @@ class AsyncStepsResource(AsyncAPIResource):
           completion_mode: Specify the mode of completion to be used for the step. Currently, following
               values are allowed:
 
-              - `manual`: Steps must be marked as completed manually through the Driver App.
-              - `geofence`: Steps are marked as completed automatically based on the entry
+              - manual: Steps must be marked as completed manually through the Driver App.
+              - geofence: Steps are marked as completed automatically based on the entry
                 conditions and geofence specified.
-              - `geofence_manual_fallback`: Steps will be marked as completed automatically
+              - geofence_manual_fallback: Steps will be marked as completed automatically
                 based on geofence and entry condition configurations but there will also be a
                 provision for manually updating the status in case, geofence detection fails.
 
@@ -611,25 +609,25 @@ class AsyncStepsResource(AsyncAPIResource):
               completion for the step. If an empty string "" is provided, the current document
               template associated to the step will be removed.
 
-          duration: Specify the duration of the `layover` or `break` type steps, in seconds. Please
-              note it is mandatory when step type is either "layover" or "break".
+          duration: Specify the duration of the layover or break type steps, in seconds. Please note
+              it is mandatory when step type is either "layover" or "break".
 
           geofence_config: Specify the configurations of the geofence which will be used to detect presence
               of the driver and complete the tasks automatically. Please note that this
-              attribute is required when `completion_mode` is either "geofence" or
+              attribute is required when completion_mode is either "geofence" or
               "geofence_manual_fallback".
 
           location: Specify the location coordinates where the steps should be performed in
-              `[latitude, longitude]`.
+              [latitude, longitude].
 
           meta: An object to specify any additional details about the task to be associated with
               the step in the response. The information provided here will be available on the
               Driver's app under step details. This attribute can be used to provide context
               about or instructions to the driver for performing the task
 
-          type: Specify the step type. It can belong to one of the following: `start`, `job` ,
-              `pickup`, `delivery`, `end`. A `duration` is mandatory when the step type is
-              either `layover` or a `break`.
+          type: Specify the step type. It can belong to one of the following: start, job ,
+              pickup, delivery, end. A duration is mandatory when the step type is either
+              layover or a break.
 
           extra_headers: Send extra headers
 
@@ -735,9 +733,9 @@ class AsyncStepsResource(AsyncAPIResource):
         completed route step.
 
         When all steps are completed, the encapsulating route’s status will change to
-        `completed` automatically.
+        completed automatically.
 
-        Either `Session Token` must be provided to authenticate the request.
+        Either Session Token must be provided to authenticate the request.
 
         Args:
           key: A key is a unique identifier that is required to authenticate a request to the
@@ -747,15 +745,15 @@ class AsyncStepsResource(AsyncAPIResource):
               labels and values can be of any type depend on the type of according document
               item.
 
-          mode: Sets the status of the route step. Currently only `completed` is supported.
+          mode: Sets the status of the route step. Currently only completed is supported.
 
-              Note: once marked `completed`, a step cannot transition to other statuses. You
-              can only update the document afterwards.
+              Note: once marked completed, a step cannot transition to other statuses. You can
+              only update the document afterwards.
 
-          status: Sets the status of the route step. Currently only `completed` is supported.
+          status: Sets the status of the route step. Currently only completed is supported.
 
-              Note: once marked `completed`, a step cannot transition to other statuses. You
-              can only update the document afterwards.
+              Note: once marked completed, a step cannot transition to other statuses. You can
+              only update the document afterwards.
 
           extra_headers: Send extra headers
 

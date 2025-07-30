@@ -83,7 +83,7 @@ class GeofenceResource(SyncAPIResource):
         self,
         *,
         key: str,
-        type: Literal["`circle`", "`polygon`", "`isochrone`"],
+        type: Literal["circle", "polygon", "isochrone"],
         circle: geofence_create_params.Circle | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         isochrone: geofence_create_params.Isochrone | NotGiven = NOT_GIVEN,
@@ -108,32 +108,32 @@ class GeofenceResource(SyncAPIResource):
           type: Specify the type of the geofence that is being created.
 
           circle: Provide the details to create a circular geofence. Please note that this object
-              is mandatory when `type` is `circle`. When the `type` is not `circle`, the
-              properties of this object will be ignored while creating the geofence.
+              is mandatory when type is circle. When the type is not circle, the properties of
+              this object will be ignored while creating the geofence.
 
           custom_id: Set an unique ID for the new geofence. If not provided, an ID will be
-              automatically generated in UUID format. A valid `custom_id` can contain letters,
-              numbers, "-", & "\\__" only.
+              automatically generated in UUID format. A valid custom*id can contain letters,
+              numbers, "-", & "*" only.
 
               Please note that the ID of a geofence can not be changed once it is created.
 
           isochrone: Provide the details to create an isochrone based geofence. Use this object when
-              `type` is `isochrone`. When the `type` is not `isochrone`, the properties of
-              this object will be ignored while creating the geofence.
+              type is isochrone. When the type is not isochrone, the properties of this object
+              will be ignored while creating the geofence.
 
           meta_data: Metadata of the geofence. Use this field to define custom attributes that
               provide more context and information about the geofence being created like
               country, group ID etc.
 
-              The data being added should be in valid JSON object format (i.e. `key` and
-              `value` pairs). Max size allowed for the object is 65kb.
+              The data being added should be in valid JSON object format (i.e. key and value
+              pairs). Max size allowed for the object is 65kb.
 
           name: Name of the geofence. Use this field to assign a meaningful, custom name to the
               geofence being created.
 
           polygon: Provide the details to create a custom polygon type of geofence. Please note
-              that this object is mandatory when `type` is `polygon`. When the `type` is not
-              `polygon`, the properties of this object will be ignored while creating the
+              that this object is mandatory when type is polygon. When the type is not
+              polygon, the properties of this object will be ignored while creating the
               geofence.
 
               Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -141,10 +141,10 @@ class GeofenceResource(SyncAPIResource):
 
               Area of the polygon should be less than 2000 km<sup>2</sup>.
 
-          tags: An array of strings to associate multiple tags to the geofence. `tags` can be
-              used to search or filter geofences (using `Get Geofence List` method).
+          tags: An array of strings to associate multiple tags to the geofence. tags can be used
+              to search or filter geofences (using Get Geofence List method).
 
-              Create valid `tags` using a string consisting of alphanumeric characters (A-Z,
+              Create valid tags using a string consisting of alphanumeric characters (A-Z,
               a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
           extra_headers: Send extra headers
@@ -232,7 +232,7 @@ class GeofenceResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         polygon: geofence_update_params.Polygon | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["`circle`", "`polygon`", "`isochrone`"] | NotGiven = NOT_GIVEN,
+        type: Literal["circle", "polygon", "isochrone"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -248,28 +248,27 @@ class GeofenceResource(SyncAPIResource):
               API.
 
           circle: Use this object to update details of a circular geofence. Please note that this
-              object is mandatory only when `type` is `circle`. When the `type` is not
-              `circle`, the properties of this object will be ignored while creating the
-              geofence.
+              object is mandatory only when type is circle. When the type is not circle, the
+              properties of this object will be ignored while creating the geofence.
 
           isochrone: Use this object to update details of an isochrone based geofence. Please note
-              that this object is mandatory only when `type` is `isochrone`. When the `type`
-              is not `isochrone`, the properties of this object will be ignored while creating
-              the geofence.
+              that this object is mandatory only when type is isochrone. When the type is not
+              isochrone, the properties of this object will be ignored while creating the
+              geofence.
 
-          meta_data: Updated the `meta_data` associated with a geofence. Use this field to define
+          meta_data: Updated the meta_data associated with a geofence. Use this field to define
               custom attributes that provide more context and information about the geofence
               being updated like country, group ID etc.
 
-              The data being added should be in valid JSON object format (i.e. `key` and
-              `value` pairs). Max size allowed for the object is 65kb.
+              The data being added should be in valid JSON object format (i.e. key and value
+              pairs). Max size allowed for the object is 65kb.
 
-          name: Use this parameter to update the `name` of a geofence. Users can assign
-              meaningful custom names to their geofences.
+          name: Use this parameter to update the name of a geofence. Users can assign meaningful
+              custom names to their geofences.
 
           polygon: Use this object to update details of a custom polygon geofence. Please note that
-              this object is mandatory only when `type` is `polygon`. When the `type` is not
-              `polygon`, the properties of this object will be ignored while creating the
+              this object is mandatory only when type is polygon. When the type is not
+              polygon, the properties of this object will be ignored while creating the
               geofence.
 
               Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -277,15 +276,15 @@ class GeofenceResource(SyncAPIResource):
 
               Area of the polygon should be less than 2000 km<sup>2</sup>.
 
-          tags: Use this parameter to add/modify one or multiple `tags` of a geofence. `tags`
-              can be used to search or filter geofences (using `Get Geofence List` method).
+          tags: Use this parameter to add/modify one or multiple tags of a geofence. tags can be
+              used to search or filter geofences (using Get Geofence List method).
 
-              Valid values for updating `tags` consist of alphanumeric characters (A-Z, a-z,
+              Valid values for updating tags consist of alphanumeric characters (A-Z, a-z,
               0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Use this parameter to update the `type` of a geofence. Please note that you will
-              need to provide required details for creating a geofence of the new `type`.
-              Check other parameters of this method to know more.
+          type: Use this parameter to update the type of a geofence. Please note that you will
+              need to provide required details for creating a geofence of the new type. Check
+              other parameters of this method to know more.
 
           extra_headers: Send extra headers
 
@@ -342,17 +341,17 @@ class GeofenceResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          tags: Comma (`,`) separated list of `tags` which will be used to filter the geofences.
+          tags: Comma (,) separated list of tags which will be used to filter the geofences.
 
-              Please note only the geofences which have all the `tags` added to this parameter
+              Please note only the geofences which have all the tags added to this parameter
               will be included in the result. This parameter can accept a string with a
               maximum length of 256 characters.
 
@@ -449,14 +448,14 @@ class GeofenceResource(SyncAPIResource):
           locations: Pipe (|) separated coordinates, in [latitude,longitude] format, of the locations
               to be searched against the geofences.
 
-          geofences: A `,` separated list geofence IDs against which the `locations` will be
-              searched. If not provided, then the 'locations' will be searched against all
-              your existing geofences.
+          geofences: A , separated list geofence IDs against which the locations will be searched. If
+              not provided, then the 'locations' will be searched against all your existing
+              geofences.
 
               Maximum length of the string can be 256 characters.
 
-          verbose: When `true`, an array with detailed information of geofences is returned. When
-              `false`, an array containing only the IDs of the geofences is returned.
+          verbose: When true, an array with detailed information of geofences is returned. When
+              false, an array containing only the IDs of the geofences is returned.
 
           extra_headers: Send extra headers
 
@@ -519,7 +518,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        type: Literal["`circle`", "`polygon`", "`isochrone`"],
+        type: Literal["circle", "polygon", "isochrone"],
         circle: geofence_create_params.Circle | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         isochrone: geofence_create_params.Isochrone | NotGiven = NOT_GIVEN,
@@ -544,32 +543,32 @@ class AsyncGeofenceResource(AsyncAPIResource):
           type: Specify the type of the geofence that is being created.
 
           circle: Provide the details to create a circular geofence. Please note that this object
-              is mandatory when `type` is `circle`. When the `type` is not `circle`, the
-              properties of this object will be ignored while creating the geofence.
+              is mandatory when type is circle. When the type is not circle, the properties of
+              this object will be ignored while creating the geofence.
 
           custom_id: Set an unique ID for the new geofence. If not provided, an ID will be
-              automatically generated in UUID format. A valid `custom_id` can contain letters,
-              numbers, "-", & "\\__" only.
+              automatically generated in UUID format. A valid custom*id can contain letters,
+              numbers, "-", & "*" only.
 
               Please note that the ID of a geofence can not be changed once it is created.
 
           isochrone: Provide the details to create an isochrone based geofence. Use this object when
-              `type` is `isochrone`. When the `type` is not `isochrone`, the properties of
-              this object will be ignored while creating the geofence.
+              type is isochrone. When the type is not isochrone, the properties of this object
+              will be ignored while creating the geofence.
 
           meta_data: Metadata of the geofence. Use this field to define custom attributes that
               provide more context and information about the geofence being created like
               country, group ID etc.
 
-              The data being added should be in valid JSON object format (i.e. `key` and
-              `value` pairs). Max size allowed for the object is 65kb.
+              The data being added should be in valid JSON object format (i.e. key and value
+              pairs). Max size allowed for the object is 65kb.
 
           name: Name of the geofence. Use this field to assign a meaningful, custom name to the
               geofence being created.
 
           polygon: Provide the details to create a custom polygon type of geofence. Please note
-              that this object is mandatory when `type` is `polygon`. When the `type` is not
-              `polygon`, the properties of this object will be ignored while creating the
+              that this object is mandatory when type is polygon. When the type is not
+              polygon, the properties of this object will be ignored while creating the
               geofence.
 
               Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -577,10 +576,10 @@ class AsyncGeofenceResource(AsyncAPIResource):
 
               Area of the polygon should be less than 2000 km<sup>2</sup>.
 
-          tags: An array of strings to associate multiple tags to the geofence. `tags` can be
-              used to search or filter geofences (using `Get Geofence List` method).
+          tags: An array of strings to associate multiple tags to the geofence. tags can be used
+              to search or filter geofences (using Get Geofence List method).
 
-              Create valid `tags` using a string consisting of alphanumeric characters (A-Z,
+              Create valid tags using a string consisting of alphanumeric characters (A-Z,
               a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
           extra_headers: Send extra headers
@@ -668,7 +667,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         polygon: geofence_update_params.Polygon | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["`circle`", "`polygon`", "`isochrone`"] | NotGiven = NOT_GIVEN,
+        type: Literal["circle", "polygon", "isochrone"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -684,28 +683,27 @@ class AsyncGeofenceResource(AsyncAPIResource):
               API.
 
           circle: Use this object to update details of a circular geofence. Please note that this
-              object is mandatory only when `type` is `circle`. When the `type` is not
-              `circle`, the properties of this object will be ignored while creating the
-              geofence.
+              object is mandatory only when type is circle. When the type is not circle, the
+              properties of this object will be ignored while creating the geofence.
 
           isochrone: Use this object to update details of an isochrone based geofence. Please note
-              that this object is mandatory only when `type` is `isochrone`. When the `type`
-              is not `isochrone`, the properties of this object will be ignored while creating
-              the geofence.
+              that this object is mandatory only when type is isochrone. When the type is not
+              isochrone, the properties of this object will be ignored while creating the
+              geofence.
 
-          meta_data: Updated the `meta_data` associated with a geofence. Use this field to define
+          meta_data: Updated the meta_data associated with a geofence. Use this field to define
               custom attributes that provide more context and information about the geofence
               being updated like country, group ID etc.
 
-              The data being added should be in valid JSON object format (i.e. `key` and
-              `value` pairs). Max size allowed for the object is 65kb.
+              The data being added should be in valid JSON object format (i.e. key and value
+              pairs). Max size allowed for the object is 65kb.
 
-          name: Use this parameter to update the `name` of a geofence. Users can assign
-              meaningful custom names to their geofences.
+          name: Use this parameter to update the name of a geofence. Users can assign meaningful
+              custom names to their geofences.
 
           polygon: Use this object to update details of a custom polygon geofence. Please note that
-              this object is mandatory only when `type` is `polygon`. When the `type` is not
-              `polygon`, the properties of this object will be ignored while creating the
+              this object is mandatory only when type is polygon. When the type is not
+              polygon, the properties of this object will be ignored while creating the
               geofence.
 
               Self-intersecting polygons or polygons containing other polygons are invalid and
@@ -713,15 +711,15 @@ class AsyncGeofenceResource(AsyncAPIResource):
 
               Area of the polygon should be less than 2000 km<sup>2</sup>.
 
-          tags: Use this parameter to add/modify one or multiple `tags` of a geofence. `tags`
-              can be used to search or filter geofences (using `Get Geofence List` method).
+          tags: Use this parameter to add/modify one or multiple tags of a geofence. tags can be
+              used to search or filter geofences (using Get Geofence List method).
 
-              Valid values for updating `tags` consist of alphanumeric characters (A-Z, a-z,
+              Valid values for updating tags consist of alphanumeric characters (A-Z, a-z,
               0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Use this parameter to update the `type` of a geofence. Please note that you will
-              need to provide required details for creating a geofence of the new `type`.
-              Check other parameters of this method to know more.
+          type: Use this parameter to update the type of a geofence. Please note that you will
+              need to provide required details for creating a geofence of the new type. Check
+              other parameters of this method to know more.
 
           extra_headers: Send extra headers
 
@@ -778,17 +776,17 @@ class AsyncGeofenceResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          tags: Comma (`,`) separated list of `tags` which will be used to filter the geofences.
+          tags: Comma (,) separated list of tags which will be used to filter the geofences.
 
-              Please note only the geofences which have all the `tags` added to this parameter
+              Please note only the geofences which have all the tags added to this parameter
               will be included in the result. This parameter can accept a string with a
               maximum length of 256 characters.
 
@@ -885,14 +883,14 @@ class AsyncGeofenceResource(AsyncAPIResource):
           locations: Pipe (|) separated coordinates, in [latitude,longitude] format, of the locations
               to be searched against the geofences.
 
-          geofences: A `,` separated list geofence IDs against which the `locations` will be
-              searched. If not provided, then the 'locations' will be searched against all
-              your existing geofences.
+          geofences: A , separated list geofence IDs against which the locations will be searched. If
+              not provided, then the 'locations' will be searched against all your existing
+              geofences.
 
               Maximum length of the string can be 256 characters.
 
-          verbose: When `true`, an array with detailed information of geofences is returned. When
-              `false`, an array containing only the IDs of the geofences is returned.
+          verbose: When true, an array with detailed information of geofences is returned. When
+              false, an array containing only the IDs of the geofences is returned.
 
           extra_headers: Send extra headers
 

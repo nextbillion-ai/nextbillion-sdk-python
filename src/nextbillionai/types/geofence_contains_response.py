@@ -10,10 +10,10 @@ __all__ = ["GeofenceContainsResponse", "Data", "DataResultList", "DataResultList
 
 class DataResultListResult(BaseModel):
     contain: Optional[bool] = None
-    """`true` when a coordinate point in `locations` is contained by this geofence."""
+    """true when a coordinate point in locations is contained by this geofence."""
 
     location_index: Optional[int] = None
-    """Index of the coordinate point in the input `locations`."""
+    """Index of the coordinate point in the input locations."""
 
 
 class DataResultList(BaseModel):
@@ -26,17 +26,16 @@ class DataResultList(BaseModel):
     result: Optional[List[DataResultListResult]] = None
     """
     An array of objects with results of the contains check for each of the
-    coordinate points in `locations` against the geofence represented by
-    `geofence_id`.
+    coordinate points in locations against the geofence represented by geofence_id.
     """
 
 
 class Data(BaseModel):
     result_list: Optional[List[DataResultList]] = None
     """
-    An array of objects containing each of the geofences provided in the `geofences`
-    input. If `geofences` in not provided then the array will return all the
-    geofences associated with the `key`
+    An array of objects containing each of the geofences provided in the geofences
+    input. If geofences in not provided then the array will return all the geofences
+    associated with the key
     """
 
 
@@ -46,7 +45,7 @@ class GeofenceContainsResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On successful responses, the value will be `Ok`. Indicative error messages are
+    On successful responses, the value will be Ok. Indicative error messages are
     returned for different errors. See the [API Error Codes](#api-error-codes)
     section below for more information.
     """

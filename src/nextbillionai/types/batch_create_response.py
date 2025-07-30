@@ -18,7 +18,7 @@ class BatchCreateResponse(BaseModel):
     status: Optional[str] = None
     """Returns the overall status of the API request.
 
-    Its value will belong to one of `success`, `failed`, and `pending`. It can also
+    Its value will belong to one of success, failed, and pending. It can also
     contain HTTP error codes in case of a failed request or operation.
     """
 

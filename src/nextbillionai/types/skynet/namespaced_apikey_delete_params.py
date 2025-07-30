@@ -23,7 +23,7 @@ class NamespacedApikeyDeleteParams(TypedDict, total=False):
     """Specify the key to be deleted."""
 
     namespace: Required[str]
-    """Specify the name of the `namespace` to which the \\``key_to_delete\\`` belongs.
+    """Specify the name of the namespace to which the \\kkey_to_delete\\  belongs.
 
     Please note that a namespace key cannot be deleted using another namespace key.
     """

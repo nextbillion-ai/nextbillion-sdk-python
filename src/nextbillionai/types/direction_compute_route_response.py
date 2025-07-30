@@ -30,10 +30,10 @@ __all__ = [
 
 class RouteEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """latitude of the `start_location`."""
+    """latitude of the start_location."""
 
     longitude: Optional[float] = None
-    """longitude of the `start_location`."""
+    """longitude of the start_location."""
 
 
 class RouteGeojsonGeometry(BaseModel):
@@ -68,18 +68,18 @@ class RouteLegDuration(BaseModel):
 
 class RouteLegEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `end_location` of the `leg`."""
+    """Latitude of the end_location of the leg."""
 
     longitude: Optional[float] = None
-    """Longitude of the `end_location` of the `leg`."""
+    """Longitude of the end_location of the leg."""
 
 
 class RouteLegStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `start_location` of the `leg`."""
+    """Latitude of the start_location of the leg."""
 
     longitude: Optional[float] = None
-    """Longitude of the `start_location` of the `leg`."""
+    """Longitude of the start_location of the leg."""
 
 
 class RouteLegStepDistance(BaseModel):
@@ -92,17 +92,17 @@ class RouteLegStepDuration(BaseModel):
 
 class RouteLegStepEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `end_location` of the `step`."""
+    """Latitude of the end_location of the step."""
 
     longitude: Optional[float] = None
-    """Longitude of the `end_location` of the `step`."""
+    """Longitude of the end_location of the step."""
 
 
 class RouteLegStepGeojsonGeometry(BaseModel):
     coordinates: Optional[List[float]] = None
     """
     An array of coordinates in the [longitude, latitude] format, representing the
-    `step` geometry.
+    step geometry.
     """
 
     type: Optional[str] = None
@@ -111,7 +111,7 @@ class RouteLegStepGeojsonGeometry(BaseModel):
 
 class RouteLegStepGeojson(BaseModel):
     geometry: Optional[RouteLegStepGeojsonGeometry] = None
-    """An object with details of the geoJSON geometry of the `step`."""
+    """An object with details of the geoJSON geometry of the step."""
 
     properties: Optional[str] = None
     """Property associated with the geoJSON shape."""
@@ -122,41 +122,41 @@ class RouteLegStepGeojson(BaseModel):
 
 class RouteLegStepManeuverCoordinate(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `maneuver` location."""
+    """Latitude of the maneuver location."""
 
     longitude: Optional[float] = None
-    """Longitude of the `maneuver` location."""
+    """Longitude of the maneuver location."""
 
 
 class RouteLegStepManeuver(BaseModel):
     bearing_after: Optional[int] = None
     """
     The clockwise angle from true north to the direction of travel immediately after
-    the `maneuver`. Range of values is between 0-359.
+    the maneuver. Range of values is between 0-359.
     """
 
     bearing_before: Optional[int] = None
     """
     The clockwise angle from true north to the direction of travel immediately
-    before the `maneuver`. Range of values is between 0-359.
+    before the maneuver. Range of values is between 0-359.
     """
 
     coordinate: Optional[RouteLegStepManeuverCoordinate] = None
-    """A coordinate pair describing the location of the `maneuver`."""
+    """A coordinate pair describing the location of the maneuver."""
 
     maneuver_type: Optional[str] = None
-    """A string indicating the type of `maneuver`."""
+    """A string indicating the type of maneuver."""
 
     modifier: Optional[str] = None
-    """Modifier associated with `maneuver_type`."""
+    """Modifier associated with maneuver_type."""
 
 
 class RouteLegStepStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `start_location` of the `step`."""
+    """Latitude of the start_location of the step."""
 
     longitude: Optional[float] = None
-    """Longitude of the `start_location` of the `step`."""
+    """Longitude of the start_location of the step."""
 
 
 class RouteLegStep(BaseModel):
@@ -167,24 +167,24 @@ class RouteLegStep(BaseModel):
     """An object containing step duration value, in seconds."""
 
     end_location: Optional[RouteLegStepEndLocation] = None
-    """Location coordinates of the point where the `step` ends."""
+    """Location coordinates of the point where the step ends."""
 
     geojson: Optional[RouteLegStepGeojson] = None
     """
-    An object with geoJSON details of the `step`.This object is returned when the
-    `geometry` field is set to `geojson` in the input request, otherwise it is not
+    An object with geoJSON details of the step.This object is returned when the
+    geometry field is set to geojson in the input request, otherwise it is not
     present in the response. The contents of this object follow the
     [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
     """
 
     geometry: Optional[str] = None
-    """Encoded geometry of the `step` in the selected format."""
+    """Encoded geometry of the step in the selected format."""
 
     maneuver: Optional[RouteLegStepManeuver] = None
-    """An object with maneuver details for the `step`."""
+    """An object with maneuver details for the step."""
 
     start_location: Optional[RouteLegStepStartLocation] = None
-    """Location coordinates of the point where the `step` starts."""
+    """Location coordinates of the point where the step starts."""
 
 
 class RouteLeg(BaseModel):
@@ -197,29 +197,29 @@ class RouteLeg(BaseModel):
     end_location: Optional[RouteLegEndLocation] = None
     """Location coordinates of the point where the leg ends.
 
-    Returned only when `steps` is true in the input request.
+    Returned only when steps is true in the input request.
     """
 
     start_location: Optional[RouteLegStartLocation] = None
     """Location coordinates of the point where the leg starts.
 
-    Returned only when `steps` is true in the input request.
+    Returned only when steps is true in the input request.
     """
 
     steps: Optional[List[RouteLegStep]] = None
-    """An array of objects with details of each step of the `legs`.
+    """An array of objects with details of each step of the legs.
 
-    Returned only when `steps` is `true` in the input request. An empty array is
-    returned when `steps` is `false` in the input request.
+    Returned only when steps is true in the input request. An empty array is
+    returned when steps is false in the input request.
     """
 
 
 class RouteStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `start_location`."""
+    """Latitude of the start_location."""
 
     longitude: Optional[float] = None
-    """Longitude of the `start_location`."""
+    """Longitude of the start_location."""
 
 
 class Route(BaseModel):
@@ -232,15 +232,15 @@ class Route(BaseModel):
     end_location: Optional[RouteEndLocation] = None
     """Location coordinates of the point where the route ends.
 
-    It is the same as the `destination` in the input request. Returned only when
-    `steps` is true in the input request.
+    It is the same as the destination in the input request. Returned only when steps
+    is true in the input request.
     """
 
     geojson: Optional[RouteGeojson] = None
     """An object with geoJSON details of the route.
 
-    This object is returned when the `geometry` field is set to `geojson` in the
-    input request, otherwise it is not present in the response. The contents of this
+    This object is returned when the geometry field is set to geojson in the input
+    request, otherwise it is not present in the response. The contents of this
     object follow the
     [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
     """
@@ -248,20 +248,20 @@ class Route(BaseModel):
     geometry: Optional[str] = None
     """
     Encoded geometry of the returned route in the selected format and specified
-    `overview` verbosity. This parameter is configured in the input request.
+    overview verbosity. This parameter is configured in the input request.
     """
 
     legs: Optional[List[RouteLeg]] = None
-    """An array of objects returning the details about each `leg` of the route.
+    """An array of objects returning the details about each leg of the route.
 
-    `waypoints` split the route into legs.
+    waypoints split the route into legs.
     """
 
     start_location: Optional[RouteStartLocation] = None
     """Location coordinates of the point where the route starts.
 
-    It is the same as the `origin` in the input request. Returned only when `steps`
-    is true in the input request.
+    It is the same as the origin in the input request. Returned only when steps is
+    true in the input request.
     """
 
 
@@ -283,7 +283,7 @@ class DirectionComputeRouteResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the [API Errors Codes](#api-error-codes)
     section below for more information.
     """

@@ -61,11 +61,10 @@ class NamespacedApikeysResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          namespace: Specify a name for the `namespace`. If the namespace specified is unique then a
+          namespace: Specify a name for the namespace. If the namespace specified is unique then a
               new namespace along with a new key is created. Whereas if the specified
-              `namespace` is not unique, a new key will be created in the existing
-              `namespace`. Please note that a `namespace` cannot be created using another
-              namespace key.
+              namespace is not unique, a new key will be created in the existing namespace.
+              Please note that a namespace cannot be created using another namespace key.
 
           extra_headers: Send extra headers
 
@@ -120,8 +119,8 @@ class NamespacedApikeysResource(SyncAPIResource):
 
           key_to_delete: Specify the key to be deleted.
 
-          namespace: Specify the name of the `namespace` to which the \\``key_to_delete\\`` belongs.
-              Please note that a namespace key cannot be deleted using another namespace key.
+          namespace: Specify the name of the namespace to which the \\kkey_to_delete\\  belongs. Please
+              note that a namespace key cannot be deleted using another namespace key.
 
           extra_headers: Send extra headers
 
@@ -190,11 +189,10 @@ class AsyncNamespacedApikeysResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          namespace: Specify a name for the `namespace`. If the namespace specified is unique then a
+          namespace: Specify a name for the namespace. If the namespace specified is unique then a
               new namespace along with a new key is created. Whereas if the specified
-              `namespace` is not unique, a new key will be created in the existing
-              `namespace`. Please note that a `namespace` cannot be created using another
-              namespace key.
+              namespace is not unique, a new key will be created in the existing namespace.
+              Please note that a namespace cannot be created using another namespace key.
 
           extra_headers: Send extra headers
 
@@ -249,8 +247,8 @@ class AsyncNamespacedApikeysResource(AsyncAPIResource):
 
           key_to_delete: Specify the key to be deleted.
 
-          namespace: Specify the name of the `namespace` to which the \\``key_to_delete\\`` belongs.
-              Please note that a namespace key cannot be deleted using another namespace key.
+          namespace: Specify the name of the namespace to which the \\kkey_to_delete\\  belongs. Please
+              note that a namespace key cannot be deleted using another namespace key.
 
           extra_headers: Send extra headers
 

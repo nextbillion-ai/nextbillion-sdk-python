@@ -70,24 +70,23 @@ class EventResource(SyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          end_time: Time before which the events triggered by the `asset` need to be retrieved.
+          end_time: Time before which the events triggered by the asset need to be retrieved.
 
-          monitor_id: Filter the events by `monitor_id`. When provided, only the events triggered by
-              the `monitor` will be returned in response.
+          monitor_id: Filter the events by monitor_id. When provided, only the events triggered by the
+              monitor will be returned in response.
 
-              Please note that if the `attributes` of the asset identified by `id` and those
-              of the `monitor` do not match, then no events might be returned for this
-              `monitor_id`.
+              Please note that if the attributes of the asset identified by id and those of
+              the monitor do not match, then no events might be returned for this monitor_id.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          start_time: Time after which the events triggered by the `asset` need to be retrieved.
+          start_time: Time after which the events triggered by the asset need to be retrieved.
 
           extra_headers: Send extra headers
 
@@ -170,24 +169,23 @@ class AsyncEventResource(AsyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          end_time: Time before which the events triggered by the `asset` need to be retrieved.
+          end_time: Time before which the events triggered by the asset need to be retrieved.
 
-          monitor_id: Filter the events by `monitor_id`. When provided, only the events triggered by
-              the `monitor` will be returned in response.
+          monitor_id: Filter the events by monitor_id. When provided, only the events triggered by the
+              monitor will be returned in response.
 
-              Please note that if the `attributes` of the asset identified by `id` and those
-              of the `monitor` do not match, then no events might be returned for this
-              `monitor_id`.
+              Please note that if the attributes of the asset identified by id and those of
+              the monitor do not match, then no events might be returned for this monitor_id.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          start_time: Time after which the events triggered by the `asset` need to be retrieved.
+          start_time: Time after which the events triggered by the asset need to be retrieved.
 
           extra_headers: Send extra headers
 

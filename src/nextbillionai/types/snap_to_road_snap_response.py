@@ -42,19 +42,19 @@ class Geojson(BaseModel):
 class RoadInfoMaxSpeed(BaseModel):
     length: Optional[int] = None
     """
-    `length` refers to a sequence of 'n' consecutive vertices in the route geometry
-    starting from the `offset`, forming a continuous section of route where the
-    maximum speed is the same and is indicated in `value`.
+    length refers to a sequence of 'n' consecutive vertices in the route geometry
+    starting from the offset, forming a continuous section of route where the
+    maximum speed is the same and is indicated in value.
     """
 
     offset: Optional[int] = None
     """
-    `offset` is the index value of the vertex of route geometry, which is the
-    starting point of the segment.
+    offset is the index value of the vertex of route geometry, which is the starting
+    point of the segment.
     """
 
     value: Optional[float] = None
-    """`value` denotes the maximum speed of this segment, in kilometers per hour.
+    """value denotes the maximum speed of this segment, in kilometers per hour.
 
     - A value of "-1" indicates that the speed is unlimited for this road segment.
     - A value of "0" indicates that there is no information about the maximum speed
@@ -82,9 +82,9 @@ class SnappedPoint(BaseModel):
     bearing: float
     """
     The bearing, calculated as the angle from true north in clockwise direction, of
-    the route leading to the next snapped point from the current `snapped_point`, in
-    radians. In case of the last `snapped_point` of the route, the bearing indicates
-    the direction of the route to the previous `snapped_location`.
+    the route leading to the next snapped point from the current snapped_point, in
+    radians. In case of the last snapped_point of the route, the bearing indicates
+    the direction of the route to the previous snapped_location.
     """
 
     distance: float
@@ -98,7 +98,7 @@ class SnappedPoint(BaseModel):
 
     original_index: int = FieldInfo(alias="originalIndex")
     """
-    The index of the input `path` coordinate point to which this snapped point
+    The index of the input path coordinate point to which this snapped point
     corresponds to.
     """
 
@@ -110,8 +110,8 @@ class SnapToRoadSnapResponse(BaseModel):
     geojson: Optional[Geojson] = None
     """A GeoJSON object with details of the snapped path.
 
-    This object is returned when the `geometry` field is set to `geojson` in the
-    input request, otherwise it is not present in the response. The contents of this
+    This object is returned when the geometry field is set to geojson in the input
+    request, otherwise it is not present in the response. The contents of this
     object follow the
     [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
     """
@@ -119,7 +119,7 @@ class SnapToRoadSnapResponse(BaseModel):
     geometry: Optional[List[str]] = None
     """
     An array of strings containing the encoded geometries of snapped paths in
-    `polyline` or `polyline6` format.
+    polyline or polyline6 format.
     """
 
     msg: Optional[str] = None
@@ -138,14 +138,14 @@ class SnapToRoadSnapResponse(BaseModel):
     snapped_points: Optional[List[SnappedPoint]] = FieldInfo(alias="snappedPoints", default=None)
     """An array of objects.
 
-    Each object provides the details of a `path` coordinate point snapped to the
+    Each object provides the details of a path coordinate point snapped to the
     nearest road.
     """
 
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the [API Errors Codes](#api-error-codes)
     section below for more information.
     """

@@ -43,7 +43,7 @@ class OptimizationReOptimizeParams(TypedDict, total=False):
 
     As a best practice:
 
-    1.  Don't provide the `locations` input when re-optimizing, if the original set
+    1.  Don't provide the locations input when re-optimizing, if the original set
         contains all the required location coordinates.
     2.  If any new location coordinates are required for re-optimization, copy the
         full, original location list and update it in the following manner before

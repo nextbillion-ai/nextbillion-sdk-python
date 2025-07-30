@@ -69,10 +69,10 @@ class JsonResource(SyncAPIResource):
         destinations: str,
         key: str,
         origins: str,
-        approaches: Literal["`unrestricted`", "`curb`"] | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
         avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
         bearings: str | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         route_failed_prompt: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -250,10 +250,10 @@ class AsyncJsonResource(AsyncAPIResource):
         destinations: str,
         key: str,
         origins: str,
-        approaches: Literal["`unrestricted`", "`curb`"] | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
         avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
         bearings: str | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         route_failed_prompt: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

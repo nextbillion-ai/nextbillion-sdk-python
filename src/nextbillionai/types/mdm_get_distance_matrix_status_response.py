@@ -9,7 +9,7 @@ __all__ = ["MdmGetDistanceMatrixStatusResponse"]
 
 
 class MdmGetDistanceMatrixStatusResponse(BaseModel):
-    code: Optional[Literal["`Ok`", "`Processing`", "`Failed`"]] = None
+    code: Optional[Literal["Ok", "Processing", "Failed"]] = None
     """A code representing the status of the request."""
 
     output_addr: Optional[str] = None
