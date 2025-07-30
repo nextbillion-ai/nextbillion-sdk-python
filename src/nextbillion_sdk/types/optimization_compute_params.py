@@ -20,30 +20,29 @@ class OptimizationComputeParams(TypedDict, total=False):
     API.
     """
 
-    approaches: Literal["`unrestricted`", "`curb`"]
+    approaches: Literal["unrestricted", "curb"]
     """
     A semicolon-separated list indicating the side of the road from which to
-    approach waypoints in a requested route. If provided, the number of `approaches`
-    must be the same as the number of `coordinates`. However, you can skip a
-    coordinate and show its position in the list with the `;` separator.
+    approach waypoints in a requested route. If provided, the number of approaches
+    must be the same as the number of coordinates. However, you can skip a
+    coordinate and show its position in the list with the ; separator.
     """
 
-    destination: Literal["`any`", "`last`"]
+    destination: Literal["any", "last"]
     """Specify the destination coordinate of the returned route.
 
-    If the input is `last`, the last coordinate will be the destination.
+    If the input is last, the last coordinate will be the destination.
     """
 
-    geometries: Literal["`polyline`", "`polyline6`", "`geojson`"]
+    geometries: Literal["polyline", "polyline6", "geojson"]
     """Sets the output format of the route geometry in the response.
 
-    On providing `polyline` and `polyline6` as input, respective encoded geometry is
-    returned. However, when `geojson` is provided as the input value, `polyline`
-    encoded geometry is returned in the response along with a geojson details of the
-    route.
+    On providing polyline and polyline6 as input, respective encoded geometry is
+    returned. However, when geojson is provided as the input value, polyline encoded
+    geometry is returned in the response along with a geojson details of the route.
     """
 
-    mode: Literal["`car`", "`truck`"]
+    mode: Literal["car", "truck"]
     """Set which driving mode the service should use to determine a route.
 
     For example, if you use "car", the API will return a route that a car can take.
@@ -74,7 +73,7 @@ class OptimizationComputeParams(TypedDict, total=False):
     roundtrip: bool
     """Indicates whether the returned route is a roundtrip."""
 
-    source: Literal["`any`", "`first`"]
+    source: Literal["any", "first"]
     """The coordinate at which to start the returned route.
 
     If this is not configured, the return route’s destination will be the first

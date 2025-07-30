@@ -9,7 +9,7 @@ __all__ = ["BatchListParams"]
 
 class BatchListParams(TypedDict, total=False):
     ids: Required[str]
-    """Comma(`,`) separated list of IDs of the geofences to be searched."""
+    """Comma(,) separated list of IDs of the geofences to be searched."""
 
     key: Required[str]
     """

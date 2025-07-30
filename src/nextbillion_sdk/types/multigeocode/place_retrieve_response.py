@@ -53,5 +53,5 @@ class PlaceRetrieveResponse(BaseModel):
     It depends on how ‘richly’ the place was defined at the time of creation. In
     order to modify the score, use “Update Place” method and update information for
     parameters which are not set currently. As an alternative, you can directly
-    update the `score` to a custom value.
+    update the score to a custom value.
     """

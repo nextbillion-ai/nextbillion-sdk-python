@@ -37,7 +37,7 @@ class Item(BaseModel):
     map_view: Optional[MapView] = FieldInfo(alias="mapView", default=None)
     """
     The bounding box enclosing the geometric shape (area or line) that an individual
-    result covers. `place` typed results have no `mapView`.
+    result covers. place typed results have no mapView.
     """
 
     position: Optional[Position] = None

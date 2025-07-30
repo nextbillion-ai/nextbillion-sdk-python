@@ -4,4 +4,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["RouteStepCompletionMode"]
 
-RouteStepCompletionMode: TypeAlias = Literal["`manual`", "`geofence`", "`geofence_manual_fallback`"]
+RouteStepCompletionMode: TypeAlias = Literal["manual", "geofence", "geofence_manual_fallback"]

@@ -11,7 +11,7 @@ class Response(BaseModel):
     response: Optional[object] = None
     """An object returning the routing solution of an individual query.
 
-    The JSON format and structure of the `response` would vary depending on the
+    The JSON format and structure of the response would vary depending on the
     routing endpoint used in each individual query. However, it will be consistent
     with standard response for a given routing endpoint.
     """
@@ -41,7 +41,7 @@ class BatchRetrieveResponse(BaseModel):
     status: Optional[str] = None
     """Returns the overall status of the API request.
 
-    Its value will always be one of `success`, `failed`, and `pending`.
+    Its value will always be one of success, failed, and pending.
     """
 
     track_id: Optional[str] = None

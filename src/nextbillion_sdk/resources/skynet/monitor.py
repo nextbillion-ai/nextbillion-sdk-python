@@ -59,7 +59,7 @@ class MonitorResource(SyncAPIResource):
         *,
         key: str,
         tags: List[str],
-        type: Literal["`enter`", "`exit`", "`enter_and_exit`", "`speeding`", "`idle`"],
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -84,85 +84,84 @@ class MonitorResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          tags: Use this parameter to add `tags` to the `monitor`. `tags` can be used for
-              filtering monitors in the _Get Monitor List_ operation. They can also be used
-              for easy identification of monitors.
+          tags: Use this parameter to add tags to the monitor. tags can be used for filtering
+              monitors in the _Get Monitor List_ operation. They can also be used for easy
+              identification of monitors.
 
-              Please note that valid `tags` are strings, consisting of alphanumeric characters
+              Please note that valid tags are strings, consisting of alphanumeric characters
               (A-Z, a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Specify the type of activity the `monitor` would detect.
+          type: Specify the type of activity the monitor would detect.
 
-              The `monitor` will be able to detect the specified `type` of activity and create
-              events for eligible `asset`. A `monitor` can detect following types of asset
+              The monitor will be able to detect the specified type of activity and create
+              events for eligible asset. A monitor can detect following types of asset
               activity:
 
-              - `enter`: The `monitor` will create an event when a linked `asset` enters into
-                the specified geofence.
-
-              - `exit`: The `monitor` will create an event when a linked `asset` exits the
+              - enter: The monitor will create an event when a linked asset enters into the
                 specified geofence.
 
-              - `enter_and_exit`: The `monitor` will create an event when a linked `asset`
-                either enters or exits the specified geofence.
+              - exit: The monitor will create an event when a linked asset exits the specified
+                geofence.
 
-              - `speeding`: The `monitor` will create an event when a linked `asset` exceeds a
-                given speed limit.
+              - enter_and_exit: The monitor will create an event when a linked asset either
+                enters or exits the specified geofence.
 
-              - `idle`: The `monitor` will create an event when a linked `asset` exhibits idle
+              - speeding: The monitor will create an event when a linked asset exceeds a given
+                speed limit.
+
+              - idle: The monitor will create an event when a linked asset exhibits idle
                 activity.
 
-              Please note that `assets` and geofences can be linked to a `monitor` using the
-              `match_filter` and `geofence_config` attributes respectively.
+              Please note that assets and geofences can be linked to a monitor using the
+              match_filter and geofence_config attributes respectively.
 
           cluster: the cluster of the region you want to use
 
-          custom_id: Set a unique ID for the new `monitor`. If not provided, an ID will be
-              automatically generated in UUID format. A valid `custom_id` can contain letters,
-              numbers, "-", & "\\__" only.
+          custom_id: Set a unique ID for the new monitor. If not provided, an ID will be
+              automatically generated in UUID format. A valid custom*id can contain letters,
+              numbers, "-", & "*" only.
 
-              Please note that the ID of an `monitor` can not be changed once it is created.
+              Please note that the ID of an monitor can not be changed once it is created.
 
-          description: Add a description for your `monitor` using this parameter.
+          description: Add a description for your monitor using this parameter.
 
           geofence_config: Geofences are geographic boundaries surrounding an area of interest.
-              `geofence_config` is used to specify the geofences for creating `enter` or
-              `exit` type of events based on the asset's location. When an asset associated
-              with the `monitor` enters the given geofence, an `enter` type event is created,
-              whereas when the asset moves out of the geofence an `exit` type event is
-              created.
+              geofence_config is used to specify the geofences for creating enter or exit type
+              of events based on the asset's location. When an asset associated with the
+              monitor enters the given geofence, an enter type event is created, whereas when
+              the asset moves out of the geofence an exit type event is created.
 
-              Please note that this object is mandatory when the monitor `type` belongs to one
-              of `enter`, `exit` or `enter_and_exit`.
+              Please note that this object is mandatory when the monitor type belongs to one
+              of enter, exit or enter_and_exit.
 
-          geofence_ids: **Deprecated. Please use the `geofence_config` to specify the geofence_ids for
+          geofence_ids: **Deprecated. Please use the geofence_config to specify the geofence_ids for
               this monitor.**
 
               An array of strings to collect the geofence IDs that should be linked to the
-              `monitor`. Geofences are geographic boundaries that can be used to trigger
-              events based on an asset's location.
+              monitor. Geofences are geographic boundaries that can be used to trigger events
+              based on an asset's location.
 
-          idle_config: `idle_config` is used to set up constraints for creating idle events. When an
-              asset associated with the `monitor` has not moved a given distance within a
-              given time, the Live Tracking API can create events to denote such instances.
-              Please note that this object is mandatory when the monitor `type` is `idle`.
+          idle_config: idle_config is used to set up constraints for creating idle events. When an
+              asset associated with the monitor has not moved a given distance within a given
+              time, the Live Tracking API can create events to denote such instances. Please
+              note that this object is mandatory when the monitor type is idle.
 
               Let's look at the properties of this object.
 
-          match_filter: This object is used to identify the asset(s) on which the `monitor` would be
+          match_filter: This object is used to identify the asset(s) on which the monitor would be
               applied.
 
           meta_data: Any valid json object data. Can be used to save customized data. Max size is
               65kb.
 
-          name: Name of the `monitor`. Use this field to assign a meaningful, custom name to the
-              `monitor` being created.
+          name: Name of the monitor. Use this field to assign a meaningful, custom name to the
+              monitor being created.
 
-          speeding_config: `speeding_config` is used to set up constraints for creating over-speed events.
-              When an `asset` associated with a `monitor` is traveling at a speed above the
-              given limits, the Live Tracking API can create events to denote such instances.
-              There is also an option to set up a tolerance before creating an event. Please
-              note that this object is mandatory when `type=speeding`.
+          speeding_config: speeding_config is used to set up constraints for creating over-speed events.
+              When an asset associated with a monitor is traveling at a speed above the given
+              limits, the Live Tracking API can create events to denote such instances. There
+              is also an option to set up a tolerance before creating an event. Please note
+              that this object is mandatory when type=speeding.
 
               Let's look at the properties of this object.
 
@@ -263,7 +262,7 @@ class MonitorResource(SyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["`enter`", "`exit`", "`enter_and_exit`", "`speeding`", "`idle`"] | NotGiven = NOT_GIVEN,
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -278,68 +277,68 @@ class MonitorResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          description: Use this parameter to update the `description` of the `monitor`.
+          description: Use this parameter to update the description of the monitor.
 
-          geofence_config: `geofence_config` is used to update the set of geofences linked to the `monitor`
-              for creating `enter` or `exit` type of events based on the asset's location.
-              Please note that this object is mandatory when the monitor `type` belongs to one
-              of `enter`, `exit` or `enter_and_exit`.
+          geofence_config: geofence_config is used to update the set of geofences linked to the monitor for
+              creating enter or exit type of events based on the asset's location. Please note
+              that this object is mandatory when the monitor type belongs to one of enter,
+              exit or enter_and_exit.
 
-          geofence_ids: Use this parameter to update the geofences linked to the `monitor` by providing
-              the geofence `id` as `,` separated strings. Geofences are geographic boundaries
-              that can be used to trigger events based on an asset's location.
+          geofence_ids: Use this parameter to update the geofences linked to the monitor by providing
+              the geofence id as , separated strings. Geofences are geographic boundaries that
+              can be used to trigger events based on an asset's location.
 
-          idle_config: `idle_config` is used to update the constraints for creating idle events. When
-              an asset associated with the `monitor` has not moved a given distance within a
-              given time, the Live Tracking API can create events to denote such instances.
+          idle_config: idle_config is used to update the constraints for creating idle events. When an
+              asset associated with the monitor has not moved a given distance within a given
+              time, the Live Tracking API can create events to denote such instances.
 
-              Please note that this object is mandatory when the monitor `type` is `idle`.
+              Please note that this object is mandatory when the monitor type is idle.
 
-          match_filter: Use this object to update the `attributes` of the `monitor`. Please note that
-              using this property will overwrite the existing `attributes` that the monitor
-              might be using currently to match any asset(s).
+          match_filter: Use this object to update the attributes of the monitor. Please note that using
+              this property will overwrite the existing attributes that the monitor might be
+              using currently to match any asset(s).
 
           meta_data: Any valid json object data. Can be used to save customized data. Max size is
               65kb.
 
-          name: Use this parameter to update the `name` of the `monitor`. Users can add
-              meaningful names to the monitors like "warehouse_exit", "depot_entry" etc.
+          name: Use this parameter to update the name of the monitor. Users can add meaningful
+              names to the monitors like "warehouse_exit", "depot_entry" etc.
 
-          speeding_config: `speeding_config` is used to update the tolerance values for creating over-speed
-              events. When an asset associated with a `monitor` is traveling at a speed above
+          speeding_config: speeding_config is used to update the tolerance values for creating over-speed
+              events. When an asset associated with a monitor is traveling at a speed above
               the given limits, Live Tracking API creates events to indicate such instances.
 
-              Please note that this object is mandatory when the monitor `type` is `speeding`.
+              Please note that this object is mandatory when the monitor type is speeding.
 
-          tags: Use this parameter to update the `tags` of the `monitor`. `tags` can be used for
+          tags: Use this parameter to update the tags of the monitor. tags can be used for
               filtering monitors in the _Get Monitor List_ operation. They can also be used
               for easy identification of monitors. Using this parameter overwrites the
-              existing `tags` of the monitor.
+              existing tags of the monitor.
 
-              Please note that valid `tags` are strings, consisting of alphanumeric characters
+              Please note that valid tags are strings, consisting of alphanumeric characters
               (A-Z, a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Use this parameter to update the `type` of the `monitor`. The `monitor` will be
-              able to detect the specified `type` of activity and create events for eligible
-              `asset`. A `monitor` can detect following types of asset activity:
+          type: Use this parameter to update the type of the monitor. The monitor will be able
+              to detect the specified type of activity and create events for eligible asset. A
+              monitor can detect following types of asset activity:
 
-              - `enter`: The `monitor` will create an event when a linked `asset` enters into
-                the specified geofence.
-
-              - `exit`: The `monitor` will create an event when a linked `asset` exits the
+              - enter: The monitor will create an event when a linked asset enters into the
                 specified geofence.
 
-              - `enter_and_exit`: The `monitor` will create an event when a linked `asset`
-                either enters or exits the specified geofence.
+              - exit: The monitor will create an event when a linked asset exits the specified
+                geofence.
 
-              - `speeding`: The `monitor` will create an event when a linked `asset` exceeds a
-                given speed limit.
+              - enter_and_exit: The monitor will create an event when a linked asset either
+                enters or exits the specified geofence.
 
-              - `idle`: The `monitor` will create an event when a linked `asset` exhibits idle
+              - speeding: The monitor will create an event when a linked asset exceeds a given
+                speed limit.
+
+              - idle: The monitor will create an event when a linked asset exhibits idle
                 activity.
 
-              Please note that `assets` and geofences can be linked to a `monitor` using the
-              `match_filter` and `geofence_config` attributes respectively.
+              Please note that assets and geofences can be linked to a monitor using the
+              match_filter and geofence_config attributes respectively.
 
           extra_headers: Send extra headers
 
@@ -403,24 +402,24 @@ class MonitorResource(SyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          sort: Provide a single field to sort the results by. Only `updated_at` or `created_at`
+          sort: Provide a single field to sort the results by. Only updated_at or created_at
               fields can be selected for ordering the results.
 
-              By default, the result is sorted by `created_at` field in the descending order.
-              Allowed values for specifying the order are `asc` for ascending order and `desc`
-              for descending order.
+              By default, the result is sorted by created_at field in the descending order.
+              Allowed values for specifying the order are asc for ascending order and desc for
+              descending order.
 
-          tags: `tags` can be used to filter the monitors. Only those monitors which have all
-              the `tags` provided here, will be included in the search result. In case
-              multiple `tags` need to be specified, use `,` to separate them.
+          tags: tags can be used to filter the monitors. Only those monitors which have all the
+              tags provided here, will be included in the search result. In case multiple tags
+              need to be specified, use , to separate them.
 
           extra_headers: Send extra headers
 
@@ -519,7 +518,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         *,
         key: str,
         tags: List[str],
-        type: Literal["`enter`", "`exit`", "`enter_and_exit`", "`speeding`", "`idle`"],
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
@@ -544,85 +543,84 @@ class AsyncMonitorResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          tags: Use this parameter to add `tags` to the `monitor`. `tags` can be used for
-              filtering monitors in the _Get Monitor List_ operation. They can also be used
-              for easy identification of monitors.
+          tags: Use this parameter to add tags to the monitor. tags can be used for filtering
+              monitors in the _Get Monitor List_ operation. They can also be used for easy
+              identification of monitors.
 
-              Please note that valid `tags` are strings, consisting of alphanumeric characters
+              Please note that valid tags are strings, consisting of alphanumeric characters
               (A-Z, a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Specify the type of activity the `monitor` would detect.
+          type: Specify the type of activity the monitor would detect.
 
-              The `monitor` will be able to detect the specified `type` of activity and create
-              events for eligible `asset`. A `monitor` can detect following types of asset
+              The monitor will be able to detect the specified type of activity and create
+              events for eligible asset. A monitor can detect following types of asset
               activity:
 
-              - `enter`: The `monitor` will create an event when a linked `asset` enters into
-                the specified geofence.
-
-              - `exit`: The `monitor` will create an event when a linked `asset` exits the
+              - enter: The monitor will create an event when a linked asset enters into the
                 specified geofence.
 
-              - `enter_and_exit`: The `monitor` will create an event when a linked `asset`
-                either enters or exits the specified geofence.
+              - exit: The monitor will create an event when a linked asset exits the specified
+                geofence.
 
-              - `speeding`: The `monitor` will create an event when a linked `asset` exceeds a
-                given speed limit.
+              - enter_and_exit: The monitor will create an event when a linked asset either
+                enters or exits the specified geofence.
 
-              - `idle`: The `monitor` will create an event when a linked `asset` exhibits idle
+              - speeding: The monitor will create an event when a linked asset exceeds a given
+                speed limit.
+
+              - idle: The monitor will create an event when a linked asset exhibits idle
                 activity.
 
-              Please note that `assets` and geofences can be linked to a `monitor` using the
-              `match_filter` and `geofence_config` attributes respectively.
+              Please note that assets and geofences can be linked to a monitor using the
+              match_filter and geofence_config attributes respectively.
 
           cluster: the cluster of the region you want to use
 
-          custom_id: Set a unique ID for the new `monitor`. If not provided, an ID will be
-              automatically generated in UUID format. A valid `custom_id` can contain letters,
-              numbers, "-", & "\\__" only.
+          custom_id: Set a unique ID for the new monitor. If not provided, an ID will be
+              automatically generated in UUID format. A valid custom*id can contain letters,
+              numbers, "-", & "*" only.
 
-              Please note that the ID of an `monitor` can not be changed once it is created.
+              Please note that the ID of an monitor can not be changed once it is created.
 
-          description: Add a description for your `monitor` using this parameter.
+          description: Add a description for your monitor using this parameter.
 
           geofence_config: Geofences are geographic boundaries surrounding an area of interest.
-              `geofence_config` is used to specify the geofences for creating `enter` or
-              `exit` type of events based on the asset's location. When an asset associated
-              with the `monitor` enters the given geofence, an `enter` type event is created,
-              whereas when the asset moves out of the geofence an `exit` type event is
-              created.
+              geofence_config is used to specify the geofences for creating enter or exit type
+              of events based on the asset's location. When an asset associated with the
+              monitor enters the given geofence, an enter type event is created, whereas when
+              the asset moves out of the geofence an exit type event is created.
 
-              Please note that this object is mandatory when the monitor `type` belongs to one
-              of `enter`, `exit` or `enter_and_exit`.
+              Please note that this object is mandatory when the monitor type belongs to one
+              of enter, exit or enter_and_exit.
 
-          geofence_ids: **Deprecated. Please use the `geofence_config` to specify the geofence_ids for
+          geofence_ids: **Deprecated. Please use the geofence_config to specify the geofence_ids for
               this monitor.**
 
               An array of strings to collect the geofence IDs that should be linked to the
-              `monitor`. Geofences are geographic boundaries that can be used to trigger
-              events based on an asset's location.
+              monitor. Geofences are geographic boundaries that can be used to trigger events
+              based on an asset's location.
 
-          idle_config: `idle_config` is used to set up constraints for creating idle events. When an
-              asset associated with the `monitor` has not moved a given distance within a
-              given time, the Live Tracking API can create events to denote such instances.
-              Please note that this object is mandatory when the monitor `type` is `idle`.
+          idle_config: idle_config is used to set up constraints for creating idle events. When an
+              asset associated with the monitor has not moved a given distance within a given
+              time, the Live Tracking API can create events to denote such instances. Please
+              note that this object is mandatory when the monitor type is idle.
 
               Let's look at the properties of this object.
 
-          match_filter: This object is used to identify the asset(s) on which the `monitor` would be
+          match_filter: This object is used to identify the asset(s) on which the monitor would be
               applied.
 
           meta_data: Any valid json object data. Can be used to save customized data. Max size is
               65kb.
 
-          name: Name of the `monitor`. Use this field to assign a meaningful, custom name to the
-              `monitor` being created.
+          name: Name of the monitor. Use this field to assign a meaningful, custom name to the
+              monitor being created.
 
-          speeding_config: `speeding_config` is used to set up constraints for creating over-speed events.
-              When an `asset` associated with a `monitor` is traveling at a speed above the
-              given limits, the Live Tracking API can create events to denote such instances.
-              There is also an option to set up a tolerance before creating an event. Please
-              note that this object is mandatory when `type=speeding`.
+          speeding_config: speeding_config is used to set up constraints for creating over-speed events.
+              When an asset associated with a monitor is traveling at a speed above the given
+              limits, the Live Tracking API can create events to denote such instances. There
+              is also an option to set up a tolerance before creating an event. Please note
+              that this object is mandatory when type=speeding.
 
               Let's look at the properties of this object.
 
@@ -723,7 +721,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         name: str | NotGiven = NOT_GIVEN,
         speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["`enter`", "`exit`", "`enter_and_exit`", "`speeding`", "`idle`"] | NotGiven = NOT_GIVEN,
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -738,68 +736,68 @@ class AsyncMonitorResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          description: Use this parameter to update the `description` of the `monitor`.
+          description: Use this parameter to update the description of the monitor.
 
-          geofence_config: `geofence_config` is used to update the set of geofences linked to the `monitor`
-              for creating `enter` or `exit` type of events based on the asset's location.
-              Please note that this object is mandatory when the monitor `type` belongs to one
-              of `enter`, `exit` or `enter_and_exit`.
+          geofence_config: geofence_config is used to update the set of geofences linked to the monitor for
+              creating enter or exit type of events based on the asset's location. Please note
+              that this object is mandatory when the monitor type belongs to one of enter,
+              exit or enter_and_exit.
 
-          geofence_ids: Use this parameter to update the geofences linked to the `monitor` by providing
-              the geofence `id` as `,` separated strings. Geofences are geographic boundaries
-              that can be used to trigger events based on an asset's location.
+          geofence_ids: Use this parameter to update the geofences linked to the monitor by providing
+              the geofence id as , separated strings. Geofences are geographic boundaries that
+              can be used to trigger events based on an asset's location.
 
-          idle_config: `idle_config` is used to update the constraints for creating idle events. When
-              an asset associated with the `monitor` has not moved a given distance within a
-              given time, the Live Tracking API can create events to denote such instances.
+          idle_config: idle_config is used to update the constraints for creating idle events. When an
+              asset associated with the monitor has not moved a given distance within a given
+              time, the Live Tracking API can create events to denote such instances.
 
-              Please note that this object is mandatory when the monitor `type` is `idle`.
+              Please note that this object is mandatory when the monitor type is idle.
 
-          match_filter: Use this object to update the `attributes` of the `monitor`. Please note that
-              using this property will overwrite the existing `attributes` that the monitor
-              might be using currently to match any asset(s).
+          match_filter: Use this object to update the attributes of the monitor. Please note that using
+              this property will overwrite the existing attributes that the monitor might be
+              using currently to match any asset(s).
 
           meta_data: Any valid json object data. Can be used to save customized data. Max size is
               65kb.
 
-          name: Use this parameter to update the `name` of the `monitor`. Users can add
-              meaningful names to the monitors like "warehouse_exit", "depot_entry" etc.
+          name: Use this parameter to update the name of the monitor. Users can add meaningful
+              names to the monitors like "warehouse_exit", "depot_entry" etc.
 
-          speeding_config: `speeding_config` is used to update the tolerance values for creating over-speed
-              events. When an asset associated with a `monitor` is traveling at a speed above
+          speeding_config: speeding_config is used to update the tolerance values for creating over-speed
+              events. When an asset associated with a monitor is traveling at a speed above
               the given limits, Live Tracking API creates events to indicate such instances.
 
-              Please note that this object is mandatory when the monitor `type` is `speeding`.
+              Please note that this object is mandatory when the monitor type is speeding.
 
-          tags: Use this parameter to update the `tags` of the `monitor`. `tags` can be used for
+          tags: Use this parameter to update the tags of the monitor. tags can be used for
               filtering monitors in the _Get Monitor List_ operation. They can also be used
               for easy identification of monitors. Using this parameter overwrites the
-              existing `tags` of the monitor.
+              existing tags of the monitor.
 
-              Please note that valid `tags` are strings, consisting of alphanumeric characters
+              Please note that valid tags are strings, consisting of alphanumeric characters
               (A-Z, a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
 
-          type: Use this parameter to update the `type` of the `monitor`. The `monitor` will be
-              able to detect the specified `type` of activity and create events for eligible
-              `asset`. A `monitor` can detect following types of asset activity:
+          type: Use this parameter to update the type of the monitor. The monitor will be able
+              to detect the specified type of activity and create events for eligible asset. A
+              monitor can detect following types of asset activity:
 
-              - `enter`: The `monitor` will create an event when a linked `asset` enters into
-                the specified geofence.
-
-              - `exit`: The `monitor` will create an event when a linked `asset` exits the
+              - enter: The monitor will create an event when a linked asset enters into the
                 specified geofence.
 
-              - `enter_and_exit`: The `monitor` will create an event when a linked `asset`
-                either enters or exits the specified geofence.
+              - exit: The monitor will create an event when a linked asset exits the specified
+                geofence.
 
-              - `speeding`: The `monitor` will create an event when a linked `asset` exceeds a
-                given speed limit.
+              - enter_and_exit: The monitor will create an event when a linked asset either
+                enters or exits the specified geofence.
 
-              - `idle`: The `monitor` will create an event when a linked `asset` exhibits idle
+              - speeding: The monitor will create an event when a linked asset exceeds a given
+                speed limit.
+
+              - idle: The monitor will create an event when a linked asset exhibits idle
                 activity.
 
-              Please note that `assets` and geofences can be linked to a `monitor` using the
-              `match_filter` and `geofence_config` attributes respectively.
+              Please note that assets and geofences can be linked to a monitor using the
+              match_filter and geofence_config attributes respectively.
 
           extra_headers: Send extra headers
 
@@ -863,24 +861,24 @@ class AsyncMonitorResource(AsyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          sort: Provide a single field to sort the results by. Only `updated_at` or `created_at`
+          sort: Provide a single field to sort the results by. Only updated_at or created_at
               fields can be selected for ordering the results.
 
-              By default, the result is sorted by `created_at` field in the descending order.
-              Allowed values for specifying the order are `asc` for ascending order and `desc`
-              for descending order.
+              By default, the result is sorted by created_at field in the descending order.
+              Allowed values for specifying the order are asc for ascending order and desc for
+              descending order.
 
-          tags: `tags` can be used to filter the monitors. Only those monitors which have all
-              the `tags` provided here, will be included in the search result. In case
-              multiple `tags` need to be specified, use `,` to separate them.
+          tags: tags can be used to filter the monitors. Only those monitors which have all the
+              tags provided here, will be included in the search result. In case multiple tags
+              need to be specified, use , to separate them.
 
           extra_headers: Send extra headers
 

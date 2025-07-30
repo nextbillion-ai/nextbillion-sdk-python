@@ -9,10 +9,10 @@ __all__ = ["TrackLocation", "Location"]
 
 class Location(BaseModel):
     lat: Optional[float] = None
-    """Latitude of the tracked location of the `asset`."""
+    """Latitude of the tracked location of the asset."""
 
     lon: Optional[float] = None
-    """Longitude of the tracked location of the `asset`."""
+    """Longitude of the tracked location of the asset."""
 
 
 class TrackLocation(BaseModel):
@@ -26,8 +26,8 @@ class TrackLocation(BaseModel):
     altitude: Optional[float] = None
     """
     If available in the GPS information, this property returns the altitude of the
-    `asset` at the tracked location. It is represented as height, in meters, above
-    the WGS84 reference ellipsoid.
+    asset at the tracked location. It is represented as height, in meters, above the
+    WGS84 reference ellipsoid.
     """
 
     battery_level: Optional[int] = None
@@ -39,9 +39,8 @@ class TrackLocation(BaseModel):
     bearing: Optional[float] = None
     """
     If available in the GPS information, this property returns the heading of the
-    `asset` calculated from true north in clockwise direction at the tracked
-    location. Please note that the bearing is not affected by the device
-    orientation.
+    asset calculated from true north in clockwise direction at the tracked location.
+    Please note that the bearing is not affected by the device orientation.
 
     The bearing will always be in the range of [0, 360).
     """
@@ -58,7 +57,7 @@ class TrackLocation(BaseModel):
     speed: Optional[float] = None
     """
     If available in the GPS information, this property returns the speed of the
-    `asset`, in meters per second, at the tracked location.
+    asset, in meters per second, at the tracked location.
     """
 
     timestamp: Optional[int] = None

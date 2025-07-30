@@ -15,15 +15,14 @@ class AssetTrackParams(TypedDict, total=False):
     """
 
     device_id: Required[str]
-    """ID of the device used to upload the tracking information of the `asset`.
+    """ID of the device used to upload the tracking information of the asset.
 
-    Please note that the `device_id` used here must already be linked to the
-    `asset`. Use the _Bind Device to Asset_ method to link a device with your
-    `asset`.
+    Please note that the device_id used here must already be linked to the asset.
+    Use the _Bind Device to Asset_ method to link a device with your asset.
     """
 
     locations: Required[Locations]
-    """An array of objects to collect the location tracking information for an `asset`.
+    """An array of objects to collect the location tracking information for an asset.
 
     Each object must correspond to details of only one location.
     """
@@ -34,10 +33,10 @@ class AssetTrackParams(TypedDict, total=False):
 
 class LocationsLocation(TypedDict, total=False):
     lat: Required[float]
-    """Latitude of the tracked location of the `asset`."""
+    """Latitude of the tracked location of the asset."""
 
     lon: Required[float]
-    """Longitude of the tracked location of the `asset`."""
+    """Longitude of the tracked location of the asset."""
 
 
 class Locations(TypedDict, total=False):
@@ -62,7 +61,7 @@ class Locations(TypedDict, total=False):
 
     altitude: float
     """
-    Use this parameter to provide the altitude, in meters, of the `asset` at the
+    Use this parameter to provide the altitude, in meters, of the asset at the
     tracked location.
     """
 
@@ -75,7 +74,7 @@ class Locations(TypedDict, total=False):
 
     bearing: float
     """
-    Use this parameter to provide the heading of the `asset`, in radians, calculated
+    Use this parameter to provide the heading of the asset, in radians, calculated
     from true north in clockwise direction. This should always be in the range of
     [0, 360).
     """
@@ -84,14 +83,14 @@ class Locations(TypedDict, total=False):
     """Use this object to add any custom data about the location that is being
     uploaded.
 
-    Recommended to use the `key`:`value` format for adding the desired information.
+    Recommended to use the key:value format for adding the desired information.
 
-    Please note that the maximum size of `meta_data` object should not exceed 65Kb.
+    Please note that the maximum size of meta_data object should not exceed 65Kb.
     """
 
     speed: float
     """
-    Use this parameter to provide the speed of the `asset`, in meters per second, at
+    Use this parameter to provide the speed of the asset, in meters per second, at
     the tracked location.
     """
 

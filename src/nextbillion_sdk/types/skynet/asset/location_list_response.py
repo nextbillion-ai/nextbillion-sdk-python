@@ -73,15 +73,15 @@ class Data(BaseModel):
     Distance of the path, in meters, formed by connecting all tracked locations
     returned.
 
-    Please note that `distance` is returned only when the `mapmatch` property of
-    `correction` parameter is set to 1.
+    Please note that distance is returned only when the mapmatch property of
+    correction parameter is set to 1.
     """
 
     geojson: Optional[DataGeojson] = None
     """An object with geoJSON details of the route.
 
-    It is returned only when the `mapmatch` property of the `correction` parameter
-    is set to 1 and `geometry_type` is `geojson, otherwise it is not present in the
+    It is returned only when the mapmatch property of the correction parameter is
+    set to 1 and geometry_type is geojson, otherwise it is not present in the
     response. The contents of this object follow the
     [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
     """
@@ -89,12 +89,12 @@ class Data(BaseModel):
     geometry: Optional[List[str]] = None
     """Geometry of tracked locations in the requested format.
 
-    It is returned only if the `mapmatch` property of the ‘correction’ parameter is
+    It is returned only if the mapmatch property of the ‘correction’ parameter is
     set to 1.
     """
 
     list: Optional[List[TrackLocation]] = None
-    """An array of objects with details of the tracked locations of the `asset`.
+    """An array of objects with details of the tracked locations of the asset.
 
     Each object represents one tracked location.
     """
@@ -108,10 +108,10 @@ class Data(BaseModel):
     snapped_points: Optional[List[DataSnappedPoint]] = None
     """
     An array of objects with details about the snapped points for each of the
-    tracked locations returned for the `asset`.
+    tracked locations returned for the asset.
 
-    Please note that this property is returned only when the `mapmatch` property of
-    `correction` parameter is set to 1.
+    Please note that this property is returned only when the mapmatch property of
+    correction parameter is set to 1.
     """
 
 
@@ -127,7 +127,7 @@ class LocationListResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On successful responses, the value will be `Ok`. Indicative error messages are
+    On successful responses, the value will be Ok. Indicative error messages are
     returned for different errors. See the [API Error Codes](#api-error-codes)
     section below for more information.
     """

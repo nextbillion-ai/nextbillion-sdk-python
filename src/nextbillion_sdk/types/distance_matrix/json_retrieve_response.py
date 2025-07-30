@@ -19,11 +19,10 @@ class Row(BaseModel):
     elements: Optional[List[RowElement]] = None
     """An array of objects.
 
-    Each `elements` array corresponds to a single `origins` coordinate and contains
-    objects with `distance` and `duration` values for each of the `destinations`.
-    The details in the first `elements` array correspond to the first `origins`
-    point and the first object corresponds to the first `destinations` point and so
-    on.
+    Each elements array corresponds to a single origins coordinate and contains
+    objects with distance and duration values for each of the destinations. The
+    details in the first elements array correspond to the first origins point and
+    the first object corresponds to the first destinations point and so on.
     """
 
 
@@ -41,7 +40,7 @@ class JsonRetrieveResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the [API Errors Codes](#api-error-codes)
     section below for more information.
     """

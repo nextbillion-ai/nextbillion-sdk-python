@@ -41,15 +41,15 @@ class ResultTripVehicleSteps(BaseModel):
     distance: Optional[int] = None
     """
     Returns the driving distance, in meters, to the step's location from previous
-    step's location. For the first step of a trip, `distance` indicates the driving
-    distance from `vehicle_current_location` to the step's location.
+    step's location. For the first step of a trip, distance indicates the driving
+    distance from vehicle_current_location to the step's location.
     """
 
     eta: Optional[int] = None
     """
     Returns the driving duration, in seconds, to the step's location from previous
-    step's location. For the first step of a trip, `eta` indicates the driving
-    duration from `vehicle_current_location` to the step's location.
+    step's location. For the first step of a trip, eta indicates the driving
+    duration from vehicle_current_location to the step's location.
     """
 
     location: Optional[Location] = None
@@ -66,9 +66,9 @@ class ResultTripVehicleSteps(BaseModel):
 
     - **pickup:** Indicates the pickup step for an order
     - **dropoff:** Indicates the dropoff step for an order. It is returned only if
-      `dropoff_details` was **true** in the input request.
+      dropoff_details was **true** in the input request.
     - **ongoing:** Indicates a step that the vehicle needs to complete on its
-      current trip. This is returned in the response only when `remaining_waypoints`
+      current trip. This is returned in the response only when remaining_waypoints
       input was provided for the given vehicle.
     - **intermediate_waypoint:** Indicates an intermediate stop that the vehicle
       needs to complete in case multiple dropoffs are provided in the input.
@@ -110,14 +110,14 @@ class Result(BaseModel):
     """
     An array of objects containing the details of the potential, alternate vehicle
     assignments for the orders in the input. This attribute will not be returned in
-    the response if the `alternate_assignments` was not provided in the input. Each
+    the response if the alternate_assignments was not provided in the input. Each
     object represents alternate assignments for a single order.
     """
 
     available_vehicles: Optional[List[str]] = None
     """A collection of vehicles IDs that were not assigned to any orders.
 
-    A `null` value is returned if there are no vehicles without an order assignment.
+    A null value is returned if there are no vehicles without an order assignment.
     """
 
     trips: Optional[List[ResultTrip]] = None
@@ -129,8 +129,8 @@ class Result(BaseModel):
     unassigned_orders: Optional[List[ResultUnassignedOrder]] = None
     """A collection of objects listing the details of orders which remained unassigned.
 
-    Each object represents a single order. A `null` value is returned if there are
-    no unassigned orders.
+    Each object represents a single order. A null value is returned if there are no
+    unassigned orders.
     """
 
 

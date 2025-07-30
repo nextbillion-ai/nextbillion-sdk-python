@@ -105,7 +105,7 @@ class BatchResource(SyncAPIResource):
         Batch Query of Geofence
 
         Args:
-          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
+          ids: Comma(,) separated list of IDs of the geofences to be searched.
 
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
@@ -259,7 +259,7 @@ class AsyncBatchResource(AsyncAPIResource):
         Batch Query of Geofence
 
         Args:
-          ids: Comma(`,`) separated list of IDs of the geofences to be searched.
+          ids: Comma(,) separated list of IDs of the geofences to be searched.
 
           key: A key is a unique identifier that is required to authenticate a request to the
               API.

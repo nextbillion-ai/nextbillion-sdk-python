@@ -12,7 +12,7 @@ class Meta(BaseModel):
     limit: Optional[int] = None
     """An integer value indicating the maximum number of items retrieved per "page".
 
-    This is the same number as provided for the `limit` parameter in input.
+    This is the same number as provided for the limit parameter in input.
     """
 
     offset: Optional[int] = None

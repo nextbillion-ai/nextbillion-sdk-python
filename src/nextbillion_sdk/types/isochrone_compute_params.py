@@ -69,7 +69,7 @@ class IsochroneComputeParams(TypedDict, total=False):
     can lead to self-intersections, as well as intersections of adjacent contours.
     """
 
-    mode: Literal["`car`", "`truck`"]
+    mode: Literal["car", "truck"]
     """Set which driving mode the service should use to determine the contour.
 
     For example, if you use "car", the API will return an isochrone contour that a

@@ -27,10 +27,9 @@ class FeatureProperties(BaseModel):
     contour: Optional[float] = None
     """The value of the metric used in this contour.
 
-    See the `metric` property to determine whether this is a `time` or `distance`
-    contour. When the `metric` is `time` this value denotes the travel time in
-    minutes and when the `metric` is `distance` this value denotes the travel
-    distance in kilometers.
+    See the metric property to determine whether this is a time or distance contour.
+    When the metric is time this value denotes the travel time in minutes and when
+    the metric is distance this value denotes the travel distance in kilometers.
     """
 
     fill: Optional[str] = None
@@ -47,7 +46,7 @@ class FeatureProperties(BaseModel):
     """
 
     metric: Optional[str] = None
-    """The metric that the contour represents - either `distance` or `time`"""
+    """The metric that the contour represents - either distance or time"""
 
     opacity: Optional[float] = None
     """The opacity of the isochrone contour line.
@@ -70,7 +69,7 @@ class Feature(BaseModel):
     type: Optional[str] = None
     """Type of the GeoJSON object.
 
-    Its value is `Feature` as per the
+    Its value is Feature as per the
     [GeoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4)
     object.
     """
@@ -81,7 +80,7 @@ class IsochroneComputeResponse(BaseModel):
     """
     A
     [GeoJSON FeatureCollection](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3)
-    object with details of the isochrone contours. Each `feature` object in this
+    object with details of the isochrone contours. Each feature object in this
     collection represents an isochrone.
     """
 
@@ -95,7 +94,7 @@ class IsochroneComputeResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the [API Errors Codes](#api-error-codes)
     section below for more information.
     """
@@ -105,6 +104,6 @@ class IsochroneComputeResponse(BaseModel):
 
     As prescribed in
     [GeoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4),
-    its value is `FeatureCollection` as the `feature` property contains a list of
+    its value is FeatureCollection as the feature property contains a list of
     geoJSON feature objects.
     """

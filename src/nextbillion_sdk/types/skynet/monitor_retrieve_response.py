@@ -14,7 +14,7 @@ class Data(BaseModel):
 
 class MonitorRetrieveResponse(BaseModel):
     data: Optional[Data] = None
-    """A data object containing the details of the `monitor`."""
+    """A data object containing the details of the monitor."""
 
     message: Optional[str] = None
     """Displays the error message in case of a failed request.
@@ -25,7 +25,7 @@ class MonitorRetrieveResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On successful responses, the value will be `Ok`. Indicative error messages are
+    On successful responses, the value will be Ok. Indicative error messages are
     returned for different errors. See the [API Error Codes](#api-error-codes)
     section below for more information.
     """

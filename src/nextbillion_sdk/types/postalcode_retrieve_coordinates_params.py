@@ -17,14 +17,14 @@ class PostalcodeRetrieveCoordinatesParams(TypedDict, total=False):
     at: At
     """Location coordinates that you want to get the postal code of.
 
-    If not providing `postalcode` in the request, `at` becomes mandatory. Please
-    note that only 1 point can be requested. [See this example](#note).
+    If not providing postalcode in the request, at becomes mandatory. Please note
+    that only 1 point can be requested. [See this example](#note).
     """
 
     country: str
     """Country containing the postal code or the location.
 
-    It is mandatory if `postalcode` is provided in the request.
+    It is mandatory if postalcode is provided in the request.
     [See this example](#note).
 
     Please check the [API Query Limits](#api-query-limits) section below for a list
@@ -34,18 +34,18 @@ class PostalcodeRetrieveCoordinatesParams(TypedDict, total=False):
     covered by the API as input for this parameter.
     """
 
-    format: Literal["`geojson`"]
+    format: Literal["geojson"]
     """
     Specify the format in which the boundary details of the post code will be
-    returned. When specified, the boundary details will be returned in the `geojson`
+    returned. When specified, the boundary details will be returned in the geojson
     format. When not specified, the boundary details are returned in general format.
     """
 
     postalcode: str
     """Provide the postal code for which the information is needed.
 
-    At least one of (`postalcode` + `country`) or `at` needs to be provided. Please
-    note that only 1 postal code can be requested. [See this example](#note).
+    At least one of (postalcode + country) or at needs to be provided. Please note
+    that only 1 postal code can be requested. [See this example](#note).
     """
 
 

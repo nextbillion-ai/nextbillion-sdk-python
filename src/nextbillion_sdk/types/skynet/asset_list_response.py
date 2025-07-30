@@ -11,7 +11,7 @@ __all__ = ["AssetListResponse", "Data"]
 
 class Data(BaseModel):
     list: Optional[List[AssetDetails]] = None
-    """An array of objects, with each object representing one `asset`."""
+    """An array of objects, with each object representing one asset."""
 
     page: Optional[Pagination] = None
     """An object with pagination details of the search results.
@@ -33,7 +33,7 @@ class AssetListResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On successful responses, the value will be `Ok`. Indicative error messages are
+    On successful responses, the value will be Ok. Indicative error messages are
     returned for different errors. See the [API Error Codes](#api-error-codes)
     section below for more information.
     """

@@ -42,7 +42,7 @@ class RestrictionUpdateParams(TypedDict, total=False):
     created.
     """
 
-    direction: Literal["`forward`", "`backward`", "`both`"]
+    direction: Literal["forward", "backward", "both"]
     """
     Represents the traffic direction on the segments to which the restriction will
     be applied.
@@ -58,11 +58,11 @@ class RestrictionUpdateParams(TypedDict, total=False):
     """
     An array of coordinates denoting the boundary of an area in which the
     restrictions are to be applied. The format in which coordinates should be listed
-    is defined by the `latlon` field.
+    is defined by the latlon field.
 
-    Geofences can be used to create all restriction types, except for a `turn` type
-    restriction. Please note that `segments` is not required when using `geofence`
-    to create restrictions.
+    Geofences can be used to create all restriction types, except for a turn type
+    restriction. Please note that segments is not required when using geofence to
+    create restrictions.
     """
 
     height: int
@@ -70,9 +70,9 @@ class RestrictionUpdateParams(TypedDict, total=False):
     Specify the maximum truck height, in centimeter, that will be allowed under the
     restriction. A value of 0 indicates no limit.
 
-    Please note this parameter is effective only when `restriction_type` is `truck`.
-    At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-    needs to be provided when restriction type is `truck`.
+    Please note this parameter is effective only when restriction_type is truck. At
+    least one of truck parameters - weight, height, width and truck - needs to be
+    provided when restriction type is truck.
     """
 
     length: int
@@ -80,9 +80,9 @@ class RestrictionUpdateParams(TypedDict, total=False):
     Specify the maximum truck length, in centimeter, that will be allowed under the
     restriction. A value of 0 indicates no limit.
 
-    Please note this parameter is effective only when `restriction_type` is `truck`.
-    At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-    needs to be provided when restriction type is `truck`.
+    Please note this parameter is effective only when restriction_type is truck. At
+    least one of truck parameters - weight, height, width and truck - needs to be
+    provided when restriction type is truck.
     """
 
     mode: List[Literal["0w", "2w", "3w", "4w", "6w"]]
@@ -108,22 +108,21 @@ class RestrictionUpdateParams(TypedDict, total=False):
     An array of objects to collect the details of the segments of a road on which
     the restriction has to be applied. Each object corresponds to a new segment.
 
-    Please note that `segments` is mandatory for all `restrtiction_type` except
-    `turn`.
+    Please note that segments is mandatory for all restrtiction_type except turn.
     """
 
     speed: float
     """
     Provide the the fixed speed of the segment where the restriction needs to be
-    applied. Please note that this parameter is mandatory when the `restrictionType`
-    is `fixedspeed`.
+    applied. Please note that this parameter is mandatory when the restrictionType
+    is fixedspeed.
     """
 
     speed_limit: float
     """
     Provide the the maximum speed of the segment where the restriction needs to be
-    applied. Please note that this parameter is mandatory when the `restrictionType`
-    is `maxspeed`.
+    applied. Please note that this parameter is mandatory when the restrictionType
+    is maxspeed.
     """
 
     start_time: float
@@ -136,8 +135,8 @@ class RestrictionUpdateParams(TypedDict, total=False):
     """Specify a sequence of coordinates (track) where the restriction is to be
     applied.
 
-    The coordinates will be snapped to nearest road. Please note when using
-    `tracks`, `segments` and `turns` are not required.
+    The coordinates will be snapped to nearest road. Please note when using tracks,
+    segments and turns are not required.
     """
 
     turns: Iterable[Turn]
@@ -145,7 +144,7 @@ class RestrictionUpdateParams(TypedDict, total=False):
     An array of objects to collect the details of the turns of a road on which the
     restriction has to be applied. Each object corresponds to a new turn.
 
-    Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+    Please note that turns is mandatory for when restrtiction_type=turn.
     """
 
     weight: int
@@ -153,9 +152,9 @@ class RestrictionUpdateParams(TypedDict, total=False):
 
     A value of 0 indicates no limit.
 
-    Please note this parameter is effective only when `restriction_type` is `truck`.
-    At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-    needs to be provided for is `truck` restriction type.
+    Please note this parameter is effective only when restriction_type is truck. At
+    least one of truck parameters - weight, height, width and truck - needs to be
+    provided for is truck restriction type.
     """
 
     width: int
@@ -163,9 +162,9 @@ class RestrictionUpdateParams(TypedDict, total=False):
     Specify the maximum truck width, in centimeter, that will be allowed under the
     restriction. A value of 0 indicates no limit.
 
-    Please note this parameter is effective only when `restriction_type` is `truck`.
-    At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-    needs to be provided when restriction type is `truck`.
+    Please note this parameter is effective only when restriction_type is truck. At
+    least one of truck parameters - weight, height, width and truck - needs to be
+    provided when restriction type is truck.
     """
 
 
@@ -198,6 +197,6 @@ class Turn(_TurnReservedKeywords, total=False):
 
     via: int
     """
-    An integer value that represents the ID of a node connecting `from` and `to`
-    nodes of the turn.
+    An integer value that represents the ID of a node connecting from and to nodes
+    of the turn.
     """

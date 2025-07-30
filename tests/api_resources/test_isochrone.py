@@ -40,7 +40,7 @@ class TestIsochrone:
             denoise=0,
             departure_time=0,
             generalize=0,
-            mode="`car`",
+            mode="car",
             polygons=True,
         )
         assert_matches_type(IsochroneComputeResponse, isochrone, path=["response"])
@@ -106,7 +106,7 @@ class TestAsyncIsochrone:
             denoise=0,
             departure_time=0,
             generalize=0,
-            mode="`car`",
+            mode="car",
             polygons=True,
         )
         assert_matches_type(IsochroneComputeResponse, isochrone, path=["response"])

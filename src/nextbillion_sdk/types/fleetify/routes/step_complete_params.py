@@ -27,15 +27,15 @@ class StepCompleteParams(TypedDict, total=False):
     """
 
     mode: str
-    """Sets the status of the route step. Currently only `completed` is supported.
+    """Sets the status of the route step. Currently only completed is supported.
 
-    Note: once marked `completed`, a step cannot transition to other statuses. You
-    can only update the document afterwards.
+    Note: once marked completed, a step cannot transition to other statuses. You can
+    only update the document afterwards.
     """
 
     status: str
-    """Sets the status of the route step. Currently only `completed` is supported.
+    """Sets the status of the route step. Currently only completed is supported.
 
-    Note: once marked `completed`, a step cannot transition to other statuses. You
-    can only update the document afterwards.
+    Note: once marked completed, a step cannot transition to other statuses. You can
+    only update the document afterwards.
     """

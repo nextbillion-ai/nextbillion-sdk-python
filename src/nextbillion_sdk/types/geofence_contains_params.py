@@ -21,8 +21,7 @@ class GeofenceContainsParams(TypedDict, total=False):
     """
 
     geofences: str
-    """A `,` separated list geofence IDs against which the `locations` will be
-    searched.
+    """A , separated list geofence IDs against which the locations will be searched.
 
     If not provided, then the 'locations' will be searched against all your existing
     geofences.
@@ -31,7 +30,7 @@ class GeofenceContainsParams(TypedDict, total=False):
     """
 
     verbose: str
-    """When `true`, an array with detailed information of geofences is returned.
+    """When true, an array with detailed information of geofences is returned.
 
-    When `false`, an array containing only the IDs of the geofences is returned.
+    When false, an array containing only the IDs of the geofences is returned.
     """

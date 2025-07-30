@@ -10,10 +10,10 @@ __all__ = ["GeofenceEntityCreateParam", "Circle", "CircleCenter", "Isochrone", "
 
 class CircleCenter(TypedDict, total=False):
     lat: Required[float]
-    """Latitude of the `center` location."""
+    """Latitude of the center location."""
 
     lon: Required[float]
-    """Longitude of the `center` location."""
+    """Longitude of the center location."""
 
 
 class Circle(TypedDict, total=False):
@@ -32,7 +32,7 @@ class Isochrone(TypedDict, total=False):
     """
     Coordinates of the location, in [latitude,longitude] format, which would act as
     the starting point for identifying the isochrone polygon or the boundary of
-    reachable area. This parameter is mandatory when `type` is `isochrone`.
+    reachable area. This parameter is mandatory when type is isochrone.
     """
 
     contours_meter: int
@@ -40,12 +40,12 @@ class Isochrone(TypedDict, total=False):
 
     When provided, the API would create a geofence representing the area that can be
     reached after driving the given number of meters starting from the point
-    specified in `coordinates`.
+    specified in coordinates.
 
     The maximum distance that can be specified is 60000 meters (60km).
 
-    At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-    is `isochrone`.
+    At least one of contours_meter or contours_minute is mandatory when type is
+    isochrone.
     """
 
     contours_minute: int
@@ -53,12 +53,12 @@ class Isochrone(TypedDict, total=False):
 
     When provided, the API would create a geofence representing the area that can be
     reached after driving for the given number of minutes starting from the point
-    specified in `coordinates`.
+    specified in coordinates.
 
     The maximum duration that can be specified is 40 minutes.
 
-    At least one of `contours_meter` or `contours_minute` is mandatory when `type`
-    is `isochrone`.
+    At least one of contours_meter or contours_minute is mandatory when type is
+    isochrone.
     """
 
     denoise: float
@@ -77,12 +77,12 @@ class Isochrone(TypedDict, total=False):
     the traffic conditions at the time of making the request are considered
     """
 
-    mode: Literal["`car`", "`truck`"]
+    mode: Literal["car", "truck"]
     """Set which driving mode the service should use to determine the isochrone line.
 
-    For example, if you use `car`, the API will return an isochrone polygon that a
-    car can cover within the specified time or after driving the specified distance.
-    Using `truck` will return an isochrone that a truck can reach after taking into
+    For example, if you use car, the API will return an isochrone polygon that a car
+    can cover within the specified time or after driving the specified distance.
+    Using truck will return an isochrone that a truck can reach after taking into
     account appropriate truck routing restrictions.
     """
 
@@ -95,7 +95,7 @@ class PolygonGeojson(TypedDict, total=False):
     """
 
     type: Required[str]
-    """Type of the geoJSON geometry. Should always be `Polygon`."""
+    """Type of the geoJSON geometry. Should always be Polygon."""
 
 
 class Polygon(TypedDict, total=False):
@@ -108,22 +108,22 @@ class Polygon(TypedDict, total=False):
 
 
 class GeofenceEntityCreateParam(TypedDict, total=False):
-    type: Required[Literal["`circle`", "`polygon`", "`isochrone`"]]
+    type: Required[Literal["circle", "polygon", "isochrone"]]
     """Specify the type of the geofence that is being created."""
 
     circle: Circle
     """Provide the details to create a circular geofence.
 
-    Please note that this object is mandatory when `type` is `circle`. When the
-    `type` is not `circle`, the properties of this object will be ignored while
-    creating the geofence.
+    Please note that this object is mandatory when type is circle. When the type is
+    not circle, the properties of this object will be ignored while creating the
+    geofence.
     """
 
     custom_id: str
     """Set an unique ID for the new geofence.
 
     If not provided, an ID will be automatically generated in UUID format. A valid
-    `custom_id` can contain letters, numbers, "-", & "\\__" only.
+    custom*id can contain letters, numbers, "-", & "*" only.
 
     Please note that the ID of a geofence can not be changed once it is created.
     """
@@ -131,8 +131,8 @@ class GeofenceEntityCreateParam(TypedDict, total=False):
     isochrone: Isochrone
     """Provide the details to create an isochrone based geofence.
 
-    Use this object when `type` is `isochrone`. When the `type` is not `isochrone`,
-    the properties of this object will be ignored while creating the geofence.
+    Use this object when type is isochrone. When the type is not isochrone, the
+    properties of this object will be ignored while creating the geofence.
     """
 
     meta_data: object
@@ -141,8 +141,8 @@ class GeofenceEntityCreateParam(TypedDict, total=False):
     Use this field to define custom attributes that provide more context and
     information about the geofence being created like country, group ID etc.
 
-    The data being added should be in valid JSON object format (i.e. `key` and
-    `value` pairs). Max size allowed for the object is 65kb.
+    The data being added should be in valid JSON object format (i.e. key and value
+    pairs). Max size allowed for the object is 65kb.
     """
 
     name: str
@@ -155,9 +155,9 @@ class GeofenceEntityCreateParam(TypedDict, total=False):
     polygon: Polygon
     """Provide the details to create a custom polygon type of geofence.
 
-    Please note that this object is mandatory when `type` is `polygon`. When the
-    `type` is not `polygon`, the properties of this object will be ignored while
-    creating the geofence.
+    Please note that this object is mandatory when type is polygon. When the type is
+    not polygon, the properties of this object will be ignored while creating the
+    geofence.
 
     Self-intersecting polygons or polygons containing other polygons are invalid and
     will be removed while processing the request.
@@ -168,9 +168,8 @@ class GeofenceEntityCreateParam(TypedDict, total=False):
     tags: List[str]
     """An array of strings to associate multiple tags to the geofence.
 
-    `tags` can be used to search or filter geofences (using `Get Geofence List`
-    method).
+    tags can be used to search or filter geofences (using Get Geofence List method).
 
-    Create valid `tags` using a string consisting of alphanumeric characters (A-Z,
+    Create valid tags using a string consisting of alphanumeric characters (A-Z,
     a-z, 0-9) along with the underscore ('\\__') and hyphen ('-') symbols.
     """

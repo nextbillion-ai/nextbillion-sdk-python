@@ -52,7 +52,7 @@ class LocationResource(SyncAPIResource):
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         correction: str | NotGiven = NOT_GIVEN,
         end_time: int | NotGiven = NOT_GIVEN,
-        geometry_type: Literal["`polyline`", "`polyline6`", "`geojson`"] | NotGiven = NOT_GIVEN,
+        geometry_type: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
         start_time: int | NotGiven = NOT_GIVEN,
@@ -72,36 +72,35 @@ class LocationResource(SyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          correction: Describe the geometry characteristics through a `,` separated list of
-              properties.
+          correction: Describe the geometry characteristics through a , separated list of properties.
 
-              Setting `mapmatch` to 1 returns the geometry of the tracked points, snapped to
-              the nearest road.
+              Setting mapmatch to 1 returns the geometry of the tracked points, snapped to the
+              nearest road.
 
-              Setting `interpolate` to 1 smoothens the snapped geometry by adding more points,
-              as needed. Please note, `mapmatch` should be set to 1 for `interpolate` to be
+              Setting interpolate to 1 smoothens the snapped geometry by adding more points,
+              as needed. Please note, mapmatch should be set to 1 for interpolate to be
               effective.
 
-              `mode` is used to set the transport mode for which the snapped route will be
-              determined. Allowed values for `mode` are `car` and `truck`.
+              mode is used to set the transport mode for which the snapped route will be
+              determined. Allowed values for mode are car and truck.
 
-          end_time: Time until which the tracked locations of the `asset` need to be retrieved.
+          end_time: Time until which the tracked locations of the asset need to be retrieved.
 
           geometry_type: Set the geometry format to encode the path linking the tracked locations of the
-              `asset`.
+              asset.
 
-              Please note that `geometry_type` is effective only when `mapmatch` property of
-              `correction` parameter is set to 1.
+              Please note that geometry_type is effective only when mapmatch property of
+              correction parameter is set to 1.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          start_time: Time after which the tracked locations of the `asset` need to be retrieved.
+          start_time: Time after which the tracked locations of the asset need to be retrieved.
 
           extra_headers: Send extra headers
 
@@ -216,7 +215,7 @@ class AsyncLocationResource(AsyncAPIResource):
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         correction: str | NotGiven = NOT_GIVEN,
         end_time: int | NotGiven = NOT_GIVEN,
-        geometry_type: Literal["`polyline`", "`polyline6`", "`geojson`"] | NotGiven = NOT_GIVEN,
+        geometry_type: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
         start_time: int | NotGiven = NOT_GIVEN,
@@ -236,36 +235,35 @@ class AsyncLocationResource(AsyncAPIResource):
 
           cluster: the cluster of the region you want to use
 
-          correction: Describe the geometry characteristics through a `,` separated list of
-              properties.
+          correction: Describe the geometry characteristics through a , separated list of properties.
 
-              Setting `mapmatch` to 1 returns the geometry of the tracked points, snapped to
-              the nearest road.
+              Setting mapmatch to 1 returns the geometry of the tracked points, snapped to the
+              nearest road.
 
-              Setting `interpolate` to 1 smoothens the snapped geometry by adding more points,
-              as needed. Please note, `mapmatch` should be set to 1 for `interpolate` to be
+              Setting interpolate to 1 smoothens the snapped geometry by adding more points,
+              as needed. Please note, mapmatch should be set to 1 for interpolate to be
               effective.
 
-              `mode` is used to set the transport mode for which the snapped route will be
-              determined. Allowed values for `mode` are `car` and `truck`.
+              mode is used to set the transport mode for which the snapped route will be
+              determined. Allowed values for mode are car and truck.
 
-          end_time: Time until which the tracked locations of the `asset` need to be retrieved.
+          end_time: Time until which the tracked locations of the asset need to be retrieved.
 
           geometry_type: Set the geometry format to encode the path linking the tracked locations of the
-              `asset`.
+              asset.
 
-              Please note that `geometry_type` is effective only when `mapmatch` property of
-              `correction` parameter is set to 1.
+              Please note that geometry_type is effective only when mapmatch property of
+              correction parameter is set to 1.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
-          start_time: Time after which the tracked locations of the `asset` need to be retrieved.
+          start_time: Time after which the tracked locations of the asset need to be retrieved.
 
           extra_headers: Send extra headers
 

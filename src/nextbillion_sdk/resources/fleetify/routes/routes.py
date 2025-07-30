@@ -102,7 +102,7 @@ class RoutesResource(SyncAPIResource):
               create, read and manage document templates.
 
               Please note that the document template ID assigned to a route does not apply to
-              following step types - `start`, `end`, `break`, `layover`.
+              following step types - start, end, break, layover.
 
           ro_request_id: Specify the Route Optimization request ID. When this ID is provided, all other
               fields will be ignored (including the required fields) and the route
@@ -110,9 +110,9 @@ class RoutesResource(SyncAPIResource):
 
               Please note that:
 
-              - The driver's email ID must be provided in input `vehicle.metadata` as
-                `user_email` such that the route optimization result must contain a valid
-                driver email, step's arrival time, etc., to make a successful dispatch.
+              - The driver's email ID must be provided in input vehicle.metadata as user_email
+                such that the route optimization result must contain a valid driver email,
+                step's arrival time, etc., to make a successful dispatch.
               - Document Template for collecting proof of delivery or completion can not be
                 specified when using this field to dispatch a route.
               - In case of an error at any part among the routes, the API will immediately
@@ -120,8 +120,8 @@ class RoutesResource(SyncAPIResource):
               - On a successful dispatch, the API returns the last route, if there are many,
                 in the response payload.
 
-          routing: The `routing` object allows defining the routing characteristics that should be
-              used to generate a route when the Driver uses the in-app navigation. Only `car`
+          routing: The routing object allows defining the routing characteristics that should be
+              used to generate a route when the Driver uses the in-app navigation. Only car
               mode is supported currently.
 
           extra_headers: Send extra headers
@@ -280,7 +280,7 @@ class AsyncRoutesResource(AsyncAPIResource):
               create, read and manage document templates.
 
               Please note that the document template ID assigned to a route does not apply to
-              following step types - `start`, `end`, `break`, `layover`.
+              following step types - start, end, break, layover.
 
           ro_request_id: Specify the Route Optimization request ID. When this ID is provided, all other
               fields will be ignored (including the required fields) and the route
@@ -288,9 +288,9 @@ class AsyncRoutesResource(AsyncAPIResource):
 
               Please note that:
 
-              - The driver's email ID must be provided in input `vehicle.metadata` as
-                `user_email` such that the route optimization result must contain a valid
-                driver email, step's arrival time, etc., to make a successful dispatch.
+              - The driver's email ID must be provided in input vehicle.metadata as user_email
+                such that the route optimization result must contain a valid driver email,
+                step's arrival time, etc., to make a successful dispatch.
               - Document Template for collecting proof of delivery or completion can not be
                 specified when using this field to dispatch a route.
               - In case of an error at any part among the routes, the API will immediately
@@ -298,8 +298,8 @@ class AsyncRoutesResource(AsyncAPIResource):
               - On a successful dispatch, the API returns the last route, if there are many,
                 in the response payload.
 
-          routing: The `routing` object allows defining the routing characteristics that should be
-              used to generate a route when the Driver uses the in-app navigation. Only `car`
+          routing: The routing object allows defining the routing characteristics that should be
+              used to generate a route when the Driver uses the in-app navigation. Only car
               mode is supported currently.
 
           extra_headers: Send extra headers

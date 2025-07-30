@@ -12,4 +12,4 @@ class RestrictionDeleteResponse(BaseModel):
     """It is the unique ID of the restriction."""
 
     state: Optional[str] = None
-    """Returns the state of the restriction. It would always be `deleted`."""
+    """Returns the state of the restriction. It would always be deleted."""
