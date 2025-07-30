@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.1 (2025-07-30)
+
+Full Changelog: [v0.4.0...v0.4.1](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.0...v0.4.1)
+
+### Chores
+
+* update SDK settings ([dea8f89](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/dea8f898f1e64efd11f6b2b79bd49eafb14688db))
+
 ## 0.4.0 (2025-07-30)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.3.0...v0.4.0)
