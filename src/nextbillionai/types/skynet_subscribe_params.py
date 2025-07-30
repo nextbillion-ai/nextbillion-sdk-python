@@ -8,7 +8,7 @@ __all__ = ["SkynetSubscribeParams", "Params"]
 
 
 class SkynetSubscribeParams(TypedDict, total=False):
-    action: Required[Literal["`TRIP_SUBSCRIBE`", "`TRIP_UNSUBSCRIBE`", "`HEARTBEAT`"]]
+    action: Required[Literal["TRIP_SUBSCRIBE", "TRIP_UNSUBSCRIBE", "HEARTBEAT"]]
     """Specify the behavior that needs to be achieved for the subscription.
 
     Following values are accepted:
@@ -40,6 +40,6 @@ class Params(TypedDict, total=False):
     The ID of a trip is returned in the response when _Start A Trip_ request is
     acknowledged.
 
-    This attribute is mandatory when `action` is set to either "TRIP_SUBSCRIBE" or
+    This attribute is mandatory when action is set to either "TRIP_SUBSCRIBE" or
     "TRIP_UNSUBSCRIBE"
     """

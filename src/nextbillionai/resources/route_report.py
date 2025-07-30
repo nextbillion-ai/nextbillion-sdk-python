@@ -48,7 +48,7 @@ class RouteReportResource(SyncAPIResource):
         *,
         key: str,
         original_shape: str,
-        original_shape_type: Literal["`polyline`", "`polyline6`"],
+        original_shape_type: Literal["polyline", "polyline6"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,16 +63,16 @@ class RouteReportResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          original_shape: Takes a route geometry as input and returns the route details. Accepts
-              `polyline` and `polyline6` encoded geometry as input.
+          original_shape: Takes a route geometry as input and returns the route details. Accepts polyline
+              and polyline6 encoded geometry as input.
 
               **Note**: Route geometries generated from sources other than
               [NextBillion.ai](http://NextBillion.ai) services, are not supported in this
               version.
 
-          original_shape_type: Specify the encoding type of route geometry provided in `original_shape` input.
+          original_shape_type: Specify the encoding type of route geometry provided in original_shape input.
               Please note that an error is returned when this parameter is not specified while
-              an input is added to `original_shape` parameter.
+              an input is added to original_shape parameter.
 
           extra_headers: Send extra headers
 
@@ -127,7 +127,7 @@ class AsyncRouteReportResource(AsyncAPIResource):
         *,
         key: str,
         original_shape: str,
-        original_shape_type: Literal["`polyline`", "`polyline6`"],
+        original_shape_type: Literal["polyline", "polyline6"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -142,16 +142,16 @@ class AsyncRouteReportResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          original_shape: Takes a route geometry as input and returns the route details. Accepts
-              `polyline` and `polyline6` encoded geometry as input.
+          original_shape: Takes a route geometry as input and returns the route details. Accepts polyline
+              and polyline6 encoded geometry as input.
 
               **Note**: Route geometries generated from sources other than
               [NextBillion.ai](http://NextBillion.ai) services, are not supported in this
               version.
 
-          original_shape_type: Specify the encoding type of route geometry provided in `original_shape` input.
+          original_shape_type: Specify the encoding type of route geometry provided in original_shape input.
               Please note that an error is returned when this parameter is not specified while
-              an input is added to `original_shape` parameter.
+              an input is added to original_shape parameter.
 
           extra_headers: Send extra headers
 

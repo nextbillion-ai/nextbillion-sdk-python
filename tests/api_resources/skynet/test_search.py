@@ -40,9 +40,9 @@ class TestSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -97,9 +97,9 @@ class TestSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -160,9 +160,9 @@ class TestAsyncSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -217,9 +217,9 @@ class TestAsyncSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 

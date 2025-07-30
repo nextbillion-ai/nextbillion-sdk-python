@@ -19,13 +19,13 @@ class ItemScoring(BaseModel):
     field_score: Optional[object] = FieldInfo(alias="fieldScore", default=None)
     """
     A breakdown of how closely individual field of the result matched with the
-    provided query `q`.
+    provided query q.
     """
 
     query_score: Optional[float] = FieldInfo(alias="queryScore", default=None)
     """
     A score, out of 1, indicating how closely the result matches with the provided
-    query `q` .
+    query q .
     """
 
 
@@ -57,7 +57,7 @@ class Item(BaseModel):
     map_view: Optional[MapView] = FieldInfo(alias="mapView", default=None)
     """
     The bounding box enclosing the geometric shape (area or line) that an individual
-    result covers. `place` typed results have no `mapView`.
+    result covers. place typed results have no mapView.
     """
 
     position: Optional[Position] = None

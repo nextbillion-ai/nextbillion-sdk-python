@@ -63,6 +63,6 @@ class DataSource(TypedDict, total=False):
 
     status: Literal["enable", "disable"]
     """
-    Set this to either `enable` or `disable` to allow the place to be retrieved by a
+    Set this to either enable or disable to allow the place to be retrieved by a
     search API or block it respectively.
     """

@@ -12,7 +12,7 @@ class SkynetSubscribeResponse(BaseModel):
     """Subscription ID as provided in the input action message."""
 
     error: Optional[str] = None
-    """Returns the error message when `status: error`.
+    """Returns the error message when status: error.
 
     Otherwise, response doesn't contain this field.
     """

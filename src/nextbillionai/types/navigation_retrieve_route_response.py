@@ -34,10 +34,10 @@ __all__ = [
 
 class RouteEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `end_location`."""
+    """Latitude of the end_location."""
 
     longitude: Optional[float] = None
-    """Longitude of the `end_location`."""
+    """Longitude of the end_location."""
 
 
 class RouteGeojson(BaseModel):
@@ -71,18 +71,18 @@ class RouteLegDuration(BaseModel):
 
 class RouteLegEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of `end_location` of the `leg`."""
+    """Latitude of end_location of the leg."""
 
     longitude: Optional[float] = None
-    """Longitude of `end_location` of the `leg`."""
+    """Longitude of end_location of the leg."""
 
 
 class RouteLegStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of `start_location` of the `leg`."""
+    """Latitude of start_location of the leg."""
 
     longitude: Optional[float] = None
-    """Longitude of `start_location` of the `leg`."""
+    """Longitude of start_location of the leg."""
 
 
 class RouteLegStepDistance(BaseModel):
@@ -95,10 +95,10 @@ class RouteLegStepDuration(BaseModel):
 
 class RouteLegStepEndLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the `end_location` of the `step`."""
+    """Latitude of the end_location of the step."""
 
     longitude: Optional[float] = None
-    """Longitude of the `end_location` of the `step`."""
+    """Longitude of the end_location of the step."""
 
 
 class RouteLegStepGeojson(BaseModel):
@@ -126,20 +126,20 @@ class RouteLegStepIntersectionLane(BaseModel):
 
 class RouteLegStepIntersectionLocation(BaseModel):
     latitude: Optional[float] = None
-    """The latitude coordinate of the `intersection`."""
+    """The latitude coordinate of the intersection."""
 
     longitude: Optional[float] = None
-    """The longitude coordinate of the `intersection`."""
+    """The longitude coordinate of the intersection."""
 
     name: Optional[str] = None
-    """The name or description of the `intersection`."""
+    """The name or description of the intersection."""
 
 
 class RouteLegStepIntersection(BaseModel):
     bearings: Optional[List[int]] = None
     """A list of bearing values (e.g.
 
-    [0,90,180,270]) that are available at the intersection. The `bearings` describe
+    [0,90,180,270]) that are available at the intersection. The bearings describe
     all available roads at the intersection.
     """
 
@@ -152,23 +152,23 @@ class RouteLegStepIntersection(BaseModel):
 
     entry: Optional[List[bool]] = None
     """
-    A value of `true` indicates that the respective road could be entered on a valid
-    route. `false` indicates that the turn onto the respective road would violate a
+    A value of true indicates that the respective road could be entered on a valid
+    route. false indicates that the turn onto the respective road would violate a
     restriction. Each entry value corresponds to the bearing angle at the same
     index.
     """
 
     intersection_in: Optional[int] = None
-    """The number of incoming roads or paths at the `intersection`."""
+    """The number of incoming roads or paths at the intersection."""
 
     intersection_out: Optional[int] = None
-    """The number of outgoing roads or paths from the `intersection`."""
+    """The number of outgoing roads or paths from the intersection."""
 
     lanes: Optional[List[RouteLegStepIntersectionLane]] = None
     """An array of lane objects representing the lanes available at the intersection.
 
-    If no lane information is available for an `intersection`, the `lanes` property
-    will not be present.
+    If no lane information is available for an intersection, the lanes property will
+    not be present.
     """
 
     location: Optional[RouteLegStepIntersectionLocation] = None
@@ -177,10 +177,10 @@ class RouteLegStepIntersection(BaseModel):
 
 class RouteLegStepManeuverCoordinate(BaseModel):
     latitude: Optional[float] = None
-    """The latitude coordinate of the `maneuver`."""
+    """The latitude coordinate of the maneuver."""
 
     longitude: Optional[float] = None
-    """The longitude coordinate of the `maneuver`."""
+    """The longitude coordinate of the maneuver."""
 
     name: Optional[str] = None
     """The name or description of the maneuver location."""
@@ -190,27 +190,27 @@ class RouteLegStepManeuverVoiceInstruction(BaseModel):
     distance_along_geometry: Optional[int] = None
 
     instruction: Optional[str] = None
-    """The guidance instructions for the upcoming `maneuver`"""
+    """The guidance instructions for the upcoming maneuver"""
 
     unit: Optional[str] = None
-    """Unit of the `distance_along_geometry` metric"""
+    """Unit of the distance_along_geometry metric"""
 
 
 class RouteLegStepManeuver(BaseModel):
     bearing_after: Optional[float] = None
     """
     The clockwise angle from true north to the direction of travel immediately after
-    the `maneuver`. Range of values is between 0-359.
+    the maneuver. Range of values is between 0-359.
     """
 
     bearing_before: Optional[float] = None
     """
     The clockwise angle from true north to the direction of travel immediately
-    before the `maneuver`. Range of values is between 0-359.
+    before the maneuver. Range of values is between 0-359.
     """
 
     coordinate: Optional[RouteLegStepManeuverCoordinate] = None
-    """A coordinate pair describing the location of the `maneuver`."""
+    """A coordinate pair describing the location of the maneuver."""
 
     instruction: Optional[str] = None
     """A text instruction describing the maneuver to be performed.
@@ -220,7 +220,7 @@ class RouteLegStepManeuver(BaseModel):
     """
 
     maneuver_type: Optional[str] = None
-    """A string indicating the type of `maneuver`."""
+    """A string indicating the type of maneuver."""
 
     muted: Optional[bool] = None
     """
@@ -236,7 +236,7 @@ class RouteLegStepManeuver(BaseModel):
     """
 
     voice_instruction: Optional[List[RouteLegStepManeuverVoiceInstruction]] = None
-    """An array of voice instruction objects associated with the `maneuver`.
+    """An array of voice instruction objects associated with the maneuver.
 
     Each object provides additional details about the voice instruction, including
     the distance along the geometry where the instruction applies, the instruction
@@ -257,10 +257,10 @@ class RouteLegStepRoadShieldType(BaseModel):
 
 class RouteLegStepStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of `start_location` of the `step`."""
+    """Latitude of start_location of the step."""
 
     longitude: Optional[float] = None
-    """Longitude of `start_location` of the `step`."""
+    """Longitude of start_location of the step."""
 
 
 class RouteLegStep(BaseModel):
@@ -277,36 +277,36 @@ class RouteLegStep(BaseModel):
     """An object containing step duration value, in seconds."""
 
     end_location: Optional[RouteLegStepEndLocation] = None
-    """Location coordinates of the point where the `step` ends."""
+    """Location coordinates of the point where the step ends."""
 
     geojson: Optional[RouteLegStepGeojson] = None
-    """The GeoJSON representation of the `step`."""
+    """The GeoJSON representation of the step."""
 
     geometry: Optional[str] = None
-    """Encoded geometry of the `step` in the selected format."""
+    """Encoded geometry of the step in the selected format."""
 
     intersections: Optional[List[RouteLegStepIntersection]] = None
     """
     An array of objects representing intersections (or cross-way) that the route
-    passes by along the `step`. For every `step`, the very first `intersection`
-    corresponds to the location of the `maneuver`. All intersections until the next
-    `maneuver` are listed in this object.
+    passes by along the step. For every step, the very first intersection
+    corresponds to the location of the maneuver. All intersections until the next
+    maneuver are listed in this object.
     """
 
     maneuver: Optional[RouteLegStepManeuver] = None
-    """An object with maneuver details for the `step`."""
+    """An object with maneuver details for the step."""
 
     name: Optional[str] = None
-    """The name of the `step`."""
+    """The name of the step."""
 
     reference: Optional[str] = None
-    """A reference for the `step`."""
+    """A reference for the step."""
 
     road_shield_type: Optional[RouteLegStepRoadShieldType] = None
     """An object containing road shield information."""
 
     start_location: Optional[RouteLegStepStartLocation] = None
-    """Location coordinates of the point where the `step` starts."""
+    """Location coordinates of the point where the step starts."""
 
 
 class RouteLeg(BaseModel):
@@ -320,7 +320,7 @@ class RouteLeg(BaseModel):
     """Location coordinates of the point where the leg ends."""
 
     raw_duration: Optional[object] = None
-    """The raw estimated duration of the `leg` in seconds."""
+    """The raw estimated duration of the leg in seconds."""
 
     start_location: Optional[RouteLegStartLocation] = None
     """Location coordinates of the point where the leg starts."""
@@ -331,10 +331,10 @@ class RouteLeg(BaseModel):
 
 class RouteStartLocation(BaseModel):
     latitude: Optional[float] = None
-    """Latitude of the`start_location`."""
+    """Latitude of thestart_location."""
 
     longitude: Optional[float] = None
-    """Longitude of the `start_location`."""
+    """Longitude of the start_location."""
 
 
 class Route(BaseModel):
@@ -358,15 +358,15 @@ class Route(BaseModel):
 
     geometry: Optional[str] = None
     """
-    Encoded geometry of the returned route as per the selected format in `geometry`
-    and specified `overview` verbosity. Please note the `overview` will always be
-    `full` when `original_shape` parameter is used in the input request.
+    Encoded geometry of the returned route as per the selected format in geometry
+    and specified overview verbosity. Please note the overview will always be full
+    when original_shape parameter is used in the input request.
     """
 
     legs: Optional[List[RouteLeg]] = None
-    """An array of objects returning the details about each `leg` of the route.
+    """An array of objects returning the details about each leg of the route.
 
-    `waypoints` split the route into legs.
+    waypoints split the route into legs.
     """
 
     predicted_duration: Optional[float] = None
@@ -402,7 +402,7 @@ class NavigationRetrieveRouteResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the [API Errors Codes](#api-error-codes)
     section below for more information.
     """

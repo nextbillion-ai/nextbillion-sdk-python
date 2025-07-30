@@ -47,12 +47,12 @@ class TestPolygon:
             pn=0,
             ps=0,
             sort={
-                "sort_by": "`distance`",
+                "sort_by": "distance",
                 "sort_destination": {
                     "lat": 0,
                     "lon": 0,
                 },
-                "sort_driving_mode": "`car`",
+                "sort_driving_mode": "car",
             },
         )
         assert_matches_type(SearchResponse, polygon, path=["response"])
@@ -112,9 +112,9 @@ class TestPolygon:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, polygon, path=["response"])
 
@@ -182,12 +182,12 @@ class TestAsyncPolygon:
             pn=0,
             ps=0,
             sort={
-                "sort_by": "`distance`",
+                "sort_by": "distance",
                 "sort_destination": {
                     "lat": 0,
                     "lon": 0,
                 },
-                "sort_driving_mode": "`car`",
+                "sort_driving_mode": "car",
             },
         )
         assert_matches_type(SearchResponse, polygon, path=["response"])
@@ -247,9 +247,9 @@ class TestAsyncPolygon:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, polygon, path=["response"])
 

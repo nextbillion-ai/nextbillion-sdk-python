@@ -43,15 +43,15 @@ class RestrictionListByBboxParams(TypedDict, total=False):
     be useful for filtering, sorting, or grouping the results based on their source.
     """
 
-    state: Literal["`enabled`", "`disabled`", "`deleted`"]
+    state: Literal["enabled", "disabled", "deleted"]
     """This parameter is used to filter restrictions based on their state i.e.
 
     whether the restriction is currently enabled, disabled, or deleted. For example,
     users can retrieve a list of all the deleted restrictions by setting
-    `state=deleted`.
+    state=deleted.
     """
 
-    status: Literal["`active`", "`inactive`"]
+    status: Literal["active", "inactive"]
     """Restrictions can be active or inactive at a given time by virtue of their
     nature.
 
@@ -64,4 +64,4 @@ class RestrictionListByBboxParams(TypedDict, total=False):
     """
 
     transform: bool
-    """This is internal parameter with a default value as `false`."""
+    """This is internal parameter with a default value as false."""

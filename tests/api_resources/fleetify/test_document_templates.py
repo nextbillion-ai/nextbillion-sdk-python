@@ -31,7 +31,7 @@ class TestDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -46,7 +46,7 @@ class TestDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -65,7 +65,7 @@ class TestDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -142,7 +142,7 @@ class TestDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                     "meta": {
                         "options": [
                             {
@@ -296,7 +296,7 @@ class TestAsyncDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -311,7 +311,7 @@ class TestAsyncDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -330,7 +330,7 @@ class TestAsyncDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                 }
             ],
             name="name",
@@ -407,7 +407,7 @@ class TestAsyncDocumentTemplates:
             content=[
                 {
                     "label": '"label": "Specify Completion Time"',
-                    "type": "`string`",
+                    "type": "string",
                     "meta": {
                         "options": [
                             {

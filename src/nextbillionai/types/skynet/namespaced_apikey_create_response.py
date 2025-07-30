@@ -9,7 +9,7 @@ __all__ = ["NamespacedApikeyCreateResponse", "Result"]
 
 class Result(BaseModel):
     apikey: Optional[str] = None
-    """Returns the unique `key` created for the specified namespace."""
+    """Returns the unique key created for the specified namespace."""
 
     created_at: Optional[int] = None
     """
@@ -24,7 +24,7 @@ class Result(BaseModel):
     """
 
     namespace: Optional[str] = None
-    """Returns the name of the `namespace` for which the key is created."""
+    """Returns the name of the namespace for which the key is created."""
 
     sub_id: Optional[str] = None
     """An internal subscription ID."""

@@ -13,7 +13,7 @@ class Data(BaseModel):
     list: Optional[List[Monitor]] = None
     """An array of objects listing all the monitors.
 
-    Each object represents one `monitor`.
+    Each object represents one monitor.
     """
 
     page: Optional[Pagination] = None
@@ -36,7 +36,7 @@ class MonitorListResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On successful responses, the value will be `Ok`. Indicative error messages are
+    On successful responses, the value will be Ok. Indicative error messages are
     returned for different errors. See the [API Error Codes](#api-error-codes)
     section below for more information.
     """

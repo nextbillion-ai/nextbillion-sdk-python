@@ -74,12 +74,12 @@ class OptimizationResource(SyncAPIResource):
         *,
         coordinates: str,
         key: str,
-        approaches: Literal["`unrestricted`", "`curb`"] | NotGiven = NOT_GIVEN,
-        destination: Literal["`any`", "`last`"] | NotGiven = NOT_GIVEN,
-        geometries: Literal["`polyline`", "`polyline6`", "`geojson`"] | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
+        destination: Literal["any", "last"] | NotGiven = NOT_GIVEN,
+        geometries: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         roundtrip: bool | NotGiven = NOT_GIVEN,
-        source: Literal["`any`", "`first`"] | NotGiven = NOT_GIVEN,
+        source: Literal["any", "first"] | NotGiven = NOT_GIVEN,
         with_geometry: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -110,19 +110,18 @@ class OptimizationResource(SyncAPIResource):
               API.
 
           approaches: A semicolon-separated list indicating the side of the road from which to
-              approach waypoints in a requested route. If provided, the number of `approaches`
-              must be the same as the number of `coordinates`. However, you can skip a
-              coordinate and show its position in the list with the `;` separator.
+              approach waypoints in a requested route. If provided, the number of approaches
+              must be the same as the number of coordinates. However, you can skip a
+              coordinate and show its position in the list with the ; separator.
 
-          destination: Specify the destination coordinate of the returned route. If the input is
-              `last`, the last coordinate will be the destination.
+          destination: Specify the destination coordinate of the returned route. If the input is last,
+              the last coordinate will be the destination.
 
           geometries: Sets the output format of the route geometry in the response.
 
-              On providing `polyline` and `polyline6` as input, respective encoded geometry is
-              returned. However, when `geojson` is provided as the input value, `polyline`
-              encoded geometry is returned in the response along with a geojson details of the
-              route.
+              On providing polyline and polyline6 as input, respective encoded geometry is
+              returned. However, when geojson is provided as the input value, polyline encoded
+              geometry is returned in the response along with a geojson details of the route.
 
           mode: Set which driving mode the service should use to determine a route. For example,
               if you use "car", the API will return a route that a car can take. Using "truck"
@@ -230,7 +229,7 @@ class OptimizationResource(SyncAPIResource):
 
               As a best practice:
 
-              1.  Don't provide the `locations` input when re-optimizing, if the original set
+              1.  Don't provide the locations input when re-optimizing, if the original set
                   contains all the required location coordinates.
               2.  If any new location coordinates are required for re-optimization, copy the
                   full, original location list and update it in the following manner before
@@ -314,12 +313,12 @@ class AsyncOptimizationResource(AsyncAPIResource):
         *,
         coordinates: str,
         key: str,
-        approaches: Literal["`unrestricted`", "`curb`"] | NotGiven = NOT_GIVEN,
-        destination: Literal["`any`", "`last`"] | NotGiven = NOT_GIVEN,
-        geometries: Literal["`polyline`", "`polyline6`", "`geojson`"] | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
+        destination: Literal["any", "last"] | NotGiven = NOT_GIVEN,
+        geometries: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         roundtrip: bool | NotGiven = NOT_GIVEN,
-        source: Literal["`any`", "`first`"] | NotGiven = NOT_GIVEN,
+        source: Literal["any", "first"] | NotGiven = NOT_GIVEN,
         with_geometry: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -350,19 +349,18 @@ class AsyncOptimizationResource(AsyncAPIResource):
               API.
 
           approaches: A semicolon-separated list indicating the side of the road from which to
-              approach waypoints in a requested route. If provided, the number of `approaches`
-              must be the same as the number of `coordinates`. However, you can skip a
-              coordinate and show its position in the list with the `;` separator.
+              approach waypoints in a requested route. If provided, the number of approaches
+              must be the same as the number of coordinates. However, you can skip a
+              coordinate and show its position in the list with the ; separator.
 
-          destination: Specify the destination coordinate of the returned route. If the input is
-              `last`, the last coordinate will be the destination.
+          destination: Specify the destination coordinate of the returned route. If the input is last,
+              the last coordinate will be the destination.
 
           geometries: Sets the output format of the route geometry in the response.
 
-              On providing `polyline` and `polyline6` as input, respective encoded geometry is
-              returned. However, when `geojson` is provided as the input value, `polyline`
-              encoded geometry is returned in the response along with a geojson details of the
-              route.
+              On providing polyline and polyline6 as input, respective encoded geometry is
+              returned. However, when geojson is provided as the input value, polyline encoded
+              geometry is returned in the response along with a geojson details of the route.
 
           mode: Set which driving mode the service should use to determine a route. For example,
               if you use "car", the API will return a route that a car can take. Using "truck"
@@ -470,7 +468,7 @@ class AsyncOptimizationResource(AsyncAPIResource):
 
               As a best practice:
 
-              1.  Don't provide the `locations` input when re-optimizing, if the original set
+              1.  Don't provide the locations input when re-optimizing, if the original set
                   contains all the required location coordinates.
               2.  If any new location coordinates are required for re-optimization, copy the
                   full, original location list and update it in the following manner before

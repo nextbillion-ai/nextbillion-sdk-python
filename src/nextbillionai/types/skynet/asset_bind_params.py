@@ -15,9 +15,9 @@ class AssetBindParams(TypedDict, total=False):
     """
 
     device_id: Required[str]
-    """Device ID to be linked to the `asset` identified by `id`.
+    """Device ID to be linked to the asset identified by id.
 
-    Please note that the device needs to be linked to an `asset` before using it in
+    Please note that the device needs to be linked to an asset before using it in
     the _Upload locations of an Asset_ method for sending GPS information about the
-    `asset`.
+    asset.
     """

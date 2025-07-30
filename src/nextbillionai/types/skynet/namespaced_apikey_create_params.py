@@ -15,10 +15,10 @@ class NamespacedApikeyCreateParams(TypedDict, total=False):
     """
 
     namespace: Required[str]
-    """Specify a name for the `namespace`.
+    """Specify a name for the namespace.
 
     If the namespace specified is unique then a new namespace along with a new key
-    is created. Whereas if the specified `namespace` is not unique, a new key will
-    be created in the existing `namespace`. Please note that a `namespace` cannot be
+    is created. Whereas if the specified namespace is not unique, a new key will be
+    created in the existing namespace. Please note that a namespace cannot be
     created using another namespace key.
     """

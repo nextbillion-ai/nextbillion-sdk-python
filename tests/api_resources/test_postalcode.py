@@ -35,7 +35,7 @@ class TestPostalcode:
                 "lng": 0,
             },
             country="country",
-            format="`geojson`",
+            format="geojson",
             postalcode="postalcode",
         )
         assert_matches_type(PostalcodeRetrieveCoordinatesResponse, postalcode, path=["response"])
@@ -90,7 +90,7 @@ class TestAsyncPostalcode:
                 "lng": 0,
             },
             country="country",
-            format="`geojson`",
+            format="geojson",
             postalcode="postalcode",
         )
         assert_matches_type(PostalcodeRetrieveCoordinatesResponse, postalcode, path=["response"])
