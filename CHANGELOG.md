@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2025-07-30)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* re-order endpoints ([ed7e19b](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/ed7e19b115a1108fdb7e4d5f2d1d6383b8e8ca6c))
+
 ## 0.3.0 (2025-07-28)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.2.0...v0.3.0)
