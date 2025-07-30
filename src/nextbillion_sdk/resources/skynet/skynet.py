@@ -118,7 +118,7 @@ class SkynetResource(SyncAPIResource):
     def subscribe(
         self,
         *,
-        action: Literal["`TRIP_SUBSCRIBE`", "`TRIP_UNSUBSCRIBE`", "`HEARTBEAT`"],
+        action: Literal["TRIP_SUBSCRIBE", "TRIP_UNSUBSCRIBE", "HEARTBEAT"],
         id: str | NotGiven = NOT_GIVEN,
         params: skynet_subscribe_params.Params | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -219,7 +219,7 @@ class AsyncSkynetResource(AsyncAPIResource):
     async def subscribe(
         self,
         *,
-        action: Literal["`TRIP_SUBSCRIBE`", "`TRIP_UNSUBSCRIBE`", "`HEARTBEAT`"],
+        action: Literal["TRIP_SUBSCRIBE", "TRIP_UNSUBSCRIBE", "HEARTBEAT"],
         id: str | NotGiven = NOT_GIVEN,
         params: skynet_subscribe_params.Params | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

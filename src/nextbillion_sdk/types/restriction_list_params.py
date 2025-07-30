@@ -23,7 +23,7 @@ class RestrictionListParams(TypedDict, total=False):
     limit: Required[int]
     """The number of restrictions to be returned in the response.
 
-    Please note that if the `limit` is set to a number more than the total number of
+    Please note that if the limit is set to a number more than the total number of
     available restrictions, then all restrictions would be returned together.
     """
 
@@ -34,10 +34,10 @@ class RestrictionListParams(TypedDict, total=False):
     first item returned in the result would be the item at (offset + 1) position in
     collection.
 
-    Users can use `offset` along with `limit` to implement paginated result.
+    Users can use offset along with limit to implement paginated result.
     """
 
-    mode: Literal["`0w`", "`2w`", "`3w`", "`4w`", "`6w`"]
+    mode: Literal["0w", "2w", "3w", "4w", "6w"]
     """Specify the modes of travel that the restriction pertains to."""
 
     name: str
@@ -46,7 +46,7 @@ class RestrictionListParams(TypedDict, total=False):
     This should be same as that provided while creating or updating the restriction.
     """
 
-    restriction_type: Literal["`turn`", "`parking`", "`fixedspeed`", "`maxspeed`", "`closure`", "`truck`"]
+    restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
     """Specify the type of restrictions to fetch."""
 
     source: Literal["rrt", "pbf"]
@@ -55,15 +55,15 @@ class RestrictionListParams(TypedDict, total=False):
     "xsm"
     """
 
-    state: Literal["`enabled`", "`disabled`", "`deleted`"]
+    state: Literal["enabled", "disabled", "deleted"]
     """This parameter is used to filter restrictions based on their state i.e.
 
     whether the restriction is currently enabled, disabled, or deleted. For example,
     users can retrieve a list of all the deleted restrictions by setting
-    `state=deleted`.
+    state=deleted.
     """
 
-    status: Literal["`active`", "`inactive`"]
+    status: Literal["active", "inactive"]
     """Restrictions can be active or inactive at a given time by virtue of their
     nature.
 

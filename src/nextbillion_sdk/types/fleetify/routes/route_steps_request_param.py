@@ -38,15 +38,14 @@ class RouteStepsRequestParam(TypedDict, total=False):
     location: Required[Iterable[float]]
     """
     Specify the location coordinates where the steps should be performed in
-    `[latitude, longitude]`.
+    [latitude, longitude].
     """
 
-    type: Required[Literal["`start`", "`job`", "`pickup`", "`delivery`", "`break`", "`layover`", "`end`"]]
+    type: Required[Literal["start", "job", "pickup", "delivery", "break", "layover", "end"]]
     """Specify the step type.
 
-    It can belong to one of the following: `start`, `job` , `pickup`, `delivery`,
-    `end`. A `duration` is mandatory when the step type is either `layover` or a
-    `break`.
+    It can belong to one of the following: start, job , pickup, delivery, end. A
+    duration is mandatory when the step type is either layover or a break.
     """
 
     address: str
@@ -57,10 +56,10 @@ class RouteStepsRequestParam(TypedDict, total=False):
 
     Currently, following values are allowed:
 
-    - `manual`: Steps must be marked as completed manually through the Driver App.
-    - `geofence`: Steps are marked as completed automatically based on the entry
+    - manual: Steps must be marked as completed manually through the Driver App.
+    - geofence: Steps are marked as completed automatically based on the entry
       conditions and geofence specified.
-    - `geofence_manual_fallback`: Steps will be marked as completed automatically
+    - geofence_manual_fallback: Steps will be marked as completed automatically
       based on geofence and entry condition configurations but there will also be a
       provision for manually updating the status in case, geofence detection fails.
     """
@@ -74,11 +73,11 @@ class RouteStepsRequestParam(TypedDict, total=False):
     create, read and manage the document templates.
 
     Please note that the document template ID can not be assigned to following step
-    types - `start`, `end`, `break`, `layover`.
+    types - start, end, break, layover.
     """
 
     duration: int
-    """Specify the duration of the `layover` or `break` type steps, in seconds.
+    """Specify the duration of the layover or break type steps, in seconds.
 
     Please note it is mandatory when step type is either "layover" or "break".
     """
@@ -87,7 +86,7 @@ class RouteStepsRequestParam(TypedDict, total=False):
     """
     Specify the configurations of the geofence which will be used to detect presence
     of the driver and complete the tasks automatically. Please note that this
-    attribute is required when `completion_mode` is either "geofence" or
+    attribute is required when completion_mode is either "geofence" or
     "geofence_manual_fallback".
     """
 

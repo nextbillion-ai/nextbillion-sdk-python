@@ -26,8 +26,8 @@ class MileageSegmentCountry(BaseModel):
     length: Optional[int] = None
     """
     Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-    from the `offset`, forming a continuous section of route with a distance
-    indicated in `distance`field.
+    from the offset, forming a continuous section of route with a distance indicated
+    in distancefield.
     """
 
     offset: Optional[int] = None
@@ -47,8 +47,8 @@ class MileageSegmentState(BaseModel):
     length: Optional[int] = None
     """
     Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-    from the `offset`, forming a continuous section of route with a distance
-    indicated in `distance`field.
+    from the offset, forming a continuous section of route with a distance indicated
+    in distancefield.
     """
 
     offset: Optional[int] = None
@@ -78,14 +78,14 @@ class MileageSegment(BaseModel):
 class MileageSummary(BaseModel):
     country: Optional[object] = None
     """
-    A break up of country-wise distances that the route covers in `key:value` pair
+    A break up of country-wise distances that the route covers in key:value pair
     format.
     """
 
     state: Optional[object] = None
     """
-    A break up of state-wise distances that the route covers specified in
-    `key:value` pair format.
+    A break up of state-wise distances that the route covers specified in key:value
+    pair format.
     """
 
 
@@ -110,8 +110,8 @@ class RoadSummarySegmentMaxSpeed(BaseModel):
     length: Optional[int] = None
     """
     Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-    from the `offset`, forming a continuous section of route where the maximum speed
-    is same and is indicated in `value`.
+    from the offset, forming a continuous section of route where the maximum speed
+    is same and is indicated in value.
     """
 
     offset: Optional[int] = None
@@ -136,8 +136,8 @@ class RoadSummarySegmentRoadClass(BaseModel):
     length: Optional[int] = None
     """
     Represents a sequence of ‘n’ consecutive vertices in the route geometry starting
-    from the `offset`, forming a continuous section of route with a distance
-    indicated in `distance`field.
+    from the offset, forming a continuous section of route with a distance indicated
+    in distancefield.
     """
 
     offset: Optional[int] = None
@@ -188,13 +188,13 @@ class RoadSummarySummary(BaseModel):
     """
     An object with details about the different types of road classes that the route
     goes through. Distance traversed on a given road class is also returned. The
-    contents of this object follow the `key:value` pair format.
+    contents of this object follow the key:value pair format.
     """
 
     toll_distance: Optional[float] = None
     """Returns the total distance travelled on toll roads.
 
-    This field is present in the response only when the `has_toll` property is true.
+    This field is present in the response only when the has_toll property is true.
     """
 
 
@@ -239,7 +239,7 @@ class RouteReportCreateResponse(BaseModel):
     status: Optional[str] = None
     """A string indicating the state of the response.
 
-    On normal responses, the value will be `Ok`. Indicative HTTP error codes are
+    On normal responses, the value will be Ok. Indicative HTTP error codes are
     returned for different errors. See the
     [**API Errors Codes**](https://app.reapi.com/ws/hmx8aL45B5jjrJa8/p/vNNilNksLVz675pI/s/ealJmVGjTQv4x5Wi/edit/path/VYzo7gOlRsQQZo0U#api-error-codes)
     section below for more information.

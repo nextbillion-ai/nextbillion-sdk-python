@@ -18,7 +18,7 @@ class Pagination(BaseModel):
     """An integer value indicating the current page number (starting at 0)."""
 
     size: Optional[int] = None
-    """An integer value indicating the maximum number of items retrieved per `page`."""
+    """An integer value indicating the maximum number of items retrieved per page."""
 
     total: Optional[int] = None
     """An integer value indicating the total number of items available in the data set.

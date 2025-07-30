@@ -67,9 +67,9 @@ class SearchResource(SyncAPIResource):
         max_search_limit: bool | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["`distance`", "`duration`", "`straight_distance`"] | NotGiven = NOT_GIVEN,
+        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
         sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,58 +89,57 @@ class SearchResource(SyncAPIResource):
 
           radius: Radius, in meters, of the circular area to be searched.
 
-          filter: **`tags` parameter will be deprecated soon! Please use the
-              `include_any_of_attributes` or `include_all_of_attributes` parameters to match
+          filter: **tags parameter will be deprecated soon! Please use the
+              include_any_of_attributes or include_all_of_attributes parameters to match
               assets based on their labels or markers.**
 
               Use this parameter to filter the assets found inside the specified area by their
-              `tags`. Multiple `tags` can be separated using commas (`,`).
+              tags. Multiple tags can be separated using commas (,).
 
               Please note the tags are case sensitive.
 
           include_all_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Only the assets having all the `attributes` that are added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Only the assets having all the attributes that are added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_any_of_attributes` parameter.
+              used in conjunction with include_any_of_attributes parameter.
 
           include_any_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Assets having at least one of the `attributes` added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Assets having at least one of the attributes added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_all_of_attributes` parameter.
+              used in conjunction with include_all_of_attributes parameter.
 
           max_search_limit: When true, the maximum limit is 20Km for around search API and 48000 Km2 for
               other search methods.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
           sort_by: Specify the metric to sort the assets returned in the search result. The valid
               values are:
 
               - **distance** : Sorts the assets by driving distance to the given
-                `sort_destination` .
-              - **duration** : Sorts the assets by travel time to the given `sort_destination`
-                .
+                sort_destination .
+              - **duration** : Sorts the assets by travel time to the given sort_destination .
               - **straight_distance** : Sort the assets by straight-line distance to the given
-                `sort-destination` .
+                sort-destination .
 
           sort_destination: Specifies the location coordinates of the point which acts as destination for
               sorting the assets in the search results. The service will sort each asset based
               on the driving distance or travel time to this destination, from its current
-              location. Use the `sort_by` parameter to configure the metric that should be
-              used for sorting the assets. Please note that `sort_destination` is required
-              when `sort_by` is provided.
+              location. Use the sort_by parameter to configure the metric that should be used
+              for sorting the assets. Please note that sort_destination is required when
+              sort_by is provided.
 
           sort_driving_mode: Specifies the driving mode to be used for determining travel duration or driving
               distance for sorting the assets in search result.
@@ -192,9 +191,9 @@ class SearchResource(SyncAPIResource):
         max_search_limit: bool | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["`distance`", "`duration`", "`straight_distance`"] | NotGiven = NOT_GIVEN,
+        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
         sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -208,64 +207,63 @@ class SearchResource(SyncAPIResource):
         Args:
           bound: Specify two, pipe (|) delimited location coordinates which would act as corners
               of the bounding box area to be searched. The first one should be the southwest
-              coordinate of the `bounds` and the second one should be the northeast coordinate
-              of the `bounds`.
+              coordinate of the bounds and the second one should be the northeast coordinate
+              of the bounds.
 
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          filter: **`tags` parameter will be deprecated soon! Please use the
-              `include_any_of_attributes` or `include_all_of_attributes` parameters to match
+          filter: **tags parameter will be deprecated soon! Please use the
+              include_any_of_attributes or include_all_of_attributes parameters to match
               assets based on their labels or markers.**
 
               Use this parameter to filter the assets found inside the specified area by their
-              `tags`. Multiple `tags` can be separated using commas (`,`).
+              tags. Multiple tags can be separated using commas (,).
 
               Please note the tags are case sensitive.
 
           include_all_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Only the assets having all the `attributes` that are added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Only the assets having all the attributes that are added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_any_of_attributes` parameter.
+              used in conjunction with include_any_of_attributes parameter.
 
           include_any_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Assets having at least one of the `attributes` added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Assets having at least one of the attributes added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_all_of_attributes` parameter.
+              used in conjunction with include_all_of_attributes parameter.
 
           max_search_limit: When true, the maximum limit is 20Km for around search API and 48000 Km2 for
               other search methods.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
           sort_by: Specify the metric to sort the assets returned in the search result. The valid
               values are:
 
               - **distance** : Sorts the assets by driving distance to the given
-                `sort_destination` .
-              - **duration** : Sorts the assets by travel time to the given `sort_destination`
-                .
+                sort_destination .
+              - **duration** : Sorts the assets by travel time to the given sort_destination .
               - **straight_distance** : Sort the assets by straight-line distance to the given
-                `sort-destination` .
+                sort-destination .
 
           sort_destination: Specifies the location coordinates of the point which acts as destination for
               sorting the assets in the search results. The service will sort each asset based
               on the driving distance or travel time to this destination, from its current
-              location. Use the `sort_by` parameter to configure the metric that should be
-              used for sorting the assets. Please note that `sort_destination` is required
-              when `sort_by` is provided.
+              location. Use the sort_by parameter to configure the metric that should be used
+              for sorting the assets. Please note that sort_destination is required when
+              sort_by is provided.
 
           sort_driving_mode: Specifies the driving mode to be used for determining travel duration or driving
               distance for sorting the assets in search result.
@@ -342,9 +340,9 @@ class AsyncSearchResource(AsyncAPIResource):
         max_search_limit: bool | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["`distance`", "`duration`", "`straight_distance`"] | NotGiven = NOT_GIVEN,
+        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
         sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -364,58 +362,57 @@ class AsyncSearchResource(AsyncAPIResource):
 
           radius: Radius, in meters, of the circular area to be searched.
 
-          filter: **`tags` parameter will be deprecated soon! Please use the
-              `include_any_of_attributes` or `include_all_of_attributes` parameters to match
+          filter: **tags parameter will be deprecated soon! Please use the
+              include_any_of_attributes or include_all_of_attributes parameters to match
               assets based on their labels or markers.**
 
               Use this parameter to filter the assets found inside the specified area by their
-              `tags`. Multiple `tags` can be separated using commas (`,`).
+              tags. Multiple tags can be separated using commas (,).
 
               Please note the tags are case sensitive.
 
           include_all_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Only the assets having all the `attributes` that are added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Only the assets having all the attributes that are added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_any_of_attributes` parameter.
+              used in conjunction with include_any_of_attributes parameter.
 
           include_any_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Assets having at least one of the `attributes` added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Assets having at least one of the attributes added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_all_of_attributes` parameter.
+              used in conjunction with include_all_of_attributes parameter.
 
           max_search_limit: When true, the maximum limit is 20Km for around search API and 48000 Km2 for
               other search methods.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
           sort_by: Specify the metric to sort the assets returned in the search result. The valid
               values are:
 
               - **distance** : Sorts the assets by driving distance to the given
-                `sort_destination` .
-              - **duration** : Sorts the assets by travel time to the given `sort_destination`
-                .
+                sort_destination .
+              - **duration** : Sorts the assets by travel time to the given sort_destination .
               - **straight_distance** : Sort the assets by straight-line distance to the given
-                `sort-destination` .
+                sort-destination .
 
           sort_destination: Specifies the location coordinates of the point which acts as destination for
               sorting the assets in the search results. The service will sort each asset based
               on the driving distance or travel time to this destination, from its current
-              location. Use the `sort_by` parameter to configure the metric that should be
-              used for sorting the assets. Please note that `sort_destination` is required
-              when `sort_by` is provided.
+              location. Use the sort_by parameter to configure the metric that should be used
+              for sorting the assets. Please note that sort_destination is required when
+              sort_by is provided.
 
           sort_driving_mode: Specifies the driving mode to be used for determining travel duration or driving
               distance for sorting the assets in search result.
@@ -467,9 +464,9 @@ class AsyncSearchResource(AsyncAPIResource):
         max_search_limit: bool | NotGiven = NOT_GIVEN,
         pn: int | NotGiven = NOT_GIVEN,
         ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["`distance`", "`duration`", "`straight_distance`"] | NotGiven = NOT_GIVEN,
+        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
         sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -483,64 +480,63 @@ class AsyncSearchResource(AsyncAPIResource):
         Args:
           bound: Specify two, pipe (|) delimited location coordinates which would act as corners
               of the bounding box area to be searched. The first one should be the southwest
-              coordinate of the `bounds` and the second one should be the northeast coordinate
-              of the `bounds`.
+              coordinate of the bounds and the second one should be the northeast coordinate
+              of the bounds.
 
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          filter: **`tags` parameter will be deprecated soon! Please use the
-              `include_any_of_attributes` or `include_all_of_attributes` parameters to match
+          filter: **tags parameter will be deprecated soon! Please use the
+              include_any_of_attributes or include_all_of_attributes parameters to match
               assets based on their labels or markers.**
 
               Use this parameter to filter the assets found inside the specified area by their
-              `tags`. Multiple `tags` can be separated using commas (`,`).
+              tags. Multiple tags can be separated using commas (,).
 
               Please note the tags are case sensitive.
 
           include_all_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Only the assets having all the `attributes` that are added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Only the assets having all the attributes that are added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_any_of_attributes` parameter.
+              used in conjunction with include_any_of_attributes parameter.
 
           include_any_of_attributes: Use this parameter to filter the assets found inside the specified area by their
-              `attributes`. Assets having at least one of the `attributes` added to this
-              parameter, will be returned in the search results. Multiple `attributes` can be
-              separated using pipes (`|`).
+              attributes. Assets having at least one of the attributes added to this
+              parameter, will be returned in the search results. Multiple attributes can be
+              separated using pipes (|).
 
               Please note the attributes are case sensitive. Also, this parameter can not be
-              used in conjunction with `include_all_of_attributes` parameter.
+              used in conjunction with include_all_of_attributes parameter.
 
           max_search_limit: When true, the maximum limit is 20Km for around search API and 48000 Km2 for
               other search methods.
 
-          pn: Denotes page number. Use this along with the `ps` parameter to implement
+          pn: Denotes page number. Use this along with the ps parameter to implement
               pagination for your searched results. This parameter does not have a maximum
               limit but would return an empty response in case a higher value is provided when
               the result-set itself is smaller.
 
-          ps: Denotes number of search results per page. Use this along with the `pn`
-              parameter to implement pagination for your searched results.
+          ps: Denotes number of search results per page. Use this along with the pn parameter
+              to implement pagination for your searched results.
 
           sort_by: Specify the metric to sort the assets returned in the search result. The valid
               values are:
 
               - **distance** : Sorts the assets by driving distance to the given
-                `sort_destination` .
-              - **duration** : Sorts the assets by travel time to the given `sort_destination`
-                .
+                sort_destination .
+              - **duration** : Sorts the assets by travel time to the given sort_destination .
               - **straight_distance** : Sort the assets by straight-line distance to the given
-                `sort-destination` .
+                sort-destination .
 
           sort_destination: Specifies the location coordinates of the point which acts as destination for
               sorting the assets in the search results. The service will sort each asset based
               on the driving distance or travel time to this destination, from its current
-              location. Use the `sort_by` parameter to configure the metric that should be
-              used for sorting the assets. Please note that `sort_destination` is required
-              when `sort_by` is provided.
+              location. Use the sort_by parameter to configure the metric that should be used
+              for sorting the assets. Please note that sort_destination is required when
+              sort_by is provided.
 
           sort_driving_mode: Specifies the driving mode to be used for determining travel duration or driving
               distance for sorting the assets in search result.

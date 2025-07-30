@@ -13,17 +13,17 @@ class Delivery(TypedDict, total=False):
     """Indicate the ID of this shipment delivery step.
 
     An error will be reported if there are duplicate IDs for multiple shipment
-    deliveries. The IDs are case sensitive. Please note `id` is mandatory when using
-    the `shipments` attribute.
+    deliveries. The IDs are case sensitive. Please note id is mandatory when using
+    the shipments attribute.
     """
 
     location_index: Required[int]
     """Indicate the index of location for this shipment delivery.
 
-    The index references the locations present in the `location` array. The valid
-    range of value is \\[[0, length of `location` array).
+    The index references the locations present in the location array. The valid
+    range of value is \\[[0, length of location array).
 
-    Please note `location_index` is mandatory when using the `shipment` attribute.
+    Please note location_index is mandatory when using the shipment attribute.
     """
 
     description: str
@@ -33,41 +33,40 @@ class Delivery(TypedDict, total=False):
     """
     It determines the allowable delay, in seconds, to begin a shipment delivery
     after its designated time window has concluded. Please note that this parameter
-    would override the `constraint.max_visit_lateness` (global) if both are
-    specified.
+    would override the constraint.max_visit_lateness (global) if both are specified.
     """
 
     metadata: object
     """
     Specify any custom data that should be attached along with delivery fulfilment
-    details in the `step` attribute of the optimized solution. Users can leverage
-    this property to provide additional details/context when sharing information
-    about the delivery step with integrated systems (TMS, Fleet Management, Driver
+    details in the step attribute of the optimized solution. Users can leverage this
+    property to provide additional details/context when sharing information about
+    the delivery step with integrated systems (TMS, Fleet Management, Driver
     dispatch etc).
 
-    Please note that the `metadata` content must always be specified in a `key` :
-    `value` pair format, where the “key” is always a string.
+    Please note that the metadata content must always be specified in a key : value
+    pair format, where the “key” is always a string.
     """
 
     sequence_order: int
     """
     Use this parameter to prioritize completing the shipment delivery relative to
-    certain other tasks. A task configured with a `sequence_order` of 2 will be done
-    after the task with `sequence_order` of 1, but before the task with
-    `sequence_order` of 3. Valid range of values for this input is \\[[0,100\\]].
+    certain other tasks. A task configured with a sequence_order of 2 will be done
+    after the task with sequence_order of 1, but before the task with sequence_order
+    of 3. Valid range of values for this input is \\[[0,100\\]].
 
     Please note that:
 
     - The shipment delivery's sequence order must be greater than or equal to its
       corresponding pickup's sequence order.
     - Only the tasks within the same route are compared and ordered as per their
-      `sequence_order`.
-    - Tasks without a `sequence_order` are not involved in the comparison.
-    - Following is the precedence of `sequence_order` when used along side some of
-      the other constraints:
+      sequence_order.
+    - Tasks without a sequence_order are not involved in the comparison.
+    - Following is the precedence of sequence_order when used along side some of the
+      other constraints:
 
-      - `relations` are prioritized over `sequence_order` comparisons.
-      - `sequence_order` will override `order_grouping` configurations.
+      - relations are prioritized over sequence_order comparisons.
+      - sequence_order will override order_grouping configurations.
     """
 
     service: int
@@ -79,13 +78,13 @@ class Delivery(TypedDict, total=False):
     setup: int
     """Specify the set-up duration, in seconds, for the delivery.
 
-    `setup` is the one-time effort needed apart from working on the original task-
-    for example, effort to record some information for compliance, or effort to
-    set-up the equipment, or perform any other action for completing all steps
-    required to fulfil the job.
+    setup is the one-time effort needed apart from working on the original task- for
+    example, effort to record some information for compliance, or effort to set-up
+    the equipment, or perform any other action for completing all steps required to
+    fulfil the job.
 
-    Please note that `setup` time is applied only once for a given task location.
-    `setup` time, unlike `service` time, is not repeated in case there are multiple
+    Please note that setup time is applied only once for a given task location.
+    setup time, unlike service time, is not repeated in case there are multiple
     tasks at the same location.
     """
 
@@ -104,15 +103,15 @@ class Pickup(TypedDict, total=False):
     """Indicate the ID of this shipment pickup step.
 
     An error will be reported if there are duplicate IDs for multiple shipment
-    pick-ups. The IDs are case-sensitive. Please note `id` is mandatory when using
-    the `shipments` attribute.
+    pick-ups. The IDs are case-sensitive. Please note id is mandatory when using the
+    shipments attribute.
     """
 
     location_index: Required[int]
     """Indicate the index of the location for this shipment pickup.
 
-    The index references the locations present in the `location` array. The valid
-    range of value is \\[[0, length of `location` array).
+    The index references the locations present in the location array. The valid
+    range of value is \\[[0, length of location array).
     """
 
     description: str
@@ -122,40 +121,40 @@ class Pickup(TypedDict, total=False):
     """
     It determines the allowable delay, in seconds, to begin a shipment pickup after
     its designated time window has concluded. Please note that this parameter would
-    override the `constraint.max_visit_lateness` (global) if both are specified.
+    override the constraint.max_visit_lateness (global) if both are specified.
     """
 
     metadata: object
     """
     Specify any custom data that should be attached along with pickup fulfilment
-    details in the `steps` attribute of the optimized solution. Users can leverage
+    details in the steps attribute of the optimized solution. Users can leverage
     this property to provide additional details/context when sharing information
     about the pickup step with integrated systems (TMS, Fleet Management, Driver
     dispatch etc).
 
-    Please note that the `metadata` content must always be specified in a`key` :
-    `value` pair format, where the “key” is always a string.
+    Please note that the metadata content must always be specified in akey : value
+    pair format, where the “key” is always a string.
     """
 
     sequence_order: int
     """
     Use this parameter to prioritize completing the shipment pickup relative to
-    certain other tasks. A task configured with a `sequence_order` of 2 will be done
-    after the task with `sequence_order` of 1, but before the task with
-    `sequence_order` of 3. Valid range of values for this input is \\[[0,100\\]].
+    certain other tasks. A task configured with a sequence_order of 2 will be done
+    after the task with sequence_order of 1, but before the task with sequence_order
+    of 3. Valid range of values for this input is \\[[0,100\\]].
 
     Please note that:
 
     - The shipment pickups's sequence order must be lesser than or equal to its
       corresponding delivery's sequence order.
     - Only the tasks within the same route are compared and ordered as per their
-      `sequence_order`.
-    - Tasks without a `sequence_order` are not involved in the comparison.
-    - Following is the precedence of `sequence_order` when used along side some of
-      the other constraints:
+      sequence_order.
+    - Tasks without a sequence_order are not involved in the comparison.
+    - Following is the precedence of sequence_order when used along side some of the
+      other constraints:
 
-      - `relations` are prioritized over `sequence_order` comparisons.
-      - `sequence_order` will override `order_grouping` configurations.
+      - relations are prioritized over sequence_order comparisons.
+      - sequence_order will override order_grouping configurations.
     """
 
     service: int
@@ -167,13 +166,13 @@ class Pickup(TypedDict, total=False):
     setup: int
     """Specify the set-up duration, in seconds, for the pickup.
 
-    `setup` is the one-time effort needed apart from working on the original task-
-    for example, effort to record some information for compliance, or effort to
-    set-up the equipment, or perform any other action for completing all steps
-    required to fulfil the job.
+    setup is the one-time effort needed apart from working on the original task- for
+    example, effort to record some information for compliance, or effort to set-up
+    the equipment, or perform any other action for completing all steps required to
+    fulfil the job.
 
-    Please note that `setup` time is applied only once for a given task location.
-    `setup` time, unlike `service` time, is not repeated in case there are multiple
+    Please note that setup time is applied only once for a given task location.
+    setup time, unlike service time, is not repeated in case there are multiple
     tasks at the same location.
     """
 
@@ -188,7 +187,7 @@ class Pickup(TypedDict, total=False):
 
 
 class Volume(TypedDict, total=False):
-    alignment: Literal["`strict`", "`parallel`", "`fixed_bottom`", '`" "`']
+    alignment: Literal["strict", "parallel", "fixed_bottom", '" "']
     """Refers to the orientation of the cargo in the loading compartment.
 
     It supports the following values:
@@ -236,10 +235,9 @@ class ShipmentParam(TypedDict, total=False):
 
     This attribute supports multidimensional quantities, to support shipment of
     quantities of different units/dimensions. It is recommended to keep the
-    dimensions of `amount` in `shipments` and that of `capacity` in `vehicles`
-    consistent.
+    dimensions of amount in shipments and that of capacity in vehicles consistent.
 
-    Please note that the `amount` will be added to the assigned vehicle’s initial
+    Please note that the amount will be added to the assigned vehicle’s initial
     load.
 
     Read more about the behavior of this attribute in the
@@ -250,7 +248,7 @@ class ShipmentParam(TypedDict, total=False):
     """Specify whether the shipment route should follow LIFO (last in, first out).
 
     Use this parameter when the loading or unloading sequence of cargo is important.
-    The default value is \\``false\\``.
+    The default value is \false\\..
     """
 
     incompatible_load_types: List[str]
@@ -258,17 +256,17 @@ class ShipmentParam(TypedDict, total=False):
     Use this parameter to specify the type of loads which are incompatible with the
     shipment’s load type. Once this property is configured, the shipment can only be
     serviced by a vehicle which has not serviced any other task with an incompatible
-    `load_types` . Add multiple load types to indicate all the types which are
+    load_types . Add multiple load types to indicate all the types which are
     incompatible for this shipment. The incompatible load type considerations are
     ignored for the first task of the route.
 
     For example, an input value of \\[[“groceries”, “food”\\]] means that shipment’s
     load is incompatible with both groceries and food type of loads. Consequently,
     the optimizer will not assign this shipment to a vehicle which has served any
-    task with `load_types` as either groceries or food.
+    task with load_types as either groceries or food.
 
-    Please note that if the shipment is part of any `relations` then, configured
-    `incompatible_load_types` might be ignored.
+    Please note that if the shipment is part of any relations then, configured
+    incompatible_load_types might be ignored.
     """
 
     joint_order: int
@@ -276,14 +274,14 @@ class ShipmentParam(TypedDict, total=False):
 
     Tasks having the same joint order group ID are treated as a single unit: either
     all tasks in the group are assigned, or none are. Users can add tasks of both
-    `jobs` and `shipments` types to a single joint order group by using the same
-    unique ID. Please note that:
+    jobs and shipments types to a single joint order group by using the same unique
+    ID. Please note that:
 
     - Each shipment in a single joint order group will be fulfilled by a unique
       vehicle.
     - Shipments belonging to a joint order group can be served in any sequence while
       maintaining the pickup -> delivery sequence for an individual shipment.
-    - Joint order settings will not be effective if \\``solution\\`` or \\``relations\\``
+    - Joint order settings will not be effective if \\ssolution\\  or \relations\\
       attributes are also provided in the input request.
     """
 
@@ -291,17 +289,17 @@ class ShipmentParam(TypedDict, total=False):
     """Use this parameter to specify the type of loads for the given shipment.
 
     Once this property is configured, the shipment can not be served by a vehicle
-    which has serviced any task whose load is incompatible with any of
-    the`load_types` provided in this input. The load type considerations are ignored
-    for the first task of the route.
+    which has serviced any task whose load is incompatible with any of theload_types
+    provided in this input. The load type considerations are ignored for the first
+    task of the route.
 
     For example, an input value of \\[[“groceries”, “food”\\]] means that shipment’s
     load characteristics belong to either one or both types. Consequently, the
     optimizer will assign this shipment to a vehicle which has served other tasks
-    whose `incompatible_load_types` do not contain either groceries or food.
+    whose incompatible_load_types do not contain either groceries or food.
 
-    Please note that if the shipment is part of any `relations` then, configured
-    `load_types` might be ignored.
+    Please note that if the shipment is part of any relations then, configured
+    load_types might be ignored.
     """
 
     max_time_in_vehicle: int
@@ -314,9 +312,9 @@ class ShipmentParam(TypedDict, total=False):
     delivery. The service or setup times of other tasks performed in between will
     also be not accumulated against the time-in-vehicle limit.
 
-    Please note that this property would be overridden if any `relations`
+    Please note that this property would be overridden if any relations
     configuration is used except for “precedence” type. If “precedence” type
-    relations is used then `max_time_in_vehicle` will override it.
+    relations is used then max_time_in_vehicle will override it.
     """
 
     outsourcing_cost: int
@@ -324,15 +322,15 @@ class ShipmentParam(TypedDict, total=False):
     Specify the cost of keeping this shipment unassigned, namely, the cost of
     outsourcing the shipment. When provided, the optimizer weighs the cost of
     assigning the shipment against the cost of keeping it unassigned and chooses a
-    solution with lower cost. In the solution, the `outsourcing_cost` of unassigned
+    solution with lower cost. In the solution, the outsourcing_cost of unassigned
     shipments is added to the total cost of the solution.
 
-    If the `outsourcing_cost` is not provided, which is to say that the shipment can
+    If the outsourcing_cost is not provided, which is to say that the shipment can
     not be outsourced, then the optimizer tries to fulfill the shipment irrespective
     of the cost incurred, subject to other constraints.
 
-    Please note that `revenue` and `outsourcing_cost` can not be specified
-    simultaneously for a shipment. Also, the `outsourcing_cost` would override the
+    Please note that revenue and outsourcing_cost can not be specified
+    simultaneously for a shipment. Also, the outsourcing_cost would override the
     priority settings of the shipment.
     """
 
@@ -349,10 +347,10 @@ class ShipmentParam(TypedDict, total=False):
     revenue: int
     """Specify the revenue earned by completing this shipment.
 
-    The optimizer uses the `revenue` input to identify the potential profit earned
-    by fulfilling this shipment after taking into account the costs incurred to do
-    so. The`options.objective` and `vehicles.costs` input are taken into account to
-    identify the costs of fulfilling the shipment.
+    The optimizer uses the revenue input to identify the potential profit earned by
+    fulfilling this shipment after taking into account the costs incurred to do so.
+    Theoptions.objective and vehicles.costs input are taken into account to identify
+    the costs of fulfilling the shipment.
 
     In general, the optimizer will prefer fulfilling the tasks with higher profits
     over the tasks with lower profits, should it need to reject some tasks in order
@@ -379,7 +377,7 @@ class ShipmentParam(TypedDict, total=False):
     please specify the final characteristics for the task: total height, total
     depth, total width.
 
-    Please note that vehicles which contain the `volume` input, will only be
+    Please note that vehicles which contain the volume input, will only be
     considered for arranging such items.
     """
 
@@ -394,12 +392,12 @@ class ShipmentParam(TypedDict, total=False):
 
     - If zone IDs are provided for any one of the shipments, then all other
       shipments should also be specified with zone IDs. Zone IDs provided here will
-      override any zone geometries provided in the `zones` attribute and these IDs
+      override any zone geometries provided in the zones attribute and these IDs
       will be used for allocating appropriate vehicles.
     - Shipment steps can be auto-allocated to zones if this parameter is not
-      specified while the zone geometries (either `zones.geometry` or
-      `zones.geofence_id`) are provided.
+      specified while the zone geometries (either zones.geometry or
+      zones.geofence_id) are provided.
     - Shipments not falling in any zones can be fulfilled by only those vehicles
-      which are allowed to take up tasks outside zones as well. Refer to `vehicles`
+      which are allowed to take up tasks outside zones as well. Refer to vehicles
       attribute for more information.
     """

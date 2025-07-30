@@ -14,8 +14,8 @@ class RestrictionSetStateParams(TypedDict, total=False):
     API.
     """
 
-    state: Required[Literal["`enabled`", "`disabled`", "`deleted`"]]
-    """Use this field to specify the new `state` of the restriction.
+    state: Required[Literal["enabled", "disabled", "deleted"]]
+    """Use this field to specify the new state of the restriction.
 
     Please note that this method cannot update the state of restrictions that are
     currently in 'deleted' state.

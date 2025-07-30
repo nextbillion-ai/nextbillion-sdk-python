@@ -92,8 +92,8 @@ class NextbillionSDK(SyncAPIClient):
     route_report: route_report.RouteReportResource
     snap_to_roads: snap_to_roads.SnapToRoadsResource
     postalcode: postalcode.PostalcodeResource
-    lookup: lookup.LookupResource
     areas: areas.AreasResource
+    lookup: lookup.LookupResource
     with_raw_response: NextbillionSDKWithRawResponse
     with_streaming_response: NextbillionSDKWithStreamedResponse
 
@@ -174,8 +174,8 @@ class NextbillionSDK(SyncAPIClient):
         self.route_report = route_report.RouteReportResource(self)
         self.snap_to_roads = snap_to_roads.SnapToRoadsResource(self)
         self.postalcode = postalcode.PostalcodeResource(self)
-        self.lookup = lookup.LookupResource(self)
         self.areas = areas.AreasResource(self)
+        self.lookup = lookup.LookupResource(self)
         self.with_raw_response = NextbillionSDKWithRawResponse(self)
         self.with_streaming_response = NextbillionSDKWithStreamedResponse(self)
 
@@ -311,8 +311,8 @@ class AsyncNextbillionSDK(AsyncAPIClient):
     route_report: route_report.AsyncRouteReportResource
     snap_to_roads: snap_to_roads.AsyncSnapToRoadsResource
     postalcode: postalcode.AsyncPostalcodeResource
-    lookup: lookup.AsyncLookupResource
     areas: areas.AsyncAreasResource
+    lookup: lookup.AsyncLookupResource
     with_raw_response: AsyncNextbillionSDKWithRawResponse
     with_streaming_response: AsyncNextbillionSDKWithStreamedResponse
 
@@ -393,8 +393,8 @@ class AsyncNextbillionSDK(AsyncAPIClient):
         self.route_report = route_report.AsyncRouteReportResource(self)
         self.snap_to_roads = snap_to_roads.AsyncSnapToRoadsResource(self)
         self.postalcode = postalcode.AsyncPostalcodeResource(self)
-        self.lookup = lookup.AsyncLookupResource(self)
         self.areas = areas.AsyncAreasResource(self)
+        self.lookup = lookup.AsyncLookupResource(self)
         self.with_raw_response = AsyncNextbillionSDKWithRawResponse(self)
         self.with_streaming_response = AsyncNextbillionSDKWithStreamedResponse(self)
 
@@ -531,8 +531,8 @@ class NextbillionSDKWithRawResponse:
         self.route_report = route_report.RouteReportResourceWithRawResponse(client.route_report)
         self.snap_to_roads = snap_to_roads.SnapToRoadsResourceWithRawResponse(client.snap_to_roads)
         self.postalcode = postalcode.PostalcodeResourceWithRawResponse(client.postalcode)
-        self.lookup = lookup.LookupResourceWithRawResponse(client.lookup)
         self.areas = areas.AreasResourceWithRawResponse(client.areas)
+        self.lookup = lookup.LookupResourceWithRawResponse(client.lookup)
 
 
 class AsyncNextbillionSDKWithRawResponse:
@@ -562,8 +562,8 @@ class AsyncNextbillionSDKWithRawResponse:
         self.route_report = route_report.AsyncRouteReportResourceWithRawResponse(client.route_report)
         self.snap_to_roads = snap_to_roads.AsyncSnapToRoadsResourceWithRawResponse(client.snap_to_roads)
         self.postalcode = postalcode.AsyncPostalcodeResourceWithRawResponse(client.postalcode)
-        self.lookup = lookup.AsyncLookupResourceWithRawResponse(client.lookup)
         self.areas = areas.AsyncAreasResourceWithRawResponse(client.areas)
+        self.lookup = lookup.AsyncLookupResourceWithRawResponse(client.lookup)
 
 
 class NextbillionSDKWithStreamedResponse:
@@ -593,8 +593,8 @@ class NextbillionSDKWithStreamedResponse:
         self.route_report = route_report.RouteReportResourceWithStreamingResponse(client.route_report)
         self.snap_to_roads = snap_to_roads.SnapToRoadsResourceWithStreamingResponse(client.snap_to_roads)
         self.postalcode = postalcode.PostalcodeResourceWithStreamingResponse(client.postalcode)
-        self.lookup = lookup.LookupResourceWithStreamingResponse(client.lookup)
         self.areas = areas.AreasResourceWithStreamingResponse(client.areas)
+        self.lookup = lookup.LookupResourceWithStreamingResponse(client.lookup)
 
 
 class AsyncNextbillionSDKWithStreamedResponse:
@@ -624,8 +624,8 @@ class AsyncNextbillionSDKWithStreamedResponse:
         self.route_report = route_report.AsyncRouteReportResourceWithStreamingResponse(client.route_report)
         self.snap_to_roads = snap_to_roads.AsyncSnapToRoadsResourceWithStreamingResponse(client.snap_to_roads)
         self.postalcode = postalcode.AsyncPostalcodeResourceWithStreamingResponse(client.postalcode)
-        self.lookup = lookup.AsyncLookupResourceWithStreamingResponse(client.lookup)
         self.areas = areas.AsyncAreasResourceWithStreamingResponse(client.areas)
+        self.lookup = lookup.AsyncLookupResourceWithStreamingResponse(client.lookup)
 
 
 Client = NextbillionSDK

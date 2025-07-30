@@ -89,18 +89,18 @@ class GeocodeResource(SyncAPIResource):
 
                 The country codes are to be provided in all uppercase.
 
-                Format: `countryCode:{countryCode}[,{countryCode}]`
+                Format: countryCode:{countryCode}[,{countryCode}]
 
               - a circular area, provided as latitude, longitude, and radius (an integer with
                 meters as unit)
 
-                Format: `circle:{latitude},{longitude};r={radius}`
+                Format: circle:{latitude},{longitude};r={radius}
 
               - a bounding box, provided as _west longitude_, _south latitude_, _east
                 longitude_, _north latitude_
 
-                Format:
-                `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`
+                Format: bbox:{west longitude},{south latitude},{east longitude},{north
+                latitude}
 
               Please provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant
               result.
@@ -234,13 +234,13 @@ class GeocodeResource(SyncAPIResource):
               - a circular area, provided as latitude, longitude, and radius (an integer with
                 meters as unit)
 
-                Format: `circle:{latitude},{longitude};r={radius}`
+                Format: circle:{latitude},{longitude};r={radius}
 
               - a bounding box, provided as _west longitude_, _south latitude_, _east
                 longitude_, _north latitude_
 
-                Format:
-                `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`
+                Format: bbox:{west longitude},{south latitude},{east longitude},{north
+                latitude}
 
               Please provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant
               result.
@@ -355,18 +355,18 @@ class AsyncGeocodeResource(AsyncAPIResource):
 
                 The country codes are to be provided in all uppercase.
 
-                Format: `countryCode:{countryCode}[,{countryCode}]`
+                Format: countryCode:{countryCode}[,{countryCode}]
 
               - a circular area, provided as latitude, longitude, and radius (an integer with
                 meters as unit)
 
-                Format: `circle:{latitude},{longitude};r={radius}`
+                Format: circle:{latitude},{longitude};r={radius}
 
               - a bounding box, provided as _west longitude_, _south latitude_, _east
                 longitude_, _north latitude_
 
-                Format:
-                `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`
+                Format: bbox:{west longitude},{south latitude},{east longitude},{north
+                latitude}
 
               Please provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant
               result.
@@ -500,13 +500,13 @@ class AsyncGeocodeResource(AsyncAPIResource):
               - a circular area, provided as latitude, longitude, and radius (an integer with
                 meters as unit)
 
-                Format: `circle:{latitude},{longitude};r={radius}`
+                Format: circle:{latitude},{longitude};r={radius}
 
               - a bounding box, provided as _west longitude_, _south latitude_, _east
                 longitude_, _north latitude_
 
-                Format:
-                `bbox:{west longitude},{south latitude},{east longitude},{north latitude}`
+                Format: bbox:{west longitude},{south latitude},{east longitude},{north
+                latitude}
 
               Please provide one of 'at', 'in=circle' or 'in=bbox' input for a relevant
               result.

@@ -49,7 +49,7 @@ class RouteCreateParams(TypedDict, total=False):
     create, read and manage document templates.
 
     Please note that the document template ID assigned to a route does not apply to
-    following step types - `start`, `end`, `break`, `layover`.
+    following step types - start, end, break, layover.
     """
 
     ro_request_id: str
@@ -61,9 +61,9 @@ class RouteCreateParams(TypedDict, total=False):
 
     Please note that:
 
-    - The driver's email ID must be provided in input `vehicle.metadata` as
-      `user_email` such that the route optimization result must contain a valid
-      driver email, step's arrival time, etc., to make a successful dispatch.
+    - The driver's email ID must be provided in input vehicle.metadata as user_email
+      such that the route optimization result must contain a valid driver email,
+      step's arrival time, etc., to make a successful dispatch.
     - Document Template for collecting proof of delivery or completion can not be
       specified when using this field to dispatch a route.
     - In case of an error at any part among the routes, the API will immediately
@@ -74,50 +74,40 @@ class RouteCreateParams(TypedDict, total=False):
 
     routing: Routing
     """
-    The `routing` object allows defining the routing characteristics that should be
-    used to generate a route when the Driver uses the in-app navigation. Only `car`
+    The routing object allows defining the routing characteristics that should be
+    used to generate a route when the Driver uses the in-app navigation. Only car
     mode is supported currently.
     """
 
 
 class Routing(TypedDict, total=False):
-    approaches: Literal["`unrestricted`", "`curb`"]
+    approaches: Literal["unrestricted", "curb"]
     """
     Specify the side of the road from which the route should approach the step
-    location. When set to `unrestricted` a route can arrive at the step location
-    from either side of the road and when set to `curb` the route will arrive at the
-    step location only from the driving side of the region. Use a semi-colon `;` to
-    specify approach configurations for multiple steps.
+    location. When set to unrestricted a route can arrive at the step location from
+    either side of the road and when set to curb the route will arrive at the step
+    location only from the driving side of the region. Use a semi-colon ; to specify
+    approach configurations for multiple steps.
     """
 
-    avoid: Literal[
-        "`toll`",
-        "`highway`",
-        "`ferry`",
-        "`sharp_turn`",
-        "`uturn`",
-        "`left_turn`",
-        "`right_turn`",
-        "`service_road`",
-        "`none`",
-    ]
+    avoid: Literal["toll", "highway", "ferry", "sharp_turn", "uturn", "left_turn", "right_turn", "service_road", "none"]
     """
     Setting this will ensure the generated route avoids the object(s) specified in
-    the input. Multiple values should be separated by a pipe (|). If `none` is
+    the input. Multiple values should be separated by a pipe (|). If none is
     provided along with other values, an error is returned as a valid route is not
     feasible.
     """
 
-    hazmat_type: Literal["`general`", "`circumstantial`", "`explosive`", "`harmful_to_water`"]
+    hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"]
     """
     Specify the type of hazardous material being carried and the dispatch service
     will avoid roads which are not suitable for the type of goods specified.
-    Multiple values can be separated using a pipe operator `|` .
+    Multiple values can be separated using a pipe operator | .
 
-    Please note that this parameter is effective only when `mode=truck`.
+    Please note that this parameter is effective only when mode=truck.
     """
 
-    mode: Literal["`car`"]
+    mode: Literal["car"]
     """Specify the driving mode that the service should use to determine a route"""
 
     truck_axle_load: int
@@ -126,7 +116,7 @@ class Routing(TypedDict, total=False):
     goods) of the truck, in tonnes. When specified, the dispatched route uses only
     those roads which can be used by a truck to carry the specified load per axle.
 
-    Please note this parameter is effective only when `mode=truck`.
+    Please note this parameter is effective only when mode=truck.
     """
 
     truck_size: str
@@ -135,8 +125,8 @@ class Routing(TypedDict, total=False):
     <height, width, length>. When specified, the dispatched route uses only those
     roads which allow trucks with specified dimensions.
 
-    Please note this parameter is effective only when `mode=truck`. Also, the
-    maximum dimensions that can be specified are as follows:
+    Please note this parameter is effective only when mode=truck. Also, the maximum
+    dimensions that can be specified are as follows:
 
     Height = 1000 cm
     Width = 5000 cm
@@ -149,6 +139,6 @@ class Routing(TypedDict, total=False):
     kilograms (kg). When specified, the dispatched route uses only those roads which
     allow trucks with specified weight.
 
-    Please note this parameter is effective only when `mode=truck`. Also, the
-    maximum weight that can be specified for a truck is 100,000 kgs.
+    Please note this parameter is effective only when mode=truck. Also, the maximum
+    weight that can be specified for a truck is 100,000 kgs.
     """

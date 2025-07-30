@@ -62,10 +62,10 @@ class TestJson:
             destinations="destinations=41.349302,2.136480|41.389925,2.136258|41.357961,2.097878",
             key="key=API_KEY",
             origins="origins:41.349302,2.136480|41.389925,2.136258|41.357961,2.097878",
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
             bearings="bearings=0,180;0,180",
-            mode="`car`",
+            mode="car",
             route_failed_prompt=True,
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
@@ -151,10 +151,10 @@ class TestAsyncJson:
             destinations="destinations=41.349302,2.136480|41.389925,2.136258|41.357961,2.097878",
             key="key=API_KEY",
             origins="origins:41.349302,2.136480|41.389925,2.136258|41.357961,2.097878",
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
             bearings="bearings=0,180;0,180",
-            mode="`car`",
+            mode="car",
             route_failed_prompt=True,
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])

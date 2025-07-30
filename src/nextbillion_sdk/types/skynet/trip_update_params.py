@@ -27,9 +27,9 @@ class TripUpdateParams(TypedDict, total=False):
     """the cluster of the region you want to use"""
 
     attributes: object
-    """Use this field to update the `attributes` of the trip.
+    """Use this field to update the attributes of the trip.
 
-    Please note that when updating the `attributes` field, previously added
+    Please note that when updating the attributes field, previously added
     information will be overwritten.
     """
 
@@ -41,7 +41,7 @@ class TripUpdateParams(TypedDict, total=False):
 
     This property is used to add any custom information / context about the trip.
 
-    Please note that updating the `meta_data` field will overwrite the previously
+    Please note that updating the meta_data field will overwrite the previously
     added information.
     """
 
@@ -76,7 +76,7 @@ class Stop(TypedDict, total=False):
 
     This property is used to add any custom information / context about the stop.
 
-    Please note that updating the `meta_data` field will overwrite the previously
+    Please note that updating the meta_data field will overwrite the previously
     added information.
     """
 

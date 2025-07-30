@@ -54,7 +54,7 @@ class IsochroneResource(SyncAPIResource):
         denoise: float | NotGiven = NOT_GIVEN,
         departure_time: int | NotGiven = NOT_GIVEN,
         generalize: float | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         polygons: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -189,7 +189,7 @@ class AsyncIsochroneResource(AsyncAPIResource):
         denoise: float | NotGiven = NOT_GIVEN,
         departure_time: int | NotGiven = NOT_GIVEN,
         generalize: float | NotGiven = NOT_GIVEN,
-        mode: Literal["`car`", "`truck`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
         polygons: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

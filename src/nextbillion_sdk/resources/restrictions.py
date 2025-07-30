@@ -64,7 +64,7 @@ class RestrictionsResource(SyncAPIResource):
         name: str,
         latlon: bool | NotGiven = NOT_GIVEN,
         comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["`forward`", "`backward`", "`both`"] | NotGiven = NOT_GIVEN,
+        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
         end_time: float | NotGiven = NOT_GIVEN,
         geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
         height: int | NotGiven = NOT_GIVEN,
@@ -117,25 +117,25 @@ class RestrictionsResource(SyncAPIResource):
 
           geofence: An array of coordinates denoting the boundary of an area in which the
               restrictions are to be applied. The format in which coordinates should be listed
-              is defined by the `latlon` field.
+              is defined by the latlon field.
 
-              Geofences can be used to create all restriction types, except for a `turn` type
-              restriction. Please note that `segments` is not required when using `geofence`
-              to create restrictions.
+              Geofences can be used to create all restriction types, except for a turn type
+              restriction. Please note that segments is not required when using geofence to
+              create restrictions.
 
           height: Specify the maximum truck height, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           length: Specify the maximum truck length, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           mode: Provide the driving modes for which the restriction should be effective. If the
               value is an empty array or if it is not provided then the restriction would be
@@ -152,42 +152,41 @@ class RestrictionsResource(SyncAPIResource):
           segments: An array of objects to collect the details of the segments of a road on which
               the restriction has to be applied. Each object corresponds to a new segment.
 
-              Please note that `segments` is mandatory for all `restrtiction_type` except
-              `turn`.
+              Please note that segments is mandatory for all restrtiction_type except turn.
 
           speed: Provide the the fixed speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `fixedspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is fixedspeed.
 
           speed_limit: Provide the the maximum speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `maxspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is maxspeed.
 
           start_time: Provide a UNIX epoch timestamp in seconds, representing the start time for the
               restriction to be in-effect.
 
           tracks: Specify a sequence of coordinates (track) where the restriction is to be
               applied. The coordinates will be snapped to nearest road. Please note when using
-              `tracks`, `segments` and `turns` are not required.
+              tracks, segments and turns are not required.
 
           turns: An array of objects to collect the details of the turns of a road on which the
               restriction has to be applied. Each object corresponds to a new turn.
 
-              Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+              Please note that turns is mandatory for when restrtiction_type=turn.
 
           weight: Specify the maximum truck weight, in kilograms, that the restriction will allow.
               A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided for is `truck` restriction type.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided for is truck restriction type.
 
           width: Specify the maximum truck width, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           extra_headers: Send extra headers
 
@@ -297,7 +296,7 @@ class RestrictionsResource(SyncAPIResource):
         name: str,
         latlon: bool | NotGiven = NOT_GIVEN,
         comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["`forward`", "`backward`", "`both`"] | NotGiven = NOT_GIVEN,
+        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
         end_time: float | NotGiven = NOT_GIVEN,
         geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
         height: int | NotGiven = NOT_GIVEN,
@@ -350,25 +349,25 @@ class RestrictionsResource(SyncAPIResource):
 
           geofence: An array of coordinates denoting the boundary of an area in which the
               restrictions are to be applied. The format in which coordinates should be listed
-              is defined by the `latlon` field.
+              is defined by the latlon field.
 
-              Geofences can be used to create all restriction types, except for a `turn` type
-              restriction. Please note that `segments` is not required when using `geofence`
-              to create restrictions.
+              Geofences can be used to create all restriction types, except for a turn type
+              restriction. Please note that segments is not required when using geofence to
+              create restrictions.
 
           height: Specify the maximum truck height, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           length: Specify the maximum truck length, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           mode: Provide the driving modes for which the restriction should be effective. If the
               value is an empty array or if it is not provided then the restriction would be
@@ -385,42 +384,41 @@ class RestrictionsResource(SyncAPIResource):
           segments: An array of objects to collect the details of the segments of a road on which
               the restriction has to be applied. Each object corresponds to a new segment.
 
-              Please note that `segments` is mandatory for all `restrtiction_type` except
-              `turn`.
+              Please note that segments is mandatory for all restrtiction_type except turn.
 
           speed: Provide the the fixed speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `fixedspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is fixedspeed.
 
           speed_limit: Provide the the maximum speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `maxspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is maxspeed.
 
           start_time: Provide a UNIX epoch timestamp in seconds, representing the start time for the
               restriction to be in-effect.
 
           tracks: Specify a sequence of coordinates (track) where the restriction is to be
               applied. The coordinates will be snapped to nearest road. Please note when using
-              `tracks`, `segments` and `turns` are not required.
+              tracks, segments and turns are not required.
 
           turns: An array of objects to collect the details of the turns of a road on which the
               restriction has to be applied. Each object corresponds to a new turn.
 
-              Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+              Please note that turns is mandatory for when restrtiction_type=turn.
 
           weight: Specify the maximum truck weight, in kilograms, that the restriction will allow.
               A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided for is `truck` restriction type.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided for is truck restriction type.
 
           width: Specify the maximum truck width, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           extra_headers: Send extra headers
 
@@ -478,13 +476,13 @@ class RestrictionsResource(SyncAPIResource):
         key: str,
         limit: int,
         offset: int,
-        mode: Literal["`0w`", "`2w`", "`3w`", "`4w`", "`6w`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["0w", "2w", "3w", "4w", "6w"] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["`turn`", "`parking`", "`fixedspeed`", "`maxspeed`", "`closure`", "`truck`"]
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
         | NotGiven = NOT_GIVEN,
         source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         transform: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -506,7 +504,7 @@ class RestrictionsResource(SyncAPIResource):
               API.
 
           limit: The number of restrictions to be returned in the response. Please note that if
-              the `limit` is set to a number more than the total number of available
+              the limit is set to a number more than the total number of available
               restrictions, then all restrictions would be returned together.
 
           offset: An integer value indicating the number of items in the collection that need to
@@ -514,7 +512,7 @@ class RestrictionsResource(SyncAPIResource):
               first item returned in the result would be the item at (offset + 1) position in
               collection.
 
-              Users can use `offset` along with `limit` to implement paginated result.
+              Users can use offset along with limit to implement paginated result.
 
           mode: Specify the modes of travel that the restriction pertains to.
 
@@ -528,7 +526,7 @@ class RestrictionsResource(SyncAPIResource):
 
           state: This parameter is used to filter restrictions based on their state i.e. whether
               the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+              can retrieve a list of all the deleted restrictions by setting state=deleted.
 
           status: Restrictions can be active or inactive at a given time by virtue of their
               nature. For example, maximum speed limits can be active on the roads leading to
@@ -626,8 +624,8 @@ class RestrictionsResource(SyncAPIResource):
         restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
         | NotGiven = NOT_GIVEN,
         source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         transform: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -664,7 +662,7 @@ class RestrictionsResource(SyncAPIResource):
 
           state: This parameter is used to filter restrictions based on their state i.e. whether
               the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+              can retrieve a list of all the deleted restrictions by setting state=deleted.
 
           status: Restrictions can be active or inactive at a given time by virtue of their
               nature. For example, maximum speed limits can be active on the roads leading to
@@ -674,7 +672,7 @@ class RestrictionsResource(SyncAPIResource):
               Use this parameter to filter the restrictions based on their status at the time
               of making the request i.e. whether they are in force or not.
 
-          transform: This is internal parameter with a default value as `false`.
+          transform: This is internal parameter with a default value as false.
 
           extra_headers: Send extra headers
 
@@ -716,7 +714,7 @@ class RestrictionsResource(SyncAPIResource):
         id: int,
         *,
         key: str,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"],
+        state: Literal["enabled", "disabled", "deleted"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -731,7 +729,7 @@ class RestrictionsResource(SyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          state: Use this field to specify the new `state` of the restriction. Please note that
+          state: Use this field to specify the new state of the restriction. Please note that
               this method cannot update the state of restrictions that are currently in
               'deleted' state.
 
@@ -786,7 +784,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         name: str,
         latlon: bool | NotGiven = NOT_GIVEN,
         comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["`forward`", "`backward`", "`both`"] | NotGiven = NOT_GIVEN,
+        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
         end_time: float | NotGiven = NOT_GIVEN,
         geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
         height: int | NotGiven = NOT_GIVEN,
@@ -839,25 +837,25 @@ class AsyncRestrictionsResource(AsyncAPIResource):
 
           geofence: An array of coordinates denoting the boundary of an area in which the
               restrictions are to be applied. The format in which coordinates should be listed
-              is defined by the `latlon` field.
+              is defined by the latlon field.
 
-              Geofences can be used to create all restriction types, except for a `turn` type
-              restriction. Please note that `segments` is not required when using `geofence`
-              to create restrictions.
+              Geofences can be used to create all restriction types, except for a turn type
+              restriction. Please note that segments is not required when using geofence to
+              create restrictions.
 
           height: Specify the maximum truck height, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           length: Specify the maximum truck length, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           mode: Provide the driving modes for which the restriction should be effective. If the
               value is an empty array or if it is not provided then the restriction would be
@@ -874,42 +872,41 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           segments: An array of objects to collect the details of the segments of a road on which
               the restriction has to be applied. Each object corresponds to a new segment.
 
-              Please note that `segments` is mandatory for all `restrtiction_type` except
-              `turn`.
+              Please note that segments is mandatory for all restrtiction_type except turn.
 
           speed: Provide the the fixed speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `fixedspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is fixedspeed.
 
           speed_limit: Provide the the maximum speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `maxspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is maxspeed.
 
           start_time: Provide a UNIX epoch timestamp in seconds, representing the start time for the
               restriction to be in-effect.
 
           tracks: Specify a sequence of coordinates (track) where the restriction is to be
               applied. The coordinates will be snapped to nearest road. Please note when using
-              `tracks`, `segments` and `turns` are not required.
+              tracks, segments and turns are not required.
 
           turns: An array of objects to collect the details of the turns of a road on which the
               restriction has to be applied. Each object corresponds to a new turn.
 
-              Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+              Please note that turns is mandatory for when restrtiction_type=turn.
 
           weight: Specify the maximum truck weight, in kilograms, that the restriction will allow.
               A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided for is `truck` restriction type.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided for is truck restriction type.
 
           width: Specify the maximum truck width, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           extra_headers: Send extra headers
 
@@ -1019,7 +1016,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         name: str,
         latlon: bool | NotGiven = NOT_GIVEN,
         comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["`forward`", "`backward`", "`both`"] | NotGiven = NOT_GIVEN,
+        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
         end_time: float | NotGiven = NOT_GIVEN,
         geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
         height: int | NotGiven = NOT_GIVEN,
@@ -1072,25 +1069,25 @@ class AsyncRestrictionsResource(AsyncAPIResource):
 
           geofence: An array of coordinates denoting the boundary of an area in which the
               restrictions are to be applied. The format in which coordinates should be listed
-              is defined by the `latlon` field.
+              is defined by the latlon field.
 
-              Geofences can be used to create all restriction types, except for a `turn` type
-              restriction. Please note that `segments` is not required when using `geofence`
-              to create restrictions.
+              Geofences can be used to create all restriction types, except for a turn type
+              restriction. Please note that segments is not required when using geofence to
+              create restrictions.
 
           height: Specify the maximum truck height, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           length: Specify the maximum truck length, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           mode: Provide the driving modes for which the restriction should be effective. If the
               value is an empty array or if it is not provided then the restriction would be
@@ -1107,42 +1104,41 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           segments: An array of objects to collect the details of the segments of a road on which
               the restriction has to be applied. Each object corresponds to a new segment.
 
-              Please note that `segments` is mandatory for all `restrtiction_type` except
-              `turn`.
+              Please note that segments is mandatory for all restrtiction_type except turn.
 
           speed: Provide the the fixed speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `fixedspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is fixedspeed.
 
           speed_limit: Provide the the maximum speed of the segment where the restriction needs to be
-              applied. Please note that this parameter is mandatory when the `restrictionType`
-              is `maxspeed`.
+              applied. Please note that this parameter is mandatory when the restrictionType
+              is maxspeed.
 
           start_time: Provide a UNIX epoch timestamp in seconds, representing the start time for the
               restriction to be in-effect.
 
           tracks: Specify a sequence of coordinates (track) where the restriction is to be
               applied. The coordinates will be snapped to nearest road. Please note when using
-              `tracks`, `segments` and `turns` are not required.
+              tracks, segments and turns are not required.
 
           turns: An array of objects to collect the details of the turns of a road on which the
               restriction has to be applied. Each object corresponds to a new turn.
 
-              Please note that `turns` is mandatory for when `restrtiction_type=turn`.
+              Please note that turns is mandatory for when restrtiction_type=turn.
 
           weight: Specify the maximum truck weight, in kilograms, that the restriction will allow.
               A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided for is `truck` restriction type.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided for is truck restriction type.
 
           width: Specify the maximum truck width, in centimeter, that will be allowed under the
               restriction. A value of 0 indicates no limit.
 
-              Please note this parameter is effective only when `restriction_type` is `truck`.
-              At least one of truck parameters - `weight`, `height`, `width` and `truck` -
-              needs to be provided when restriction type is `truck`.
+              Please note this parameter is effective only when restriction_type is truck. At
+              least one of truck parameters - weight, height, width and truck - needs to be
+              provided when restriction type is truck.
 
           extra_headers: Send extra headers
 
@@ -1200,13 +1196,13 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         key: str,
         limit: int,
         offset: int,
-        mode: Literal["`0w`", "`2w`", "`3w`", "`4w`", "`6w`"] | NotGiven = NOT_GIVEN,
+        mode: Literal["0w", "2w", "3w", "4w", "6w"] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["`turn`", "`parking`", "`fixedspeed`", "`maxspeed`", "`closure`", "`truck`"]
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
         | NotGiven = NOT_GIVEN,
         source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         transform: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1228,7 +1224,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
               API.
 
           limit: The number of restrictions to be returned in the response. Please note that if
-              the `limit` is set to a number more than the total number of available
+              the limit is set to a number more than the total number of available
               restrictions, then all restrictions would be returned together.
 
           offset: An integer value indicating the number of items in the collection that need to
@@ -1236,7 +1232,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
               first item returned in the result would be the item at (offset + 1) position in
               collection.
 
-              Users can use `offset` along with `limit` to implement paginated result.
+              Users can use offset along with limit to implement paginated result.
 
           mode: Specify the modes of travel that the restriction pertains to.
 
@@ -1250,7 +1246,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
 
           state: This parameter is used to filter restrictions based on their state i.e. whether
               the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+              can retrieve a list of all the deleted restrictions by setting state=deleted.
 
           status: Restrictions can be active or inactive at a given time by virtue of their
               nature. For example, maximum speed limits can be active on the roads leading to
@@ -1348,8 +1344,8 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
         | NotGiven = NOT_GIVEN,
         source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"] | NotGiven = NOT_GIVEN,
-        status: Literal["`active`", "`inactive`"] | NotGiven = NOT_GIVEN,
+        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
+        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
         transform: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -1386,7 +1382,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
 
           state: This parameter is used to filter restrictions based on their state i.e. whether
               the restriction is currently enabled, disabled, or deleted. For example, users
-              can retrieve a list of all the deleted restrictions by setting `state=deleted`.
+              can retrieve a list of all the deleted restrictions by setting state=deleted.
 
           status: Restrictions can be active or inactive at a given time by virtue of their
               nature. For example, maximum speed limits can be active on the roads leading to
@@ -1396,7 +1392,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
               Use this parameter to filter the restrictions based on their status at the time
               of making the request i.e. whether they are in force or not.
 
-          transform: This is internal parameter with a default value as `false`.
+          transform: This is internal parameter with a default value as false.
 
           extra_headers: Send extra headers
 
@@ -1438,7 +1434,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         id: int,
         *,
         key: str,
-        state: Literal["`enabled`", "`disabled`", "`deleted`"],
+        state: Literal["enabled", "disabled", "deleted"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1453,7 +1449,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           key: A key is a unique identifier that is required to authenticate a request to the
               API.
 
-          state: Use this field to specify the new `state` of the restriction. Please note that
+          state: Use this field to specify the new state of the restriction. Please note that
               this method cannot update the state of restrictions that are currently in
               'deleted' state.
 

@@ -18,7 +18,7 @@ __all__ = [
 
 
 class DataCompletion(BaseModel):
-    status: Optional[Literal["`scheduled`", "`completed`"]] = None
+    status: Optional[Literal["scheduled", "completed"]] = None
     """Returns the status of the route.
 
     It can take one of the following values - "scheduled", "completed".
@@ -57,15 +57,13 @@ class DataStepsMeta(BaseModel):
     customer_name: Optional[str] = None
     """Returns the customer name associated with the step.
 
-    It can configured in the input request using the `metadata` attribute of the
-    step.
+    It can configured in the input request using the metadata attribute of the step.
     """
 
     customer_phone_number: Optional[str] = None
     """Returns the customer's phone number associated with the step.
 
-    It can configured in the input request using the `metadata` attribute of the
-    step.
+    It can configured in the input request using the metadata attribute of the step.
     """
 
     instructions: Optional[str] = None
@@ -110,12 +108,12 @@ class DataSteps(BaseModel):
     """
     Returns the details of the document that was used for collecting the proof of
     completion for the step. In case no document template ID was provided for the
-    given step, then a `null` value is returned. Each object represents a new field
-    in the document.
+    given step, then a null value is returned. Each object represents a new field in
+    the document.
     """
 
     duration: Optional[int] = None
-    """Returns the duration for `layover` or `break` type steps."""
+    """Returns the duration for layover or break type steps."""
 
     location: Optional[List[float]] = None
     """Returns the location coordinates where the step is executed."""
@@ -136,9 +134,9 @@ class DataSteps(BaseModel):
     type: Optional[str] = None
     """Returns the step type.
 
-    It can belong to one of the following: `start`, `job` , `pickup`, `delivery`,
-    `break`, `layover` , and `end`. For any given step, it would be the same as that
-    specified in the input request while configuring the step details.
+    It can belong to one of the following: start, job , pickup, delivery, break,
+    layover , and end. For any given step, it would be the same as that specified in
+    the input request while configuring the step details.
     """
 
     updated_at: Optional[int] = None
@@ -167,8 +165,8 @@ class Data(BaseModel):
     distance: Optional[int] = None
     """
     Returns the total route distance, in meters, for informative display in the
-    driver app. It is the same as the value provided for `distance` field in the
-    input request.
+    driver app. It is the same as the value provided for distance field in the input
+    request.
     """
 
     document_snapshot: Optional[List[object]] = None
@@ -220,7 +218,7 @@ class Data(BaseModel):
 
     The vehicle ID returned here is the same as the one used in the route
     optimization request for the given vehicle. An empty string is returned if the
-    `ro_request_id` was not provided in the input.
+    ro_request_id was not provided in the input.
     """
 
 

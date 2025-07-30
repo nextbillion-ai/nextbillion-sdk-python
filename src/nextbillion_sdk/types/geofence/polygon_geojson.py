@@ -15,4 +15,4 @@ class PolygonGeojson(BaseModel):
     """
 
     type: Optional[str] = None
-    """Type of the geoJSON geometry. Will always be `Polygon`."""
+    """Type of the geoJSON geometry. Will always be Polygon."""
