@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai.types import DiscoverRetrieveResponse
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk.types import DiscoverRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 

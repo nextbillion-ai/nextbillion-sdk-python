@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai._streaming import Stream, AsyncStream, ServerSentEvent
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio

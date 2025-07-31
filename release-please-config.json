@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/nextbillionai/_version.py"
+    "src/nextbillion_sdk/_version.py"
   ]
 }

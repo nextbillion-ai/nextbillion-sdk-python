@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from nextbillionai._types import Omit, NoneType
-from nextbillionai._utils import (
+from nextbillion_sdk._types import Omit, NoneType
+from nextbillion_sdk._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -18,8 +18,8 @@ from nextbillionai._utils import (
     is_annotated_type,
     is_type_alias_type,
 )
-from nextbillionai._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from nextbillionai._models import BaseModel
+from nextbillion_sdk._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from nextbillion_sdk._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
