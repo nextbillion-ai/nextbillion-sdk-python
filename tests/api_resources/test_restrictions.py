@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai.types import (
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk.types import (
     RichGroupResponse,
     RestrictionListResponse,
     RestrictionDeleteResponse,
@@ -43,7 +43,7 @@ class TestRestrictions:
             name="name",
             latlon=True,
             comment="comment",
-            direction="forward",
+            direction="`forward`",
             end_time=0,
             geofence=[[0]],
             height=0,
@@ -172,7 +172,7 @@ class TestRestrictions:
             name="name",
             latlon=True,
             comment="comment",
-            direction="forward",
+            direction="`forward`",
             end_time=0,
             geofence=[[0]],
             height=0,
@@ -252,12 +252,12 @@ class TestRestrictions:
             key="key=API_KEY",
             limit=0,
             offset=0,
-            mode="0w",
+            mode="`0w`",
             name="name",
-            restriction_type="turn",
+            restriction_type="`turn`",
             source="rrt",
-            state="enabled",
-            status="active",
+            state="`enabled`",
+            status="`active`",
             transform=True,
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
@@ -355,8 +355,8 @@ class TestRestrictions:
             mode=["0w"],
             restriction_type="turn",
             source="rrt",
-            state="enabled",
-            status="active",
+            state="`enabled`",
+            status="`active`",
             transform=True,
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
@@ -401,7 +401,7 @@ class TestRestrictions:
         restriction = client.restrictions.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
@@ -411,7 +411,7 @@ class TestRestrictions:
         response = client.restrictions.with_raw_response.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         )
 
         assert response.is_closed is True
@@ -425,7 +425,7 @@ class TestRestrictions:
         with client.restrictions.with_streaming_response.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -462,7 +462,7 @@ class TestAsyncRestrictions:
             name="name",
             latlon=True,
             comment="comment",
-            direction="forward",
+            direction="`forward`",
             end_time=0,
             geofence=[[0]],
             height=0,
@@ -591,7 +591,7 @@ class TestAsyncRestrictions:
             name="name",
             latlon=True,
             comment="comment",
-            direction="forward",
+            direction="`forward`",
             end_time=0,
             geofence=[[0]],
             height=0,
@@ -671,12 +671,12 @@ class TestAsyncRestrictions:
             key="key=API_KEY",
             limit=0,
             offset=0,
-            mode="0w",
+            mode="`0w`",
             name="name",
-            restriction_type="turn",
+            restriction_type="`turn`",
             source="rrt",
-            state="enabled",
-            status="active",
+            state="`enabled`",
+            status="`active`",
             transform=True,
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
@@ -774,8 +774,8 @@ class TestAsyncRestrictions:
             mode=["0w"],
             restriction_type="turn",
             source="rrt",
-            state="enabled",
-            status="active",
+            state="`enabled`",
+            status="`active`",
             transform=True,
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
@@ -820,7 +820,7 @@ class TestAsyncRestrictions:
         restriction = await async_client.restrictions.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
@@ -830,7 +830,7 @@ class TestAsyncRestrictions:
         response = await async_client.restrictions.with_raw_response.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         )
 
         assert response.is_closed is True
@@ -844,7 +844,7 @@ class TestAsyncRestrictions:
         async with async_client.restrictions.with_streaming_response.set_state(
             id=0,
             key="key=API_KEY",
-            state="enabled",
+            state="`enabled`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

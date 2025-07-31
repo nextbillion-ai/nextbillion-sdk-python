@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai.types import PostalcodeRetrieveCoordinatesResponse
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk.types import PostalcodeRetrieveCoordinatesResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -35,7 +35,7 @@ class TestPostalcode:
                 "lng": 0,
             },
             country="country",
-            format="geojson",
+            format="`geojson`",
             postalcode="postalcode",
         )
         assert_matches_type(PostalcodeRetrieveCoordinatesResponse, postalcode, path=["response"])
@@ -90,7 +90,7 @@ class TestAsyncPostalcode:
                 "lng": 0,
             },
             country="country",
-            format="geojson",
+            format="`geojson`",
             postalcode="postalcode",
         )
         assert_matches_type(PostalcodeRetrieveCoordinatesResponse, postalcode, path=["response"])

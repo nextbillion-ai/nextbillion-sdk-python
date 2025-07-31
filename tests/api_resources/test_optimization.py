@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai.types import (
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk.types import (
     PostResponse,
     OptimizationComputeResponse,
 )
@@ -35,12 +35,12 @@ class TestOptimization:
         optimization = client.optimization.compute(
             coordinates="coordinates=41.35544869444527,2.0747669962025292|41.37498154684205,2.103705 4530396886|41.38772862000152,2.1311887061315526",
             key="key=API_KEY",
-            approaches="unrestricted",
-            destination="any",
-            geometries="polyline",
-            mode="car",
+            approaches="`unrestricted`",
+            destination="`any`",
+            geometries="`polyline`",
+            mode="`car`",
             roundtrip=True,
-            source="any",
+            source="`any`",
             with_geometry=True,
         )
         assert_matches_type(OptimizationComputeResponse, optimization, path=["response"])
@@ -112,7 +112,7 @@ class TestOptimization:
                         "skills": [1],
                         "time_windows": [[0]],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -143,7 +143,7 @@ class TestOptimization:
                         "skills": [1],
                         "time_windows": [[0]],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -190,7 +190,7 @@ class TestOptimization:
                         "revenue": 0,
                         "skills": [0],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -233,7 +233,7 @@ class TestOptimization:
                         "revenue": 0,
                         "skills": [0],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -330,12 +330,12 @@ class TestAsyncOptimization:
         optimization = await async_client.optimization.compute(
             coordinates="coordinates=41.35544869444527,2.0747669962025292|41.37498154684205,2.103705 4530396886|41.38772862000152,2.1311887061315526",
             key="key=API_KEY",
-            approaches="unrestricted",
-            destination="any",
-            geometries="polyline",
-            mode="car",
+            approaches="`unrestricted`",
+            destination="`any`",
+            geometries="`polyline`",
+            mode="`car`",
             roundtrip=True,
-            source="any",
+            source="`any`",
             with_geometry=True,
         )
         assert_matches_type(OptimizationComputeResponse, optimization, path=["response"])
@@ -407,7 +407,7 @@ class TestAsyncOptimization:
                         "skills": [1],
                         "time_windows": [[0]],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -438,7 +438,7 @@ class TestAsyncOptimization:
                         "skills": [1],
                         "time_windows": [[0]],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -485,7 +485,7 @@ class TestAsyncOptimization:
                         "revenue": 0,
                         "skills": [0],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,
@@ -528,7 +528,7 @@ class TestAsyncOptimization:
                         "revenue": 0,
                         "skills": [0],
                         "volume": {
-                            "alignment": "strict",
+                            "alignment": "`strict`",
                             "depth": 0,
                             "height": 0,
                             "width": 0,

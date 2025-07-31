@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai.types.geofence import (
+from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk.types.geofence import (
     ConsoleSearchResponse,
     ConsolePreviewResponse,
 )
@@ -24,7 +24,7 @@ class TestConsole:
     @parametrize
     def test_method_preview(self, client: NextbillionSDK) -> None:
         console = client.geofence.console.preview(
-            type="circle",
+            type="`circle`",
         )
         assert_matches_type(ConsolePreviewResponse, console, path=["response"])
 
@@ -32,7 +32,7 @@ class TestConsole:
     @parametrize
     def test_method_preview_with_all_params(self, client: NextbillionSDK) -> None:
         console = client.geofence.console.preview(
-            type="circle",
+            type="`circle`",
             circle={
                 "center": {
                     "lat": 0,
@@ -47,7 +47,7 @@ class TestConsole:
                 "contours_minute": 0,
                 "denoise": 0,
                 "departure_time": 0,
-                "mode": "car",
+                "mode": "`car`",
             },
             meta_data='{\n  "country": "USA",\n  "state": "California"\n}',
             name='"name":"Los Angeles Downtown"',
@@ -65,7 +65,7 @@ class TestConsole:
     @parametrize
     def test_raw_response_preview(self, client: NextbillionSDK) -> None:
         response = client.geofence.console.with_raw_response.preview(
-            type="circle",
+            type="`circle`",
         )
 
         assert response.is_closed is True
@@ -77,7 +77,7 @@ class TestConsole:
     @parametrize
     def test_streaming_response_preview(self, client: NextbillionSDK) -> None:
         with client.geofence.console.with_streaming_response.preview(
-            type="circle",
+            type="`circle`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -131,7 +131,7 @@ class TestAsyncConsole:
     @parametrize
     async def test_method_preview(self, async_client: AsyncNextbillionSDK) -> None:
         console = await async_client.geofence.console.preview(
-            type="circle",
+            type="`circle`",
         )
         assert_matches_type(ConsolePreviewResponse, console, path=["response"])
 
@@ -139,7 +139,7 @@ class TestAsyncConsole:
     @parametrize
     async def test_method_preview_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         console = await async_client.geofence.console.preview(
-            type="circle",
+            type="`circle`",
             circle={
                 "center": {
                     "lat": 0,
@@ -154,7 +154,7 @@ class TestAsyncConsole:
                 "contours_minute": 0,
                 "denoise": 0,
                 "departure_time": 0,
-                "mode": "car",
+                "mode": "`car`",
             },
             meta_data='{\n  "country": "USA",\n  "state": "California"\n}',
             name='"name":"Los Angeles Downtown"',
@@ -172,7 +172,7 @@ class TestAsyncConsole:
     @parametrize
     async def test_raw_response_preview(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.console.with_raw_response.preview(
-            type="circle",
+            type="`circle`",
         )
 
         assert response.is_closed is True
@@ -184,7 +184,7 @@ class TestAsyncConsole:
     @parametrize
     async def test_streaming_response_preview(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.console.with_streaming_response.preview(
-            type="circle",
+            type="`circle`",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

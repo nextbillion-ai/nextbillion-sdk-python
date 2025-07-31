@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from nextbillionai import BaseModel, NextbillionSDK, AsyncNextbillionSDK
-from nextbillionai._response import (
+from nextbillion_sdk import BaseModel, NextbillionSDK, AsyncNextbillionSDK
+from nextbillion_sdk._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from nextbillionai._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from nextbillionai._streaming import Stream
-from nextbillionai._base_client import FinalRequestOptions
+from nextbillion_sdk._streaming import Stream
+from nextbillion_sdk._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'nextbillionai._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'nextbillion_sdk._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -68,7 +68,7 @@ def test_response_parse_mismatched_basemodel(client: NextbillionSDK) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from nextbillionai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from nextbillion_sdk import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -86,7 +86,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncNext
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from nextbillionai import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from nextbillion_sdk import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 
