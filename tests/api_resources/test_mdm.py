@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import (
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types import (
     MdmCreateDistanceMatrixResponse,
     MdmGetDistanceMatrixStatusResponse,
 )
@@ -39,15 +39,15 @@ class TestMdm:
             origins="origins",
             spliter="od_number_spliter",
             area="singapore",
-            avoid="`toll`",
+            avoid="toll",
             cross_border=True,
             departure_time=0,
             destinations="destinations",
-            destinations_approach="`unrestricted`",
-            hazmat_type="`general`",
-            mode="`car`",
-            origins_approach="`unrestricted`",
-            route_type="`fastest`",
+            destinations_approach="unrestricted",
+            hazmat_type="general",
+            mode="car",
+            origins_approach="unrestricted",
+            route_type="fastest",
             truck_axle_load=0,
             truck_size='"truck_size"=200,210,600',
             truck_weight=0,
@@ -146,15 +146,15 @@ class TestAsyncMdm:
             origins="origins",
             spliter="od_number_spliter",
             area="singapore",
-            avoid="`toll`",
+            avoid="toll",
             cross_border=True,
             departure_time=0,
             destinations="destinations",
-            destinations_approach="`unrestricted`",
-            hazmat_type="`general`",
-            mode="`car`",
-            origins_approach="`unrestricted`",
-            route_type="`fastest`",
+            destinations_approach="unrestricted",
+            hazmat_type="general",
+            mode="car",
+            origins_approach="unrestricted",
+            route_type="fastest",
             truck_axle_load=0,
             truck_size='"truck_size"=200,210,600',
             truck_weight=0,

@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from nextbillion_sdk._utils import PropertyInfo
-from nextbillion_sdk._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from nextbillion_sdk._models import BaseModel, construct_type
+from nextbillionai._utils import PropertyInfo
+from nextbillionai._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from nextbillionai._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
