@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import NavigationRetrieveRouteResponse
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types import NavigationRetrieveRouteResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -32,17 +32,17 @@ class TestNavigation:
             key="key=API_KEY",
             altcount=1,
             alternatives=True,
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
             bearings="bearings=0,180;0,180",
             destination="destination=41.349302,2.136480",
-            geometry="`polyline`",
+            geometry="polyline",
             lang="lang=en",
-            mode="`car`",
+            mode="car",
             origin="origin=41.349302,2.136480",
-            original_shape="original_shape=sbp}_Almgp`FnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA",
+            original_shape="original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA",
             original_shape_type="polyline",
-            overview="`full`",
+            overview="full",
             waypoints="waypoints=41.349302,2.136480|41.349303,2.136481|41.349304,2.136482",
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
@@ -94,17 +94,17 @@ class TestAsyncNavigation:
             key="key=API_KEY",
             altcount=1,
             alternatives=True,
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
             bearings="bearings=0,180;0,180",
             destination="destination=41.349302,2.136480",
-            geometry="`polyline`",
+            geometry="polyline",
             lang="lang=en",
-            mode="`car`",
+            mode="car",
             origin="origin=41.349302,2.136480",
-            original_shape="original_shape=sbp}_Almgp`FnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA",
+            original_shape="original_shape=sbp}_AlmgpFnLuToKmKviB{eDlcGhpFvj@qbAwoA_mA",
             original_shape_type="polyline",
-            overview="`full`",
+            overview="full",
             waypoints="waypoints=41.349302,2.136480|41.349303,2.136481|41.349304,2.136482",
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])

@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import SnapToRoadSnapResponse
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types import SnapToRoadSnapResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -32,13 +32,13 @@ class TestSnapToRoads:
         snap_to_road = client.snap_to_roads.snap(
             key="key=API_KEY",
             path="path=41.38602272,2.17621539|41.38312885,2.17207083|41.38157854,2.17906668|41.38288511,2.18186215",
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
-            geometry="`polyline`",
-            mode="`car`",
-            option="`flexible`",
+            geometry="polyline",
+            mode="car",
+            option="flexible",
             radiuses="radiuses=14|16|14",
-            road_info="`max_speed`",
+            road_info="max_speed",
             timestamps="timestamps=1656570000|1656570015|1656570030",
             tolerate_outlier=True,
         )
@@ -93,13 +93,13 @@ class TestAsyncSnapToRoads:
         snap_to_road = await async_client.snap_to_roads.snap(
             key="key=API_KEY",
             path="path=41.38602272,2.17621539|41.38312885,2.17207083|41.38157854,2.17906668|41.38288511,2.18186215",
-            approaches="`unrestricted`",
+            approaches="unrestricted",
             avoid="toll",
-            geometry="`polyline`",
-            mode="`car`",
-            option="`flexible`",
+            geometry="polyline",
+            mode="car",
+            option="flexible",
             radiuses="radiuses=14|16|14",
-            road_info="`max_speed`",
+            road_info="max_speed",
             timestamps="timestamps=1656570000|1656570015|1656570030",
             tolerate_outlier=True,
         )

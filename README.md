@@ -1,7 +1,7 @@
 # Nextbillion SDK Python API library
 
 <!-- prettier-ignore -->
-[![PyPI version](https://img.shields.io/pypi/v/nextbillion_sdk.svg?label=pypi%20(stable))](https://pypi.org/project/nextbillion_sdk/)
+[![PyPI version](https://img.shields.io/pypi/v/nextbillionai.svg?label=pypi%20(stable))](https://pypi.org/project/nextbillionai/)
 
 The Nextbillion SDK Python library provides convenient access to the Nextbillion SDK REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -17,7 +17,7 @@ The REST API documentation can be found on [docs.nextbillion.ai](https://docs.ne
 
 ```sh
 # install from PyPI
-pip install nextbillion_sdk
+pip install nextbillionai
 ```
 
 ## Usage
@@ -26,15 +26,15 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 client = NextbillionSDK(
     api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
 )
 
 response = client.directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841063",
 )
 print(response.msg)
 ```
@@ -51,7 +51,7 @@ Simply import `AsyncNextbillionSDK` instead of `NextbillionSDK` and use `await` 
 ```python
 import os
 import asyncio
-from nextbillion_sdk import AsyncNextbillionSDK
+from nextbillionai import AsyncNextbillionSDK
 
 client = AsyncNextbillionSDK(
     api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
@@ -60,8 +60,8 @@ client = AsyncNextbillionSDK(
 
 async def main() -> None:
     response = await client.directions.compute_route(
-        destination="41.349302,2.136480",
-        origin="41.349302,2.136480",
+        destination="1.335368,103.785517",
+        origin="1.312164,103.841063",
     )
     print(response.msg)
 
@@ -79,15 +79,15 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install nextbillion_sdk[aiohttp]
+pip install nextbillionai[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
 import asyncio
-from nextbillion_sdk import DefaultAioHttpClient
-from nextbillion_sdk import AsyncNextbillionSDK
+from nextbillionai import DefaultAioHttpClient
+from nextbillionai import AsyncNextbillionSDK
 
 
 async def main() -> None:
@@ -96,8 +96,8 @@ async def main() -> None:
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.directions.compute_route(
-            destination="41.349302,2.136480",
-            origin="41.349302,2.136480",
+            destination="1.335368,103.785517",
+            origin="1.312164,103.841063",
         )
         print(response.msg)
 
@@ -119,7 +119,7 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 client = NextbillionSDK()
 
@@ -130,7 +130,7 @@ route = client.fleetify.routes.create(
         {
             "arrival": 0,
             "location": [0],
-            "type": "`start`",
+            "type": "start",
         }
     ],
     routing={},
@@ -140,30 +140,30 @@ print(route.routing)
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `nextbillion_sdk.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `nextbillionai.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `nextbillion_sdk.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `nextbillionai.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `nextbillion_sdk.APIError`.
+All errors inherit from `nextbillionai.APIError`.
 
 ```python
-import nextbillion_sdk
-from nextbillion_sdk import NextbillionSDK
+import nextbillionai
+from nextbillionai import NextbillionSDK
 
 client = NextbillionSDK()
 
 try:
     client.directions.compute_route(
-        destination="41.349302,2.136480",
-        origin="41.349302,2.136480",
+        destination="1.335368,103.785517",
+        origin="1.312164,103.841063",
     )
-except nextbillion_sdk.APIConnectionError as e:
+except nextbillionai.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except nextbillion_sdk.RateLimitError as e:
+except nextbillionai.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except nextbillion_sdk.APIStatusError as e:
+except nextbillionai.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -191,7 +191,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 # Configure the default for all requests:
 client = NextbillionSDK(
@@ -201,8 +201,8 @@ client = NextbillionSDK(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841063",
 )
 ```
 
@@ -212,7 +212,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 # Configure the default for all requests:
 client = NextbillionSDK(
@@ -227,8 +227,8 @@ client = NextbillionSDK(
 
 # Override per-request:
 client.with_options(timeout=5.0).directions.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841063",
 )
 ```
 
@@ -267,12 +267,12 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 client = NextbillionSDK()
 response = client.directions.with_raw_response.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841063",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -280,9 +280,9 @@ direction = response.parse()  # get the object that `directions.compute_route()`
 print(direction.msg)
 ```
 
-These methods return an [`APIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillionai/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillion_sdk/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/nextbillion-ai/nextbillion-sdk-python/tree/main/src/nextbillionai/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -292,8 +292,8 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.directions.with_streaming_response.compute_route(
-    destination="41.349302,2.136480",
-    origin="41.349302,2.136480",
+    destination="1.335368,103.785517",
+    origin="1.312164,103.841063",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -347,7 +347,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from nextbillion_sdk import NextbillionSDK, DefaultHttpxClient
+from nextbillionai import NextbillionSDK, DefaultHttpxClient
 
 client = NextbillionSDK(
     # Or use the `NEXTBILLION_SDK_BASE_URL` env var
@@ -370,7 +370,7 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from nextbillion_sdk import NextbillionSDK
+from nextbillionai import NextbillionSDK
 
 with NextbillionSDK() as client:
   # make requests here
@@ -398,8 +398,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import nextbillion_sdk
-print(nextbillion_sdk.__version__)
+import nextbillionai
+print(nextbillionai.__version__)
 ```
 
 ## Requirements

@@ -8,9 +8,9 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types import PostResponse
-from nextbillion_sdk.types.optimization import V2RetrieveResultResponse
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types import PostResponse
+from nextbillionai.types.optimization import V2RetrieveResultResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -78,7 +78,7 @@ class TestV2:
             locations={
                 "location": ["string"],
                 "id": 0,
-                "approaches": ["`unrestricted`"],
+                "approaches": ["unrestricted"],
             },
             vehicles=[
                 {
@@ -134,7 +134,7 @@ class TestV2:
                     "skills": [1],
                     "time_windows": [[0]],
                     "volume": {
-                        "alignment": "`strict`",
+                        "alignment": "strict",
                         "depth": 0,
                         "height": 0,
                         "width": 0,
@@ -154,28 +154,28 @@ class TestV2:
                     "route_grouping": {
                         "penalty_factor": 0,
                         "zone_diameter": 0,
-                        "zone_source": "`system_generated`",
+                        "zone_source": "system_generated",
                     },
                 },
                 "objective": {
                     "allow_early_arrival": True,
                     "custom": {
-                        "type": "`min`",
-                        "value": "`vehicles`",
+                        "type": "min",
+                        "value": "vehicles",
                     },
                     "minimise_num_depots": True,
-                    "solver_mode": "`flexible`",
+                    "solver_mode": "flexible",
                     "solving_time_limit": 0,
-                    "travel_cost": "`duration`",
+                    "travel_cost": "duration",
                 },
                 "routing": {
                     "allow": ["taxi"],
-                    "avoid": ["`toll`"],
-                    "context": "`avgspeed`",
+                    "avoid": ["toll"],
+                    "context": "avgspeed",
                     "cross_border": True,
                     "disable_cache": True,
-                    "hazmat_type": ["`general`"],
-                    "mode": "`car`",
+                    "hazmat_type": ["general"],
+                    "mode": "car",
                     "profiles": '"profiles":{\n    "mini-van":{\n        "mode": "car",\n        "avoid":["highway, toll"]\n        },\n    "trailer":{\n        "mode": "truck",\n        "truck_weight":12000,\n        "truck_size":"200, 210, 600",\n        "hazmat_type": ["general", "harmful_to_water"]\n        }\n    }\n',
                     "traffic_timestamp": 0,
                     "truck_axle_load": 0,
@@ -187,11 +187,11 @@ class TestV2:
                 {
                     "steps": [
                         {
-                            "type": "`start`",
+                            "type": "start",
                             "id": '"id":"Job 1"',
                         }
                     ],
-                    "type": "`in_same_route`",
+                    "type": "in_same_route",
                     "id": 0,
                     "max_duration": 0,
                     "min_duration": 0,
@@ -233,7 +233,7 @@ class TestV2:
                     "revenue": 0,
                     "skills": [0],
                     "volume": {
-                        "alignment": "`strict`",
+                        "alignment": "strict",
                         "depth": 0,
                         "height": 0,
                         "width": 0,
@@ -248,7 +248,7 @@ class TestV2:
                         {
                             "id": '"id": "Job 10"',
                             "arrival": 0,
-                            "type": "`start`",
+                            "type": "start",
                             "description": "description",
                             "distance": 0,
                             "duration": 0,
@@ -284,7 +284,7 @@ class TestV2:
                     "geometry": {
                         "coordinates": [[0]],
                         "description": "description",
-                        "type": "`Polygon`",
+                        "type": "Polygon",
                     },
                 }
             ],
@@ -397,7 +397,7 @@ class TestAsyncV2:
             locations={
                 "location": ["string"],
                 "id": 0,
-                "approaches": ["`unrestricted`"],
+                "approaches": ["unrestricted"],
             },
             vehicles=[
                 {
@@ -453,7 +453,7 @@ class TestAsyncV2:
                     "skills": [1],
                     "time_windows": [[0]],
                     "volume": {
-                        "alignment": "`strict`",
+                        "alignment": "strict",
                         "depth": 0,
                         "height": 0,
                         "width": 0,
@@ -473,28 +473,28 @@ class TestAsyncV2:
                     "route_grouping": {
                         "penalty_factor": 0,
                         "zone_diameter": 0,
-                        "zone_source": "`system_generated`",
+                        "zone_source": "system_generated",
                     },
                 },
                 "objective": {
                     "allow_early_arrival": True,
                     "custom": {
-                        "type": "`min`",
-                        "value": "`vehicles`",
+                        "type": "min",
+                        "value": "vehicles",
                     },
                     "minimise_num_depots": True,
-                    "solver_mode": "`flexible`",
+                    "solver_mode": "flexible",
                     "solving_time_limit": 0,
-                    "travel_cost": "`duration`",
+                    "travel_cost": "duration",
                 },
                 "routing": {
                     "allow": ["taxi"],
-                    "avoid": ["`toll`"],
-                    "context": "`avgspeed`",
+                    "avoid": ["toll"],
+                    "context": "avgspeed",
                     "cross_border": True,
                     "disable_cache": True,
-                    "hazmat_type": ["`general`"],
-                    "mode": "`car`",
+                    "hazmat_type": ["general"],
+                    "mode": "car",
                     "profiles": '"profiles":{\n    "mini-van":{\n        "mode": "car",\n        "avoid":["highway, toll"]\n        },\n    "trailer":{\n        "mode": "truck",\n        "truck_weight":12000,\n        "truck_size":"200, 210, 600",\n        "hazmat_type": ["general", "harmful_to_water"]\n        }\n    }\n',
                     "traffic_timestamp": 0,
                     "truck_axle_load": 0,
@@ -506,11 +506,11 @@ class TestAsyncV2:
                 {
                     "steps": [
                         {
-                            "type": "`start`",
+                            "type": "start",
                             "id": '"id":"Job 1"',
                         }
                     ],
-                    "type": "`in_same_route`",
+                    "type": "in_same_route",
                     "id": 0,
                     "max_duration": 0,
                     "min_duration": 0,
@@ -552,7 +552,7 @@ class TestAsyncV2:
                     "revenue": 0,
                     "skills": [0],
                     "volume": {
-                        "alignment": "`strict`",
+                        "alignment": "strict",
                         "depth": 0,
                         "height": 0,
                         "width": 0,
@@ -567,7 +567,7 @@ class TestAsyncV2:
                         {
                             "id": '"id": "Job 10"',
                             "arrival": 0,
-                            "type": "`start`",
+                            "type": "start",
                             "description": "description",
                             "distance": 0,
                             "duration": 0,
@@ -603,7 +603,7 @@ class TestAsyncV2:
                     "geometry": {
                         "coordinates": [[0]],
                         "description": "description",
-                        "type": "`Polygon`",
+                        "type": "Polygon",
                     },
                 }
             ],

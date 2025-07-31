@@ -10,15 +10,15 @@ import httpx
 import pytest
 from pytest_asyncio import is_async_test
 
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK, DefaultAioHttpClient
-from nextbillion_sdk._utils import is_dict
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK, DefaultAioHttpClient
+from nextbillionai._utils import is_dict
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest  # pyright: ignore[reportPrivateImportUsage]
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("nextbillion_sdk").setLevel(logging.DEBUG)
+logging.getLogger("nextbillionai").setLevel(logging.DEBUG)
 
 
 # automatically add `pytest.mark.asyncio()` to all of our async tests

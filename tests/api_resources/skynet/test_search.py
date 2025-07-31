@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from nextbillion_sdk import NextbillionSDK, AsyncNextbillionSDK
-from nextbillion_sdk.types.skynet import SearchResponse
+from nextbillionai import NextbillionSDK, AsyncNextbillionSDK
+from nextbillionai.types.skynet import SearchResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -40,9 +40,9 @@ class TestSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -97,9 +97,9 @@ class TestSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -160,9 +160,9 @@ class TestAsyncSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
@@ -217,9 +217,9 @@ class TestAsyncSearch:
             max_search_limit=True,
             pn=0,
             ps=100,
-            sort_by="`distance`",
+            sort_by="distance",
             sort_destination="sort_destination= 34.0241,-118.2550",
-            sort_driving_mode="`car`",
+            sort_driving_mode="car",
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
