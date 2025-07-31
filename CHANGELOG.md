@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.0 (2025-07-31)
+
+Full Changelog: [v0.4.1...v0.5.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.1...v0.5.0)
+
+### Features
+
+* **api:** manual updates ([caab782](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/caab782697a9c294d99f1f6321ae4a2d28fd1374))
+* **client:** support file upload requests ([9ea87b9](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/9ea87b908cea6e3819c53c29d50c10ad243e7998))
+
+
+### Bug Fixes
+
+* List&lt;List&gt; problem in java by naming dto.Event ([476b52a](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/476b52a0b96be073bd7912811d05fde7dea4dabe))
+
 ## 0.4.1 (2025-07-30)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.0...v0.4.1)
