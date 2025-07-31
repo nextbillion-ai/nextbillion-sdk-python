@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-07-31)
+
+Full Changelog: [v0.4.1...v0.5.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.1...v0.5.0)
+
+### Features
+
+* **client:** support file upload requests ([9ea87b9](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/9ea87b908cea6e3819c53c29d50c10ad243e7998))
+
 ## 0.4.1 (2025-07-30)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.0...v0.4.1)
