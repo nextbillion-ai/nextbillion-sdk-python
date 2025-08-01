@@ -7,22 +7,14 @@ from typing_extensions import Required, TypedDict
 
 from .location_param import LocationParam
 
-__all__ = ["VehicleParam", "Location"]
-
-
-class Location(TypedDict, total=False):
-    lat: float
-    """Latitude of the vehicle's current location."""
-
-    lng: float
-    """Longitude of the vehicle's current location."""
+__all__ = ["VehicleParam"]
 
 
 class VehicleParam(TypedDict, total=False):
     id: Required[str]
     """Specify a unique ID for the vehicle."""
 
-    location: Required[Location]
+    location: Required[LocationParam]
     """Specify the location coordinates where the vehicle is currently located.
 
     This input is mandatory for each vehicle.

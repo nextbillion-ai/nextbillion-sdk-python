@@ -32,7 +32,10 @@ class TestDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         )
@@ -93,8 +96,8 @@ class TestDriverAssignment:
                 {
                     "id": "id",
                     "location": {
-                        "lat": 0,
-                        "lng": 0,
+                        "lat": -90,
+                        "lon": -180,
                     },
                     "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                     "priority": 0,
@@ -145,7 +148,10 @@ class TestDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         )
@@ -170,7 +176,10 @@ class TestDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         ) as response:
@@ -203,7 +212,10 @@ class TestAsyncDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         )
@@ -264,8 +276,8 @@ class TestAsyncDriverAssignment:
                 {
                     "id": "id",
                     "location": {
-                        "lat": 0,
-                        "lng": 0,
+                        "lat": -90,
+                        "lon": -180,
                     },
                     "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                     "priority": 0,
@@ -316,7 +328,10 @@ class TestAsyncDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         )
@@ -341,7 +356,10 @@ class TestAsyncDriverAssignment:
             vehicles=[
                 {
                     "id": "id",
-                    "location": {},
+                    "location": {
+                        "lat": -90,
+                        "lon": -180,
+                    },
                 }
             ],
         ) as response:

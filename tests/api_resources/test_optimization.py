@@ -248,8 +248,8 @@ class TestOptimization:
                     {
                         "id": "id",
                         "location": {
-                            "lat": 0,
-                            "lng": 0,
+                            "lat": -90,
+                            "lon": -180,
                         },
                         "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                         "priority": 0,
@@ -264,8 +264,8 @@ class TestOptimization:
                 "modify": {
                     "id": "id",
                     "location": {
-                        "lat": 0,
-                        "lng": 0,
+                        "lat": -90,
+                        "lon": -180,
                     },
                     "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                     "priority": 0,
@@ -543,8 +543,8 @@ class TestAsyncOptimization:
                     {
                         "id": "id",
                         "location": {
-                            "lat": 0,
-                            "lng": 0,
+                            "lat": -90,
+                            "lon": -180,
                         },
                         "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                         "priority": 0,
@@ -559,8 +559,8 @@ class TestAsyncOptimization:
                 "modify": {
                     "id": "id",
                     "location": {
-                        "lat": 0,
-                        "lng": 0,
+                        "lat": -90,
+                        "lon": -180,
                     },
                     "attributes": '"attributes":{\n    "driver_rating": "4.0",\n    "trip_types": "premium"\n  }',
                     "priority": 0,
