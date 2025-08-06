@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.1 (2025-08-06)
+
+Full Changelog: [v0.5.0...v0.5.1](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.5.0...v0.5.1)
+
+### Chores
+
+* **api:** dedupe location types ([c6afed0](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/c6afed06267d9f05284e0559029fe135b1e44f30))
+
 ## 0.5.0 (2025-07-31)
 
 Full Changelog: [v0.4.1...v0.5.0](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.4.1...v0.5.0)
