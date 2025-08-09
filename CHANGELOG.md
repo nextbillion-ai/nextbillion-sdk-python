@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.5.2 (2025-08-09)
+
+Full Changelog: [v0.5.1...v0.5.2](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.5.1...v0.5.2)
+
+### Chores
+
+* **internal:** fix ruff target version ([841f6b8](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/841f6b83607d1fbc81fd7760d01ad48f2c6efb83))
+* **internal:** update comment in script ([affca4a](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/affca4a54c56578021aa4fe0ba4c43cb1d4b3c14))
+* update @stainless-api/prism-cli to v5.15.0 ([5be621c](https://github.com/nextbillion-ai/nextbillion-sdk-python/commit/5be621cd6a883137ec3c379c1a64e6a12b9be1ea))
+
 ## 0.5.1 (2025-08-06)
 
 Full Changelog: [v0.5.0...v0.5.1](https://github.com/nextbillion-ai/nextbillion-sdk-python/compare/v0.5.0...v0.5.1)
