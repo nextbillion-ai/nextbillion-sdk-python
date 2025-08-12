@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSearch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_around(self, client: NextbillionSDK) -> None:
         search = client.skynet.search.around(
@@ -27,7 +27,7 @@ class TestSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_around_with_all_params(self, client: NextbillionSDK) -> None:
         search = client.skynet.search.around(
@@ -46,7 +46,7 @@ class TestSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_around(self, client: NextbillionSDK) -> None:
         response = client.skynet.search.with_raw_response.around(
@@ -60,7 +60,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_around(self, client: NextbillionSDK) -> None:
         with client.skynet.search.with_streaming_response.around(
@@ -76,7 +76,7 @@ class TestSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_bound(self, client: NextbillionSDK) -> None:
         search = client.skynet.search.bound(
@@ -85,7 +85,7 @@ class TestSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_bound_with_all_params(self, client: NextbillionSDK) -> None:
         search = client.skynet.search.bound(
@@ -103,7 +103,7 @@ class TestSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_bound(self, client: NextbillionSDK) -> None:
         response = client.skynet.search.with_raw_response.bound(
@@ -116,7 +116,7 @@ class TestSearch:
         search = response.parse()
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_bound(self, client: NextbillionSDK) -> None:
         with client.skynet.search.with_streaming_response.bound(
@@ -137,7 +137,7 @@ class TestAsyncSearch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_around(self, async_client: AsyncNextbillionSDK) -> None:
         search = await async_client.skynet.search.around(
@@ -147,7 +147,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_around_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         search = await async_client.skynet.search.around(
@@ -166,7 +166,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_around(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.search.with_raw_response.around(
@@ -180,7 +180,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_around(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.search.with_streaming_response.around(
@@ -196,7 +196,7 @@ class TestAsyncSearch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_bound(self, async_client: AsyncNextbillionSDK) -> None:
         search = await async_client.skynet.search.bound(
@@ -205,7 +205,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_bound_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         search = await async_client.skynet.search.bound(
@@ -223,7 +223,7 @@ class TestAsyncSearch:
         )
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_bound(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.search.with_raw_response.bound(
@@ -236,7 +236,7 @@ class TestAsyncSearch:
         search = await response.parse()
         assert_matches_type(SearchResponse, search, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_bound(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.search.with_streaming_response.bound(

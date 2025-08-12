@@ -22,7 +22,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestPlace:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.create(
@@ -31,7 +31,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.create(
@@ -65,7 +65,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.multigeocode.place.with_raw_response.create(
@@ -78,7 +78,7 @@ class TestPlace:
         place = response.parse()
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.multigeocode.place.with_streaming_response.create(
@@ -93,7 +93,7 @@ class TestPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.retrieve(
@@ -102,7 +102,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceRetrieveResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.multigeocode.place.with_raw_response.retrieve(
@@ -115,7 +115,7 @@ class TestPlace:
         place = response.parse()
         assert_matches_type(PlaceRetrieveResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.multigeocode.place.with_streaming_response.retrieve(
@@ -130,7 +130,7 @@ class TestPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):
@@ -139,7 +139,7 @@ class TestPlace:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.update(
@@ -148,7 +148,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.update(
@@ -182,7 +182,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: NextbillionSDK) -> None:
         response = client.multigeocode.place.with_raw_response.update(
@@ -195,7 +195,7 @@ class TestPlace:
         place = response.parse()
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: NextbillionSDK) -> None:
         with client.multigeocode.place.with_streaming_response.update(
@@ -210,7 +210,7 @@ class TestPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):
@@ -219,7 +219,7 @@ class TestPlace:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         place = client.multigeocode.place.delete(
@@ -228,7 +228,7 @@ class TestPlace:
         )
         assert_matches_type(PlaceDeleteResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.multigeocode.place.with_raw_response.delete(
@@ -241,7 +241,7 @@ class TestPlace:
         place = response.parse()
         assert_matches_type(PlaceDeleteResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.multigeocode.place.with_streaming_response.delete(
@@ -256,7 +256,7 @@ class TestPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):
@@ -271,7 +271,7 @@ class TestAsyncPlace:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.create(
@@ -280,7 +280,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.create(
@@ -314,7 +314,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.multigeocode.place.with_raw_response.create(
@@ -327,7 +327,7 @@ class TestAsyncPlace:
         place = await response.parse()
         assert_matches_type(PlaceCreateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.multigeocode.place.with_streaming_response.create(
@@ -342,7 +342,7 @@ class TestAsyncPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.retrieve(
@@ -351,7 +351,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceRetrieveResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.multigeocode.place.with_raw_response.retrieve(
@@ -364,7 +364,7 @@ class TestAsyncPlace:
         place = await response.parse()
         assert_matches_type(PlaceRetrieveResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.multigeocode.place.with_streaming_response.retrieve(
@@ -379,7 +379,7 @@ class TestAsyncPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):
@@ -388,7 +388,7 @@ class TestAsyncPlace:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.update(
@@ -397,7 +397,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.update(
@@ -431,7 +431,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.multigeocode.place.with_raw_response.update(
@@ -444,7 +444,7 @@ class TestAsyncPlace:
         place = await response.parse()
         assert_matches_type(PlaceUpdateResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.multigeocode.place.with_streaming_response.update(
@@ -459,7 +459,7 @@ class TestAsyncPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):
@@ -468,7 +468,7 @@ class TestAsyncPlace:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         place = await async_client.multigeocode.place.delete(
@@ -477,7 +477,7 @@ class TestAsyncPlace:
         )
         assert_matches_type(PlaceDeleteResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.multigeocode.place.with_raw_response.delete(
@@ -490,7 +490,7 @@ class TestAsyncPlace:
         place = await response.parse()
         assert_matches_type(PlaceDeleteResponse, place, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.multigeocode.place.with_streaming_response.delete(
@@ -505,7 +505,7 @@ class TestAsyncPlace:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `doc_id` but received ''"):

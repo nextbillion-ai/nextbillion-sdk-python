@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestNavigation:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_route(self, client: NextbillionSDK) -> None:
         navigation = client.navigation.retrieve_route(
@@ -25,7 +25,7 @@ class TestNavigation:
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_route_with_all_params(self, client: NextbillionSDK) -> None:
         navigation = client.navigation.retrieve_route(
@@ -47,7 +47,7 @@ class TestNavigation:
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve_route(self, client: NextbillionSDK) -> None:
         response = client.navigation.with_raw_response.retrieve_route(
@@ -59,7 +59,7 @@ class TestNavigation:
         navigation = response.parse()
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_route(self, client: NextbillionSDK) -> None:
         with client.navigation.with_streaming_response.retrieve_route(
@@ -79,7 +79,7 @@ class TestAsyncNavigation:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_route(self, async_client: AsyncNextbillionSDK) -> None:
         navigation = await async_client.navigation.retrieve_route(
@@ -87,7 +87,7 @@ class TestAsyncNavigation:
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_route_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         navigation = await async_client.navigation.retrieve_route(
@@ -109,7 +109,7 @@ class TestAsyncNavigation:
         )
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_route(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.navigation.with_raw_response.retrieve_route(
@@ -121,7 +121,7 @@ class TestAsyncNavigation:
         navigation = await response.parse()
         assert_matches_type(NavigationRetrieveRouteResponse, navigation, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_route(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.navigation.with_streaming_response.retrieve_route(

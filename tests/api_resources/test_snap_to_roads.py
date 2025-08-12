@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSnapToRoads:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_snap(self, client: NextbillionSDK) -> None:
         snap_to_road = client.snap_to_roads.snap(
@@ -26,7 +26,7 @@ class TestSnapToRoads:
         )
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_snap_with_all_params(self, client: NextbillionSDK) -> None:
         snap_to_road = client.snap_to_roads.snap(
@@ -44,7 +44,7 @@ class TestSnapToRoads:
         )
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_snap(self, client: NextbillionSDK) -> None:
         response = client.snap_to_roads.with_raw_response.snap(
@@ -57,7 +57,7 @@ class TestSnapToRoads:
         snap_to_road = response.parse()
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_snap(self, client: NextbillionSDK) -> None:
         with client.snap_to_roads.with_streaming_response.snap(
@@ -78,7 +78,7 @@ class TestAsyncSnapToRoads:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_snap(self, async_client: AsyncNextbillionSDK) -> None:
         snap_to_road = await async_client.snap_to_roads.snap(
@@ -87,7 +87,7 @@ class TestAsyncSnapToRoads:
         )
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_snap_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         snap_to_road = await async_client.snap_to_roads.snap(
@@ -105,7 +105,7 @@ class TestAsyncSnapToRoads:
         )
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_snap(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.snap_to_roads.with_raw_response.snap(
@@ -118,7 +118,7 @@ class TestAsyncSnapToRoads:
         snap_to_road = await response.parse()
         assert_matches_type(SnapToRoadSnapResponse, snap_to_road, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_snap(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.snap_to_roads.with_streaming_response.snap(

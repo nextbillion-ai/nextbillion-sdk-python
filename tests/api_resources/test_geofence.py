@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestGeofence:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.create(
@@ -32,7 +32,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.create(
@@ -66,7 +66,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.create(
@@ -79,7 +79,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.create(
@@ -94,7 +94,7 @@ class TestGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.retrieve(
@@ -103,7 +103,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceRetrieveResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.retrieve(
@@ -116,7 +116,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(GeofenceRetrieveResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.retrieve(
@@ -131,7 +131,7 @@ class TestGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -140,7 +140,7 @@ class TestGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.update(
@@ -149,7 +149,7 @@ class TestGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.update(
@@ -183,7 +183,7 @@ class TestGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.update(
@@ -196,7 +196,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.update(
@@ -211,7 +211,7 @@ class TestGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -220,7 +220,7 @@ class TestGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.list(
@@ -228,7 +228,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.list(
@@ -239,7 +239,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.list(
@@ -251,7 +251,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.list(
@@ -265,7 +265,7 @@ class TestGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.delete(
@@ -274,7 +274,7 @@ class TestGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.delete(
@@ -287,7 +287,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.delete(
@@ -302,7 +302,7 @@ class TestGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -311,7 +311,7 @@ class TestGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_contains(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.contains(
@@ -320,7 +320,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_contains_with_all_params(self, client: NextbillionSDK) -> None:
         geofence = client.geofence.contains(
@@ -331,7 +331,7 @@ class TestGeofence:
         )
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_contains(self, client: NextbillionSDK) -> None:
         response = client.geofence.with_raw_response.contains(
@@ -344,7 +344,7 @@ class TestGeofence:
         geofence = response.parse()
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_contains(self, client: NextbillionSDK) -> None:
         with client.geofence.with_streaming_response.contains(
@@ -365,7 +365,7 @@ class TestAsyncGeofence:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.create(
@@ -374,7 +374,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.create(
@@ -408,7 +408,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.create(
@@ -421,7 +421,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(GeofenceCreateResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.create(
@@ -436,7 +436,7 @@ class TestAsyncGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.retrieve(
@@ -445,7 +445,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceRetrieveResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.retrieve(
@@ -458,7 +458,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(GeofenceRetrieveResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.retrieve(
@@ -473,7 +473,7 @@ class TestAsyncGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -482,7 +482,7 @@ class TestAsyncGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.update(
@@ -491,7 +491,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.update(
@@ -525,7 +525,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.update(
@@ -538,7 +538,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.update(
@@ -553,7 +553,7 @@ class TestAsyncGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -562,7 +562,7 @@ class TestAsyncGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.list(
@@ -570,7 +570,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.list(
@@ -581,7 +581,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.list(
@@ -593,7 +593,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(GeofenceListResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.list(
@@ -607,7 +607,7 @@ class TestAsyncGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.delete(
@@ -616,7 +616,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.delete(
@@ -629,7 +629,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(SimpleResp, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.delete(
@@ -644,7 +644,7 @@ class TestAsyncGeofence:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -653,7 +653,7 @@ class TestAsyncGeofence:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_contains(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.contains(
@@ -662,7 +662,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_contains_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geofence = await async_client.geofence.contains(
@@ -673,7 +673,7 @@ class TestAsyncGeofence:
         )
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_contains(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.with_raw_response.contains(
@@ -686,7 +686,7 @@ class TestAsyncGeofence:
         geofence = await response.parse()
         assert_matches_type(GeofenceContainsResponse, geofence, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_contains(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.with_streaming_response.contains(

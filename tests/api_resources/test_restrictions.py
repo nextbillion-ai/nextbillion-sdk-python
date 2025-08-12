@@ -22,7 +22,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestRestrictions:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.create(
@@ -33,7 +33,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.create(
@@ -72,7 +72,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.create(
@@ -87,7 +87,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.create(
@@ -104,7 +104,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.retrieve(
@@ -113,7 +113,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.retrieve(
@@ -123,7 +123,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.retrieve(
@@ -136,7 +136,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.retrieve(
@@ -151,7 +151,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.update(
@@ -162,7 +162,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.update(
@@ -201,7 +201,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.update(
@@ -216,7 +216,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.update(
@@ -233,7 +233,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.list(
@@ -244,7 +244,7 @@ class TestRestrictions:
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.list(
@@ -262,7 +262,7 @@ class TestRestrictions:
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.list(
@@ -277,7 +277,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.list(
@@ -294,7 +294,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.delete(
@@ -303,7 +303,7 @@ class TestRestrictions:
         )
         assert_matches_type(RestrictionDeleteResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.delete(
@@ -316,7 +316,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RestrictionDeleteResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.delete(
@@ -331,7 +331,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_by_bbox(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.list_by_bbox(
@@ -343,7 +343,7 @@ class TestRestrictions:
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_by_bbox_with_all_params(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.list_by_bbox(
@@ -361,7 +361,7 @@ class TestRestrictions:
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list_by_bbox(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.list_by_bbox(
@@ -377,7 +377,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list_by_bbox(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.list_by_bbox(
@@ -395,7 +395,7 @@ class TestRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_set_state(self, client: NextbillionSDK) -> None:
         restriction = client.restrictions.set_state(
@@ -405,7 +405,7 @@ class TestRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_set_state(self, client: NextbillionSDK) -> None:
         response = client.restrictions.with_raw_response.set_state(
@@ -419,7 +419,7 @@ class TestRestrictions:
         restriction = response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_set_state(self, client: NextbillionSDK) -> None:
         with client.restrictions.with_streaming_response.set_state(
@@ -441,7 +441,7 @@ class TestAsyncRestrictions:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.create(
@@ -452,7 +452,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.create(
@@ -491,7 +491,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.create(
@@ -506,7 +506,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.create(
@@ -523,7 +523,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.retrieve(
@@ -532,7 +532,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.retrieve(
@@ -542,7 +542,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.retrieve(
@@ -555,7 +555,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.retrieve(
@@ -570,7 +570,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.update(
@@ -581,7 +581,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.update(
@@ -620,7 +620,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.update(
@@ -635,7 +635,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.update(
@@ -652,7 +652,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.list(
@@ -663,7 +663,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.list(
@@ -681,7 +681,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.list(
@@ -696,7 +696,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RestrictionListResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.list(
@@ -713,7 +713,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.delete(
@@ -722,7 +722,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RestrictionDeleteResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.delete(
@@ -735,7 +735,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RestrictionDeleteResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.delete(
@@ -750,7 +750,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_by_bbox(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.list_by_bbox(
@@ -762,7 +762,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_by_bbox_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.list_by_bbox(
@@ -780,7 +780,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list_by_bbox(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.list_by_bbox(
@@ -796,7 +796,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RestrictionListByBboxResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list_by_bbox(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.list_by_bbox(
@@ -814,7 +814,7 @@ class TestAsyncRestrictions:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_set_state(self, async_client: AsyncNextbillionSDK) -> None:
         restriction = await async_client.restrictions.set_state(
@@ -824,7 +824,7 @@ class TestAsyncRestrictions:
         )
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_set_state(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.restrictions.with_raw_response.set_state(
@@ -838,7 +838,7 @@ class TestAsyncRestrictions:
         restriction = await response.parse()
         assert_matches_type(RichGroupResponse, restriction, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_set_state(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.restrictions.with_streaming_response.set_state(

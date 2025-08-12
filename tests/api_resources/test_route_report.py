@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestRouteReport:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         route_report = client.route_report.create(
@@ -27,7 +27,7 @@ class TestRouteReport:
         )
         assert_matches_type(RouteReportCreateResponse, route_report, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.route_report.with_raw_response.create(
@@ -41,7 +41,7 @@ class TestRouteReport:
         route_report = response.parse()
         assert_matches_type(RouteReportCreateResponse, route_report, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.route_report.with_streaming_response.create(
@@ -63,7 +63,7 @@ class TestAsyncRouteReport:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         route_report = await async_client.route_report.create(
@@ -73,7 +73,7 @@ class TestAsyncRouteReport:
         )
         assert_matches_type(RouteReportCreateResponse, route_report, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.route_report.with_raw_response.create(
@@ -87,7 +87,7 @@ class TestAsyncRouteReport:
         route_report = await response.parse()
         assert_matches_type(RouteReportCreateResponse, route_report, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.route_report.with_streaming_response.create(

@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestDriverAssignment:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_assign(self, client: NextbillionSDK) -> None:
         driver_assignment = client.optimization.driver_assignment.assign(
@@ -41,7 +41,7 @@ class TestDriverAssignment:
         )
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_assign_with_all_params(self, client: NextbillionSDK) -> None:
         driver_assignment = client.optimization.driver_assignment.assign(
@@ -133,7 +133,7 @@ class TestDriverAssignment:
         )
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_assign(self, client: NextbillionSDK) -> None:
         response = client.optimization.driver_assignment.with_raw_response.assign(
@@ -161,7 +161,7 @@ class TestDriverAssignment:
         driver_assignment = response.parse()
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_assign(self, client: NextbillionSDK) -> None:
         with client.optimization.driver_assignment.with_streaming_response.assign(
@@ -197,7 +197,7 @@ class TestAsyncDriverAssignment:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_assign(self, async_client: AsyncNextbillionSDK) -> None:
         driver_assignment = await async_client.optimization.driver_assignment.assign(
@@ -221,7 +221,7 @@ class TestAsyncDriverAssignment:
         )
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_assign_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         driver_assignment = await async_client.optimization.driver_assignment.assign(
@@ -313,7 +313,7 @@ class TestAsyncDriverAssignment:
         )
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_assign(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.optimization.driver_assignment.with_raw_response.assign(
@@ -341,7 +341,7 @@ class TestAsyncDriverAssignment:
         driver_assignment = await response.parse()
         assert_matches_type(DriverAssignmentAssignResponse, driver_assignment, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_assign(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.optimization.driver_assignment.with_streaming_response.assign(

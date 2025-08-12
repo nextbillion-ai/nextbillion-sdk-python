@@ -21,7 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestBatch:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.create(
@@ -29,7 +29,7 @@ class TestBatch:
         )
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.create(
@@ -67,7 +67,7 @@ class TestBatch:
         )
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.geofence.batch.with_raw_response.create(
@@ -79,7 +79,7 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.geofence.batch.with_streaming_response.create(
@@ -93,7 +93,7 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.list(
@@ -102,7 +102,7 @@ class TestBatch:
         )
         assert_matches_type(BatchListResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: NextbillionSDK) -> None:
         response = client.geofence.batch.with_raw_response.list(
@@ -115,7 +115,7 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(BatchListResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: NextbillionSDK) -> None:
         with client.geofence.batch.with_streaming_response.list(
@@ -130,7 +130,7 @@ class TestBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.delete(
@@ -138,7 +138,7 @@ class TestBatch:
         )
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete_with_all_params(self, client: NextbillionSDK) -> None:
         batch = client.geofence.batch.delete(
@@ -147,7 +147,7 @@ class TestBatch:
         )
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.geofence.batch.with_raw_response.delete(
@@ -159,7 +159,7 @@ class TestBatch:
         batch = response.parse()
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.geofence.batch.with_streaming_response.delete(
@@ -179,7 +179,7 @@ class TestAsyncBatch:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.create(
@@ -187,7 +187,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.create(
@@ -225,7 +225,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.batch.with_raw_response.create(
@@ -237,7 +237,7 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchCreateResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.batch.with_streaming_response.create(
@@ -251,7 +251,7 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.list(
@@ -260,7 +260,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(BatchListResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.batch.with_raw_response.list(
@@ -273,7 +273,7 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(BatchListResponse, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.batch.with_streaming_response.list(
@@ -288,7 +288,7 @@ class TestAsyncBatch:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.delete(
@@ -296,7 +296,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         batch = await async_client.geofence.batch.delete(
@@ -305,7 +305,7 @@ class TestAsyncBatch:
         )
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geofence.batch.with_raw_response.delete(
@@ -317,7 +317,7 @@ class TestAsyncBatch:
         batch = await response.parse()
         assert_matches_type(SimpleResp, batch, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geofence.batch.with_streaming_response.delete(
