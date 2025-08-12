@@ -21,7 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestSteps:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.create(
@@ -34,7 +34,7 @@ class TestSteps:
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.create(
@@ -60,7 +60,7 @@ class TestSteps:
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.fleetify.routes.steps.with_raw_response.create(
@@ -77,7 +77,7 @@ class TestSteps:
         step = response.parse()
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.fleetify.routes.steps.with_streaming_response.create(
@@ -96,7 +96,7 @@ class TestSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_create(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -109,7 +109,7 @@ class TestSteps:
                 type="start",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.update(
@@ -121,7 +121,7 @@ class TestSteps:
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.update(
@@ -148,7 +148,7 @@ class TestSteps:
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: NextbillionSDK) -> None:
         response = client.fleetify.routes.steps.with_raw_response.update(
@@ -164,7 +164,7 @@ class TestSteps:
         step = response.parse()
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: NextbillionSDK) -> None:
         with client.fleetify.routes.steps.with_streaming_response.update(
@@ -182,7 +182,7 @@ class TestSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -203,7 +203,7 @@ class TestSteps:
                 position=0,
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.delete(
@@ -213,7 +213,7 @@ class TestSteps:
         )
         assert_matches_type(StepDeleteResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.fleetify.routes.steps.with_raw_response.delete(
@@ -227,7 +227,7 @@ class TestSteps:
         step = response.parse()
         assert_matches_type(StepDeleteResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.fleetify.routes.steps.with_streaming_response.delete(
@@ -243,7 +243,7 @@ class TestSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -260,7 +260,7 @@ class TestSteps:
                 key="key",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_complete(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.complete(
@@ -270,7 +270,7 @@ class TestSteps:
         )
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_complete_with_all_params(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.complete(
@@ -283,7 +283,7 @@ class TestSteps:
         )
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_complete(self, client: NextbillionSDK) -> None:
         response = client.fleetify.routes.steps.with_raw_response.complete(
@@ -297,7 +297,7 @@ class TestSteps:
         step = response.parse()
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_complete(self, client: NextbillionSDK) -> None:
         with client.fleetify.routes.steps.with_streaming_response.complete(
@@ -313,7 +313,7 @@ class TestSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_complete(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -336,7 +336,7 @@ class TestAsyncSteps:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.create(
@@ -349,7 +349,7 @@ class TestAsyncSteps:
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.create(
@@ -375,7 +375,7 @@ class TestAsyncSteps:
         )
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.fleetify.routes.steps.with_raw_response.create(
@@ -392,7 +392,7 @@ class TestAsyncSteps:
         step = await response.parse()
         assert_matches_type(StepCreateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.fleetify.routes.steps.with_streaming_response.create(
@@ -411,7 +411,7 @@ class TestAsyncSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_create(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -424,7 +424,7 @@ class TestAsyncSteps:
                 type="start",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.update(
@@ -436,7 +436,7 @@ class TestAsyncSteps:
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.update(
@@ -463,7 +463,7 @@ class TestAsyncSteps:
         )
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.fleetify.routes.steps.with_raw_response.update(
@@ -479,7 +479,7 @@ class TestAsyncSteps:
         step = await response.parse()
         assert_matches_type(StepUpdateResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.fleetify.routes.steps.with_streaming_response.update(
@@ -497,7 +497,7 @@ class TestAsyncSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -518,7 +518,7 @@ class TestAsyncSteps:
                 position=0,
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.delete(
@@ -528,7 +528,7 @@ class TestAsyncSteps:
         )
         assert_matches_type(StepDeleteResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.fleetify.routes.steps.with_raw_response.delete(
@@ -542,7 +542,7 @@ class TestAsyncSteps:
         step = await response.parse()
         assert_matches_type(StepDeleteResponse, step, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.fleetify.routes.steps.with_streaming_response.delete(
@@ -558,7 +558,7 @@ class TestAsyncSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
@@ -575,7 +575,7 @@ class TestAsyncSteps:
                 key="key",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_complete(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.complete(
@@ -585,7 +585,7 @@ class TestAsyncSteps:
         )
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_complete_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.complete(
@@ -598,7 +598,7 @@ class TestAsyncSteps:
         )
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_complete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.fleetify.routes.steps.with_raw_response.complete(
@@ -612,7 +612,7 @@ class TestAsyncSteps:
         step = await response.parse()
         assert step is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_complete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.fleetify.routes.steps.with_streaming_response.complete(
@@ -628,7 +628,7 @@ class TestAsyncSteps:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_complete(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):

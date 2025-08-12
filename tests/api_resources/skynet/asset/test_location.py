@@ -20,7 +20,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestLocation:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list(self, client: NextbillionSDK) -> None:
         location = client.skynet.asset.location.list(
@@ -29,7 +29,7 @@ class TestLocation:
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: NextbillionSDK) -> None:
         location = client.skynet.asset.location.list(
@@ -45,7 +45,7 @@ class TestLocation:
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: NextbillionSDK) -> None:
         response = client.skynet.asset.location.with_raw_response.list(
@@ -58,7 +58,7 @@ class TestLocation:
         location = response.parse()
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: NextbillionSDK) -> None:
         with client.skynet.asset.location.with_streaming_response.list(
@@ -73,7 +73,7 @@ class TestLocation:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_list(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -82,7 +82,7 @@ class TestLocation:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_last(self, client: NextbillionSDK) -> None:
         location = client.skynet.asset.location.get_last(
@@ -91,7 +91,7 @@ class TestLocation:
         )
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_last_with_all_params(self, client: NextbillionSDK) -> None:
         location = client.skynet.asset.location.get_last(
@@ -101,7 +101,7 @@ class TestLocation:
         )
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_last(self, client: NextbillionSDK) -> None:
         response = client.skynet.asset.location.with_raw_response.get_last(
@@ -114,7 +114,7 @@ class TestLocation:
         location = response.parse()
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_last(self, client: NextbillionSDK) -> None:
         with client.skynet.asset.location.with_streaming_response.get_last(
@@ -129,7 +129,7 @@ class TestLocation:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_last(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -144,7 +144,7 @@ class TestAsyncLocation:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncNextbillionSDK) -> None:
         location = await async_client.skynet.asset.location.list(
@@ -153,7 +153,7 @@ class TestAsyncLocation:
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         location = await async_client.skynet.asset.location.list(
@@ -169,7 +169,7 @@ class TestAsyncLocation:
         )
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.asset.location.with_raw_response.list(
@@ -182,7 +182,7 @@ class TestAsyncLocation:
         location = await response.parse()
         assert_matches_type(LocationListResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.asset.location.with_streaming_response.list(
@@ -197,7 +197,7 @@ class TestAsyncLocation:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_list(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -206,7 +206,7 @@ class TestAsyncLocation:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_last(self, async_client: AsyncNextbillionSDK) -> None:
         location = await async_client.skynet.asset.location.get_last(
@@ -215,7 +215,7 @@ class TestAsyncLocation:
         )
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_last_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         location = await async_client.skynet.asset.location.get_last(
@@ -225,7 +225,7 @@ class TestAsyncLocation:
         )
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_last(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.asset.location.with_raw_response.get_last(
@@ -238,7 +238,7 @@ class TestAsyncLocation:
         location = await response.parse()
         assert_matches_type(LocationGetLastResponse, location, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_last(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.asset.location.with_streaming_response.get_last(
@@ -253,7 +253,7 @@ class TestAsyncLocation:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_last(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):

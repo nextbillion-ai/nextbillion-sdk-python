@@ -18,7 +18,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestV2:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_result(self, client: NextbillionSDK) -> None:
         v2 = client.optimization.v2.retrieve_result(
@@ -27,7 +27,7 @@ class TestV2:
         )
         assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve_result(self, client: NextbillionSDK) -> None:
         response = client.optimization.v2.with_raw_response.retrieve_result(
@@ -40,7 +40,7 @@ class TestV2:
         v2 = response.parse()
         assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_result(self, client: NextbillionSDK) -> None:
         with client.optimization.v2.with_streaming_response.retrieve_result(
@@ -55,7 +55,7 @@ class TestV2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_submit(self, client: NextbillionSDK) -> None:
         v2 = client.optimization.v2.submit(
@@ -73,7 +73,7 @@ class TestV2:
         )
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_submit_with_all_params(self, client: NextbillionSDK) -> None:
         v2 = client.optimization.v2.submit(
@@ -294,7 +294,7 @@ class TestV2:
         )
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_submit(self, client: NextbillionSDK) -> None:
         response = client.optimization.v2.with_raw_response.submit(
@@ -316,7 +316,7 @@ class TestV2:
         v2 = response.parse()
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_submit(self, client: NextbillionSDK) -> None:
         with client.optimization.v2.with_streaming_response.submit(
@@ -346,7 +346,7 @@ class TestAsyncV2:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
         v2 = await async_client.optimization.v2.retrieve_result(
@@ -355,7 +355,7 @@ class TestAsyncV2:
         )
         assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.optimization.v2.with_raw_response.retrieve_result(
@@ -368,7 +368,7 @@ class TestAsyncV2:
         v2 = await response.parse()
         assert_matches_type(V2RetrieveResultResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_result(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.optimization.v2.with_streaming_response.retrieve_result(
@@ -383,7 +383,7 @@ class TestAsyncV2:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_submit(self, async_client: AsyncNextbillionSDK) -> None:
         v2 = await async_client.optimization.v2.submit(
@@ -401,7 +401,7 @@ class TestAsyncV2:
         )
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_submit_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         v2 = await async_client.optimization.v2.submit(
@@ -622,7 +622,7 @@ class TestAsyncV2:
         )
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_submit(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.optimization.v2.with_raw_response.submit(
@@ -644,7 +644,7 @@ class TestAsyncV2:
         v2 = await response.parse()
         assert_matches_type(PostResponse, v2, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_submit(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.optimization.v2.with_streaming_response.submit(
