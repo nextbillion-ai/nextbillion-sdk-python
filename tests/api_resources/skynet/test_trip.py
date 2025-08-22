@@ -22,7 +22,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestTrip:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.retrieve(
@@ -31,7 +31,7 @@ class TestTrip:
         )
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.retrieve(
@@ -41,7 +41,7 @@ class TestTrip:
         )
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.retrieve(
@@ -54,7 +54,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.retrieve(
@@ -69,7 +69,7 @@ class TestTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -78,7 +78,7 @@ class TestTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.update(
@@ -88,7 +88,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.update(
@@ -110,7 +110,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.update(
@@ -124,7 +124,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.update(
@@ -140,7 +140,7 @@ class TestTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_update(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -150,7 +150,7 @@ class TestTrip:
                 asset_id="asset_id",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.delete(
@@ -159,7 +159,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_delete_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.delete(
@@ -169,7 +169,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_delete(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.delete(
@@ -182,7 +182,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_delete(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.delete(
@@ -197,7 +197,7 @@ class TestTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_delete(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -206,7 +206,7 @@ class TestTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_end(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.end(
@@ -215,7 +215,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_end_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.end(
@@ -225,7 +225,7 @@ class TestTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_end(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.end(
@@ -238,7 +238,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_end(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.end(
@@ -253,7 +253,7 @@ class TestTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_summary(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.get_summary(
@@ -262,7 +262,7 @@ class TestTrip:
         )
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_summary_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.get_summary(
@@ -272,7 +272,7 @@ class TestTrip:
         )
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_summary(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.get_summary(
@@ -285,7 +285,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_summary(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.get_summary(
@@ -300,7 +300,7 @@ class TestTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_path_params_get_summary(self, client: NextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -309,7 +309,7 @@ class TestTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_start(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.start(
@@ -318,7 +318,7 @@ class TestTrip:
         )
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_start_with_all_params(self, client: NextbillionSDK) -> None:
         trip = client.skynet.trip.start(
@@ -340,7 +340,7 @@ class TestTrip:
         )
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_start(self, client: NextbillionSDK) -> None:
         response = client.skynet.trip.with_raw_response.start(
@@ -353,7 +353,7 @@ class TestTrip:
         trip = response.parse()
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_start(self, client: NextbillionSDK) -> None:
         with client.skynet.trip.with_streaming_response.start(
@@ -374,7 +374,7 @@ class TestAsyncTrip:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.retrieve(
@@ -383,7 +383,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.retrieve(
@@ -393,7 +393,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.retrieve(
@@ -406,7 +406,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(TripRetrieveResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.retrieve(
@@ -421,7 +421,7 @@ class TestAsyncTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -430,7 +430,7 @@ class TestAsyncTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.update(
@@ -440,7 +440,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.update(
@@ -462,7 +462,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.update(
@@ -476,7 +476,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.update(
@@ -492,7 +492,7 @@ class TestAsyncTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -502,7 +502,7 @@ class TestAsyncTrip:
                 asset_id="asset_id",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.delete(
@@ -511,7 +511,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_delete_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.delete(
@@ -521,7 +521,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.delete(
@@ -534,7 +534,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.delete(
@@ -549,7 +549,7 @@ class TestAsyncTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_delete(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -558,7 +558,7 @@ class TestAsyncTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_end(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.end(
@@ -567,7 +567,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_end_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.end(
@@ -577,7 +577,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_end(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.end(
@@ -590,7 +590,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(SimpleResp, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_end(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.end(
@@ -605,7 +605,7 @@ class TestAsyncTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.get_summary(
@@ -614,7 +614,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_summary_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.get_summary(
@@ -624,7 +624,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.get_summary(
@@ -637,7 +637,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(TripGetSummaryResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.get_summary(
@@ -652,7 +652,7 @@ class TestAsyncTrip:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_path_params_get_summary(self, async_client: AsyncNextbillionSDK) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
@@ -661,7 +661,7 @@ class TestAsyncTrip:
                 key="key=API_KEY",
             )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_start(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.start(
@@ -670,7 +670,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_start_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         trip = await async_client.skynet.trip.start(
@@ -692,7 +692,7 @@ class TestAsyncTrip:
         )
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_start(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.skynet.trip.with_raw_response.start(
@@ -705,7 +705,7 @@ class TestAsyncTrip:
         trip = await response.parse()
         assert_matches_type(TripStartResponse, trip, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_start(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.skynet.trip.with_streaming_response.start(

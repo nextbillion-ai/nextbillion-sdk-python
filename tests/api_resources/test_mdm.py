@@ -20,7 +20,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMdm:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_distance_matrix(self, client: NextbillionSDK) -> None:
         mdm = client.mdm.create_distance_matrix(
@@ -30,7 +30,7 @@ class TestMdm:
         )
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_distance_matrix_with_all_params(self, client: NextbillionSDK) -> None:
         mdm = client.mdm.create_distance_matrix(
@@ -54,7 +54,7 @@ class TestMdm:
         )
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_distance_matrix(self, client: NextbillionSDK) -> None:
         response = client.mdm.with_raw_response.create_distance_matrix(
@@ -68,7 +68,7 @@ class TestMdm:
         mdm = response.parse()
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_distance_matrix(self, client: NextbillionSDK) -> None:
         with client.mdm.with_streaming_response.create_distance_matrix(
@@ -84,7 +84,7 @@ class TestMdm:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_get_distance_matrix_status(self, client: NextbillionSDK) -> None:
         mdm = client.mdm.get_distance_matrix_status(
@@ -93,7 +93,7 @@ class TestMdm:
         )
         assert_matches_type(MdmGetDistanceMatrixStatusResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_get_distance_matrix_status(self, client: NextbillionSDK) -> None:
         response = client.mdm.with_raw_response.get_distance_matrix_status(
@@ -106,7 +106,7 @@ class TestMdm:
         mdm = response.parse()
         assert_matches_type(MdmGetDistanceMatrixStatusResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_get_distance_matrix_status(self, client: NextbillionSDK) -> None:
         with client.mdm.with_streaming_response.get_distance_matrix_status(
@@ -127,7 +127,7 @@ class TestAsyncMdm:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_distance_matrix(self, async_client: AsyncNextbillionSDK) -> None:
         mdm = await async_client.mdm.create_distance_matrix(
@@ -137,7 +137,7 @@ class TestAsyncMdm:
         )
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_distance_matrix_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         mdm = await async_client.mdm.create_distance_matrix(
@@ -161,7 +161,7 @@ class TestAsyncMdm:
         )
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_distance_matrix(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.mdm.with_raw_response.create_distance_matrix(
@@ -175,7 +175,7 @@ class TestAsyncMdm:
         mdm = await response.parse()
         assert_matches_type(MdmCreateDistanceMatrixResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_distance_matrix(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.mdm.with_streaming_response.create_distance_matrix(
@@ -191,7 +191,7 @@ class TestAsyncMdm:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_get_distance_matrix_status(self, async_client: AsyncNextbillionSDK) -> None:
         mdm = await async_client.mdm.get_distance_matrix_status(
@@ -200,7 +200,7 @@ class TestAsyncMdm:
         )
         assert_matches_type(MdmGetDistanceMatrixStatusResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_get_distance_matrix_status(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.mdm.with_raw_response.get_distance_matrix_status(
@@ -213,7 +213,7 @@ class TestAsyncMdm:
         mdm = await response.parse()
         assert_matches_type(MdmGetDistanceMatrixStatusResponse, mdm, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_get_distance_matrix_status(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.mdm.with_streaming_response.get_distance_matrix_status(

@@ -17,13 +17,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestJson:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create(self, client: NextbillionSDK) -> None:
         json = client.distance_matrix.json.create()
         assert json is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.distance_matrix.json.with_raw_response.create()
@@ -33,7 +33,7 @@ class TestJson:
         json = response.parse()
         assert json is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.distance_matrix.json.with_streaming_response.create() as response:
@@ -45,7 +45,7 @@ class TestJson:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         json = client.distance_matrix.json.retrieve(
@@ -55,7 +55,7 @@ class TestJson:
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
         json = client.distance_matrix.json.retrieve(
@@ -70,7 +70,7 @@ class TestJson:
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.distance_matrix.json.with_raw_response.retrieve(
@@ -84,7 +84,7 @@ class TestJson:
         json = response.parse()
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.distance_matrix.json.with_streaming_response.retrieve(
@@ -106,13 +106,13 @@ class TestAsyncJson:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         json = await async_client.distance_matrix.json.create()
         assert json is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.distance_matrix.json.with_raw_response.create()
@@ -122,7 +122,7 @@ class TestAsyncJson:
         json = await response.parse()
         assert json is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.distance_matrix.json.with_streaming_response.create() as response:
@@ -134,7 +134,7 @@ class TestAsyncJson:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         json = await async_client.distance_matrix.json.retrieve(
@@ -144,7 +144,7 @@ class TestAsyncJson:
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         json = await async_client.distance_matrix.json.retrieve(
@@ -159,7 +159,7 @@ class TestAsyncJson:
         )
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.distance_matrix.json.with_raw_response.retrieve(
@@ -173,7 +173,7 @@ class TestAsyncJson:
         json = await response.parse()
         assert_matches_type(JsonRetrieveResponse, json, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.distance_matrix.json.with_streaming_response.retrieve(

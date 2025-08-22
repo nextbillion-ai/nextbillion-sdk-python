@@ -15,13 +15,13 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMap:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_create_segment(self, client: NextbillionSDK) -> None:
         map = client.map.create_segment()
         assert map is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_create_segment(self, client: NextbillionSDK) -> None:
         response = client.map.with_raw_response.create_segment()
@@ -31,7 +31,7 @@ class TestMap:
         map = response.parse()
         assert map is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_create_segment(self, client: NextbillionSDK) -> None:
         with client.map.with_streaming_response.create_segment() as response:
@@ -49,13 +49,13 @@ class TestAsyncMap:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_create_segment(self, async_client: AsyncNextbillionSDK) -> None:
         map = await async_client.map.create_segment()
         assert map is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_create_segment(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.map.with_raw_response.create_segment()
@@ -65,7 +65,7 @@ class TestAsyncMap:
         map = await response.parse()
         assert map is None
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_create_segment(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.map.with_streaming_response.create_segment() as response:

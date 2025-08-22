@@ -21,7 +21,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestGeocode:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: NextbillionSDK) -> None:
         geocode = client.geocode.retrieve(
@@ -30,7 +30,7 @@ class TestGeocode:
         )
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
         geocode = client.geocode.retrieve(
@@ -43,7 +43,7 @@ class TestGeocode:
         )
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: NextbillionSDK) -> None:
         response = client.geocode.with_raw_response.retrieve(
@@ -56,7 +56,7 @@ class TestGeocode:
         geocode = response.parse()
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: NextbillionSDK) -> None:
         with client.geocode.with_streaming_response.retrieve(
@@ -71,7 +71,7 @@ class TestGeocode:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_batch_create(self, client: NextbillionSDK) -> None:
         geocode = client.geocode.batch_create(
@@ -80,7 +80,7 @@ class TestGeocode:
         )
         assert_matches_type(GeocodeBatchCreateResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_batch_create(self, client: NextbillionSDK) -> None:
         response = client.geocode.with_raw_response.batch_create(
@@ -93,7 +93,7 @@ class TestGeocode:
         geocode = response.parse()
         assert_matches_type(GeocodeBatchCreateResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_batch_create(self, client: NextbillionSDK) -> None:
         with client.geocode.with_streaming_response.batch_create(
@@ -108,7 +108,7 @@ class TestGeocode:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_structured_retrieve(self, client: NextbillionSDK) -> None:
         geocode = client.geocode.structured_retrieve(
@@ -117,7 +117,7 @@ class TestGeocode:
         )
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_method_structured_retrieve_with_all_params(self, client: NextbillionSDK) -> None:
         geocode = client.geocode.structured_retrieve(
@@ -135,7 +135,7 @@ class TestGeocode:
         )
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_raw_response_structured_retrieve(self, client: NextbillionSDK) -> None:
         response = client.geocode.with_raw_response.structured_retrieve(
@@ -148,7 +148,7 @@ class TestGeocode:
         geocode = response.parse()
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     def test_streaming_response_structured_retrieve(self, client: NextbillionSDK) -> None:
         with client.geocode.with_streaming_response.structured_retrieve(
@@ -169,7 +169,7 @@ class TestAsyncGeocode:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         geocode = await async_client.geocode.retrieve(
@@ -178,7 +178,7 @@ class TestAsyncGeocode:
         )
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geocode = await async_client.geocode.retrieve(
@@ -191,7 +191,7 @@ class TestAsyncGeocode:
         )
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geocode.with_raw_response.retrieve(
@@ -204,7 +204,7 @@ class TestAsyncGeocode:
         geocode = await response.parse()
         assert_matches_type(GeocodeRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geocode.with_streaming_response.retrieve(
@@ -219,7 +219,7 @@ class TestAsyncGeocode:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_batch_create(self, async_client: AsyncNextbillionSDK) -> None:
         geocode = await async_client.geocode.batch_create(
@@ -228,7 +228,7 @@ class TestAsyncGeocode:
         )
         assert_matches_type(GeocodeBatchCreateResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_batch_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geocode.with_raw_response.batch_create(
@@ -241,7 +241,7 @@ class TestAsyncGeocode:
         geocode = await response.parse()
         assert_matches_type(GeocodeBatchCreateResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_batch_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geocode.with_streaming_response.batch_create(
@@ -256,7 +256,7 @@ class TestAsyncGeocode:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_structured_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         geocode = await async_client.geocode.structured_retrieve(
@@ -265,7 +265,7 @@ class TestAsyncGeocode:
         )
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_method_structured_retrieve_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         geocode = await async_client.geocode.structured_retrieve(
@@ -283,7 +283,7 @@ class TestAsyncGeocode:
         )
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_raw_response_structured_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.geocode.with_raw_response.structured_retrieve(
@@ -296,7 +296,7 @@ class TestAsyncGeocode:
         geocode = await response.parse()
         assert_matches_type(GeocodeStructuredRetrieveResponse, geocode, path=["response"])
 
-    @pytest.mark.skip()
+    @pytest.mark.skip(reason="Prism tests are disabled")
     @parametrize
     async def test_streaming_response_structured_retrieve(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.geocode.with_streaming_response.structured_retrieve(
