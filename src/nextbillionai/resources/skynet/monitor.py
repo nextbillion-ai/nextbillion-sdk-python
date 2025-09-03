@@ -2,12 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -58,13 +57,13 @@ class MonitorResource(SyncAPIResource):
         self,
         *,
         key: str,
-        tags: List[str],
+        tags: SequenceNotStr[str],
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         geofence_config: monitor_create_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: List[str] | NotGiven = NOT_GIVEN,
+        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         idle_config: monitor_create_params.IdleConfig | NotGiven = NOT_GIVEN,
         match_filter: monitor_create_params.MatchFilter | NotGiven = NOT_GIVEN,
         meta_data: MetadataParam | NotGiven = NOT_GIVEN,
@@ -255,13 +254,13 @@ class MonitorResource(SyncAPIResource):
         key: str,
         description: str | NotGiven = NOT_GIVEN,
         geofence_config: monitor_update_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: List[str] | NotGiven = NOT_GIVEN,
+        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         idle_config: monitor_update_params.IdleConfig | NotGiven = NOT_GIVEN,
         match_filter: monitor_update_params.MatchFilter | NotGiven = NOT_GIVEN,
         meta_data: MetadataParam | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -517,13 +516,13 @@ class AsyncMonitorResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        tags: List[str],
+        tags: SequenceNotStr[str],
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
         cluster: Literal["america"] | NotGiven = NOT_GIVEN,
         custom_id: str | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         geofence_config: monitor_create_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: List[str] | NotGiven = NOT_GIVEN,
+        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         idle_config: monitor_create_params.IdleConfig | NotGiven = NOT_GIVEN,
         match_filter: monitor_create_params.MatchFilter | NotGiven = NOT_GIVEN,
         meta_data: MetadataParam | NotGiven = NOT_GIVEN,
@@ -714,13 +713,13 @@ class AsyncMonitorResource(AsyncAPIResource):
         key: str,
         description: str | NotGiven = NOT_GIVEN,
         geofence_config: monitor_update_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: List[str] | NotGiven = NOT_GIVEN,
+        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         idle_config: monitor_update_params.IdleConfig | NotGiven = NOT_GIVEN,
         match_filter: monitor_update_params.MatchFilter | NotGiven = NOT_GIVEN,
         meta_data: MetadataParam | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .metadata_param import MetadataParam
 
 __all__ = ["MonitorCreateParams", "GeofenceConfig", "IdleConfig", "MatchFilter", "SpeedingConfig"]
@@ -17,7 +17,7 @@ class MonitorCreateParams(TypedDict, total=False):
     API.
     """
 
-    tags: Required[List[str]]
+    tags: Required[SequenceNotStr[str]]
     """Use this parameter to add tags to the monitor.
 
     tags can be used for filtering monitors in the _Get Monitor List_ operation.
@@ -80,7 +80,7 @@ class MonitorCreateParams(TypedDict, total=False):
     of enter, exit or enter_and_exit.
     """
 
-    geofence_ids: List[str]
+    geofence_ids: SequenceNotStr[str]
     """\\**\\**Deprecated.
 
     Please use the geofence_config to specify the geofence_ids for this monitor.\\**\\**
@@ -131,7 +131,7 @@ class MonitorCreateParams(TypedDict, total=False):
 
 
 class GeofenceConfig(TypedDict, total=False):
-    geofence_ids: Required[List[str]]
+    geofence_ids: Required[SequenceNotStr[str]]
     """
     An array of strings to collect the geofence IDs that should be linked to the
     monitor. Please note geofence_ids are mandatory when using the geofence_config

@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -16,7 +15,7 @@ from .v2 import (
     AsyncV2ResourceWithStreamingResponse,
 )
 from ...types import optimization_compute_params, optimization_re_optimize_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -194,7 +193,7 @@ class OptimizationResource(SyncAPIResource):
         key: str,
         existing_request_id: str,
         job_changes: optimization_re_optimize_params.JobChanges | NotGiven = NOT_GIVEN,
-        locations: List[str] | NotGiven = NOT_GIVEN,
+        locations: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         shipment_changes: optimization_re_optimize_params.ShipmentChanges | NotGiven = NOT_GIVEN,
         vehicle_changes: optimization_re_optimize_params.VehicleChanges | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -433,7 +432,7 @@ class AsyncOptimizationResource(AsyncAPIResource):
         key: str,
         existing_request_id: str,
         job_changes: optimization_re_optimize_params.JobChanges | NotGiven = NOT_GIVEN,
-        locations: List[str] | NotGiven = NOT_GIVEN,
+        locations: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         shipment_changes: optimization_re_optimize_params.ShipmentChanges | NotGiven = NOT_GIVEN,
         vehicle_changes: optimization_re_optimize_params.VehicleChanges | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

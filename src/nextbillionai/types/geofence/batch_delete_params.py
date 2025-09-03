@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["BatchDeleteParams"]
 
@@ -15,7 +16,7 @@ class BatchDeleteParams(TypedDict, total=False):
     API.
     """
 
-    ids: List[str]
+    ids: SequenceNotStr[str]
     """An array IDs of the geofence to be deleted.
 
     These are the IDs that were generated/provided at the time of creating the
