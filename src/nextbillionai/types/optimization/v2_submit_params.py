@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import List, Iterable
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .job_param import JobParam
 from .vehicle_param import VehicleParam
 from .shipment_param import ShipmentParam
@@ -222,7 +223,7 @@ class V2SubmitParams(TypedDict, total=False):
 
 
 class Locations(TypedDict, total=False):
-    location: Required[List[str]]
+    location: Required[SequenceNotStr[str]]
     """Indicate all the location coordinates that will be used during optimization.
 
     The coordinates should be specified in the format “latitude, longitude”. It is
@@ -948,7 +949,7 @@ class Solution(TypedDict, total=False):
 
 
 class Unassigned(TypedDict, total=False):
-    jobs: List[str]
+    jobs: SequenceNotStr[str]
     """Specify the unassigned job IDs from the previous optimization result.
 
     Please note the IDs should also be present in the jobs part of the input.
@@ -959,7 +960,7 @@ class Unassigned(TypedDict, total=False):
     Providing mixed value types in the array, will lead to an error.
     """
 
-    shipments: Iterable[List[str]]
+    shipments: Iterable[SequenceNotStr[str]]
     """
     Specify the unassigned shipment pickup & delivery IDs from the previous
     optimization result. Both the pickup & delivery steps of a shipment should be

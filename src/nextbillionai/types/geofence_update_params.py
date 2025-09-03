@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["GeofenceUpdateParams", "Circle", "CircleCenter", "Isochrone", "Polygon", "PolygonGeojson"]
 
@@ -60,7 +62,7 @@ class GeofenceUpdateParams(TypedDict, total=False):
     Area of the polygon should be less than 2000 km<sup>2</sup>.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """Use this parameter to add/modify one or multiple tags of a geofence.
 
     tags can be used to search or filter geofences (using Get Geofence List method).

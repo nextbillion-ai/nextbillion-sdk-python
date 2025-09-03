@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ShipmentParam", "Delivery", "Pickup", "Volume"]
 
@@ -251,7 +253,7 @@ class ShipmentParam(TypedDict, total=False):
     The default value is \false\\..
     """
 
-    incompatible_load_types: List[str]
+    incompatible_load_types: SequenceNotStr[str]
     """
     Use this parameter to specify the type of loads which are incompatible with the
     shipment’s load type. Once this property is configured, the shipment can only be
@@ -285,7 +287,7 @@ class ShipmentParam(TypedDict, total=False):
       attributes are also provided in the input request.
     """
 
-    load_types: List[str]
+    load_types: SequenceNotStr[str]
     """Use this parameter to specify the type of loads for the given shipment.
 
     Once this property is configured, the shipment can not be served by a vehicle

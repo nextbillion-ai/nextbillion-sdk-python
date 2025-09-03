@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .meta_data_param import MetaDataParam
 
 __all__ = ["AssetCreateParams"]
@@ -56,7 +56,7 @@ class AssetCreateParams(TypedDict, total=False):
     Use this field to assign a meaningful, custom name to the asset being created.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     **This parameter will be deprecated soon! Please use the attributes parameter to
     add labels or markers for the asset.**
