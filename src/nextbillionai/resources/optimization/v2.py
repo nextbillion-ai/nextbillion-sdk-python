@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -57,7 +57,7 @@ class V2Resource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V2RetrieveResultResponse:
         """
         Flexible GET
@@ -101,25 +101,25 @@ class V2Resource(SyncAPIResource):
         key: str,
         locations: v2_submit_params.Locations,
         vehicles: Iterable[VehicleParam],
-        cost_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        depots: Iterable[v2_submit_params.Depot] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        distance_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        duration_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        existing_solution_id: str | NotGiven = NOT_GIVEN,
-        jobs: Iterable[JobParam] | NotGiven = NOT_GIVEN,
-        options: v2_submit_params.Options | NotGiven = NOT_GIVEN,
-        relations: Iterable[v2_submit_params.Relation] | NotGiven = NOT_GIVEN,
-        shipments: Iterable[ShipmentParam] | NotGiven = NOT_GIVEN,
-        solution: Iterable[v2_submit_params.Solution] | NotGiven = NOT_GIVEN,
-        unassigned: v2_submit_params.Unassigned | NotGiven = NOT_GIVEN,
-        zones: Iterable[v2_submit_params.Zone] | NotGiven = NOT_GIVEN,
+        cost_matrix: Iterable[Iterable[int]] | Omit = omit,
+        depots: Iterable[v2_submit_params.Depot] | Omit = omit,
+        description: str | Omit = omit,
+        distance_matrix: Iterable[Iterable[int]] | Omit = omit,
+        duration_matrix: Iterable[Iterable[int]] | Omit = omit,
+        existing_solution_id: str | Omit = omit,
+        jobs: Iterable[JobParam] | Omit = omit,
+        options: v2_submit_params.Options | Omit = omit,
+        relations: Iterable[v2_submit_params.Relation] | Omit = omit,
+        shipments: Iterable[ShipmentParam] | Omit = omit,
+        solution: Iterable[v2_submit_params.Solution] | Omit = omit,
+        unassigned: v2_submit_params.Unassigned | Omit = omit,
+        zones: Iterable[v2_submit_params.Zone] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PostResponse:
         """
         Flexible POST
@@ -336,7 +336,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V2RetrieveResultResponse:
         """
         Flexible GET
@@ -380,25 +380,25 @@ class AsyncV2Resource(AsyncAPIResource):
         key: str,
         locations: v2_submit_params.Locations,
         vehicles: Iterable[VehicleParam],
-        cost_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        depots: Iterable[v2_submit_params.Depot] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        distance_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        duration_matrix: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        existing_solution_id: str | NotGiven = NOT_GIVEN,
-        jobs: Iterable[JobParam] | NotGiven = NOT_GIVEN,
-        options: v2_submit_params.Options | NotGiven = NOT_GIVEN,
-        relations: Iterable[v2_submit_params.Relation] | NotGiven = NOT_GIVEN,
-        shipments: Iterable[ShipmentParam] | NotGiven = NOT_GIVEN,
-        solution: Iterable[v2_submit_params.Solution] | NotGiven = NOT_GIVEN,
-        unassigned: v2_submit_params.Unassigned | NotGiven = NOT_GIVEN,
-        zones: Iterable[v2_submit_params.Zone] | NotGiven = NOT_GIVEN,
+        cost_matrix: Iterable[Iterable[int]] | Omit = omit,
+        depots: Iterable[v2_submit_params.Depot] | Omit = omit,
+        description: str | Omit = omit,
+        distance_matrix: Iterable[Iterable[int]] | Omit = omit,
+        duration_matrix: Iterable[Iterable[int]] | Omit = omit,
+        existing_solution_id: str | Omit = omit,
+        jobs: Iterable[JobParam] | Omit = omit,
+        options: v2_submit_params.Options | Omit = omit,
+        relations: Iterable[v2_submit_params.Relation] | Omit = omit,
+        shipments: Iterable[ShipmentParam] | Omit = omit,
+        solution: Iterable[v2_submit_params.Solution] | Omit = omit,
+        unassigned: v2_submit_params.Unassigned | Omit = omit,
+        zones: Iterable[v2_submit_params.Zone] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PostResponse:
         """
         Flexible POST

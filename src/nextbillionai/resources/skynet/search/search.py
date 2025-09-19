@@ -14,7 +14,7 @@ from .polygon import (
     PolygonResourceWithStreamingResponse,
     AsyncPolygonResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -61,21 +61,21 @@ class SearchResource(SyncAPIResource):
         center: str,
         key: str,
         radius: float,
-        filter: str | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        max_search_limit: bool | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
-        sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
+        filter: str | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        max_search_limit: bool | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort_by: Literal["distance", "duration", "straight_distance"] | Omit = omit,
+        sort_destination: str | Omit = omit,
+        sort_driving_mode: Literal["car", "truck"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchResponse:
         """
         Around Search
@@ -185,21 +185,21 @@ class SearchResource(SyncAPIResource):
         *,
         bound: str,
         key: str,
-        filter: str | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        max_search_limit: bool | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
-        sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
+        filter: str | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        max_search_limit: bool | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort_by: Literal["distance", "duration", "straight_distance"] | Omit = omit,
+        sort_destination: str | Omit = omit,
+        sort_driving_mode: Literal["car", "truck"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchResponse:
         """
         Bound Search
@@ -334,21 +334,21 @@ class AsyncSearchResource(AsyncAPIResource):
         center: str,
         key: str,
         radius: float,
-        filter: str | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        max_search_limit: bool | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
-        sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
+        filter: str | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        max_search_limit: bool | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort_by: Literal["distance", "duration", "straight_distance"] | Omit = omit,
+        sort_destination: str | Omit = omit,
+        sort_driving_mode: Literal["car", "truck"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchResponse:
         """
         Around Search
@@ -458,21 +458,21 @@ class AsyncSearchResource(AsyncAPIResource):
         *,
         bound: str,
         key: str,
-        filter: str | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        max_search_limit: bool | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort_by: Literal["distance", "duration", "straight_distance"] | NotGiven = NOT_GIVEN,
-        sort_destination: str | NotGiven = NOT_GIVEN,
-        sort_driving_mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
+        filter: str | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        max_search_limit: bool | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort_by: Literal["distance", "duration", "straight_distance"] | Omit = omit,
+        sort_destination: str | Omit = omit,
+        sort_driving_mode: Literal["car", "truck"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SearchResponse:
         """
         Bound Search

@@ -15,7 +15,7 @@ from .v2 import (
     AsyncV2ResourceWithStreamingResponse,
 )
 from ...types import optimization_compute_params, optimization_re_optimize_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -73,19 +73,19 @@ class OptimizationResource(SyncAPIResource):
         *,
         coordinates: str,
         key: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        destination: Literal["any", "last"] | NotGiven = NOT_GIVEN,
-        geometries: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        roundtrip: bool | NotGiven = NOT_GIVEN,
-        source: Literal["any", "first"] | NotGiven = NOT_GIVEN,
-        with_geometry: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        destination: Literal["any", "last"] | Omit = omit,
+        geometries: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        roundtrip: bool | Omit = omit,
+        source: Literal["any", "first"] | Omit = omit,
+        with_geometry: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OptimizationComputeResponse:
         """
         Nextbillion.ai Optimization API computes and returns an optimized route between
@@ -192,16 +192,16 @@ class OptimizationResource(SyncAPIResource):
         *,
         key: str,
         existing_request_id: str,
-        job_changes: optimization_re_optimize_params.JobChanges | NotGiven = NOT_GIVEN,
-        locations: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        shipment_changes: optimization_re_optimize_params.ShipmentChanges | NotGiven = NOT_GIVEN,
-        vehicle_changes: optimization_re_optimize_params.VehicleChanges | NotGiven = NOT_GIVEN,
+        job_changes: optimization_re_optimize_params.JobChanges | Omit = omit,
+        locations: SequenceNotStr[str] | Omit = omit,
+        shipment_changes: optimization_re_optimize_params.ShipmentChanges | Omit = omit,
+        vehicle_changes: optimization_re_optimize_params.VehicleChanges | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PostResponse:
         """
         Re-optimization
@@ -312,19 +312,19 @@ class AsyncOptimizationResource(AsyncAPIResource):
         *,
         coordinates: str,
         key: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        destination: Literal["any", "last"] | NotGiven = NOT_GIVEN,
-        geometries: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        roundtrip: bool | NotGiven = NOT_GIVEN,
-        source: Literal["any", "first"] | NotGiven = NOT_GIVEN,
-        with_geometry: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        destination: Literal["any", "last"] | Omit = omit,
+        geometries: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        roundtrip: bool | Omit = omit,
+        source: Literal["any", "first"] | Omit = omit,
+        with_geometry: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OptimizationComputeResponse:
         """
         Nextbillion.ai Optimization API computes and returns an optimized route between
@@ -431,16 +431,16 @@ class AsyncOptimizationResource(AsyncAPIResource):
         *,
         key: str,
         existing_request_id: str,
-        job_changes: optimization_re_optimize_params.JobChanges | NotGiven = NOT_GIVEN,
-        locations: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        shipment_changes: optimization_re_optimize_params.ShipmentChanges | NotGiven = NOT_GIVEN,
-        vehicle_changes: optimization_re_optimize_params.VehicleChanges | NotGiven = NOT_GIVEN,
+        job_changes: optimization_re_optimize_params.JobChanges | Omit = omit,
+        locations: SequenceNotStr[str] | Omit = omit,
+        shipment_changes: optimization_re_optimize_params.ShipmentChanges | Omit = omit,
+        vehicle_changes: optimization_re_optimize_params.VehicleChanges | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PostResponse:
         """
         Re-optimization

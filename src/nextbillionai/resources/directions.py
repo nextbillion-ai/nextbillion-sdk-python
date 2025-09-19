@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import direction_compute_route_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,9 +48,9 @@ class DirectionsResource(SyncAPIResource):
         *,
         destination: str,
         origin: str,
-        altcount: int | NotGiven = NOT_GIVEN,
-        alternatives: bool | NotGiven = NOT_GIVEN,
-        approaches: str | NotGiven = NOT_GIVEN,
+        altcount: int | Omit = omit,
+        alternatives: bool | Omit = omit,
+        approaches: str | Omit = omit,
         avoid: Literal[
             "toll",
             "ferry",
@@ -65,39 +65,39 @@ class DirectionsResource(SyncAPIResource):
             "geofence_id",
             "tunnel",
         ]
-        | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        cross_border: bool | NotGiven = NOT_GIVEN,
-        departure_time: int | NotGiven = NOT_GIVEN,
-        drive_time_limits: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        bearings: str | Omit = omit,
+        cross_border: bool | Omit = omit,
+        departure_time: int | Omit = omit,
+        drive_time_limits: str | Omit = omit,
         emission_class: Literal[
             "euro0", "euro1", "euro2", "euro3", "euro4", "euro5", "euro6", "euro7", "euro8", "euro9"
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         exclude: Literal[
             "toll", "ferry", "highway", "service_road", "uturn", "sharp_turn", "left_turn", "right_turn", "none"
         ]
-        | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        option: Literal["fast", "flexible"] | NotGiven = NOT_GIVEN,
-        overview: Literal["full", "simplified", "false"] | NotGiven = NOT_GIVEN,
-        rest_times: str | NotGiven = NOT_GIVEN,
-        road_info: Literal["max_speed", "toll_distance", "toll_cost"] | NotGiven = NOT_GIVEN,
-        route_type: Literal["fastest", "shortest"] | NotGiven = NOT_GIVEN,
-        steps: bool | NotGiven = NOT_GIVEN,
-        truck_axle_load: float | NotGiven = NOT_GIVEN,
-        truck_size: str | NotGiven = NOT_GIVEN,
-        truck_weight: int | NotGiven = NOT_GIVEN,
-        turn_angle_range: int | NotGiven = NOT_GIVEN,
-        waypoints: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        option: Literal["fast", "flexible"] | Omit = omit,
+        overview: Literal["full", "simplified", "false"] | Omit = omit,
+        rest_times: str | Omit = omit,
+        road_info: Literal["max_speed", "toll_distance", "toll_cost"] | Omit = omit,
+        route_type: Literal["fastest", "shortest"] | Omit = omit,
+        steps: bool | Omit = omit,
+        truck_axle_load: float | Omit = omit,
+        truck_size: str | Omit = omit,
+        truck_weight: int | Omit = omit,
+        turn_angle_range: int | Omit = omit,
+        waypoints: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DirectionComputeRouteResponse:
         """
         Directions API is a service that computes a route with given coordinates.
@@ -439,9 +439,9 @@ class AsyncDirectionsResource(AsyncAPIResource):
         *,
         destination: str,
         origin: str,
-        altcount: int | NotGiven = NOT_GIVEN,
-        alternatives: bool | NotGiven = NOT_GIVEN,
-        approaches: str | NotGiven = NOT_GIVEN,
+        altcount: int | Omit = omit,
+        alternatives: bool | Omit = omit,
+        approaches: str | Omit = omit,
         avoid: Literal[
             "toll",
             "ferry",
@@ -456,39 +456,39 @@ class AsyncDirectionsResource(AsyncAPIResource):
             "geofence_id",
             "tunnel",
         ]
-        | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        cross_border: bool | NotGiven = NOT_GIVEN,
-        departure_time: int | NotGiven = NOT_GIVEN,
-        drive_time_limits: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        bearings: str | Omit = omit,
+        cross_border: bool | Omit = omit,
+        departure_time: int | Omit = omit,
+        drive_time_limits: str | Omit = omit,
         emission_class: Literal[
             "euro0", "euro1", "euro2", "euro3", "euro4", "euro5", "euro6", "euro7", "euro8", "euro9"
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         exclude: Literal[
             "toll", "ferry", "highway", "service_road", "uturn", "sharp_turn", "left_turn", "right_turn", "none"
         ]
-        | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        option: Literal["fast", "flexible"] | NotGiven = NOT_GIVEN,
-        overview: Literal["full", "simplified", "false"] | NotGiven = NOT_GIVEN,
-        rest_times: str | NotGiven = NOT_GIVEN,
-        road_info: Literal["max_speed", "toll_distance", "toll_cost"] | NotGiven = NOT_GIVEN,
-        route_type: Literal["fastest", "shortest"] | NotGiven = NOT_GIVEN,
-        steps: bool | NotGiven = NOT_GIVEN,
-        truck_axle_load: float | NotGiven = NOT_GIVEN,
-        truck_size: str | NotGiven = NOT_GIVEN,
-        truck_weight: int | NotGiven = NOT_GIVEN,
-        turn_angle_range: int | NotGiven = NOT_GIVEN,
-        waypoints: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        option: Literal["fast", "flexible"] | Omit = omit,
+        overview: Literal["full", "simplified", "false"] | Omit = omit,
+        rest_times: str | Omit = omit,
+        road_info: Literal["max_speed", "toll_distance", "toll_cost"] | Omit = omit,
+        route_type: Literal["fastest", "shortest"] | Omit = omit,
+        steps: bool | Omit = omit,
+        truck_axle_load: float | Omit = omit,
+        truck_size: str | Omit = omit,
+        truck_weight: int | Omit = omit,
+        turn_angle_range: int | Omit = omit,
+        waypoints: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DirectionComputeRouteResponse:
         """
         Directions API is a service that computes a route with given coordinates.
