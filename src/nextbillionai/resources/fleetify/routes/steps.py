@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -64,18 +64,18 @@ class StepsResource(SyncAPIResource):
         location: Iterable[float],
         position: int,
         type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"],
-        address: str | NotGiven = NOT_GIVEN,
-        completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
-        meta: step_create_params.Meta | NotGiven = NOT_GIVEN,
+        address: str | Omit = omit,
+        completion_mode: RouteStepCompletionMode | Omit = omit,
+        document_template_id: str | Omit = omit,
+        duration: int | Omit = omit,
+        geofence_config: RouteStepGeofenceConfigParam | Omit = omit,
+        meta: step_create_params.Meta | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepCreateResponse:
         """
         Insert a new step
@@ -182,20 +182,20 @@ class StepsResource(SyncAPIResource):
         key: str,
         arrival: int,
         position: int,
-        address: str | NotGiven = NOT_GIVEN,
-        completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
-        location: Iterable[float] | NotGiven = NOT_GIVEN,
-        meta: step_update_params.Meta | NotGiven = NOT_GIVEN,
-        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | NotGiven = NOT_GIVEN,
+        address: str | Omit = omit,
+        completion_mode: RouteStepCompletionMode | Omit = omit,
+        document_template_id: str | Omit = omit,
+        duration: int | Omit = omit,
+        geofence_config: RouteStepGeofenceConfigParam | Omit = omit,
+        location: Iterable[float] | Omit = omit,
+        meta: step_update_params.Meta | Omit = omit,
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepUpdateResponse:
         """
         Update a step
@@ -302,7 +302,7 @@ class StepsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepDeleteResponse:
         """
         Delete a step
@@ -341,15 +341,15 @@ class StepsResource(SyncAPIResource):
         *,
         route_id: str,
         key: str,
-        document: DocumentSubmissionParam | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        document: DocumentSubmissionParam | Omit = omit,
+        mode: str | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Complete a route step with document submission, or update the document of a
@@ -441,18 +441,18 @@ class AsyncStepsResource(AsyncAPIResource):
         location: Iterable[float],
         position: int,
         type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"],
-        address: str | NotGiven = NOT_GIVEN,
-        completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
-        meta: step_create_params.Meta | NotGiven = NOT_GIVEN,
+        address: str | Omit = omit,
+        completion_mode: RouteStepCompletionMode | Omit = omit,
+        document_template_id: str | Omit = omit,
+        duration: int | Omit = omit,
+        geofence_config: RouteStepGeofenceConfigParam | Omit = omit,
+        meta: step_create_params.Meta | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepCreateResponse:
         """
         Insert a new step
@@ -559,20 +559,20 @@ class AsyncStepsResource(AsyncAPIResource):
         key: str,
         arrival: int,
         position: int,
-        address: str | NotGiven = NOT_GIVEN,
-        completion_mode: RouteStepCompletionMode | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        geofence_config: RouteStepGeofenceConfigParam | NotGiven = NOT_GIVEN,
-        location: Iterable[float] | NotGiven = NOT_GIVEN,
-        meta: step_update_params.Meta | NotGiven = NOT_GIVEN,
-        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | NotGiven = NOT_GIVEN,
+        address: str | Omit = omit,
+        completion_mode: RouteStepCompletionMode | Omit = omit,
+        document_template_id: str | Omit = omit,
+        duration: int | Omit = omit,
+        geofence_config: RouteStepGeofenceConfigParam | Omit = omit,
+        location: Iterable[float] | Omit = omit,
+        meta: step_update_params.Meta | Omit = omit,
+        type: Literal["start", "job", "pickup", "delivery", "break", "layover", "end"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepUpdateResponse:
         """
         Update a step
@@ -679,7 +679,7 @@ class AsyncStepsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StepDeleteResponse:
         """
         Delete a step
@@ -718,15 +718,15 @@ class AsyncStepsResource(AsyncAPIResource):
         *,
         route_id: str,
         key: str,
-        document: DocumentSubmissionParam | NotGiven = NOT_GIVEN,
-        mode: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
+        document: DocumentSubmissionParam | Omit = omit,
+        mode: str | Omit = omit,
+        status: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Complete a route step with document submission, or update the document of a

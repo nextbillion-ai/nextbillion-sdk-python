@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import snap_to_road_snap_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -48,21 +48,21 @@ class SnapToRoadsResource(SyncAPIResource):
         *,
         key: str,
         path: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        option: Literal["flexible"] | NotGiven = NOT_GIVEN,
-        radiuses: str | NotGiven = NOT_GIVEN,
-        road_info: Literal["max_speed"] | NotGiven = NOT_GIVEN,
-        timestamps: str | NotGiven = NOT_GIVEN,
-        tolerate_outlier: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        option: Literal["flexible"] | Omit = omit,
+        radiuses: str | Omit = omit,
+        road_info: Literal["max_speed"] | Omit = omit,
+        timestamps: str | Omit = omit,
+        tolerate_outlier: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SnapToRoadSnapResponse:
         """
         Nextbillion.ai Snap To Roads API takes a series of locations along a route, and
@@ -198,21 +198,21 @@ class AsyncSnapToRoadsResource(AsyncAPIResource):
         *,
         key: str,
         path: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        option: Literal["flexible"] | NotGiven = NOT_GIVEN,
-        radiuses: str | NotGiven = NOT_GIVEN,
-        road_info: Literal["max_speed"] | NotGiven = NOT_GIVEN,
-        timestamps: str | NotGiven = NOT_GIVEN,
-        tolerate_outlier: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        option: Literal["flexible"] | Omit = omit,
+        radiuses: str | Omit = omit,
+        road_info: Literal["max_speed"] | Omit = omit,
+        timestamps: str | Omit = omit,
+        tolerate_outlier: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SnapToRoadSnapResponse:
         """
         Nextbillion.ai Snap To Roads API takes a series of locations along a route, and

@@ -6,7 +6,7 @@ from typing import Iterable
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -52,15 +52,15 @@ class PlaceResource(SyncAPIResource):
         *,
         key: str,
         place: Iterable[place_create_params.Place],
-        data_source: place_create_params.DataSource | NotGiven = NOT_GIVEN,
-        force: bool | NotGiven = NOT_GIVEN,
-        score: int | NotGiven = NOT_GIVEN,
+        data_source: place_create_params.DataSource | Omit = omit,
+        force: bool | Omit = omit,
+        score: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceCreateResponse:
         """
         The "Add Place" method allows users to create custom places
@@ -134,7 +134,7 @@ class PlaceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceRetrieveResponse:
         """
         Use this method to get the details of previously created custom places using its
@@ -171,15 +171,15 @@ class PlaceResource(SyncAPIResource):
         doc_id: str,
         *,
         key: str,
-        data_source: place_update_params.DataSource | NotGiven = NOT_GIVEN,
-        place: Iterable[PlaceItemParam] | NotGiven = NOT_GIVEN,
-        score: int | NotGiven = NOT_GIVEN,
+        data_source: place_update_params.DataSource | Omit = omit,
+        place: Iterable[PlaceItemParam] | Omit = omit,
+        score: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceUpdateResponse:
         """
         The "Update Place" method allows businesses to update the attributes of an
@@ -254,7 +254,7 @@ class PlaceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceDeleteResponse:
         """
         The "Delete Place" method enables businesses to delete a previously created
@@ -317,15 +317,15 @@ class AsyncPlaceResource(AsyncAPIResource):
         *,
         key: str,
         place: Iterable[place_create_params.Place],
-        data_source: place_create_params.DataSource | NotGiven = NOT_GIVEN,
-        force: bool | NotGiven = NOT_GIVEN,
-        score: int | NotGiven = NOT_GIVEN,
+        data_source: place_create_params.DataSource | Omit = omit,
+        force: bool | Omit = omit,
+        score: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceCreateResponse:
         """
         The "Add Place" method allows users to create custom places
@@ -399,7 +399,7 @@ class AsyncPlaceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceRetrieveResponse:
         """
         Use this method to get the details of previously created custom places using its
@@ -436,15 +436,15 @@ class AsyncPlaceResource(AsyncAPIResource):
         doc_id: str,
         *,
         key: str,
-        data_source: place_update_params.DataSource | NotGiven = NOT_GIVEN,
-        place: Iterable[PlaceItemParam] | NotGiven = NOT_GIVEN,
-        score: int | NotGiven = NOT_GIVEN,
+        data_source: place_update_params.DataSource | Omit = omit,
+        place: Iterable[PlaceItemParam] | Omit = omit,
+        score: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceUpdateResponse:
         """
         The "Update Place" method allows businesses to update the attributes of an
@@ -519,7 +519,7 @@ class AsyncPlaceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PlaceDeleteResponse:
         """
         The "Delete Place" method enables businesses to delete a previously created

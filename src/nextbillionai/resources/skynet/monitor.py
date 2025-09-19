@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -59,22 +59,22 @@ class MonitorResource(SyncAPIResource):
         key: str,
         tags: SequenceNotStr[str],
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        geofence_config: monitor_create_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        idle_config: monitor_create_params.IdleConfig | NotGiven = NOT_GIVEN,
-        match_filter: monitor_create_params.MatchFilter | NotGiven = NOT_GIVEN,
-        meta_data: MetadataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        speeding_config: monitor_create_params.SpeedingConfig | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        geofence_config: monitor_create_params.GeofenceConfig | Omit = omit,
+        geofence_ids: SequenceNotStr[str] | Omit = omit,
+        idle_config: monitor_create_params.IdleConfig | Omit = omit,
+        match_filter: monitor_create_params.MatchFilter | Omit = omit,
+        meta_data: MetadataParam | Omit = omit,
+        name: str | Omit = omit,
+        speeding_config: monitor_create_params.SpeedingConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorCreateResponse:
         """
         Create a Monitor
@@ -216,7 +216,7 @@ class MonitorResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorRetrieveResponse:
         """
         Get a Monitor
@@ -252,22 +252,22 @@ class MonitorResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        description: str | NotGiven = NOT_GIVEN,
-        geofence_config: monitor_update_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        idle_config: monitor_update_params.IdleConfig | NotGiven = NOT_GIVEN,
-        match_filter: monitor_update_params.MatchFilter | NotGiven = NOT_GIVEN,
-        meta_data: MetadataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        geofence_config: monitor_update_params.GeofenceConfig | Omit = omit,
+        geofence_ids: SequenceNotStr[str] | Omit = omit,
+        idle_config: monitor_update_params.IdleConfig | Omit = omit,
+        match_filter: monitor_update_params.MatchFilter | Omit = omit,
+        meta_data: MetadataParam | Omit = omit,
+        name: str | Omit = omit,
+        speeding_config: monitor_update_params.SpeedingConfig | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update a Monitor
@@ -380,17 +380,17 @@ class MonitorResource(SyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorListResponse:
         """
         Get Monitor List
@@ -460,7 +460,7 @@ class MonitorResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete a Monitor
@@ -518,22 +518,22 @@ class AsyncMonitorResource(AsyncAPIResource):
         key: str,
         tags: SequenceNotStr[str],
         type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"],
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        geofence_config: monitor_create_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        idle_config: monitor_create_params.IdleConfig | NotGiven = NOT_GIVEN,
-        match_filter: monitor_create_params.MatchFilter | NotGiven = NOT_GIVEN,
-        meta_data: MetadataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        speeding_config: monitor_create_params.SpeedingConfig | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        geofence_config: monitor_create_params.GeofenceConfig | Omit = omit,
+        geofence_ids: SequenceNotStr[str] | Omit = omit,
+        idle_config: monitor_create_params.IdleConfig | Omit = omit,
+        match_filter: monitor_create_params.MatchFilter | Omit = omit,
+        meta_data: MetadataParam | Omit = omit,
+        name: str | Omit = omit,
+        speeding_config: monitor_create_params.SpeedingConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorCreateResponse:
         """
         Create a Monitor
@@ -675,7 +675,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorRetrieveResponse:
         """
         Get a Monitor
@@ -711,22 +711,22 @@ class AsyncMonitorResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        description: str | NotGiven = NOT_GIVEN,
-        geofence_config: monitor_update_params.GeofenceConfig | NotGiven = NOT_GIVEN,
-        geofence_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        idle_config: monitor_update_params.IdleConfig | NotGiven = NOT_GIVEN,
-        match_filter: monitor_update_params.MatchFilter | NotGiven = NOT_GIVEN,
-        meta_data: MetadataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        speeding_config: monitor_update_params.SpeedingConfig | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        geofence_config: monitor_update_params.GeofenceConfig | Omit = omit,
+        geofence_ids: SequenceNotStr[str] | Omit = omit,
+        idle_config: monitor_update_params.IdleConfig | Omit = omit,
+        match_filter: monitor_update_params.MatchFilter | Omit = omit,
+        meta_data: MetadataParam | Omit = omit,
+        name: str | Omit = omit,
+        speeding_config: monitor_update_params.SpeedingConfig | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: Literal["enter", "exit", "enter_and_exit", "speeding", "idle"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update a Monitor
@@ -839,17 +839,17 @@ class AsyncMonitorResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MonitorListResponse:
         """
         Get Monitor List
@@ -919,7 +919,7 @@ class AsyncMonitorResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete a Monitor

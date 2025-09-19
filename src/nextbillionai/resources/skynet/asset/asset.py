@@ -22,7 +22,7 @@ from .location import (
     LocationResourceWithStreamingResponse,
     AsyncLocationResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -84,19 +84,19 @@ class AssetResource(SyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: MetaDataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: MetaDataParam | Omit = omit,
+        name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetCreateResponse:
         """
         Create an Asset
@@ -182,13 +182,13 @@ class AssetResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetRetrieveResponse:
         """
         Get an Asset
@@ -232,18 +232,18 @@ class AssetResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: MetaDataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: MetaDataParam | Omit = omit,
+        name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update an Asset
@@ -323,19 +323,19 @@ class AssetResource(SyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetListResponse:
         """
         Get Asset List
@@ -420,13 +420,13 @@ class AssetResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete an Asset
@@ -476,7 +476,7 @@ class AssetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Bind asset to device
@@ -521,13 +521,13 @@ class AssetResource(SyncAPIResource):
         key: str,
         device_id: str,
         locations: asset_track_params.Locations,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Upload track info
@@ -592,7 +592,7 @@ class AssetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """Update asset attributes.
 
@@ -674,19 +674,19 @@ class AsyncAssetResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: MetaDataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: MetaDataParam | Omit = omit,
+        name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetCreateResponse:
         """
         Create an Asset
@@ -772,13 +772,13 @@ class AsyncAssetResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetRetrieveResponse:
         """
         Get an Asset
@@ -822,18 +822,18 @@ class AsyncAssetResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: MetaDataParam | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: MetaDataParam | Omit = omit,
+        name: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update an Asset
@@ -913,19 +913,19 @@ class AsyncAssetResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        include_all_of_attributes: str | NotGiven = NOT_GIVEN,
-        include_any_of_attributes: str | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        include_all_of_attributes: str | Omit = omit,
+        include_any_of_attributes: str | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        sort: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AssetListResponse:
         """
         Get Asset List
@@ -1010,13 +1010,13 @@ class AsyncAssetResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete an Asset
@@ -1066,7 +1066,7 @@ class AsyncAssetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Bind asset to device
@@ -1111,13 +1111,13 @@ class AsyncAssetResource(AsyncAPIResource):
         key: str,
         device_id: str,
         locations: asset_track_params.Locations,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Upload track info
@@ -1182,7 +1182,7 @@ class AsyncAssetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """Update asset attributes.
 

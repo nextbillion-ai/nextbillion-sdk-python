@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -48,19 +48,19 @@ class ConsoleResource(SyncAPIResource):
         self,
         *,
         type: Literal["circle", "polygon", "isochrone"],
-        circle: console_preview_params.Circle | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        isochrone: console_preview_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: console_preview_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        circle: console_preview_params.Circle | Omit = omit,
+        custom_id: str | Omit = omit,
+        isochrone: console_preview_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: console_preview_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConsolePreviewResponse:
         """
         preview geofence geojson
@@ -146,7 +146,7 @@ class ConsoleResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConsoleSearchResponse:
         """
         Console Geofence Search API
@@ -199,19 +199,19 @@ class AsyncConsoleResource(AsyncAPIResource):
         self,
         *,
         type: Literal["circle", "polygon", "isochrone"],
-        circle: console_preview_params.Circle | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        isochrone: console_preview_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: console_preview_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        circle: console_preview_params.Circle | Omit = omit,
+        custom_id: str | Omit = omit,
+        isochrone: console_preview_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: console_preview_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConsolePreviewResponse:
         """
         preview geofence geojson
@@ -297,7 +297,7 @@ class AsyncConsoleResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConsoleSearchResponse:
         """
         Console Geofence Search API
