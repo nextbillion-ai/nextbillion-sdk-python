@@ -85,6 +85,7 @@ pip install nextbillionai[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
+import os
 import asyncio
 from nextbillionai import DefaultAioHttpClient
 from nextbillionai import AsyncNextbillionSDK
@@ -92,7 +93,7 @@ from nextbillionai import AsyncNextbillionSDK
 
 async def main() -> None:
     async with AsyncNextbillionSDK(
-        api_key="My API Key",
+        api_key=os.environ.get("NEXTBILLION_SDK_API_KEY"),  # This is the default and can be omitted
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.directions.compute_route(
