@@ -8,6 +8,12 @@ __all__ = ["RoutingResponse"]
 
 
 class RoutingResponse(BaseModel):
+    """
+    An object returning the routing characteristics that are used to generate the route and turn-by-turn navigation steps for the dispatched route. The route and navigation steps are available when driver uses the in-app navigation.
+
+    Please note the routing characteristics returned here are the same as those configured in the input request. The fields which were not specified in the input will be returned as blanks.
+    """
+
     approaches: Optional[str] = None
     """
     Returns the configuration of approaches for each step, that is used when

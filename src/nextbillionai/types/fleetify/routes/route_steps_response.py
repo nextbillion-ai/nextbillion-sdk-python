@@ -69,6 +69,10 @@ class Completion(BaseModel):
 
 
 class Meta(BaseModel):
+    """
+    An object returning custom details about the step that were configured in the input request while configuring the step details. The information returned here will be available for display on the Driver's app under step details.
+    """
+
     customer_name: Optional[str] = None
     """Returns the customer name associated with the step.
 

@@ -50,6 +50,12 @@ class PostalcodeRetrieveCoordinatesParams(TypedDict, total=False):
 
 
 class At(TypedDict, total=False):
+    """Location coordinates that you want to get the postal code of.
+
+    If not providing postalcode in the request, at becomes mandatory.
+    Please note that only 1 point can be requested. [See this example](#note).
+    """
+
     lat: float
     """Latitude of the location."""
 

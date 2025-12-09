@@ -223,6 +223,10 @@ class V2SubmitParams(TypedDict, total=False):
 
 
 class Locations(TypedDict, total=False):
+    """
+    The locations object is used to define all the locations that will be used during the optimization process. Read more about this attribute in the [Location Object](#location-object) section.
+    """
+
     location: Required[SequenceNotStr[str]]
     """Indicate all the location coordinates that will be used during optimization.
 
@@ -294,6 +298,14 @@ class Depot(TypedDict, total=False):
 
 
 class OptionsConstraint(TypedDict, total=False):
+    """
+    This attribute defines both the soft and hard constraints for an optimization job.
+
+    Soft constraints are constraints that do not necessarily have to be satisfied, but the optimization algorithm will try to satisfy them as much as possible. Whereas the hard constraints are the constraints that will not be violated by the solver. Users can use multiple constraints together.
+
+    Please note that soft constraints are ineffective when using relations attribute in a request. The hard constraint, max_activity_waiting_time, is effective only when relation type is in_same_route and ineffective for all other types.
+    """
+
     max_activity_waiting_time: int
     """
     This is a hard constraint which specifies the maximum waiting time, in seconds,
@@ -333,6 +345,13 @@ class OptionsConstraint(TypedDict, total=False):
 
 
 class OptionsGroupingOrderGrouping(TypedDict, total=False):
+    """Specify the criteria for grouping nearby tasks.
+
+    The grouped tasks will be treated as one stop by the optimizer and no cost would be incurred when driver travels to different tasks within a group. Users can use this feature to model use cases like multiple deliveries in a building complex or a condo.
+
+    Please note that when the multiple tasks are grouped together, only one setup time is considered for all such tasks. The durations of this setup time is equal to maximum setup time among all grouped tasks, if provided. On the other hand, the service time is applied to each task individually, as per the input provided when configuring those tasks.
+    """
+
     grouping_diameter: float
     """
     Specify the straight line distance, in meters, which will be used to identify
@@ -341,6 +360,10 @@ class OptionsGroupingOrderGrouping(TypedDict, total=False):
 
 
 class OptionsGroupingRouteGrouping(TypedDict, total=False):
+    """
+    Specify the criteria for prioritising routes in a zone over routes that are part of another zone. As a result, all the tasks falling in a zone will be fulfilled before any tasks that are part of a different zone.
+    """
+
     penalty_factor: float
     """
     Specify a non-negative value which indicates the penalty of crossing zones on
@@ -376,6 +399,13 @@ class OptionsGroupingRouteGrouping(TypedDict, total=False):
 
 
 class OptionsGrouping(TypedDict, total=False):
+    """Set grouping rules for the tasks and routes.
+
+    *   Use order_grouping to group nearby tasks
+
+    *   Use route_grouping to control route sequencing.
+    """
+
     order_grouping: OptionsGroupingOrderGrouping
     """Specify the criteria for grouping nearby tasks.
 
@@ -422,6 +452,10 @@ class OptionsGrouping(TypedDict, total=False):
 
 
 class OptionsObjectiveCustom(TypedDict, total=False):
+    """
+    The custom parameter is used to define special objectives apart from the simpler travel cost minimization objectives.
+    """
+
     type: Required[Literal["min", "min-max"]]
     """The type parameter accepts two inputs:
 
@@ -459,6 +493,8 @@ class OptionsObjectiveCustom(TypedDict, total=False):
 
 
 class OptionsObjective(TypedDict, total=False):
+    """This attribute is used to configure the objective of the optimization job."""
+
     allow_early_arrival: bool
     """Choose where the optimizer should schedule the driver’s wait time.
 
@@ -536,6 +572,10 @@ class OptionsObjective(TypedDict, total=False):
 
 
 class OptionsRouting(TypedDict, total=False):
+    """
+    This attribute is used to define the routing configurations for the optimization job.
+    """
+
     allow: List[Literal["taxi", "hov"]]
 
     avoid: List[
@@ -684,6 +724,10 @@ class OptionsRouting(TypedDict, total=False):
 
 
 class Options(TypedDict, total=False):
+    """
+    It represents the set of options that can be used to configure optimization algorithms so that the solver provides a solution that meets the desired business objectives.
+    """
+
     constraint: OptionsConstraint
     """
     This attribute defines both the soft and hard constraints for an optimization
@@ -809,6 +853,8 @@ class Relation(TypedDict, total=False):
 
 
 class SolutionStep(TypedDict, total=False):
+    """Describe details about a step of a route"""
+
     id: Required[str]
     """The ID of the step.
 
@@ -949,6 +995,24 @@ class Solution(TypedDict, total=False):
 
 
 class Unassigned(TypedDict, total=False):
+    """unassigned attribute is related to the re-optimization feature.
+
+    This attribute should contain the tasks that were not assigned during an earlier optimization process. Please note that the unassigned part in request should be consistent with the unassigned part in the previous optimization result.
+
+    Users can reduce the number of unassigned tasks in the re-optimized solution, by following strategies such as:
+
+    *   Extending the time windows for vehicles or tasks to give more flexibility
+
+    *   Adding more vehicles to the optimization problem
+
+    *   Adjusting the priority of different tasks to balance the workload more evenly
+
+    *   Modifying other constraints or parameters to make the problem more solvable
+
+
+    Ultimately, the goal is to minimize the number of unassigned tasks while still meeting all the necessary constraints and objectives.
+    """
+
     jobs: SequenceNotStr[str]
     """Specify the unassigned job IDs from the previous optimization result.
 
@@ -974,6 +1038,12 @@ class Unassigned(TypedDict, total=False):
 
 
 class ZoneGeometry(TypedDict, total=False):
+    """
+    It is a [geoJSON object](https://datatracker.ietf.org/doc/html/rfc7946#page-9) with details of the geographic boundaries of the zone. Only “Polygon” and “MultiPolygon” geoJSON types are supported.
+
+    Please note that one of geometry or geofence_id should be provided.
+    """
+
     coordinates: Iterable[Iterable[float]]
     """
     An array of coordinates in the \\[[longitude, latitude\\]] format, representing the

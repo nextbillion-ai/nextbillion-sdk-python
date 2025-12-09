@@ -9,6 +9,10 @@ __all__ = ["DocumentTemplateListResponse", "Data"]
 
 
 class Data(BaseModel):
+    """
+    An array of objects returning the details of each document template associated with the specified API key. Each object represents one document template. In case there are no templates associated with the given key, a blank array is returned.
+    """
+
     id: Optional[str] = None
     """Returns the unique ID of the document template."""
 

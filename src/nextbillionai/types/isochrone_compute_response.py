@@ -10,6 +10,10 @@ __all__ = ["IsochroneComputeResponse", "Feature", "FeatureGeometry", "FeaturePro
 
 
 class FeatureGeometry(BaseModel):
+    """
+    A [GeoJSON geometry](https://datatracker.ietf.org/doc/html/rfc7946#page-7) object with details of the contour line.
+    """
+
     coordinates: Optional[List[float]] = None
     """
     An array of coordinate points, in [longitude,latitude] format representing the
@@ -21,6 +25,8 @@ class FeatureGeometry(BaseModel):
 
 
 class FeatureProperties(BaseModel):
+    """An object with details of how the isochrone contour can be drawn on a map."""
+
     color: Optional[str] = None
     """The hex code of the color of the isochrone contour line"""
 

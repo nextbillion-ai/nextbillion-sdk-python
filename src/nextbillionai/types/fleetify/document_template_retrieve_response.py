@@ -9,6 +9,8 @@ __all__ = ["DocumentTemplateRetrieveResponse", "Data"]
 
 
 class Data(BaseModel):
+    """An object returning the details of the requested document template."""
+
     id: Optional[str] = None
     """Returns the unique identifier of the document template."""
 

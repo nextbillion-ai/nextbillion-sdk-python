@@ -8,6 +8,11 @@ __all__ = ["PolygonGeojson"]
 
 
 class PolygonGeojson(BaseModel):
+    """An object with geoJSON details of the geofence.
+
+    The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     coordinates: Optional[List[List[float]]] = None
     """
     An array of coordinates in the [longitude, latitude] format, representing the

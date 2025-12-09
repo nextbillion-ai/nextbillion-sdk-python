@@ -8,6 +8,8 @@ __all__ = ["TrackLocation", "Location"]
 
 
 class Location(BaseModel):
+    """An object with the coordinates of the last tracked location."""
+
     lat: Optional[float] = None
     """Latitude of the tracked location of the asset."""
 
@@ -16,6 +18,11 @@ class Location(BaseModel):
 
 
 class TrackLocation(BaseModel):
+    """An object with details of the tracked location.
+
+    Please note that if there are no tracking records for an asset, no location data will be returned.
+    """
+
     accuracy: Optional[float] = None
     """
     If available, this property returns the accuracy of the GPS information received

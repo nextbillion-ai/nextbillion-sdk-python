@@ -10,6 +10,8 @@ __all__ = ["Address"]
 
 
 class Address(BaseModel):
+    """Postal address of the result item."""
+
     city: Optional[str] = None
     """The name of the primary locality of the place."""
 

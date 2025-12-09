@@ -24,6 +24,8 @@ __all__ = [
 
 
 class ItemOpeningHoursTimeRangeEndTime(BaseModel):
+    """Returns the closing time details."""
+
     date: Optional[str] = None
     """The date to which the subsequent closing time details belong to."""
 
@@ -35,6 +37,8 @@ class ItemOpeningHoursTimeRangeEndTime(BaseModel):
 
 
 class ItemOpeningHoursTimeRangeStartTime(BaseModel):
+    """Returns the open time details."""
+
     date: Optional[str] = None
     """The date to which the subsequent open time details belong to."""
 
@@ -54,6 +58,8 @@ class ItemOpeningHoursTimeRange(BaseModel):
 
 
 class ItemOpeningHours(BaseModel):
+    """Returns the operating hours of the place, if available."""
+
     time_ranges: Optional[List[ItemOpeningHoursTimeRange]] = FieldInfo(alias="timeRanges", default=None)
     """
     A collection of attributes with details about the opening and closing hours for
@@ -62,6 +68,8 @@ class ItemOpeningHours(BaseModel):
 
 
 class ItemScoring(BaseModel):
+    """Score of the result. A higher score indicates a closer match."""
+
     field_score: Optional[object] = FieldInfo(alias="fieldScore", default=None)
     """
     A breakdown of how closely individual field of the result matched with the

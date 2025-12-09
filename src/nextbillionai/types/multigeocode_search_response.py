@@ -12,6 +12,8 @@ __all__ = ["MultigeocodeSearchResponse", "Entity", "EntityDataSource"]
 
 
 class EntityDataSource(BaseModel):
+    """It contains information about the dataset that returns the  specific result"""
+
     ref_id: Optional[str] = FieldInfo(alias="refId", default=None)
     """
     This parameter represents the unique reference ID associated with the data

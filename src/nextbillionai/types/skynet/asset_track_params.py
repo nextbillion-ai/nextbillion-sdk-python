@@ -32,6 +32,11 @@ class AssetTrackParams(TypedDict, total=False):
 
 
 class LocationsLocation(TypedDict, total=False):
+    """An object to collect the coordinate details of the tracked location.
+
+    Please note this field is mandatory when uploading locations for an asset.
+    """
+
     lat: Required[float]
     """Latitude of the tracked location of the asset."""
 
@@ -40,6 +45,11 @@ class LocationsLocation(TypedDict, total=False):
 
 
 class Locations(TypedDict, total=False):
+    """An array of objects to collect the location tracking information for an asset.
+
+    Each object must correspond to details of only one location.
+    """
+
     location: Required[LocationsLocation]
     """An object to collect the coordinate details of the tracked location.
 

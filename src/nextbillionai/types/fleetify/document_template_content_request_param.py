@@ -20,6 +20,10 @@ class MetaOption(TypedDict, total=False):
 
 
 class Meta(TypedDict, total=False):
+    """
+    An object to define additional information required for single_choice or multi_choices type document items.
+    """
+
     options: Required[Iterable[MetaOption]]
     """
     An array of objects to define options for a multi_choices or single_choice type
@@ -28,6 +32,11 @@ class Meta(TypedDict, total=False):
 
 
 class Validation(TypedDict, total=False):
+    """Specify the validation rules for the field.
+
+    This can be used to enforce data quality and integrity checks. For example, if the field is a number type, validation can define constraints like minimum / maximum number values.
+    """
+
     max: int
     """Specifies the maximum allowed value for number type document field.
 
@@ -56,6 +65,10 @@ class Validation(TypedDict, total=False):
 
 
 class DocumentTemplateContentRequestParam(TypedDict, total=False):
+    """
+    An object to collect the details of form fields - data structures, validation rules - for collecting required information after successfully executing a route step.
+    """
+
     label: Required[str]
     """Specify the label or the name of the field.
 

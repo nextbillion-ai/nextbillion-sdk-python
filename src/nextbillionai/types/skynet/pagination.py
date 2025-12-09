@@ -8,6 +8,11 @@ __all__ = ["Pagination"]
 
 
 class Pagination(BaseModel):
+    """An object with pagination details of the search results.
+
+    Use this object to implement pagination in your application.
+    """
+
     hasmore: Optional[bool] = None
     """
     A boolean value indicating whether there are more items available beyond the

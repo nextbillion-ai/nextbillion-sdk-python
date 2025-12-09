@@ -6,6 +6,8 @@ __all__ = ["Location"]
 
 
 class Location(BaseModel):
+    """Location info."""
+
     lat: float
     """Latitude of location."""
 

@@ -9,6 +9,10 @@ __all__ = ["Monitor", "GeofenceConfig", "IdleConfig", "MatchFilter", "SpeedingCo
 
 
 class GeofenceConfig(BaseModel):
+    """
+    An object returning the details of the geofence that are associated with the monitor for an enter, exit or enter_and_exit type of monitor.
+    """
+
     geofence_ids: Optional[List[str]] = None
     """An array of geofence IDs that are linked to the monitor.
 
@@ -18,6 +22,10 @@ class GeofenceConfig(BaseModel):
 
 
 class IdleConfig(BaseModel):
+    """
+    An object returning the details of the idle activity constraints for a idle type of monitor.
+    """
+
     distance_tolerance: Optional[float] = None
     """
     This parameter returns the distance threshold that was used to determine if the
@@ -35,6 +43,8 @@ class IdleConfig(BaseModel):
 
 
 class MatchFilter(BaseModel):
+    """Use this object to update the attributes of the monitor."""
+
     include_all_of_attributes: Optional[object] = None
     """
     A string type dictionary object to specify the attributes which will be used to
@@ -68,6 +78,10 @@ class MatchFilter(BaseModel):
 
 
 class SpeedingConfig(BaseModel):
+    """
+    An object returning the details of the over-speeding constraints for a speeding type of monitor.
+    """
+
     customer_speed_limit: Optional[int] = None
     """
     This property returns the actual speed limit that the monitor uses as a

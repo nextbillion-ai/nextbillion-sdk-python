@@ -18,6 +18,8 @@ __all__ = [
 
 
 class DataListPrevLocationLocation(BaseModel):
+    """prev_location information of the asset."""
+
     lat: Optional[float] = None
     """Latitude of the prev_location tracked for the asset."""
 
@@ -26,6 +28,10 @@ class DataListPrevLocationLocation(BaseModel):
 
 
 class DataListPrevLocation(BaseModel):
+    """
+    An object with details of the asset at the last tracked location before the event was triggered.
+    """
+
     bearing: Optional[float] = None
     """
     If available, this property returns the heading of the asset from true north in
@@ -52,6 +58,8 @@ class DataListPrevLocation(BaseModel):
 
 
 class DataListTriggeredLocationLocation(BaseModel):
+    """An object with information about the location at which the event was triggered."""
+
     lat: Optional[float] = None
     """Latitude of the triggered_location of the event."""
 
@@ -60,6 +68,10 @@ class DataListTriggeredLocationLocation(BaseModel):
 
 
 class DataListTriggeredLocation(BaseModel):
+    """
+    An object with details of the asset at the location where the event was triggered.
+    """
+
     bearing: Optional[float] = None
     """
     If available, this property returns the heading of the asset from true north in
@@ -153,6 +165,10 @@ class DataList(BaseModel):
 
 
 class Data(BaseModel):
+    """
+    An object containing the information about the event history for the requested asset.
+    """
+
     list: Optional[List[DataList]] = None
     """An array of objects with each object on the list representing one event."""
 

@@ -33,6 +33,8 @@ __all__ = [
 
 
 class RouteEndLocation(BaseModel):
+    """Location coordinates of the point where the route ends."""
+
     latitude: Optional[float] = None
     """Latitude of the end_location."""
 
@@ -41,6 +43,8 @@ class RouteEndLocation(BaseModel):
 
 
 class RouteGeojson(BaseModel):
+    """The GeoJSON representation of the route."""
+
     geometry: Optional[str] = None
 
     properties: Optional[str] = None
@@ -62,14 +66,20 @@ class RouteGeojson(BaseModel):
 
 
 class RouteLegDistance(BaseModel):
+    """An object containing leg distance value, in meters."""
+
     value: Optional[int] = None
 
 
 class RouteLegDuration(BaseModel):
+    """An object containing leg duration value, in seconds."""
+
     value: Optional[int] = None
 
 
 class RouteLegEndLocation(BaseModel):
+    """Location coordinates of the point where the leg ends."""
+
     latitude: Optional[float] = None
     """Latitude of end_location of the leg."""
 
@@ -78,6 +88,8 @@ class RouteLegEndLocation(BaseModel):
 
 
 class RouteLegStartLocation(BaseModel):
+    """Location coordinates of the point where the leg starts."""
+
     latitude: Optional[float] = None
     """Latitude of start_location of the leg."""
 
@@ -86,14 +98,20 @@ class RouteLegStartLocation(BaseModel):
 
 
 class RouteLegStepDistance(BaseModel):
+    """An object containing step distance value, in meters."""
+
     value: Optional[int] = None
 
 
 class RouteLegStepDuration(BaseModel):
+    """An object containing step duration value, in seconds."""
+
     value: Optional[int] = None
 
 
 class RouteLegStepEndLocation(BaseModel):
+    """Location coordinates of the point where the step ends."""
+
     latitude: Optional[float] = None
     """Latitude of the end_location of the step."""
 
@@ -102,6 +120,8 @@ class RouteLegStepEndLocation(BaseModel):
 
 
 class RouteLegStepGeojson(BaseModel):
+    """The GeoJSON representation of the step."""
+
     geometry: Optional[str] = None
 
     type: Optional[str] = None
@@ -125,6 +145,8 @@ class RouteLegStepIntersectionLane(BaseModel):
 
 
 class RouteLegStepIntersectionLocation(BaseModel):
+    """A [longitude, latitude] pair describing the location of the intersection."""
+
     latitude: Optional[float] = None
     """The latitude coordinate of the intersection."""
 
@@ -176,6 +198,8 @@ class RouteLegStepIntersection(BaseModel):
 
 
 class RouteLegStepManeuverCoordinate(BaseModel):
+    """A coordinate pair describing the location of the maneuver."""
+
     latitude: Optional[float] = None
     """The latitude coordinate of the maneuver."""
 
@@ -197,6 +221,8 @@ class RouteLegStepManeuverVoiceInstruction(BaseModel):
 
 
 class RouteLegStepManeuver(BaseModel):
+    """An object with maneuver details for the step."""
+
     bearing_after: Optional[float] = None
     """
     The clockwise angle from true north to the direction of travel immediately after
@@ -245,6 +271,8 @@ class RouteLegStepManeuver(BaseModel):
 
 
 class RouteLegStepRoadShieldType(BaseModel):
+    """An object containing road shield information."""
+
     image_url: Optional[str] = None
     """The URL to fetch the road shield image."""
 
@@ -256,6 +284,8 @@ class RouteLegStepRoadShieldType(BaseModel):
 
 
 class RouteLegStepStartLocation(BaseModel):
+    """Location coordinates of the point where the step starts."""
+
     latitude: Optional[float] = None
     """Latitude of start_location of the step."""
 
@@ -330,6 +360,8 @@ class RouteLeg(BaseModel):
 
 
 class RouteStartLocation(BaseModel):
+    """Location coordinates of the point where the route starts."""
+
     latitude: Optional[float] = None
     """Latitude of thestart_location."""
 

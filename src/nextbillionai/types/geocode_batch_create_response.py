@@ -16,6 +16,8 @@ __all__ = ["GeocodeBatchCreateResponse", "Item", "ItemScoring"]
 
 
 class ItemScoring(BaseModel):
+    """Score of the result. A higher score indicates a closer match."""
+
     field_score: Optional[object] = FieldInfo(alias="fieldScore", default=None)
     """
     A breakdown of how closely individual field of the result matched with the

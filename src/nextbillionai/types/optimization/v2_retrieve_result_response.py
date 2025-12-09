@@ -9,6 +9,11 @@ __all__ = ["V2RetrieveResultResponse", "Result", "ResultRoute", "ResultRouteStep
 
 
 class ResultRouteStep(BaseModel):
+    """This attribute contains the details of all the steps involved in the route.
+
+    It is an array of objects with each object representing one step.
+    """
+
     id: Optional[str] = None
     """Returns the ID of the task.
 
@@ -257,6 +262,11 @@ class ResultRoute(BaseModel):
 
 
 class ResultSummary(BaseModel):
+    """An object to describe the summarized result of the optimization request.
+
+    This object can be useful to quickly get an overview of the important result parameters.
+    """
+
     cost: Optional[int] = None
     """Returns the total cost of all the routes returned in the solution.
 
@@ -401,6 +411,8 @@ class ResultUnassigned(BaseModel):
 
 
 class Result(BaseModel):
+    """An object containing the details of the optimized routes."""
+
     code: Optional[int] = None
     """A custom code representing the status of the result.
 
