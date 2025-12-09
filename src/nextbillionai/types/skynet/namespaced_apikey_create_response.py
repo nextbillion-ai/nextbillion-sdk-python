@@ -8,6 +8,8 @@ __all__ = ["NamespacedApikeyCreateResponse", "Result"]
 
 
 class Result(BaseModel):
+    """An object to return the details about the namespace key created."""
+
     apikey: Optional[str] = None
     """Returns the unique key created for the specified namespace."""
 

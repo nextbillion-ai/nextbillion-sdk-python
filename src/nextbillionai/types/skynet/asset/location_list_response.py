@@ -19,6 +19,8 @@ __all__ = [
 
 
 class DataGeojsonGeometry(BaseModel):
+    """An object with details of the geoJSON geometry of the route."""
+
     coordinates: Optional[List[float]] = None
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -30,6 +32,11 @@ class DataGeojsonGeometry(BaseModel):
 
 
 class DataGeojson(BaseModel):
+    """An object with geoJSON details of the route.
+
+    It is returned only when the mapmatch property of the correction parameter is set to 1 and geometry_type is geojson, otherwise it is not present in the response.  The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     geometry: Optional[DataGeojsonGeometry] = None
     """An object with details of the geoJSON geometry of the route."""
 
@@ -38,6 +45,8 @@ class DataGeojson(BaseModel):
 
 
 class DataSnappedPointLocation(BaseModel):
+    """The latitude and longitude coordinates of the snapped point."""
+
     lat: Optional[float] = None
     """Latitude of the snapped point."""
 

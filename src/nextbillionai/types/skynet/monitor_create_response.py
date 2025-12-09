@@ -8,6 +8,8 @@ __all__ = ["MonitorCreateResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the ID of the monitor created."""
+
     id: Optional[str] = None
     """Unique ID of the monitor created. Please note this ID cannot be updated."""
 

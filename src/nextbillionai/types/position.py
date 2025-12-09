@@ -8,6 +8,8 @@ __all__ = ["Position"]
 
 
 class Position(BaseModel):
+    """Returns the location coordinates of the result."""
+
     lat: Optional[str] = None
     """The latitude of the searched place."""
 

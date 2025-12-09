@@ -73,6 +73,10 @@ class OptimizationReOptimizeParams(TypedDict, total=False):
 
 
 class JobChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of jobs or their individual requirements for re-optimization. Any job from the original solution not specified here will be re-planned without alteration during the re-optimization process.
+    """
+
     add: Iterable[JobParam]
     """
     An array of objects to collect the details of the new jobs to be added during
@@ -96,6 +100,10 @@ class JobChanges(TypedDict, total=False):
 
 
 class ShipmentChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of shipments or their individual requirements for re-optimization. Any shipment from the original solution not specified here will be re-planned without alteration during the re-optimization process.
+    """
+
     add: Iterable[ShipmentParam]
     """
     An array of objects to collect the details of the new shipments to be added
@@ -119,6 +127,10 @@ class ShipmentChanges(TypedDict, total=False):
 
 
 class VehicleChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of vehicles or individual vehicle configurations for re-optimizing an existing solution. Any vehicle from the original solution not specified here will be reused without alteration during the re-optimization process.
+    """
+
     add: Iterable[VehicleParam]
     """
     An array of objects to collect the details of the new vehicles to be added for

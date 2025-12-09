@@ -18,6 +18,8 @@ __all__ = [
 
 
 class DataCompletion(BaseModel):
+    """Returns the completion status of the route."""
+
     status: Optional[Literal["scheduled", "completed"]] = None
     """Returns the status of the route.
 
@@ -26,6 +28,8 @@ class DataCompletion(BaseModel):
 
 
 class DataDriver(BaseModel):
+    """An object returning the details of the driver to whom the route was dispatched."""
+
     id: Optional[str] = None
     """
     Returns the ID of the driver as specified in the
@@ -46,6 +50,8 @@ class DataDriver(BaseModel):
 
 
 class DataStepsCompletion(BaseModel):
+    """Returns the completion status of the step."""
+
     status: Optional[str] = None
     """Returns the status of the step.
 
@@ -54,6 +60,10 @@ class DataStepsCompletion(BaseModel):
 
 
 class DataStepsMeta(BaseModel):
+    """
+    An object returning custom details about the step that were configured in the input request while configuring the step details. The information returned here will be available for display on the Driver's app under step details.
+    """
+
     customer_name: Optional[str] = None
     """Returns the customer name associated with the step.
 
@@ -147,6 +157,11 @@ class DataSteps(BaseModel):
 
 
 class Data(BaseModel):
+    """An array of objects containing the details of each step in the dispatched route.
+
+    Each object represents a single step.
+    """
+
     id: Optional[str] = None
     """Returns the unique ID of the route."""
 

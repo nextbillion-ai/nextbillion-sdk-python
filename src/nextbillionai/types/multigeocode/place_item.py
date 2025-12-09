@@ -10,6 +10,11 @@ __all__ = ["PlaceItem", "Geopoint", "Poi"]
 
 
 class Geopoint(BaseModel):
+    """This parameter represents the geographical coordinates of the place.
+
+    It includes the latitude and longitude values.
+    """
+
     lat: Optional[float] = None
     """This parameter represents the latitude value of the place."""
 
@@ -18,6 +23,11 @@ class Geopoint(BaseModel):
 
 
 class Poi(BaseModel):
+    """This parameter represents a point of interest within the place.
+
+    A Point of Interest (POI) refers to a specific location or area that is of interest to individuals for various reasons. It could be a landmark, tourist attraction, business, or any other location that people might find important or intriguing.
+    """
+
     title: Optional[str] = None
     """A title that describes the point of interest."""
 

@@ -8,6 +8,8 @@ __all__ = ["AssetCreateResponse", "Data"]
 
 
 class Data(BaseModel):
+    """An object containing the ID of the asset created."""
+
     id: Optional[str] = None
     """Unique ID of the asset created.
 

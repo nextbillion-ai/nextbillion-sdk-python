@@ -18,6 +18,8 @@ class CircleCenter(BaseModel):
 
 
 class Geofence(BaseModel):
+    """An object with details of the geofence."""
+
     id: Optional[str] = None
     """ID of the geofence provided/generated at the time of creating the geofence."""
 

@@ -62,6 +62,10 @@ class MileageSegmentState(BaseModel):
 
 
 class MileageSegment(BaseModel):
+    """
+    Returns the details of road segments that the route covers in different states and countries.
+    """
+
     country: Optional[List[MileageSegmentCountry]] = None
     """An array of objects containing country-wise break up of the route segments.
 
@@ -76,6 +80,10 @@ class MileageSegment(BaseModel):
 
 
 class MileageSummary(BaseModel):
+    """
+    Returns a summary of distances that the route covers in different states and countries.
+    """
+
     country: Optional[object] = None
     """
     A break up of country-wise distances that the route covers in key:value pair
@@ -151,6 +159,8 @@ class RoadSummarySegmentRoadClass(BaseModel):
 
 
 class RoadSummarySegment(BaseModel):
+    """Returns the segment-wise road class and max speed information of the route."""
+
     max_speed: Optional[List[RoadSummarySegmentMaxSpeed]] = None
     """
     An array of objects returning the maximum speed of different segments that the
@@ -166,6 +176,10 @@ class RoadSummarySegment(BaseModel):
 
 
 class RoadSummarySummary(BaseModel):
+    """
+    Returns an overview of the route with information about trip distance, duration and road class details among others.
+    """
+
     distance: Optional[float] = None
     """Returns the total distance of the route , in meters."""
 

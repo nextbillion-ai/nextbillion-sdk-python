@@ -81,6 +81,10 @@ class RouteCreateParams(TypedDict, total=False):
 
 
 class Routing(TypedDict, total=False):
+    """
+    The routing object allows defining the routing characteristics that should be used to generate a route when the Driver uses the in-app navigation. Only car mode is supported currently.
+    """
+
     approaches: Literal["unrestricted", "curb"]
     """
     Specify the side of the road from which the route should approach the step

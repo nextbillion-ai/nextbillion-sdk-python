@@ -10,6 +10,8 @@ __all__ = ["AssetListResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the list of assets."""
+
     list: Optional[List[AssetDetails]] = None
     """An array of objects, with each object representing one asset."""
 

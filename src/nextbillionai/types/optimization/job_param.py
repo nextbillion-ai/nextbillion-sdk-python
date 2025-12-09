@@ -11,6 +11,12 @@ __all__ = ["JobParam", "Volume"]
 
 
 class Volume(TypedDict, total=False):
+    """
+    Specify the dimensions and alignment configurations for the cargo associated with the task. These inputs will be used to arrange the items into the loading compartment of the vehicle to utilize the three-dimensional space. If a job consists of several different items, each with its own dimensions, please specify the final characteristics for the task: total height, total length, total width.
+
+    Please note that vehicles which contain the volume input, will only be considered for arranging such items.
+    """
+
     alignment: Literal["strict", "parallel", "fixed_bottom"]
     """Refers to the orientation of the cargo in the loading compartment.
 

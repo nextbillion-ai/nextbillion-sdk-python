@@ -9,6 +9,10 @@ __all__ = ["LocationGetLastResponse", "Data"]
 
 
 class Data(BaseModel):
+    """
+    An object containing the information about the last tracked location of the requested asset.
+    """
+
     location: Optional[TrackLocation] = None
     """An object with details of the tracked location.
 

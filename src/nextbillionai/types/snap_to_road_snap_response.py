@@ -18,6 +18,8 @@ __all__ = [
 
 
 class GeojsonGeometry(BaseModel):
+    """An object with details of the geoJSON geometry of the snapped path."""
+
     coordinates: Optional[List[float]] = None
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -29,6 +31,11 @@ class GeojsonGeometry(BaseModel):
 
 
 class Geojson(BaseModel):
+    """A GeoJSON object with details of the snapped path.
+
+    This object is returned when the geometry field is set to geojson in the input request, otherwise it is not present in the response. The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     geometry: Optional[GeojsonGeometry] = None
     """An object with details of the geoJSON geometry of the snapped path."""
 
@@ -63,6 +70,10 @@ class RoadInfoMaxSpeed(BaseModel):
 
 
 class RoadInfo(BaseModel):
+    """
+    An object containing the maximum speed information for each road segment present in the route.
+    """
+
     max_speed: Optional[List[RoadInfoMaxSpeed]] = None
     """
     An array of objects containing maximum speed, in kilometers per hour, for each
@@ -71,6 +82,8 @@ class RoadInfo(BaseModel):
 
 
 class SnappedPointLocation(BaseModel):
+    """The latitude and longitude coordinates of the snapped point."""
+
     latitude: float
     """Latitude of the snapped point."""
 
@@ -104,6 +117,8 @@ class SnappedPoint(BaseModel):
 
 
 class SnapToRoadSnapResponse(BaseModel):
+    """Response Body"""
+
     distance: Optional[int] = None
     """The total distance of the snapped path in meters."""
 

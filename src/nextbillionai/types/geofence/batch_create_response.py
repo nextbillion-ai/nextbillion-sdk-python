@@ -8,6 +8,8 @@ __all__ = ["BatchCreateResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the IDs of the geofences created."""
+
     ids: Optional[List[str]] = None
 
 

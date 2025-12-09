@@ -38,6 +38,10 @@ class ResultAlternateAssignment(BaseModel):
 
 
 class ResultTripVehicleSteps(BaseModel):
+    """
+    A collection of objects returning the sequence of steps that the vehicle needs to perform for a trip.
+    """
+
     distance: Optional[int] = None
     """
     Returns the driving distance, in meters, to the step's location from previous
@@ -76,6 +80,8 @@ class ResultTripVehicleSteps(BaseModel):
 
 
 class ResultTripVehicle(BaseModel):
+    """Returns the details of the vehicle, assigned order and the trip steps."""
+
     id: Optional[str] = None
     """Returns the ID of the vehicle."""
 
@@ -106,6 +112,8 @@ class ResultUnassignedOrder(BaseModel):
 
 
 class Result(BaseModel):
+    """An object containing the details of the assignments."""
+
     alternate_assignments: Optional[List[ResultAlternateAssignment]] = None
     """
     An array of objects containing the details of the potential, alternate vehicle

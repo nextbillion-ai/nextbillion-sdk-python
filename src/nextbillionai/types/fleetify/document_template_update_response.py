@@ -9,6 +9,8 @@ __all__ = ["DocumentTemplateUpdateResponse", "Data"]
 
 
 class Data(BaseModel):
+    """An object returning the details of the updated document template."""
+
     id: Optional[str] = None
     """Returns the unique ID of the document template."""
 

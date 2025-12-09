@@ -85,6 +85,8 @@ class GeofenceCreateParams(TypedDict, total=False):
 
 
 class CircleCenter(TypedDict, total=False):
+    """Coordinate of the location which will act as the center of a circular geofence."""
+
     lat: Required[float]
     """Latitude of the center location."""
 
@@ -93,6 +95,11 @@ class CircleCenter(TypedDict, total=False):
 
 
 class Circle(TypedDict, total=False):
+    """Provide the details to create a circular geofence.
+
+    Please note that this object is mandatory when type is circle.  When the type is not circle, the properties of this object will be ignored while creating the geofence.
+    """
+
     center: Required[CircleCenter]
     """Coordinate of the location which will act as the center of a circular geofence."""
 
@@ -104,6 +111,11 @@ class Circle(TypedDict, total=False):
 
 
 class Isochrone(TypedDict, total=False):
+    """Provide the details to create an isochrone based geofence.
+
+    Use this object when type is isochrone. When the type is not isochrone, the properties of this object will be ignored while creating the geofence.
+    """
+
     coordinates: Required[str]
     """
     Coordinates of the location, in [latitude,longitude] format, which would act as
@@ -164,6 +176,11 @@ class Isochrone(TypedDict, total=False):
 
 
 class PolygonGeojson(TypedDict, total=False):
+    """An object to collect geoJSON details of the geofence.
+
+    The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     coordinates: Required[Iterable[Iterable[float]]]
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -175,6 +192,15 @@ class PolygonGeojson(TypedDict, total=False):
 
 
 class Polygon(TypedDict, total=False):
+    """Provide the details to create a custom polygon type of geofence.
+
+    Please note that this object is mandatory when type is polygon. When the type is not polygon, the properties of this object will be ignored while creating the geofence.
+
+    Self-intersecting polygons or polygons containing other polygons are invalid and will be removed while processing the request.
+
+    Area of the polygon should be less than 2000 km<sup>2</sup>.
+    """
+
     geojson: Required[PolygonGeojson]
     """An object to collect geoJSON details of the geofence.
 

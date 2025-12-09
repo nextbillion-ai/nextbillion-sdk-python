@@ -10,6 +10,8 @@ __all__ = ["TripRetrieveResponse", "Data", "DataTrip"]
 
 
 class DataTrip(BaseModel):
+    """An object containing the returned trip details."""
+
     id: Optional[str] = None
     """Returns the unique identifier of the trip."""
 
@@ -92,6 +94,8 @@ class DataTrip(BaseModel):
 
 
 class Data(BaseModel):
+    """An container for the trip returned by the service."""
+
     trip: Optional[DataTrip] = None
     """An object containing the returned trip details."""
 

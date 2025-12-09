@@ -9,6 +9,8 @@ __all__ = ["MonitorRetrieveResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the details of the monitor."""
+
     monitor: Optional[Monitor] = None
 
 

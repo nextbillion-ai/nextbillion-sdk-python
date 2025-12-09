@@ -10,6 +10,8 @@ __all__ = ["MonitorListResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the result."""
+
     list: Optional[List[Monitor]] = None
     """An array of objects listing all the monitors.
 

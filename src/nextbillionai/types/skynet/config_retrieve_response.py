@@ -17,6 +17,8 @@ class DataConfig(BaseModel):
 
 
 class Data(BaseModel):
+    """A data object containing the config response."""
+
     config: Optional[DataConfig] = None
 
 

@@ -19,6 +19,8 @@ __all__ = [
 
 
 class Location(BaseModel):
+    """Contains the latitude and longitude of a location"""
+
     latitude: Optional[float] = None
     """Latitude coordinate of the location."""
 
@@ -27,6 +29,8 @@ class Location(BaseModel):
 
 
 class TripGeojson(BaseModel):
+    """The GeoJSON representation of the route."""
+
     geometry: Optional[str] = None
     """The encoded geometry of the geojson in the trip."""
 
@@ -51,6 +55,8 @@ class TripGeojson(BaseModel):
 
 
 class TripLegStepGeojson(BaseModel):
+    """The GeoJSON representation of the step."""
+
     geometry: Optional[str] = None
     """The encoded geometry of the geojson in the step."""
 
@@ -119,6 +125,8 @@ class Trip(BaseModel):
 
 
 class WaypointLocation(BaseModel):
+    """Describes the location of the waypoint."""
+
     latitude: Optional[float] = None
     """Latitude coordinate of the waypoint."""
 
