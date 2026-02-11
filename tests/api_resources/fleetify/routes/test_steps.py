@@ -26,7 +26,7 @@ class TestSteps:
     def test_method_create(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -39,7 +39,7 @@ class TestSteps:
     def test_method_create_with_all_params(self, client: NextbillionSDK) -> None:
         step = client.fleetify.routes.steps.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -65,7 +65,7 @@ class TestSteps:
     def test_raw_response_create(self, client: NextbillionSDK) -> None:
         response = client.fleetify.routes.steps.with_raw_response.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -82,7 +82,7 @@ class TestSteps:
     def test_streaming_response_create(self, client: NextbillionSDK) -> None:
         with client.fleetify.routes.steps.with_streaming_response.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -102,7 +102,7 @@ class TestSteps:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
             client.fleetify.routes.steps.with_raw_response.create(
                 route_id="",
-                key="key",
+                key="key=API_KEY",
                 arrival=0,
                 location=[0],
                 position=0,
@@ -341,7 +341,7 @@ class TestAsyncSteps:
     async def test_method_create(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -354,7 +354,7 @@ class TestAsyncSteps:
     async def test_method_create_with_all_params(self, async_client: AsyncNextbillionSDK) -> None:
         step = await async_client.fleetify.routes.steps.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -380,7 +380,7 @@ class TestAsyncSteps:
     async def test_raw_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         response = await async_client.fleetify.routes.steps.with_raw_response.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -397,7 +397,7 @@ class TestAsyncSteps:
     async def test_streaming_response_create(self, async_client: AsyncNextbillionSDK) -> None:
         async with async_client.fleetify.routes.steps.with_streaming_response.create(
             route_id="routeID",
-            key="key",
+            key="key=API_KEY",
             arrival=0,
             location=[0],
             position=0,
@@ -417,7 +417,7 @@ class TestAsyncSteps:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `route_id` but received ''"):
             await async_client.fleetify.routes.steps.with_raw_response.create(
                 route_id="",
-                key="key",
+                key="key=API_KEY",
                 arrival=0,
                 location=[0],
                 position=0,
