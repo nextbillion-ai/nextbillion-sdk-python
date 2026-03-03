@@ -24,6 +24,11 @@ __all__ = ["SnapToRoadsResource", "AsyncSnapToRoadsResource"]
 
 
 class SnapToRoadsResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> SnapToRoadsResourceWithRawResponse:
         """
@@ -174,6 +179,11 @@ class SnapToRoadsResource(SyncAPIResource):
 
 
 class AsyncSnapToRoadsResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSnapToRoadsResourceWithRawResponse:
         """

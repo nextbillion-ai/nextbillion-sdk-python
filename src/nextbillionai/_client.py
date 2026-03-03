@@ -195,12 +195,20 @@ class NextbillionSDK(SyncAPIClient):
 
     @cached_property
     def mdm(self) -> MdmResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import MdmResource
 
         return MdmResource(self)
 
     @cached_property
     def isochrone(self) -> IsochroneResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import IsochroneResource
 
         return IsochroneResource(self)
@@ -231,6 +239,10 @@ class NextbillionSDK(SyncAPIClient):
 
     @cached_property
     def navigation(self) -> NavigationResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import NavigationResource
 
         return NavigationResource(self)
@@ -249,12 +261,20 @@ class NextbillionSDK(SyncAPIClient):
 
     @cached_property
     def directions(self) -> DirectionsResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import DirectionsResource
 
         return DirectionsResource(self)
 
     @cached_property
     def batch(self) -> BatchResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import BatchResource
 
         return BatchResource(self)
@@ -273,12 +293,20 @@ class NextbillionSDK(SyncAPIClient):
 
     @cached_property
     def route_report(self) -> RouteReportResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import RouteReportResource
 
         return RouteReportResource(self)
 
     @cached_property
     def snap_to_roads(self) -> SnapToRoadsResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import SnapToRoadsResource
 
         return SnapToRoadsResource(self)
@@ -516,12 +544,20 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @cached_property
     def mdm(self) -> AsyncMdmResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import AsyncMdmResource
 
         return AsyncMdmResource(self)
 
     @cached_property
     def isochrone(self) -> AsyncIsochroneResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import AsyncIsochroneResource
 
         return AsyncIsochroneResource(self)
@@ -552,6 +588,10 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @cached_property
     def navigation(self) -> AsyncNavigationResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import AsyncNavigationResource
 
         return AsyncNavigationResource(self)
@@ -570,12 +610,20 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @cached_property
     def directions(self) -> AsyncDirectionsResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import AsyncDirectionsResource
 
         return AsyncDirectionsResource(self)
 
     @cached_property
     def batch(self) -> AsyncBatchResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import AsyncBatchResource
 
         return AsyncBatchResource(self)
@@ -594,12 +642,20 @@ class AsyncNextbillionSDK(AsyncAPIClient):
 
     @cached_property
     def route_report(self) -> AsyncRouteReportResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import AsyncRouteReportResource
 
         return AsyncRouteReportResource(self)
 
     @cached_property
     def snap_to_roads(self) -> AsyncSnapToRoadsResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import AsyncSnapToRoadsResource
 
         return AsyncSnapToRoadsResource(self)
@@ -788,12 +844,20 @@ class NextbillionSDKWithRawResponse:
 
     @cached_property
     def mdm(self) -> mdm.MdmResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import MdmResourceWithRawResponse
 
         return MdmResourceWithRawResponse(self._client.mdm)
 
     @cached_property
     def isochrone(self) -> isochrone.IsochroneResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import IsochroneResourceWithRawResponse
 
         return IsochroneResourceWithRawResponse(self._client.isochrone)
@@ -824,6 +888,10 @@ class NextbillionSDKWithRawResponse:
 
     @cached_property
     def navigation(self) -> navigation.NavigationResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import NavigationResourceWithRawResponse
 
         return NavigationResourceWithRawResponse(self._client.navigation)
@@ -842,12 +910,20 @@ class NextbillionSDKWithRawResponse:
 
     @cached_property
     def directions(self) -> directions.DirectionsResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import DirectionsResourceWithRawResponse
 
         return DirectionsResourceWithRawResponse(self._client.directions)
 
     @cached_property
     def batch(self) -> batch.BatchResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import BatchResourceWithRawResponse
 
         return BatchResourceWithRawResponse(self._client.batch)
@@ -866,12 +942,20 @@ class NextbillionSDKWithRawResponse:
 
     @cached_property
     def route_report(self) -> route_report.RouteReportResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import RouteReportResourceWithRawResponse
 
         return RouteReportResourceWithRawResponse(self._client.route_report)
 
     @cached_property
     def snap_to_roads(self) -> snap_to_roads.SnapToRoadsResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import SnapToRoadsResourceWithRawResponse
 
         return SnapToRoadsResourceWithRawResponse(self._client.snap_to_roads)
@@ -945,12 +1029,20 @@ class AsyncNextbillionSDKWithRawResponse:
 
     @cached_property
     def mdm(self) -> mdm.AsyncMdmResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import AsyncMdmResourceWithRawResponse
 
         return AsyncMdmResourceWithRawResponse(self._client.mdm)
 
     @cached_property
     def isochrone(self) -> isochrone.AsyncIsochroneResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import AsyncIsochroneResourceWithRawResponse
 
         return AsyncIsochroneResourceWithRawResponse(self._client.isochrone)
@@ -981,6 +1073,10 @@ class AsyncNextbillionSDKWithRawResponse:
 
     @cached_property
     def navigation(self) -> navigation.AsyncNavigationResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import AsyncNavigationResourceWithRawResponse
 
         return AsyncNavigationResourceWithRawResponse(self._client.navigation)
@@ -999,12 +1095,20 @@ class AsyncNextbillionSDKWithRawResponse:
 
     @cached_property
     def directions(self) -> directions.AsyncDirectionsResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import AsyncDirectionsResourceWithRawResponse
 
         return AsyncDirectionsResourceWithRawResponse(self._client.directions)
 
     @cached_property
     def batch(self) -> batch.AsyncBatchResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import AsyncBatchResourceWithRawResponse
 
         return AsyncBatchResourceWithRawResponse(self._client.batch)
@@ -1023,12 +1127,20 @@ class AsyncNextbillionSDKWithRawResponse:
 
     @cached_property
     def route_report(self) -> route_report.AsyncRouteReportResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import AsyncRouteReportResourceWithRawResponse
 
         return AsyncRouteReportResourceWithRawResponse(self._client.route_report)
 
     @cached_property
     def snap_to_roads(self) -> snap_to_roads.AsyncSnapToRoadsResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import AsyncSnapToRoadsResourceWithRawResponse
 
         return AsyncSnapToRoadsResourceWithRawResponse(self._client.snap_to_roads)
@@ -1102,12 +1214,20 @@ class NextbillionSDKWithStreamedResponse:
 
     @cached_property
     def mdm(self) -> mdm.MdmResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import MdmResourceWithStreamingResponse
 
         return MdmResourceWithStreamingResponse(self._client.mdm)
 
     @cached_property
     def isochrone(self) -> isochrone.IsochroneResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import IsochroneResourceWithStreamingResponse
 
         return IsochroneResourceWithStreamingResponse(self._client.isochrone)
@@ -1138,6 +1258,10 @@ class NextbillionSDKWithStreamedResponse:
 
     @cached_property
     def navigation(self) -> navigation.NavigationResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import NavigationResourceWithStreamingResponse
 
         return NavigationResourceWithStreamingResponse(self._client.navigation)
@@ -1156,12 +1280,20 @@ class NextbillionSDKWithStreamedResponse:
 
     @cached_property
     def directions(self) -> directions.DirectionsResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import DirectionsResourceWithStreamingResponse
 
         return DirectionsResourceWithStreamingResponse(self._client.directions)
 
     @cached_property
     def batch(self) -> batch.BatchResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import BatchResourceWithStreamingResponse
 
         return BatchResourceWithStreamingResponse(self._client.batch)
@@ -1180,12 +1312,20 @@ class NextbillionSDKWithStreamedResponse:
 
     @cached_property
     def route_report(self) -> route_report.RouteReportResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import RouteReportResourceWithStreamingResponse
 
         return RouteReportResourceWithStreamingResponse(self._client.route_report)
 
     @cached_property
     def snap_to_roads(self) -> snap_to_roads.SnapToRoadsResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import SnapToRoadsResourceWithStreamingResponse
 
         return SnapToRoadsResourceWithStreamingResponse(self._client.snap_to_roads)
@@ -1259,12 +1399,20 @@ class AsyncNextbillionSDKWithStreamedResponse:
 
     @cached_property
     def mdm(self) -> mdm.AsyncMdmResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.mdm import AsyncMdmResourceWithStreamingResponse
 
         return AsyncMdmResourceWithStreamingResponse(self._client.mdm)
 
     @cached_property
     def isochrone(self) -> isochrone.AsyncIsochroneResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.isochrone import AsyncIsochroneResourceWithStreamingResponse
 
         return AsyncIsochroneResourceWithStreamingResponse(self._client.isochrone)
@@ -1295,6 +1443,10 @@ class AsyncNextbillionSDKWithStreamedResponse:
 
     @cached_property
     def navigation(self) -> navigation.AsyncNavigationResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.navigation import AsyncNavigationResourceWithStreamingResponse
 
         return AsyncNavigationResourceWithStreamingResponse(self._client.navigation)
@@ -1313,12 +1465,20 @@ class AsyncNextbillionSDKWithStreamedResponse:
 
     @cached_property
     def directions(self) -> directions.AsyncDirectionsResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.directions import AsyncDirectionsResourceWithStreamingResponse
 
         return AsyncDirectionsResourceWithStreamingResponse(self._client.directions)
 
     @cached_property
     def batch(self) -> batch.AsyncBatchResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.batch import AsyncBatchResourceWithStreamingResponse
 
         return AsyncBatchResourceWithStreamingResponse(self._client.batch)
@@ -1337,12 +1497,20 @@ class AsyncNextbillionSDKWithStreamedResponse:
 
     @cached_property
     def route_report(self) -> route_report.AsyncRouteReportResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.route_report import AsyncRouteReportResourceWithStreamingResponse
 
         return AsyncRouteReportResourceWithStreamingResponse(self._client.route_report)
 
     @cached_property
     def snap_to_roads(self) -> snap_to_roads.AsyncSnapToRoadsResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         from .resources.snap_to_roads import AsyncSnapToRoadsResourceWithStreamingResponse
 
         return AsyncSnapToRoadsResourceWithStreamingResponse(self._client.snap_to_roads)

@@ -24,6 +24,11 @@ __all__ = ["IsochroneResource", "AsyncIsochroneResource"]
 
 
 class IsochroneResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> IsochroneResourceWithRawResponse:
         """
@@ -159,6 +164,11 @@ class IsochroneResource(SyncAPIResource):
 
 
 class AsyncIsochroneResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncIsochroneResourceWithRawResponse:
         """

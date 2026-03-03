@@ -25,6 +25,11 @@ __all__ = ["BatchResource", "AsyncBatchResource"]
 
 
 class BatchResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> BatchResourceWithRawResponse:
         """
@@ -137,6 +142,11 @@ class BatchResource(SyncAPIResource):
 
 
 class AsyncBatchResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBatchResourceWithRawResponse:
         """

@@ -24,6 +24,11 @@ __all__ = ["DirectionsResource", "AsyncDirectionsResource"]
 
 
 class DirectionsResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> DirectionsResourceWithRawResponse:
         """
@@ -415,6 +420,11 @@ class DirectionsResource(SyncAPIResource):
 
 
 class AsyncDirectionsResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncDirectionsResourceWithRawResponse:
         """
