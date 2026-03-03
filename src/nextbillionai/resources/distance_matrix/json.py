@@ -24,6 +24,11 @@ __all__ = ["JsonResource", "AsyncJsonResource"]
 
 
 class JsonResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> JsonResourceWithRawResponse:
         """
@@ -205,6 +210,11 @@ class JsonResource(SyncAPIResource):
 
 
 class AsyncJsonResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncJsonResourceWithRawResponse:
         """

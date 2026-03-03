@@ -24,6 +24,11 @@ __all__ = ["RouteReportResource", "AsyncRouteReportResource"]
 
 
 class RouteReportResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> RouteReportResourceWithRawResponse:
         """
@@ -103,6 +108,11 @@ class RouteReportResource(SyncAPIResource):
 
 
 class AsyncRouteReportResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncRouteReportResourceWithRawResponse:
         """
