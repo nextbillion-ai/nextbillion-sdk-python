@@ -17,7 +17,7 @@ from ..types import (
     restriction_list_by_bbox_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -199,7 +199,7 @@ class RestrictionsResource(SyncAPIResource):
         if not restriction_type:
             raise ValueError(f"Expected a non-empty value for `restriction_type` but received {restriction_type!r}")
         return self._post(
-            f"/restrictions/{restriction_type}",
+            path_template("/restrictions/{restriction_type}", restriction_type=restriction_type),
             body=maybe_transform(
                 {
                     "area": area,
@@ -270,7 +270,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -429,7 +429,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             body=maybe_transform(
                 {
                     "area": area,
@@ -600,7 +600,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._delete(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -740,7 +740,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._put(
-            f"/restrictions/{id}/state",
+            path_template("/restrictions/{id}/state", id=id),
             body=maybe_transform({"state": state}, restriction_set_state_params.RestrictionSetStateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -917,7 +917,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         if not restriction_type:
             raise ValueError(f"Expected a non-empty value for `restriction_type` but received {restriction_type!r}")
         return await self._post(
-            f"/restrictions/{restriction_type}",
+            path_template("/restrictions/{restriction_type}", restriction_type=restriction_type),
             body=await async_maybe_transform(
                 {
                     "area": area,
@@ -988,7 +988,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1147,7 +1147,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "area": area,
@@ -1318,7 +1318,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._delete(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1458,7 +1458,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._put(
-            f"/restrictions/{id}/state",
+            path_template("/restrictions/{id}/state", id=id),
             body=await async_maybe_transform({"state": state}, restriction_set_state_params.RestrictionSetStateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
