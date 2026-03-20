@@ -23,7 +23,7 @@ from .location import (
     AsyncLocationResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -210,7 +210,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -292,7 +292,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             body=maybe_transform(
                 {
                     "attributes": attributes,
@@ -448,7 +448,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -502,7 +502,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/skynet/asset/{id}/bind",
+            path_template("/skynet/asset/{id}/bind", id=id),
             body=maybe_transform({"device_id": device_id}, asset_bind_params.AssetBindParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -557,7 +557,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/skynet/asset/{id}/track",
+            path_template("/skynet/asset/{id}/track", id=id),
             body=maybe_transform(
                 {
                     "device_id": device_id,
@@ -627,7 +627,7 @@ class AssetResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/skynet/asset/{id}/attributes",
+            path_template("/skynet/asset/{id}/attributes", id=id),
             body=maybe_transform(
                 {"attributes": attributes}, asset_update_attributes_params.AssetUpdateAttributesParams
             ),
@@ -800,7 +800,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -882,7 +882,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "attributes": attributes,
@@ -1038,7 +1038,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/skynet/asset/{id}",
+            path_template("/skynet/asset/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1092,7 +1092,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/skynet/asset/{id}/bind",
+            path_template("/skynet/asset/{id}/bind", id=id),
             body=await async_maybe_transform({"device_id": device_id}, asset_bind_params.AssetBindParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -1147,7 +1147,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/skynet/asset/{id}/track",
+            path_template("/skynet/asset/{id}/track", id=id),
             body=await async_maybe_transform(
                 {
                     "device_id": device_id,
@@ -1217,7 +1217,7 @@ class AsyncAssetResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/skynet/asset/{id}/attributes",
+            path_template("/skynet/asset/{id}/attributes", id=id),
             body=await async_maybe_transform(
                 {"attributes": attributes}, asset_update_attributes_params.AssetUpdateAttributesParams
             ),
