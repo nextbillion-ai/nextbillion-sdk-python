@@ -19,6 +19,11 @@ __all__ = [
 
 
 class PlacesBoundaryGeometry(BaseModel):
+    """An object with geoJSON details of the boundary.
+
+    This object is returned when the format field is set to geojson in the input request, otherwise it is not present in the response. The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     coordinates: Optional[List[List[List[float]]]] = None
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -52,6 +57,13 @@ class PlacesBoundaryMultipolygon(BaseModel):
 
 
 class PlacesBoundary(BaseModel):
+    """An object containing the boundary details of the postal code area.
+
+    This object will not be returned in case the boundary information of the postal code provided is not available (only for selected countries).
+
+    Please note the contents of this object will change based on the format field in the input. When the format field is not present in the input this object would contain multipolygon - polygon - points objects depending on the boundary of the given postal code. When the format field is present in the input, then the contents of this object would match the [geojson format and standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     geometry: Optional[PlacesBoundaryGeometry] = None
     """An object with geoJSON details of the boundary.
 
@@ -85,6 +97,10 @@ class PlacesBoundary(BaseModel):
 
 
 class PlacesGeopoint(BaseModel):
+    """
+    Refers to the geographic coordinate denoting the center of the postal code in latitude, longitude format.
+    """
+
     lat: Optional[float] = None
     """Latitude of the location."""
 
@@ -93,6 +109,8 @@ class PlacesGeopoint(BaseModel):
 
 
 class Places(BaseModel):
+    """An object that contains details about the place that was provided in the input."""
+
     address: Optional[str] = None
     """Returns the address of the postalcode returned."""
 

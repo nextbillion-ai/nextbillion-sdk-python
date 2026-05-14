@@ -7,8 +7,8 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -59,13 +59,13 @@ class TripResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripRetrieveResponse:
         """
         Retrieves detailed information about a specific trip.
@@ -87,7 +87,7 @@ class TripResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -110,18 +110,18 @@ class TripResource(SyncAPIResource):
         *,
         key: str,
         asset_id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        stops: Iterable[trip_update_params.Stop] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        stops: Iterable[trip_update_params.Stop] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Updates the data of a specified trip with the provided data.
@@ -167,7 +167,7 @@ class TripResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             body=maybe_transform(
                 {
                     "asset_id": asset_id,
@@ -200,13 +200,13 @@ class TripResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Deletes a specified trip from the system.
@@ -228,7 +228,7 @@ class TripResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -250,13 +250,13 @@ class TripResource(SyncAPIResource):
         *,
         key: str,
         id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         End a trip
@@ -301,13 +301,13 @@ class TripResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripGetSummaryResponse:
         """
         Get summary of an ended trip
@@ -329,7 +329,7 @@ class TripResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/skynet/trip/{id}/summary",
+            path_template("/skynet/trip/{id}/summary", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -351,19 +351,19 @@ class TripResource(SyncAPIResource):
         *,
         key: str,
         asset_id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        stops: Iterable[trip_start_params.Stop] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        stops: Iterable[trip_start_params.Stop] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripStartResponse:
         """
         Add a new trip to the system with the provided data.
@@ -467,13 +467,13 @@ class AsyncTripResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripRetrieveResponse:
         """
         Retrieves detailed information about a specific trip.
@@ -495,7 +495,7 @@ class AsyncTripResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -518,18 +518,18 @@ class AsyncTripResource(AsyncAPIResource):
         *,
         key: str,
         asset_id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        stops: Iterable[trip_update_params.Stop] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        stops: Iterable[trip_update_params.Stop] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Updates the data of a specified trip with the provided data.
@@ -575,7 +575,7 @@ class AsyncTripResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "asset_id": asset_id,
@@ -608,13 +608,13 @@ class AsyncTripResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Deletes a specified trip from the system.
@@ -636,7 +636,7 @@ class AsyncTripResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/skynet/trip/{id}",
+            path_template("/skynet/trip/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -658,13 +658,13 @@ class AsyncTripResource(AsyncAPIResource):
         *,
         key: str,
         id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         End a trip
@@ -709,13 +709,13 @@ class AsyncTripResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripGetSummaryResponse:
         """
         Get summary of an ended trip
@@ -737,7 +737,7 @@ class AsyncTripResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/skynet/trip/{id}/summary",
+            path_template("/skynet/trip/{id}/summary", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -759,19 +759,19 @@ class AsyncTripResource(AsyncAPIResource):
         *,
         key: str,
         asset_id: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        attributes: object | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        stops: Iterable[trip_start_params.Stop] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        attributes: object | Omit = omit,
+        custom_id: str | Omit = omit,
+        description: str | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        stops: Iterable[trip_start_params.Stop] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TripStartResponse:
         """
         Add a new trip to the system with the provided data.

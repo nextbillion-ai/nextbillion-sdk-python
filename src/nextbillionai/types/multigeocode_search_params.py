@@ -62,6 +62,8 @@ class MultigeocodeSearchParams(TypedDict, total=False):
 
 
 class At(TypedDict, total=False):
+    """Specify the center of the search context expressed as coordinates."""
+
     lat: Required[float]
     """Latitude coordinate of the location"""
 

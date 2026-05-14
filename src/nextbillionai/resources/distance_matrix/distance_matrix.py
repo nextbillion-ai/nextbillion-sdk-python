@@ -19,6 +19,10 @@ __all__ = ["DistanceMatrixResource", "AsyncDistanceMatrixResource"]
 class DistanceMatrixResource(SyncAPIResource):
     @cached_property
     def json(self) -> JsonResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return JsonResource(self._client)
 
     @cached_property
@@ -44,6 +48,10 @@ class DistanceMatrixResource(SyncAPIResource):
 class AsyncDistanceMatrixResource(AsyncAPIResource):
     @cached_property
     def json(self) -> AsyncJsonResource:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return AsyncJsonResource(self._client)
 
     @cached_property
@@ -72,6 +80,10 @@ class DistanceMatrixResourceWithRawResponse:
 
     @cached_property
     def json(self) -> JsonResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return JsonResourceWithRawResponse(self._distance_matrix.json)
 
 
@@ -81,6 +93,10 @@ class AsyncDistanceMatrixResourceWithRawResponse:
 
     @cached_property
     def json(self) -> AsyncJsonResourceWithRawResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return AsyncJsonResourceWithRawResponse(self._distance_matrix.json)
 
 
@@ -90,6 +106,10 @@ class DistanceMatrixResourceWithStreamingResponse:
 
     @cached_property
     def json(self) -> JsonResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return JsonResourceWithStreamingResponse(self._distance_matrix.json)
 
 
@@ -99,4 +119,8 @@ class AsyncDistanceMatrixResourceWithStreamingResponse:
 
     @cached_property
     def json(self) -> AsyncJsonResourceWithStreamingResponse:
+        """<p>Get travel time and find optimal routes.
+
+        Add guided navigation and gain trip data insights.</p>
+        """
         return AsyncJsonResourceWithStreamingResponse(self._distance_matrix.json)

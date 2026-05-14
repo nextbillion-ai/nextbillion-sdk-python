@@ -100,6 +100,10 @@ class StepUpdateParams(TypedDict, total=False):
 
 
 class Meta(TypedDict, total=False):
+    """
+    An object to specify any additional details about the task to be associated with the step in the response. The information provided here will be available on the Driver's app under step details. This attribute can be used to provide context about or instructions to the driver for performing the task
+    """
+
     customer_name: str
     """Specify the name of the customer for which the step has to be performed."""
 

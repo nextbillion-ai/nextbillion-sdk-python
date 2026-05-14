@@ -9,6 +9,8 @@ __all__ = ["AssetRetrieveResponse", "Data"]
 
 
 class Data(BaseModel):
+    """An object containing the information about the asset returned."""
+
     asset: Optional[AssetDetails] = None
     """An object with details of the asset properties."""
 

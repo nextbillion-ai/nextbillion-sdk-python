@@ -19,6 +19,10 @@ class MetaOption(BaseModel):
 
 
 class Meta(BaseModel):
+    """
+    Returns the options configured for single_choice or multi_choices type document items.
+    """
+
     options: Optional[List[MetaOption]] = None
     """
     An array of objects returning the options for multi_choices or single_choice
@@ -27,6 +31,10 @@ class Meta(BaseModel):
 
 
 class Validation(BaseModel):
+    """
+    Returns the validation rules for number , multi_choices , and photos document field types.
+    """
+
     max: Optional[int] = None
     """
     Returns the maximum allowed value for number type document item, as specified at
@@ -57,6 +65,10 @@ class Validation(BaseModel):
 
 
 class DocumentTemplateContentResponse(BaseModel):
+    """
+    An array of objects returning the details of data structures and validation rules and other properties of all document fields. Each object represents one document field.
+    """
+
     label: Optional[str] = None
     """Returns the label of the document field."""
 

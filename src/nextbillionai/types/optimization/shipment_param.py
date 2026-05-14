@@ -2,13 +2,17 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ShipmentParam", "Delivery", "Pickup", "Volume"]
 
 
 class Delivery(TypedDict, total=False):
+    """Specify the details of the delivery step of the shipment."""
+
     id: Required[str]
     """Indicate the ID of this shipment delivery step.
 
@@ -99,6 +103,8 @@ class Delivery(TypedDict, total=False):
 
 
 class Pickup(TypedDict, total=False):
+    """Specify the details of the pickup step of the shipment."""
+
     id: Required[str]
     """Indicate the ID of this shipment pickup step.
 
@@ -187,6 +193,12 @@ class Pickup(TypedDict, total=False):
 
 
 class Volume(TypedDict, total=False):
+    """
+    Specify the dimensions and alignment configurations for the cargo associated with the shipment. These inputs will be used to arrange the items into the loading compartment of the vehicle to utilize the three-dimensional space. If a shipment consists of several different items, each with its own dimensions, please specify the final characteristics for the task: total height, total depth, total width.
+
+    Please note that vehicles which contain the volume input, will only be considered for arranging such items.
+    """
+
     alignment: Literal["strict", "parallel", "fixed_bottom"]
     """Refers to the orientation of the cargo in the loading compartment.
 
@@ -251,7 +263,7 @@ class ShipmentParam(TypedDict, total=False):
     The default value is \false\\..
     """
 
-    incompatible_load_types: List[str]
+    incompatible_load_types: SequenceNotStr[str]
     """
     Use this parameter to specify the type of loads which are incompatible with the
     shipment’s load type. Once this property is configured, the shipment can only be
@@ -285,7 +297,7 @@ class ShipmentParam(TypedDict, total=False):
       attributes are also provided in the input request.
     """
 
-    load_types: List[str]
+    load_types: SequenceNotStr[str]
     """Use this parameter to specify the type of loads for the given shipment.
 
     Once this property is configured, the shipment can not be served by a vehicle

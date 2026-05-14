@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal
 
 import httpx
@@ -31,8 +30,8 @@ from .console import (
     ConsoleResourceWithStreamingResponse,
     AsyncConsoleResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -84,19 +83,19 @@ class GeofenceResource(SyncAPIResource):
         *,
         key: str,
         type: Literal["circle", "polygon", "isochrone"],
-        circle: geofence_create_params.Circle | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        isochrone: geofence_create_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: geofence_create_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        circle: geofence_create_params.Circle | Omit = omit,
+        custom_id: str | Omit = omit,
+        isochrone: geofence_create_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: geofence_create_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceCreateResponse:
         """
         Create a geofence
@@ -190,7 +189,7 @@ class GeofenceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceRetrieveResponse:
         """
         Get a Geofence
@@ -210,7 +209,7 @@ class GeofenceResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -226,19 +225,19 @@ class GeofenceResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        circle: geofence_update_params.Circle | NotGiven = NOT_GIVEN,
-        isochrone: geofence_update_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: geofence_update_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["circle", "polygon", "isochrone"] | NotGiven = NOT_GIVEN,
+        circle: geofence_update_params.Circle | Omit = omit,
+        isochrone: geofence_update_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: geofence_update_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: Literal["circle", "polygon", "isochrone"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update a Geofence
@@ -297,7 +296,7 @@ class GeofenceResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             body=maybe_transform(
                 {
                     "circle": circle,
@@ -324,15 +323,15 @@ class GeofenceResource(SyncAPIResource):
         self,
         *,
         key: str,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceListResponse:
         """
         Get Geofence List
@@ -393,7 +392,7 @@ class GeofenceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete a Geofence
@@ -413,7 +412,7 @@ class GeofenceResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -429,14 +428,14 @@ class GeofenceResource(SyncAPIResource):
         *,
         key: str,
         locations: str,
-        geofences: str | NotGiven = NOT_GIVEN,
-        verbose: str | NotGiven = NOT_GIVEN,
+        geofences: str | Omit = omit,
+        verbose: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceContainsResponse:
         """
         Geofence Contains
@@ -519,19 +518,19 @@ class AsyncGeofenceResource(AsyncAPIResource):
         *,
         key: str,
         type: Literal["circle", "polygon", "isochrone"],
-        circle: geofence_create_params.Circle | NotGiven = NOT_GIVEN,
-        custom_id: str | NotGiven = NOT_GIVEN,
-        isochrone: geofence_create_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: geofence_create_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        circle: geofence_create_params.Circle | Omit = omit,
+        custom_id: str | Omit = omit,
+        isochrone: geofence_create_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: geofence_create_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceCreateResponse:
         """
         Create a geofence
@@ -625,7 +624,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceRetrieveResponse:
         """
         Get a Geofence
@@ -645,7 +644,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -661,19 +660,19 @@ class AsyncGeofenceResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        circle: geofence_update_params.Circle | NotGiven = NOT_GIVEN,
-        isochrone: geofence_update_params.Isochrone | NotGiven = NOT_GIVEN,
-        meta_data: object | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        polygon: geofence_update_params.Polygon | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
-        type: Literal["circle", "polygon", "isochrone"] | NotGiven = NOT_GIVEN,
+        circle: geofence_update_params.Circle | Omit = omit,
+        isochrone: geofence_update_params.Isochrone | Omit = omit,
+        meta_data: object | Omit = omit,
+        name: str | Omit = omit,
+        polygon: geofence_update_params.Polygon | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: Literal["circle", "polygon", "isochrone"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Update a Geofence
@@ -732,7 +731,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "circle": circle,
@@ -759,15 +758,15 @@ class AsyncGeofenceResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceListResponse:
         """
         Get Geofence List
@@ -828,7 +827,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SimpleResp:
         """
         Delete a Geofence
@@ -848,7 +847,7 @@ class AsyncGeofenceResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/geofence/{id}",
+            path_template("/geofence/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -864,14 +863,14 @@ class AsyncGeofenceResource(AsyncAPIResource):
         *,
         key: str,
         locations: str,
-        geofences: str | NotGiven = NOT_GIVEN,
-        verbose: str | NotGiven = NOT_GIVEN,
+        geofences: str | Omit = omit,
+        verbose: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeofenceContainsResponse:
         """
         Geofence Contains

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["ConfigUpdateParams"]
 
@@ -18,7 +19,7 @@ class ConfigUpdateParams(TypedDict, total=False):
     cluster: Literal["america"]
     """the cluster of the region you want to use"""
 
-    webhook: List[str]
+    webhook: SequenceNotStr[str]
     """Use this array to update information about the webhooks.
 
     Please note that the webhooks will be overwritten every time this method is

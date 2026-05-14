@@ -6,8 +6,8 @@ from typing import Iterable
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -65,7 +65,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateCreateResponse:
         """
         Create Document template
@@ -117,7 +117,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateRetrieveResponse:
         """
         Retrieve template by ID
@@ -137,7 +137,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -153,14 +153,14 @@ class DocumentTemplatesResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        content: Iterable[DocumentTemplateContentRequestParam] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
+        content: Iterable[DocumentTemplateContentRequestParam] | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateUpdateResponse:
         """
         Update a document template
@@ -186,7 +186,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._put(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             body=maybe_transform(
                 {
                     "content": content,
@@ -213,7 +213,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateListResponse:
         """
         Get all document templates
@@ -252,7 +252,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateDeleteResponse:
         """
         Delete a document template
@@ -272,7 +272,7 @@ class DocumentTemplatesResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -315,7 +315,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateCreateResponse:
         """
         Create Document template
@@ -369,7 +369,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateRetrieveResponse:
         """
         Retrieve template by ID
@@ -389,7 +389,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -407,14 +407,14 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        content: Iterable[DocumentTemplateContentRequestParam] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
+        content: Iterable[DocumentTemplateContentRequestParam] | Omit = omit,
+        name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateUpdateResponse:
         """
         Update a document template
@@ -440,7 +440,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._put(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "content": content,
@@ -469,7 +469,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateListResponse:
         """
         Get all document templates
@@ -510,7 +510,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DocumentTemplateDeleteResponse:
         """
         Delete a document template
@@ -530,7 +530,7 @@ class AsyncDocumentTemplatesResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/fleetify/document_templates/{id}",
+            path_template("/fleetify/document_templates/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

@@ -8,6 +8,10 @@ __all__ = ["MapView"]
 
 
 class MapView(BaseModel):
+    """
+    The bounding box enclosing the geometric shape (area or line) that an individual result covers. place typed results have no mapView.
+    """
+
     east: Optional[str] = None
     """Longitude of the eastern-side of the box."""
 

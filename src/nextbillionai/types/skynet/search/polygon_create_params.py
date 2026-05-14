@@ -73,6 +73,17 @@ class PolygonCreateParams(TypedDict, total=False):
 
 
 class Polygon(TypedDict, total=False):
+    """An object to collect geoJSON details of a custom polygon. Please ensure that:
+
+    - the polygon provided is enclosed. This can be achieved by making the last location coordinate in the list equal to the first location coordinate of the list.
+
+    - the 'polygon' provided does not contain multiple rings.
+
+    The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+
+    Please  note that the maximum area of the search polygon allowed is 3000 km<sup>2</sup>.
+    """
+
     coordinates: Required[Iterable[float]]
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -84,6 +95,10 @@ class Polygon(TypedDict, total=False):
 
 
 class MatchFilter(TypedDict, total=False):
+    """
+    An object to define the attributes which will be used to filter the assets found within the polygon.
+    """
+
     include_all_of_attributes: str
     """
     Use this parameter to filter the assets found inside the specified area by their
@@ -108,6 +123,10 @@ class MatchFilter(TypedDict, total=False):
 
 
 class SortSortDestination(TypedDict, total=False):
+    """
+    Specifies the location coordinates of the point which acts as destination for sorting the assets in the search results. The service will sort each asset based on the driving distance or travel time to this destination, from its current location. Use the sort_by parameter to configure the metric that should be used for sorting the assets. Please note that sort_destination is required when sort_by is provided.
+    """
+
     lat: Required[float]
     """Latitude of the destination location"""
 

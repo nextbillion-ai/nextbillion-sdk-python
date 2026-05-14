@@ -14,8 +14,8 @@ from .steps import (
     StepsResourceWithStreamingResponse,
     AsyncStepsResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -63,16 +63,16 @@ class RoutesResource(SyncAPIResource):
         key: str,
         driver_email: str,
         steps: Iterable[RouteStepsRequestParam],
-        distance: int | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        ro_request_id: str | NotGiven = NOT_GIVEN,
-        routing: route_create_params.Routing | NotGiven = NOT_GIVEN,
+        distance: int | Omit = omit,
+        document_template_id: str | Omit = omit,
+        ro_request_id: str | Omit = omit,
+        routing: route_create_params.Routing | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteCreateResponse:
         """
         Dispatch a new route
@@ -161,13 +161,13 @@ class RoutesResource(SyncAPIResource):
         *,
         key: str,
         operations: Iterable[route_redispatch_params.Operation],
-        distance: float | NotGiven = NOT_GIVEN,
+        distance: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteRedispatchResponse:
         """
         Re-dispatch route
@@ -192,7 +192,7 @@ class RoutesResource(SyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return self._post(
-            f"/fleetify/routes/{route_id}/redispatch",
+            path_template("/fleetify/routes/{route_id}/redispatch", route_id=route_id),
             body=maybe_transform(
                 {
                     "operations": operations,
@@ -241,16 +241,16 @@ class AsyncRoutesResource(AsyncAPIResource):
         key: str,
         driver_email: str,
         steps: Iterable[RouteStepsRequestParam],
-        distance: int | NotGiven = NOT_GIVEN,
-        document_template_id: str | NotGiven = NOT_GIVEN,
-        ro_request_id: str | NotGiven = NOT_GIVEN,
-        routing: route_create_params.Routing | NotGiven = NOT_GIVEN,
+        distance: int | Omit = omit,
+        document_template_id: str | Omit = omit,
+        ro_request_id: str | Omit = omit,
+        routing: route_create_params.Routing | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteCreateResponse:
         """
         Dispatch a new route
@@ -339,13 +339,13 @@ class AsyncRoutesResource(AsyncAPIResource):
         *,
         key: str,
         operations: Iterable[route_redispatch_params.Operation],
-        distance: float | NotGiven = NOT_GIVEN,
+        distance: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteRedispatchResponse:
         """
         Re-dispatch route
@@ -370,7 +370,7 @@ class AsyncRoutesResource(AsyncAPIResource):
         if not route_id:
             raise ValueError(f"Expected a non-empty value for `route_id` but received {route_id!r}")
         return await self._post(
-            f"/fleetify/routes/{route_id}/redispatch",
+            path_template("/fleetify/routes/{route_id}/redispatch", route_id=route_id),
             body=await async_maybe_transform(
                 {
                     "operations": operations,

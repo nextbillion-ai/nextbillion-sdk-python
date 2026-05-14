@@ -6,7 +6,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -24,6 +24,11 @@ __all__ = ["JsonResource", "AsyncJsonResource"]
 
 
 class JsonResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> JsonResourceWithRawResponse:
         """
@@ -51,7 +56,7 @@ class JsonResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """asfd"""
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -69,17 +74,17 @@ class JsonResource(SyncAPIResource):
         destinations: str,
         key: str,
         origins: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        route_failed_prompt: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        bearings: str | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        route_failed_prompt: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> JsonRetrieveResponse:
         """
         Nextbillion.ai Distance Matrix API computes distances and ETAs between a set of
@@ -205,6 +210,11 @@ class JsonResource(SyncAPIResource):
 
 
 class AsyncJsonResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncJsonResourceWithRawResponse:
         """
@@ -232,7 +242,7 @@ class AsyncJsonResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """asfd"""
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -250,17 +260,17 @@ class AsyncJsonResource(AsyncAPIResource):
         destinations: str,
         key: str,
         origins: str,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        route_failed_prompt: bool | NotGiven = NOT_GIVEN,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        bearings: str | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        route_failed_prompt: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> JsonRetrieveResponse:
         """
         Nextbillion.ai Distance Matrix API computes distances and ETAs between a set of

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import mdm_create_distance_matrix_params, mdm_get_distance_matrix_status_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -25,6 +25,11 @@ __all__ = ["MdmResource", "AsyncMdmResource"]
 
 
 class MdmResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> MdmResourceWithRawResponse:
         """
@@ -50,29 +55,29 @@ class MdmResource(SyncAPIResource):
         key: str,
         option: Literal["flexible"],
         origins: str,
-        spliter: Literal["od_number_spliter", "straight_distance_spliter", "location_spliter"] | NotGiven = NOT_GIVEN,
-        area: Literal["singapore", "usa", "india"] | NotGiven = NOT_GIVEN,
+        spliter: Literal["od_number_spliter", "straight_distance_spliter", "location_spliter"] | Omit = omit,
+        area: Literal["singapore", "usa", "india"] | Omit = omit,
         avoid: Literal[
             "toll", "ferry", "highway", "sharp_turn", "service_road", "bbox", "left_turn", "right_turn", "none"
         ]
-        | NotGiven = NOT_GIVEN,
-        cross_border: bool | NotGiven = NOT_GIVEN,
-        departure_time: int | NotGiven = NOT_GIVEN,
-        destinations: str | NotGiven = NOT_GIVEN,
-        destinations_approach: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        origins_approach: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        route_type: Literal["fastest", "shortest"] | NotGiven = NOT_GIVEN,
-        truck_axle_load: float | NotGiven = NOT_GIVEN,
-        truck_size: str | NotGiven = NOT_GIVEN,
-        truck_weight: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        cross_border: bool | Omit = omit,
+        departure_time: int | Omit = omit,
+        destinations: str | Omit = omit,
+        destinations_approach: Literal["unrestricted", "curb"] | Omit = omit,
+        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        origins_approach: Literal["unrestricted", "curb"] | Omit = omit,
+        route_type: Literal["fastest", "shortest"] | Omit = omit,
+        truck_axle_load: float | Omit = omit,
+        truck_size: str | Omit = omit,
+        truck_weight: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MdmCreateDistanceMatrixResponse:
         """
         Create a massive distance matrix task
@@ -249,7 +254,7 @@ class MdmResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MdmGetDistanceMatrixStatusResponse:
         """
         Get massive distance matrix task status
@@ -289,6 +294,11 @@ class MdmResource(SyncAPIResource):
 
 
 class AsyncMdmResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncMdmResourceWithRawResponse:
         """
@@ -314,29 +324,29 @@ class AsyncMdmResource(AsyncAPIResource):
         key: str,
         option: Literal["flexible"],
         origins: str,
-        spliter: Literal["od_number_spliter", "straight_distance_spliter", "location_spliter"] | NotGiven = NOT_GIVEN,
-        area: Literal["singapore", "usa", "india"] | NotGiven = NOT_GIVEN,
+        spliter: Literal["od_number_spliter", "straight_distance_spliter", "location_spliter"] | Omit = omit,
+        area: Literal["singapore", "usa", "india"] | Omit = omit,
         avoid: Literal[
             "toll", "ferry", "highway", "sharp_turn", "service_road", "bbox", "left_turn", "right_turn", "none"
         ]
-        | NotGiven = NOT_GIVEN,
-        cross_border: bool | NotGiven = NOT_GIVEN,
-        departure_time: int | NotGiven = NOT_GIVEN,
-        destinations: str | NotGiven = NOT_GIVEN,
-        destinations_approach: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        origins_approach: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        route_type: Literal["fastest", "shortest"] | NotGiven = NOT_GIVEN,
-        truck_axle_load: float | NotGiven = NOT_GIVEN,
-        truck_size: str | NotGiven = NOT_GIVEN,
-        truck_weight: int | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        cross_border: bool | Omit = omit,
+        departure_time: int | Omit = omit,
+        destinations: str | Omit = omit,
+        destinations_approach: Literal["unrestricted", "curb"] | Omit = omit,
+        hazmat_type: Literal["general", "circumstantial", "explosive", "harmful_to_water"] | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        origins_approach: Literal["unrestricted", "curb"] | Omit = omit,
+        route_type: Literal["fastest", "shortest"] | Omit = omit,
+        truck_axle_load: float | Omit = omit,
+        truck_size: str | Omit = omit,
+        truck_weight: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MdmCreateDistanceMatrixResponse:
         """
         Create a massive distance matrix task
@@ -513,7 +523,7 @@ class AsyncMdmResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MdmGetDistanceMatrixStatusResponse:
         """
         Get massive distance matrix task status

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import navigation_retrieve_route_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -24,6 +24,11 @@ __all__ = ["NavigationResource", "AsyncNavigationResource"]
 
 
 class NavigationResource(SyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> NavigationResourceWithRawResponse:
         """
@@ -47,26 +52,26 @@ class NavigationResource(SyncAPIResource):
         self,
         *,
         key: str,
-        altcount: int | NotGiven = NOT_GIVEN,
-        alternatives: bool | NotGiven = NOT_GIVEN,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        destination: str | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        lang: str | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        original_shape: str | NotGiven = NOT_GIVEN,
-        original_shape_type: Literal["polyline", "polyline6"] | NotGiven = NOT_GIVEN,
-        overview: Literal["full", "simplified", "false"] | NotGiven = NOT_GIVEN,
-        waypoints: str | NotGiven = NOT_GIVEN,
+        altcount: int | Omit = omit,
+        alternatives: bool | Omit = omit,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        bearings: str | Omit = omit,
+        destination: str | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        lang: str | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        origin: str | Omit = omit,
+        original_shape: str | Omit = omit,
+        original_shape_type: Literal["polyline", "polyline6"] | Omit = omit,
+        overview: Literal["full", "simplified", "false"] | Omit = omit,
+        waypoints: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NavigationRetrieveRouteResponse:
         """
         Nextbillion.ai’s Navigation API is a service that computes a route between 2
@@ -223,6 +228,11 @@ class NavigationResource(SyncAPIResource):
 
 
 class AsyncNavigationResource(AsyncAPIResource):
+    """<p>Get travel time and find optimal routes.
+
+    Add guided navigation and gain trip data insights.</p>
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncNavigationResourceWithRawResponse:
         """
@@ -246,26 +256,26 @@ class AsyncNavigationResource(AsyncAPIResource):
         self,
         *,
         key: str,
-        altcount: int | NotGiven = NOT_GIVEN,
-        alternatives: bool | NotGiven = NOT_GIVEN,
-        approaches: Literal["unrestricted", "curb"] | NotGiven = NOT_GIVEN,
-        avoid: Literal["toll", "ferry", "highway", "none"] | NotGiven = NOT_GIVEN,
-        bearings: str | NotGiven = NOT_GIVEN,
-        destination: str | NotGiven = NOT_GIVEN,
-        geometry: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        lang: str | NotGiven = NOT_GIVEN,
-        mode: Literal["car", "truck"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        original_shape: str | NotGiven = NOT_GIVEN,
-        original_shape_type: Literal["polyline", "polyline6"] | NotGiven = NOT_GIVEN,
-        overview: Literal["full", "simplified", "false"] | NotGiven = NOT_GIVEN,
-        waypoints: str | NotGiven = NOT_GIVEN,
+        altcount: int | Omit = omit,
+        alternatives: bool | Omit = omit,
+        approaches: Literal["unrestricted", "curb"] | Omit = omit,
+        avoid: Literal["toll", "ferry", "highway", "none"] | Omit = omit,
+        bearings: str | Omit = omit,
+        destination: str | Omit = omit,
+        geometry: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        lang: str | Omit = omit,
+        mode: Literal["car", "truck"] | Omit = omit,
+        origin: str | Omit = omit,
+        original_shape: str | Omit = omit,
+        original_shape_type: Literal["polyline", "polyline6"] | Omit = omit,
+        overview: Literal["full", "simplified", "false"] | Omit = omit,
+        waypoints: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> NavigationRetrieveRouteResponse:
         """
         Nextbillion.ai’s Navigation API is a service that computes a route between 2

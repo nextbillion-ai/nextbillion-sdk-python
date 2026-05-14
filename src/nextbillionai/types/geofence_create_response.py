@@ -8,6 +8,8 @@ __all__ = ["GeofenceCreateResponse", "Data"]
 
 
 class Data(BaseModel):
+    """A data object containing the ID of the geofence created."""
+
     id: Optional[str] = None
     """Unique ID of the geofence created.
 

@@ -2,13 +2,21 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["JobParam", "Volume"]
 
 
 class Volume(TypedDict, total=False):
+    """
+    Specify the dimensions and alignment configurations for the cargo associated with the task. These inputs will be used to arrange the items into the loading compartment of the vehicle to utilize the three-dimensional space. If a job consists of several different items, each with its own dimensions, please specify the final characteristics for the task: total height, total length, total width.
+
+    Please note that vehicles which contain the volume input, will only be considered for arranging such items.
+    """
+
     alignment: Literal["strict", "parallel", "fixed_bottom"]
     """Refers to the orientation of the cargo in the loading compartment.
 
@@ -74,7 +82,7 @@ class JobParam(TypedDict, total=False):
     vehicles.start_depot_ids to know more.
     """
 
-    depot_ids: List[str]
+    depot_ids: SequenceNotStr[str]
     """Specify the depots which can be used to fulfil this job.
 
     In case of a pickup job, the assigned vehicle will deliver the goods to the
@@ -102,7 +110,7 @@ class JobParam(TypedDict, total=False):
     unloading sequence of cargo is important. The default is false.
     """
 
-    incompatible_load_types: List[str]
+    incompatible_load_types: SequenceNotStr[str]
     """
     Use this parameter to specify the type of loads which are incompatible with the
     job’s load type. Once this property is configured, the job can only be serviced
@@ -138,7 +146,7 @@ class JobParam(TypedDict, total=False):
       attributes are also provided in the input request.
     """
 
-    load_types: List[str]
+    load_types: SequenceNotStr[str]
     """Use this parameter to specify the type of loads for the given job.
 
     Once this property is configured, the job can not be served by a vehicle which

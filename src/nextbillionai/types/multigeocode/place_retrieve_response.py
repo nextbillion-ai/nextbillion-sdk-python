@@ -12,6 +12,10 @@ __all__ = ["PlaceRetrieveResponse", "DataSorce"]
 
 
 class DataSorce(BaseModel):
+    """
+    It displays the information about the current source and current status of the place. Use the “Update Place” method to change these values, as needed.
+    """
+
     ref_id: Optional[str] = FieldInfo(alias="refId", default=None)
     """
     This parameter represents the unique reference ID associated with the data

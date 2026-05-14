@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
+from ..._types import SequenceNotStr
 from .metadata_param import MetadataParam
 
 __all__ = ["MonitorCreateParams", "GeofenceConfig", "IdleConfig", "MatchFilter", "SpeedingConfig"]
@@ -17,7 +17,7 @@ class MonitorCreateParams(TypedDict, total=False):
     API.
     """
 
-    tags: Required[List[str]]
+    tags: Required[SequenceNotStr[str]]
     """Use this parameter to add tags to the monitor.
 
     tags can be used for filtering monitors in the _Get Monitor List_ operation.
@@ -80,7 +80,7 @@ class MonitorCreateParams(TypedDict, total=False):
     of enter, exit or enter_and_exit.
     """
 
-    geofence_ids: List[str]
+    geofence_ids: SequenceNotStr[str]
     """\\**\\**Deprecated.
 
     Please use the geofence_config to specify the geofence_ids for this monitor.\\**\\**
@@ -131,7 +131,14 @@ class MonitorCreateParams(TypedDict, total=False):
 
 
 class GeofenceConfig(TypedDict, total=False):
-    geofence_ids: Required[List[str]]
+    """Geofences are geographic boundaries surrounding an area of interest.
+
+    geofence_config is used to specify the geofences for creating enter or exit type of events based on the asset's location. When an asset associated with the monitor enters the given geofence, an enter type event is created, whereas when the asset moves out of the geofence an exit type event is created.
+
+    Please note that this object is mandatory when the monitor type belongs to one of enter, exit or enter_and_exit.
+    """
+
+    geofence_ids: Required[SequenceNotStr[str]]
     """
     An array of strings to collect the geofence IDs that should be linked to the
     monitor. Please note geofence_ids are mandatory when using the geofence_config
@@ -140,6 +147,13 @@ class GeofenceConfig(TypedDict, total=False):
 
 
 class IdleConfig(TypedDict, total=False):
+    """idle_config is used to set up constraints for creating idle events.
+
+    When an asset associated with the monitor has not moved a given distance within a given time, the Live Tracking API can create events to denote such instances. Please note that this object is mandatory when the monitor type is idle.
+
+    Let's look at the properties of this object.
+    """
+
     distance_tolerance: Required[float]
     """
     Use this parameter to configure a distance threshold that will be used to
@@ -177,6 +191,10 @@ class IdleConfig(TypedDict, total=False):
 
 
 class MatchFilter(TypedDict, total=False):
+    """
+    This object is used to identify the asset(s) on which the monitor would be applied.
+    """
+
     include_all_of_attributes: object
     """A string type dictionary object to specify the attributes.
 
@@ -207,6 +225,13 @@ class MatchFilter(TypedDict, total=False):
 
 
 class SpeedingConfig(TypedDict, total=False):
+    """speeding_config is used to set up constraints for creating over-speed events.
+
+    When an asset associated with a monitor is traveling at a speed above the given limits, the Live Tracking API can create events to denote such instances. There is also an option to set up a tolerance before creating an event. Please note that this object is mandatory when type=speeding.
+
+    Let's look at the properties of this object.
+    """
+
     customer_speed_limit: int
     """
     Use this parameter to establish the speed limit that will allow the monitor to

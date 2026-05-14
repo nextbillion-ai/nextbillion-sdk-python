@@ -10,6 +10,10 @@ __all__ = ["SearchResponse", "Data", "DataAsset", "DataAssetRankingInfo"]
 
 
 class DataAssetRankingInfo(BaseModel):
+    """
+    An object returning the sorting details of the asset as per the configuration specified in the input.
+    """
+
     distance: Optional[float] = None
     """Driving distance between the asset and the sort_destination."""
 
@@ -93,6 +97,8 @@ class DataAsset(BaseModel):
 
 
 class Data(BaseModel):
+    """A data object containing the search result."""
+
     assets: Optional[List[DataAsset]] = None
     """An array of objects with details of the asset(s) returned in the search result.
 

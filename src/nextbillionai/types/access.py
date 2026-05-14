@@ -8,6 +8,10 @@ __all__ = ["Access"]
 
 
 class Access(BaseModel):
+    """
+    An array returning the location coordinates of all the access points of the search result.
+    """
+
     lat: Optional[float] = None
     """The latitude of the access point of the search result."""
 

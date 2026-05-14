@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["GeofenceUpdateParams", "Circle", "CircleCenter", "Isochrone", "Polygon", "PolygonGeojson"]
 
@@ -60,7 +62,7 @@ class GeofenceUpdateParams(TypedDict, total=False):
     Area of the polygon should be less than 2000 km<sup>2</sup>.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """Use this parameter to add/modify one or multiple tags of a geofence.
 
     tags can be used to search or filter geofences (using Get Geofence List method).
@@ -78,6 +80,10 @@ class GeofenceUpdateParams(TypedDict, total=False):
 
 
 class CircleCenter(TypedDict, total=False):
+    """
+    Use this parameter to update the coordinate of the location which will act as the center of a circular geofence.
+    """
+
     lat: float
     """Latitude of the center location."""
 
@@ -86,6 +92,11 @@ class CircleCenter(TypedDict, total=False):
 
 
 class Circle(TypedDict, total=False):
+    """Use this object to update details of a circular geofence.
+
+    Please note that this object is mandatory only when type is circle. When the type is not circle, the properties of this object will be ignored while creating the geofence.
+    """
+
     center: Required[CircleCenter]
     """
     Use this parameter to update the coordinate of the location which will act as
@@ -100,6 +111,11 @@ class Circle(TypedDict, total=False):
 
 
 class Isochrone(TypedDict, total=False):
+    """Use this object to update details of an isochrone based geofence.
+
+    Please note that this object is mandatory only when type is isochrone. When the type is not isochrone, the properties of this object will be ignored while creating the geofence.
+    """
+
     contours_meter: int
     """
     Use this parameter to update the distance, in meters, for which an isochrone
@@ -167,6 +183,11 @@ class Isochrone(TypedDict, total=False):
 
 
 class PolygonGeojson(TypedDict, total=False):
+    """An object to collect geoJSON details of the polygon geofence.
+
+    The contents of this object follow the [geoJSON standard](https://datatracker.ietf.org/doc/html/rfc7946).
+    """
+
     geometry: Iterable[Iterable[float]]
     """
     An array of coordinates in the [longitude, latitude] format, representing the
@@ -178,6 +199,15 @@ class PolygonGeojson(TypedDict, total=False):
 
 
 class Polygon(TypedDict, total=False):
+    """Use this object to update details of a custom polygon geofence.
+
+    Please note that this object is mandatory only when type is polygon. When the type is not polygon, the properties of this object will be ignored while creating the geofence.
+
+    Self-intersecting polygons or polygons containing other polygons are invalid and will be removed while processing the request.
+
+    Area of the polygon should be less than 2000 km<sup>2</sup>.
+    """
+
     geojson: PolygonGeojson
     """An object to collect geoJSON details of the polygon geofence.
 

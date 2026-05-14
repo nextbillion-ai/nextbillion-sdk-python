@@ -10,6 +10,8 @@ __all__ = ["RouteCreateResponse", "Data", "DataDriver"]
 
 
 class DataDriver(BaseModel):
+    """An object returning the details of the driver to whom the route was dispatched."""
+
     id: Optional[str] = None
     """
     Returns the ID of the driver as specified in the
@@ -30,6 +32,11 @@ class DataDriver(BaseModel):
 
 
 class Data(BaseModel):
+    """An array of objects containing the details of each step in the dispatched route.
+
+    Each object represents a single step.
+    """
+
     id: Optional[str] = None
     """Returns the unique ID of the dispatched route."""
 

@@ -55,6 +55,10 @@ class DriverAssignmentAssignParams(TypedDict, total=False):
 
 
 class Filter(TypedDict, total=False):
+    """
+    Specify the filtering criterion for the vehicles with respect to each order's location. filter is a mandatory input for all requests.
+    """
+
     driving_distance: float
     """Defines a driving_distance filter, in meters.
 
@@ -82,6 +86,11 @@ class Filter(TypedDict, total=False):
 
 
 class OrderPickup(TypedDict, total=False):
+    """Specify the location coordinates of the pickup location of the order.
+
+    This input is mandatory for each order.
+    """
+
     lat: float
     """Latitude of the pickup location."""
 
@@ -203,6 +212,22 @@ class OrderVehiclePreferencesRequiredAnyOfAttribute(TypedDict, total=False):
 
 
 class OrderVehiclePreferences(TypedDict, total=False):
+    """Define custom preferences for task assignment based on vehicle's attributes.
+
+    If multiple criteria are provided, they are evaluated using an AND condition—meaning all specified criteria must be met individually for a vehicle to be considered.
+
+    For example, if required_all_of_attributes, required_any_of_attributes, and exclude_all_of_attributes are all provided, an eligible vehicle must satisfy the following to be considered for assignments:
+
+    1.  Meet all conditions specified in required_all_of_attributes.
+
+    2.  Meet at least one of the conditions listed in required_any_of_attributes.
+
+    3.  Not meet any conditions mentioned in exclude_all_of_attributes.
+
+
+    Consequently, a vehicle which does not have any attributes defined can't be assigned to an order which has vehicle_preferences configured.
+    """
+
     exclude_all_of_attributes: Iterable[OrderVehiclePreferencesExcludeAllOfAttribute]
     """An array of objects to add exclusion requirements for the order.
 
@@ -381,6 +406,8 @@ class OptionsVehicleAttributePriorityMapping(TypedDict, total=False):
 
 
 class Options(TypedDict, total=False):
+    """Configure the assignment constraints and response settings."""
+
     alternate_assignments: int
     """
     Specify the maximum number of potential, alternate vehicle assignments to be

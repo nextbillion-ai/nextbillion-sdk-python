@@ -43,6 +43,10 @@ class PlaceUpdateParams(TypedDict, total=False):
 
 
 class DataSource(TypedDict, total=False):
+    """
+    dataSource values can be updated to enhance or prioritize the search results to better suit specific business use cases.
+    """
+
     ref_id: Annotated[str, PropertyInfo(alias="refId")]
     """
     This parameter represents the unique reference ID associated with the data

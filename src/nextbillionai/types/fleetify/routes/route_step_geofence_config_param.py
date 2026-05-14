@@ -8,6 +8,10 @@ __all__ = ["RouteStepGeofenceConfigParam"]
 
 
 class RouteStepGeofenceConfigParam(TypedDict, total=False):
+    """
+    Specify the configurations of the geofence which will be used to detect presence of the driver and complete the tasks automatically. Please note that this attribute is required when completion_mode is either "geofence" or "geofence\\__manual\\__fallback".
+    """
+
     radius: float
     """Specify the radius of the cicular geofence, in meters.
 

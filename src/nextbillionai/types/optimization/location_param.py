@@ -8,6 +8,8 @@ __all__ = ["LocationParam"]
 
 
 class LocationParam(TypedDict, total=False):
+    """Location info."""
+
     lat: Required[float]
     """Latitude of location."""
 

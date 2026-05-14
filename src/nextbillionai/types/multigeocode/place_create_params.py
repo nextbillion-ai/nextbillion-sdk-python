@@ -49,6 +49,11 @@ class PlaceCreateParams(TypedDict, total=False):
 
 
 class PlaceGeopoint(TypedDict, total=False):
+    """This parameter represents the geographical coordinates of the place.
+
+    It includes the latitude and longitude values.
+    """
+
     lat: float
     """This parameter represents the latitude value of the place."""
 
@@ -57,6 +62,11 @@ class PlaceGeopoint(TypedDict, total=False):
 
 
 class PlacePoi(TypedDict, total=False):
+    """This parameter represents a point of interest within the place.
+
+    A Point of Interest (POI) refers to a specific location or area that is of interest to individuals for various reasons. It could be a landmark, tourist attraction, business, or any other location that people might find important or intriguing.
+    """
+
     title: str
     """A title that describes the point of interest."""
 
@@ -118,6 +128,8 @@ class Place(TypedDict, total=False):
 
 
 class DataSource(TypedDict, total=False):
+    """It contains information about the dataset that returns the  specific result"""
+
     ref_id: Annotated[str, PropertyInfo(alias="refId")]
     """
     This parameter represents the unique reference ID associated with the data

@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Required, TypedDict
 
+from .._types import SequenceNotStr
 from .optimization.job_param import JobParam
 from .optimization.vehicle_param import VehicleParam
 from .optimization.shipment_param import ShipmentParam
@@ -30,7 +31,7 @@ class OptimizationReOptimizeParams(TypedDict, total=False):
     re-optimization process.
     """
 
-    locations: List[str]
+    locations: SequenceNotStr[str]
     """Provide the list of locations to be used during re-optimization process.
 
     Please note that
@@ -72,6 +73,10 @@ class OptimizationReOptimizeParams(TypedDict, total=False):
 
 
 class JobChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of jobs or their individual requirements for re-optimization. Any job from the original solution not specified here will be re-planned without alteration during the re-optimization process.
+    """
+
     add: Iterable[JobParam]
     """
     An array of objects to collect the details of the new jobs to be added during
@@ -87,7 +92,7 @@ class JobChanges(TypedDict, total=False):
     IDs provided here are same as the ones in the original request.
     """
 
-    remove: List[str]
+    remove: SequenceNotStr[str]
     """An array of job IDs to be removed when during re-optimization.
 
     All job IDs provided must have been part of the original request.
@@ -95,6 +100,10 @@ class JobChanges(TypedDict, total=False):
 
 
 class ShipmentChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of shipments or their individual requirements for re-optimization. Any shipment from the original solution not specified here will be re-planned without alteration during the re-optimization process.
+    """
+
     add: Iterable[ShipmentParam]
     """
     An array of objects to collect the details of the new shipments to be added
@@ -110,7 +119,7 @@ class ShipmentChanges(TypedDict, total=False):
     all the shipment IDs provided here are same as the ones in the original request.
     """
 
-    remove: List[str]
+    remove: SequenceNotStr[str]
     """An array of shipment IDs to be removed when during re-optimization.
 
     All shipment IDs provided must have been part of the original request.
@@ -118,6 +127,10 @@ class ShipmentChanges(TypedDict, total=False):
 
 
 class VehicleChanges(TypedDict, total=False):
+    """
+    This section gathers information on modifications to the number of vehicles or individual vehicle configurations for re-optimizing an existing solution. Any vehicle from the original solution not specified here will be reused without alteration during the re-optimization process.
+    """
+
     add: Iterable[VehicleParam]
     """
     An array of objects to collect the details of the new vehicles to be added for
@@ -128,7 +141,7 @@ class VehicleChanges(TypedDict, total=False):
 
     modify: VehicleParam
 
-    remove: List[str]
+    remove: SequenceNotStr[str]
     """An array of vehicle IDs to be removed when during re-optimization.
 
     All vehicle IDs provided must have been part of the original request.

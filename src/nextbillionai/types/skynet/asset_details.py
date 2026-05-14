@@ -8,6 +8,8 @@ __all__ = ["AssetDetails", "LatestLocation", "LatestLocationLocation"]
 
 
 class LatestLocationLocation(BaseModel):
+    """An object with the coordinates of the last tracked location."""
+
     lat: Optional[float] = None
     """Latitude of the tracked location of the asset."""
 
@@ -16,6 +18,8 @@ class LatestLocationLocation(BaseModel):
 
 
 class LatestLocation(BaseModel):
+    """An object with details of the last tracked location of the asset."""
+
     accuracy: Optional[float] = None
     """
     If available, this property returns the accuracy of the GPS information received
@@ -57,6 +61,8 @@ class LatestLocation(BaseModel):
 
 
 class AssetDetails(BaseModel):
+    """An object with details of the asset properties."""
+
     id: Optional[str] = None
     """ID of the asset.
 

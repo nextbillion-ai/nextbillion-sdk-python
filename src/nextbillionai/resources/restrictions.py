@@ -16,8 +16,8 @@ from ..types import (
     restriction_set_state_params,
     restriction_list_by_bbox_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform, async_maybe_transform
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -62,29 +62,29 @@ class RestrictionsResource(SyncAPIResource):
         key: str,
         area: str,
         name: str,
-        latlon: bool | NotGiven = NOT_GIVEN,
-        comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
-        end_time: float | NotGiven = NOT_GIVEN,
-        geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        height: int | NotGiven = NOT_GIVEN,
-        length: int | NotGiven = NOT_GIVEN,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        repeat_on: str | NotGiven = NOT_GIVEN,
-        segments: Iterable[restriction_create_params.Segment] | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        speed_limit: float | NotGiven = NOT_GIVEN,
-        start_time: float | NotGiven = NOT_GIVEN,
-        tracks: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        turns: Iterable[restriction_create_params.Turn] | NotGiven = NOT_GIVEN,
-        weight: int | NotGiven = NOT_GIVEN,
-        width: int | NotGiven = NOT_GIVEN,
+        latlon: bool | Omit = omit,
+        comment: str | Omit = omit,
+        direction: Literal["forward", "backward", "both"] | Omit = omit,
+        end_time: float | Omit = omit,
+        geofence: Iterable[Iterable[float]] | Omit = omit,
+        height: int | Omit = omit,
+        length: int | Omit = omit,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        repeat_on: str | Omit = omit,
+        segments: Iterable[restriction_create_params.Segment] | Omit = omit,
+        speed: float | Omit = omit,
+        speed_limit: float | Omit = omit,
+        start_time: float | Omit = omit,
+        tracks: Iterable[Iterable[float]] | Omit = omit,
+        turns: Iterable[restriction_create_params.Turn] | Omit = omit,
+        weight: int | Omit = omit,
+        width: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Create a new restriction
@@ -199,7 +199,7 @@ class RestrictionsResource(SyncAPIResource):
         if not restriction_type:
             raise ValueError(f"Expected a non-empty value for `restriction_type` but received {restriction_type!r}")
         return self._post(
-            f"/restrictions/{restriction_type}",
+            path_template("/restrictions/{restriction_type}", restriction_type=restriction_type),
             body=maybe_transform(
                 {
                     "area": area,
@@ -244,13 +244,13 @@ class RestrictionsResource(SyncAPIResource):
         id: int,
         *,
         key: str,
-        transform: bool | NotGiven = NOT_GIVEN,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Get a restriction by id
@@ -270,7 +270,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -294,29 +294,29 @@ class RestrictionsResource(SyncAPIResource):
         key: str,
         area: str,
         name: str,
-        latlon: bool | NotGiven = NOT_GIVEN,
-        comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
-        end_time: float | NotGiven = NOT_GIVEN,
-        geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        height: int | NotGiven = NOT_GIVEN,
-        length: int | NotGiven = NOT_GIVEN,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        repeat_on: str | NotGiven = NOT_GIVEN,
-        segments: Iterable[restriction_update_params.Segment] | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        speed_limit: float | NotGiven = NOT_GIVEN,
-        start_time: float | NotGiven = NOT_GIVEN,
-        tracks: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        turns: Iterable[restriction_update_params.Turn] | NotGiven = NOT_GIVEN,
-        weight: int | NotGiven = NOT_GIVEN,
-        width: int | NotGiven = NOT_GIVEN,
+        latlon: bool | Omit = omit,
+        comment: str | Omit = omit,
+        direction: Literal["forward", "backward", "both"] | Omit = omit,
+        end_time: float | Omit = omit,
+        geofence: Iterable[Iterable[float]] | Omit = omit,
+        height: int | Omit = omit,
+        length: int | Omit = omit,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        repeat_on: str | Omit = omit,
+        segments: Iterable[restriction_update_params.Segment] | Omit = omit,
+        speed: float | Omit = omit,
+        speed_limit: float | Omit = omit,
+        start_time: float | Omit = omit,
+        tracks: Iterable[Iterable[float]] | Omit = omit,
+        turns: Iterable[restriction_update_params.Turn] | Omit = omit,
+        weight: int | Omit = omit,
+        width: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Update a restriction
@@ -429,7 +429,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             body=maybe_transform(
                 {
                     "area": area,
@@ -476,20 +476,19 @@ class RestrictionsResource(SyncAPIResource):
         key: str,
         limit: int,
         offset: int,
-        mode: Literal["0w", "2w", "3w", "4w", "6w"] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
+        mode: Literal["0w", "2w", "3w", "4w", "6w"] | Omit = omit,
+        name: str | Omit = omit,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"] | Omit = omit,
+        source: Literal["rrt", "pbf"] | Omit = omit,
+        state: Literal["enabled", "disabled", "deleted"] | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionListResponse:
         """Get the paginated list of restrictions
 
@@ -583,7 +582,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionDeleteResponse:
         """
         Delete a restriction by ID
@@ -601,7 +600,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._delete(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -620,19 +619,18 @@ class RestrictionsResource(SyncAPIResource):
         max_lon: float,
         min_lat: float,
         min_lon: float,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"] | Omit = omit,
+        source: Literal["rrt", "pbf"] | Omit = omit,
+        state: Literal["enabled", "disabled", "deleted"] | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionListByBboxResponse:
         """
         Get restrictions by bbox
@@ -720,7 +718,7 @@ class RestrictionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Set the state of a restriction by ID
@@ -742,7 +740,7 @@ class RestrictionsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._put(
-            f"/restrictions/{id}/state",
+            path_template("/restrictions/{id}/state", id=id),
             body=maybe_transform({"state": state}, restriction_set_state_params.RestrictionSetStateParams),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -782,29 +780,29 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         key: str,
         area: str,
         name: str,
-        latlon: bool | NotGiven = NOT_GIVEN,
-        comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
-        end_time: float | NotGiven = NOT_GIVEN,
-        geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        height: int | NotGiven = NOT_GIVEN,
-        length: int | NotGiven = NOT_GIVEN,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        repeat_on: str | NotGiven = NOT_GIVEN,
-        segments: Iterable[restriction_create_params.Segment] | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        speed_limit: float | NotGiven = NOT_GIVEN,
-        start_time: float | NotGiven = NOT_GIVEN,
-        tracks: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        turns: Iterable[restriction_create_params.Turn] | NotGiven = NOT_GIVEN,
-        weight: int | NotGiven = NOT_GIVEN,
-        width: int | NotGiven = NOT_GIVEN,
+        latlon: bool | Omit = omit,
+        comment: str | Omit = omit,
+        direction: Literal["forward", "backward", "both"] | Omit = omit,
+        end_time: float | Omit = omit,
+        geofence: Iterable[Iterable[float]] | Omit = omit,
+        height: int | Omit = omit,
+        length: int | Omit = omit,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        repeat_on: str | Omit = omit,
+        segments: Iterable[restriction_create_params.Segment] | Omit = omit,
+        speed: float | Omit = omit,
+        speed_limit: float | Omit = omit,
+        start_time: float | Omit = omit,
+        tracks: Iterable[Iterable[float]] | Omit = omit,
+        turns: Iterable[restriction_create_params.Turn] | Omit = omit,
+        weight: int | Omit = omit,
+        width: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Create a new restriction
@@ -919,7 +917,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         if not restriction_type:
             raise ValueError(f"Expected a non-empty value for `restriction_type` but received {restriction_type!r}")
         return await self._post(
-            f"/restrictions/{restriction_type}",
+            path_template("/restrictions/{restriction_type}", restriction_type=restriction_type),
             body=await async_maybe_transform(
                 {
                     "area": area,
@@ -964,13 +962,13 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         id: int,
         *,
         key: str,
-        transform: bool | NotGiven = NOT_GIVEN,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Get a restriction by id
@@ -990,7 +988,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1014,29 +1012,29 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         key: str,
         area: str,
         name: str,
-        latlon: bool | NotGiven = NOT_GIVEN,
-        comment: str | NotGiven = NOT_GIVEN,
-        direction: Literal["forward", "backward", "both"] | NotGiven = NOT_GIVEN,
-        end_time: float | NotGiven = NOT_GIVEN,
-        geofence: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        height: int | NotGiven = NOT_GIVEN,
-        length: int | NotGiven = NOT_GIVEN,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        repeat_on: str | NotGiven = NOT_GIVEN,
-        segments: Iterable[restriction_update_params.Segment] | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        speed_limit: float | NotGiven = NOT_GIVEN,
-        start_time: float | NotGiven = NOT_GIVEN,
-        tracks: Iterable[Iterable[float]] | NotGiven = NOT_GIVEN,
-        turns: Iterable[restriction_update_params.Turn] | NotGiven = NOT_GIVEN,
-        weight: int | NotGiven = NOT_GIVEN,
-        width: int | NotGiven = NOT_GIVEN,
+        latlon: bool | Omit = omit,
+        comment: str | Omit = omit,
+        direction: Literal["forward", "backward", "both"] | Omit = omit,
+        end_time: float | Omit = omit,
+        geofence: Iterable[Iterable[float]] | Omit = omit,
+        height: int | Omit = omit,
+        length: int | Omit = omit,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        repeat_on: str | Omit = omit,
+        segments: Iterable[restriction_update_params.Segment] | Omit = omit,
+        speed: float | Omit = omit,
+        speed_limit: float | Omit = omit,
+        start_time: float | Omit = omit,
+        tracks: Iterable[Iterable[float]] | Omit = omit,
+        turns: Iterable[restriction_update_params.Turn] | Omit = omit,
+        weight: int | Omit = omit,
+        width: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Update a restriction
@@ -1149,7 +1147,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "area": area,
@@ -1196,20 +1194,19 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         key: str,
         limit: int,
         offset: int,
-        mode: Literal["0w", "2w", "3w", "4w", "6w"] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
+        mode: Literal["0w", "2w", "3w", "4w", "6w"] | Omit = omit,
+        name: str | Omit = omit,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"] | Omit = omit,
+        source: Literal["rrt", "pbf"] | Omit = omit,
+        state: Literal["enabled", "disabled", "deleted"] | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionListResponse:
         """Get the paginated list of restrictions
 
@@ -1303,7 +1300,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionDeleteResponse:
         """
         Delete a restriction by ID
@@ -1321,7 +1318,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._delete(
-            f"/restrictions/{id}",
+            path_template("/restrictions/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1340,19 +1337,18 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         max_lon: float,
         min_lat: float,
         min_lon: float,
-        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | NotGiven = NOT_GIVEN,
-        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"]
-        | NotGiven = NOT_GIVEN,
-        source: Literal["rrt", "pbf"] | NotGiven = NOT_GIVEN,
-        state: Literal["enabled", "disabled", "deleted"] | NotGiven = NOT_GIVEN,
-        status: Literal["active", "inactive"] | NotGiven = NOT_GIVEN,
-        transform: bool | NotGiven = NOT_GIVEN,
+        mode: List[Literal["0w", "2w", "3w", "4w", "6w"]] | Omit = omit,
+        restriction_type: Literal["turn", "parking", "fixedspeed", "maxspeed", "closure", "truck"] | Omit = omit,
+        source: Literal["rrt", "pbf"] | Omit = omit,
+        state: Literal["enabled", "disabled", "deleted"] | Omit = omit,
+        status: Literal["active", "inactive"] | Omit = omit,
+        transform: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RestrictionListByBboxResponse:
         """
         Get restrictions by bbox
@@ -1440,7 +1436,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RichGroupResponse:
         """
         Set the state of a restriction by ID
@@ -1462,7 +1458,7 @@ class AsyncRestrictionsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._put(
-            f"/restrictions/{id}/state",
+            path_template("/restrictions/{id}/state", id=id),
             body=await async_maybe_transform({"state": state}, restriction_set_state_params.RestrictionSetStateParams),
             options=make_request_options(
                 extra_headers=extra_headers,

@@ -13,7 +13,7 @@ from .place import (
     AsyncPlaceResourceWithStreamingResponse,
 )
 from ...types import multigeocode_search_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -59,20 +59,20 @@ class MultigeocodeResource(SyncAPIResource):
         key: str,
         at: multigeocode_search_params.At,
         query: str,
-        city: str | NotGiven = NOT_GIVEN,
-        country: str | NotGiven = NOT_GIVEN,
-        district: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        radius: str | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
-        street: str | NotGiven = NOT_GIVEN,
-        sub_district: str | NotGiven = NOT_GIVEN,
+        city: str | Omit = omit,
+        country: str | Omit = omit,
+        district: str | Omit = omit,
+        limit: int | Omit = omit,
+        radius: str | Omit = omit,
+        state: str | Omit = omit,
+        street: str | Omit = omit,
+        sub_district: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MultigeocodeSearchResponse:
         """
         The method enables searching for known places from multiple data sources
@@ -180,20 +180,20 @@ class AsyncMultigeocodeResource(AsyncAPIResource):
         key: str,
         at: multigeocode_search_params.At,
         query: str,
-        city: str | NotGiven = NOT_GIVEN,
-        country: str | NotGiven = NOT_GIVEN,
-        district: str | NotGiven = NOT_GIVEN,
-        limit: int | NotGiven = NOT_GIVEN,
-        radius: str | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
-        street: str | NotGiven = NOT_GIVEN,
-        sub_district: str | NotGiven = NOT_GIVEN,
+        city: str | Omit = omit,
+        country: str | Omit = omit,
+        district: str | Omit = omit,
+        limit: int | Omit = omit,
+        radius: str | Omit = omit,
+        state: str | Omit = omit,
+        street: str | Omit = omit,
+        sub_district: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> MultigeocodeSearchResponse:
         """
         The method enables searching for known places from multiple data sources

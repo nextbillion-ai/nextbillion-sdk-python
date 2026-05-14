@@ -6,8 +6,8 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -49,19 +49,19 @@ class LocationResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        correction: str | NotGiven = NOT_GIVEN,
-        end_time: int | NotGiven = NOT_GIVEN,
-        geometry_type: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        start_time: int | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        correction: str | Omit = omit,
+        end_time: int | Omit = omit,
+        geometry_type: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        start_time: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LocationListResponse:
         """
         Track locations of an asset
@@ -113,7 +113,7 @@ class LocationResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/skynet/asset/{id}/location/list",
+            path_template("/skynet/asset/{id}/location/list", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -141,13 +141,13 @@ class LocationResource(SyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LocationGetLastResponse:
         """
         Track the last location of an asset
@@ -169,7 +169,7 @@ class LocationResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/skynet/asset/{id}/location/last",
+            path_template("/skynet/asset/{id}/location/last", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -212,19 +212,19 @@ class AsyncLocationResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
-        correction: str | NotGiven = NOT_GIVEN,
-        end_time: int | NotGiven = NOT_GIVEN,
-        geometry_type: Literal["polyline", "polyline6", "geojson"] | NotGiven = NOT_GIVEN,
-        pn: int | NotGiven = NOT_GIVEN,
-        ps: int | NotGiven = NOT_GIVEN,
-        start_time: int | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
+        correction: str | Omit = omit,
+        end_time: int | Omit = omit,
+        geometry_type: Literal["polyline", "polyline6", "geojson"] | Omit = omit,
+        pn: int | Omit = omit,
+        ps: int | Omit = omit,
+        start_time: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LocationListResponse:
         """
         Track locations of an asset
@@ -276,7 +276,7 @@ class AsyncLocationResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/skynet/asset/{id}/location/list",
+            path_template("/skynet/asset/{id}/location/list", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -304,13 +304,13 @@ class AsyncLocationResource(AsyncAPIResource):
         id: str,
         *,
         key: str,
-        cluster: Literal["america"] | NotGiven = NOT_GIVEN,
+        cluster: Literal["america"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LocationGetLastResponse:
         """
         Track the last location of an asset
@@ -332,7 +332,7 @@ class AsyncLocationResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/skynet/asset/{id}/location/last",
+            path_template("/skynet/asset/{id}/location/last", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
